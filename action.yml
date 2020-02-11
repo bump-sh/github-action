@@ -1,0 +1,31 @@
+name: 'API documentation on Bump'
+description: 'Generate your API doc and an automatic changelog from any OpenAPI or AsyncAPI file.'
+inputs:
+  file:
+    description: 'Relative path to the documentation file'
+    required: true
+    default: api-contract.yml
+  id:
+    description: 'Documentation id. Can be found in the documentation settings on https://bump.sh'
+    required: true
+  token:
+    description: 'Documentation token. Can be found in the documentation settings on https://bump.sh'
+    required: true
+  command:
+    description: 'Bump command: deploy/validate/preview'
+    default: deploy
+  validation:
+    description: 'Validation to apply server side: basic/strict. Choose strict to validate the file against its specification.'
+    default: basic
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.command }}
+    - ${{ inputs.file }}
+    - ${{ inputs.id }}
+    - ${{ inputs.token }}
+    - ${{ inputs.validation }}
+branding:
+  color: gray-dark
+  icon: book-open
