@@ -22,7 +22,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Deploy API documentation
-        uses: bump-sh/github-action@v1.0
+        uses: bump-sh/github-action@0.1
         with:
           id: <BUMP_DOC_ID>
           token: <BUMP_DOC_TOKEN>
