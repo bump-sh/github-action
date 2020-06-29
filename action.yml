@@ -5,7 +5,7 @@ inputs:
     description: 'Relative path to the documentation file'
     required: true
     default: api-contract.yml
-  id:
+  doc:
     description: 'Documentation id. Can be found in the documentation settings on https://bump.sh'
     required: true
   token:
@@ -23,7 +23,7 @@ runs:
   args:
     - ${{ inputs.command }}
     - ${{ inputs.file }}
-    - ${{ inputs.id }}
+    - ${{ inputs.doc }}
     - ${{ inputs.token }}
     - ${{ inputs.validation }}
 branding:
