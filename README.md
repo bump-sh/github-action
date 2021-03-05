@@ -22,11 +22,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Deploy API documentation
-        uses: bump-sh/github-action@0.1
+        uses: bump-sh/github-action@0.2
         with:
           id: <BUMP_DOC_ID>
           token: <BUMP_DOC_TOKEN>
-          file: doc/api-documentation.yml   
+          file: doc/api-documentation.yml
 ```
 
 Important: [actions/checkout](https://github.com/actions/checkout) has to be called **before this action**.
