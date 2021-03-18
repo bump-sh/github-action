@@ -25,17 +25,22 @@ jobs:
         uses: bump-sh/github-action@0.2
         with:
           id: <BUMP_DOC_ID>
-          token: <BUMP_DOC_TOKEN>
+          token: ${{secrets.BUMP_TOKEN}}
           file: doc/api-documentation.yml
 ```
 
 Important: [actions/checkout](https://github.com/actions/checkout) has to be called **before this action**.
 
+
 ## Inputs
 
 * `id` (required): Documentation id. Can be found in the documentation settings on https://bump.sh
 
-* `token` (required): Documentation token. Can be found in the documentation settings on https://bump.sh. We recommend to use an [encrypted secret](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets).
+* `token` (required): Do not add your documentation token here, but create an [encrypted secret](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) that holds your documentation token. 
+
+  * Your documentation token can be found in the documentation settings on https://bump.sh. 
+  * In your GitHub repository, click Settings, and then Secrets.
+  * Click the button "New repository secret" and add your bump token. In the above example, the secret is called BUMP_TOKEN).
 
 * `file`: Relative path to the documentation file. Default: `api-contract.yml`.
 
