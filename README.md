@@ -24,7 +24,7 @@ jobs:
       - name: Deploy API documentation
         uses: bump-sh/github-action@0.2
         with:
-          id: <BUMP_DOC_ID>
+          doc: <BUMP_DOC_ID>
           token: <BUMP_DOC_TOKEN>
           file: doc/api-documentation.yml
 ```
@@ -33,7 +33,7 @@ Important: [actions/checkout](https://github.com/actions/checkout) has to be cal
 
 ## Inputs
 
-* `id` (required): Documentation id. Can be found in the documentation settings on https://bump.sh
+* `doc` (required): Documentation id. Can be found in the documentation settings on https://bump.sh
 
 * `token` (required): Documentation token. Can be found in the documentation settings on https://bump.sh. We recommend to use an [encrypted secret](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets).
 
