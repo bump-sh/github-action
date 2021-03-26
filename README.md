@@ -34,7 +34,7 @@ Important: [actions/checkout](https://github.com/actions/checkout) has to be cal
 
 ## Inputs
 
-* `id` (required): Documentation id. Can be found in the documentation settings on https://bump.sh
+* `doc` (required): Documentation id. Can be found in the documentation settings on https://bump.sh
 
 * `token` (required): Do not add your documentation token here, but create an [encrypted secret](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) that holds your documentation token. 
 
@@ -49,7 +49,6 @@ Important: [actions/checkout](https://github.com/actions/checkout) has to be cal
   * `deploy` (default): deploy a new version of the documentation
   * `validate`: validate the documentation file
   * `preview`: create a temporary preview
-
 
 * `validation`: Validation to apply server side. Default: `basic`.
 
