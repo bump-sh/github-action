@@ -1,12 +1,29 @@
 # Generate your API documentation
 
+<p align="center">
+  <img width="20%" src="https://bump.sh/icon-default-large.png" />
+</p>
+
+<p align="center">
+  <a href="https://help.bump.sh/">Help</a> |
+  <a href="https://bump.sh/users/sign_up">Sign up</a>
+</p>
+
 Bump is a Continuous Documentation Platform: it lets you keep your API doc always synchronized with your codebase. With this [Github Action](https://github.com/actions) you can automatically generate your API reference (with changelog and diff) on [Bump](https://bump.sh) from any [OpenAPI](https://github.com/OAI/OpenAPI-Specification) or [AsyncAPI](https://github.com/asyncapi/asyncapi) file.
+
+## Table of contents
+
+* [Usage](#usage)
+* [Inputs](#inputs)
+* [Contributing](#contributing)
+* [License](#license)
+* [Code Of Conduct](#code-of-conduct)
 
 ## Usage
 
 Start by creating a documentation on [Bump](https://bump.sh). Then add this workflow to your GitHub project:
 
-```
+```yaml
 name: Deploy documentation
 
 on:
@@ -36,9 +53,9 @@ Important: [actions/checkout](https://github.com/actions/checkout) has to be cal
 
 * `doc` (required): Documentation id. Can be found in the documentation settings on https://bump.sh
 
-* `token` (required): Do not add your documentation token here, but create an [encrypted secret](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) that holds your documentation token. 
+* `token` (required): Do not add your documentation token here, but create an [encrypted secret](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) that holds your documentation token.
 
-  * Your documentation token can be found in the documentation settings on https://bump.sh. 
+  * Your documentation token can be found in the documentation settings on https://bump.sh.
   * In your GitHub repository, click Settings, and then Secrets.
   * Click the button "New repository secret" and add your bump token. In the above example, the secret is called BUMP_TOKEN).
 
