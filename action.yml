@@ -14,18 +14,9 @@ inputs:
   command:
     description: 'Bump command: deploy/validate/preview'
     default: deploy
-  validation:
-    description: 'Validation to apply server side: basic/strict. Choose strict to validate the file against its specification.'
-    default: basic
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.command }}
-    - ${{ inputs.file }}
-    - ${{ inputs.doc }}
-    - ${{ inputs.token }}
-    - ${{ inputs.validation }}
+  using: 'node12'
+  main: 'dist/index.js'
 branding:
   color: gray-dark
   icon: book-open
