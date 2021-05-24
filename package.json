@@ -1,0 +1,60 @@
+{
+  "name": "bump-github-action",
+  "version": "0.3.0",
+  "description": "GitHub action to deploy your API documentation on Bump",
+  "main": "lib/main.js",
+  "bugs": "https://github.com/bump-sh/github-action/issues",
+  "homepage": "https://bump.sh",
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist/",
+    "format": "eslint . --ext .ts --config .eslintrc --fix",
+    "format-check": "eslint . --ext .ts --config .eslintrc",
+    "lint": "eslint src/**/*.ts",
+    "package": "ncc build --source-map --license licenses.txt -e typescript",
+    "test": "jest",
+    "all": "npm run build && npm run format && npm run lint && npm run package && npm test"
+  },
+  "repository": "bump-sh/github-action",
+  "keywords": [
+    "api",
+    "documentation",
+    "api-documentation",
+    "openapi",
+    "openapi-specification",
+    "asyncapi",
+    "asyncapi-specification",
+    "bump",
+    "github-action"
+  ],
+  "author": "Bump.sh",
+  "license": "MIT",
+  "files": [
+    "/src"
+  ],
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "bump-cli": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.15",
+    "@types/node": "^14.14.9",
+    "@typescript-eslint/eslint-plugin": "^4.21.0",
+    "@typescript-eslint/parser": "^4.8.1",
+    "@vercel/ncc": "^0.25.1",
+    "eslint": "^7.17.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-jest": "^24.1.3",
+    "eslint-plugin-prettier": "^3.3.1",
+    "jest": "^26.6.3",
+    "jest-circus": "^26.6.3",
+    "js-yaml": "^3.14.0",
+    "prettier": "2.2.1",
+    "stdout-stderr": "^0.1.13",
+    "ts-jest": "^26.4.4",
+    "typescript": "^4.1.3"
+  }
+}

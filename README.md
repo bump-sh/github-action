@@ -51,7 +51,7 @@ Important: [actions/checkout](https://github.com/actions/checkout) has to be cal
 
 ## Inputs
 
-* `doc` (required): Documentation id. Can be found in the documentation settings on https://bump.sh
+* `doc` (required): Documentation id or slug. Can be found in the documentation settings on https://bump.sh
 
 * `token` (required): Do not add your documentation token here, but create an [encrypted secret](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) that holds your documentation token.
 
@@ -61,16 +61,13 @@ Important: [actions/checkout](https://github.com/actions/checkout) has to be cal
 
 * `file`: Relative path to the documentation file. Default: `api-contract.yml`.
 
+* `hub`: Hub id or slug. Needed when deploying to a documentation attached to a Hub. Can be found in the hub settings on https://bump.sh
+
 * `command`: Bump command to execute.
 
   * `deploy` (default): deploy a new version of the documentation
   * `validate`: validate the documentation file
   * `preview`: create a temporary preview
-
-* `validation`: Validation to apply server side. Default: `basic`.
-
-  * `basic` (default): basic validation
-  * `strict`: validate the file against its specification
 
 ## Contributing
 
