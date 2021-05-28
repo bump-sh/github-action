@@ -24,6 +24,7 @@ async function run(): Promise<void> {
       case 'preview':
         await BumpPreview.run(cliParams);
         break;
+      case 'dry-run':
       case 'validate':
         await BumpDeploy.run(cliParams.concat(deployCliParams).concat(['--dry-run']));
         break;

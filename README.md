@@ -65,9 +65,9 @@ Important: [actions/checkout](https://github.com/actions/checkout) has to be cal
 
 * `command`: Bump command to execute.
 
-  * `deploy` (default): deploy a new version of the documentation
-  * `validate`: validate the documentation file
   * `preview`: create a temporary preview
+  * `dry-run`: dry-run a deployment of the documentation file
+  * `deploy` (default): deploy a new version of the documentation
 
 ## Contributing
 

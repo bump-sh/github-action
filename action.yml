@@ -12,7 +12,7 @@ inputs:
     description: 'Documentation token. Can be found in the documentation settings on https://bump.sh'
     required: true
   command:
-    description: 'Bump command: deploy/validate/preview'
+    description: 'Bump command: deploy/dry-run/preview'
     default: deploy
 runs:
   using: 'node12'
