@@ -21,40 +21,28 @@ beforeEach(() => {
 afterEach(() => stdout.stop());
 
 test('test action run deploy correctly', async () => {
-  const mockSuccessCallback = jest.fn((params) => {
-    expect(params).toContain('my-file.yml');
-    return Promise.resolve();
-  });
-  mockedDeploy.run = mockSuccessCallback;
+  expect(mockedDeploy.run).not.toHaveBeenCalled();
 
-  expect(mockSuccessCallback.mock.calls.length).toBe(0);
   process.env.INPUT_FILE = 'my-file.yml';
+  process.env.INPUT_DOC = 'my-doc';
+  process.env.INPUT_TOKEN = 'SECRET';
   await main();
-  expect(mockSuccessCallback.mock.calls.length).toBe(1);
-});
 
-test('test action runs with error', async () => {
-  const mockErrorCallback = jest.fn(() => {
-    return Promise.reject('CLI Error');
-  });
-  mockedDeploy.run = mockErrorCallback;
-
-  expect(mockErrorCallback.mock.calls.length).toBe(0);
-  process.env.INPUT_FILE = 'my-file.yml';
-  await main();
-  expect(mockErrorCallback.mock.calls.length).toBe(1);
+  expect(mockedDeploy.run).toHaveBeenCalledWith([
+    'my-file.yml',
+    '--doc',
+    'my-doc',
+    '--token',
+    'SECRET',
+  ]);
 });
 
 test('test action run preview correctly', async () => {
-  const mockSuccessCallback = jest.fn((params) => {
-    expect(params).toContain('my-file-to-preview.yml');
-    return Promise.resolve();
-  });
-  mockedPreview.run = mockSuccessCallback;
+  expect(mockedPreview.run).not.toHaveBeenCalled();
 
-  expect(mockSuccessCallback.mock.calls.length).toBe(0);
   process.env.INPUT_FILE = 'my-file-to-preview.yml';
   process.env.INPUT_COMMAND = 'preview';
   await main();
-  expect(mockSuccessCallback.mock.calls.length).toBe(1);
+
+  expect(mockedPreview.run).toHaveBeenCalledWith(['my-file-to-preview.yml']);
 });
