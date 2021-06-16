@@ -36,7 +36,7 @@
     "/src"
   ],
   "dependencies": {
-    "@actions/core": "^1.2.6",
+    "@actions/core": "^1.4.0",
     "bump-cli": "^2.0.0"
   },
   "devDependencies": {
@@ -52,7 +52,7 @@
     "jest": "^26.6.3",
     "jest-circus": "^27.0.1",
     "js-yaml": "^3.14.0",
-    "prettier": "^2.2.1",
+    "prettier": "^2.3.1",
     "stdout-stderr": "^0.1.13",
     "ts-jest": "^26.4.4",
     "typescript": "^4.1.3"
