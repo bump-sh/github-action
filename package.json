@@ -9,7 +9,7 @@
     "node": ">=10.0.0"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc -b",
     "clean": "rm -rf dist/",
     "format": "eslint . --ext .ts --config .eslintrc --fix",
     "format-check": "eslint . --ext .ts --config .eslintrc",
