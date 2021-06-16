@@ -1,12 +1,11 @@
-require('./sourcemap-register.js');module.exports =
-/******/ (() => { // webpackBootstrap
+require('./sourcemap-register.js');/******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
 /***/ 26727:
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse("{\"title\":\"AsyncAPI 1.0 schema.\",\"id\":\"http://asyncapi.hitchhq.com/v1/schema.json#\",\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"required\":[\"asyncapi\",\"info\",\"topics\"],\"additionalProperties\":false,\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"properties\":{\"asyncapi\":{\"type\":\"string\",\"enum\":[\"1.0.0\"],\"description\":\"The AsyncAPI specification version of this document.\"},\"info\":{\"$ref\":\"#/definitions/info\"},\"baseTopic\":{\"type\":\"string\",\"pattern\":\"^[^/.]\",\"description\":\"The base topic to the API. Example: 'hitch'.\",\"default\":\"\"},\"servers\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/server\"},\"uniqueItems\":true},\"topics\":{\"$ref\":\"#/definitions/topics\"},\"components\":{\"$ref\":\"#/definitions/components\"},\"tags\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/tag\"},\"uniqueItems\":true},\"security\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/SecurityRequirement\"}},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"}},\"definitions\":{\"Reference\":{\"type\":\"object\",\"required\":[\"$ref\"],\"properties\":{\"$ref\":{\"type\":\"string\",\"format\":\"uri\"}}},\"info\":{\"type\":\"object\",\"description\":\"General information about the API.\",\"required\":[\"version\",\"title\"],\"additionalProperties\":false,\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"properties\":{\"title\":{\"type\":\"string\",\"description\":\"A unique and precise title of the API.\"},\"version\":{\"type\":\"string\",\"description\":\"A semantic version number of the API.\"},\"description\":{\"type\":\"string\",\"description\":\"A longer description of the API. Should be different from the title. CommonMark is allowed.\"},\"termsOfService\":{\"type\":\"string\",\"description\":\"A URL to the Terms of Service for the API. MUST be in the format of a URL.\",\"format\":\"uri\"},\"contact\":{\"$ref\":\"#/definitions/contact\"},\"license\":{\"$ref\":\"#/definitions/license\"}}},\"contact\":{\"type\":\"object\",\"description\":\"Contact information for the owners of the API.\",\"additionalProperties\":false,\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"The identifying name of the contact person/organization.\"},\"url\":{\"type\":\"string\",\"description\":\"The URL pointing to the contact information.\",\"format\":\"uri\"},\"email\":{\"type\":\"string\",\"description\":\"The email address of the contact person/organization.\",\"format\":\"email\"}},\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}}},\"license\":{\"type\":\"object\",\"required\":[\"name\"],\"additionalProperties\":false,\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"The name of the license type. It's encouraged to use an OSI compatible license.\"},\"url\":{\"type\":\"string\",\"description\":\"The URL pointing to the license.\",\"format\":\"uri\"}},\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}}},\"server\":{\"type\":\"object\",\"description\":\"An object representing a Server.\",\"required\":[\"url\",\"scheme\"],\"additionalProperties\":false,\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"properties\":{\"url\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"scheme\":{\"type\":\"string\",\"description\":\"The transfer protocol.\",\"enum\":[\"kafka\",\"kafka-secure\",\"amqp\",\"amqps\",\"mqtt\",\"mqtts\",\"secure-mqtt\",\"ws\",\"wss\",\"stomp\",\"stomps\"]},\"schemeVersion\":{\"type\":\"string\"},\"variables\":{\"$ref\":\"#/definitions/serverVariables\"}}},\"serverVariables\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/serverVariable\"}},\"serverVariable\":{\"type\":\"object\",\"description\":\"An object representing a Server Variable for server URL template substitution.\",\"minProperties\":1,\"additionalProperties\":false,\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"properties\":{\"enum\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"uniqueItems\":true},\"default\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"}}},\"topics\":{\"type\":\"object\",\"description\":\"Relative paths to the individual topics. They must be relative to the 'baseTopic'.\",\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"},\"^[^.]\":{\"$ref\":\"#/definitions/topicItem\"}},\"additionalProperties\":false},\"components\":{\"type\":\"object\",\"description\":\"An object to hold a set of reusable objects for different aspects of the AsyncAPI Specification.\",\"additionalProperties\":false,\"properties\":{\"schemas\":{\"$ref\":\"#/definitions/schemas\"},\"messages\":{\"$ref\":\"#/definitions/messages\"},\"securitySchemes\":{\"type\":\"object\",\"patternProperties\":{\"^[a-zA-Z0-9\\\\.\\\\-_]+$\":{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/SecurityScheme\"}]}}}}},\"schemas\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/schema\"},\"description\":\"JSON objects describing schemas the API uses.\"},\"messages\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/message\"},\"description\":\"JSON objects describing the messages being consumed and produced by the API.\"},\"schema\":{\"type\":\"object\",\"description\":\"A deterministic version of a JSON Schema object.\",\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"properties\":{\"$ref\":{\"type\":\"string\"},\"format\":{\"type\":\"string\"},\"title\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/title\"},\"description\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/description\"},\"default\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/default\"},\"multipleOf\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/multipleOf\"},\"maximum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/maximum\"},\"exclusiveMaximum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/exclusiveMaximum\"},\"minimum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/minimum\"},\"exclusiveMinimum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/exclusiveMinimum\"},\"maxLength\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveInteger\"},\"minLength\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0\"},\"pattern\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/pattern\"},\"maxItems\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveInteger\"},\"minItems\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0\"},\"uniqueItems\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/uniqueItems\"},\"maxProperties\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveInteger\"},\"minProperties\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0\"},\"required\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/stringArray\"},\"enum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/enum\"},\"additionalProperties\":{\"anyOf\":[{\"$ref\":\"#/definitions/schema\"},{\"type\":\"boolean\"}],\"default\":{}},\"type\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/type\"},\"items\":{\"anyOf\":[{\"$ref\":\"#/definitions/schema\"},{\"type\":\"array\",\"minItems\":1,\"items\":{\"$ref\":\"#/definitions/schema\"}}],\"default\":{}},\"allOf\":{\"type\":\"array\",\"minItems\":1,\"items\":{\"$ref\":\"#/definitions/schema\"}},\"properties\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/schema\"},\"default\":{}},\"discriminator\":{\"type\":\"string\"},\"readOnly\":{\"type\":\"boolean\",\"default\":false},\"xml\":{\"$ref\":\"#/definitions/xml\"},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"},\"example\":{}},\"additionalProperties\":false},\"xml\":{\"type\":\"object\",\"additionalProperties\":false,\"properties\":{\"name\":{\"type\":\"string\"},\"namespace\":{\"type\":\"string\"},\"prefix\":{\"type\":\"string\"},\"attribute\":{\"type\":\"boolean\",\"default\":false},\"wrapped\":{\"type\":\"boolean\",\"default\":false}}},\"externalDocs\":{\"type\":\"object\",\"additionalProperties\":false,\"description\":\"information about external documentation\",\"required\":[\"url\"],\"properties\":{\"description\":{\"type\":\"string\"},\"url\":{\"type\":\"string\",\"format\":\"uri\"}},\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}}},\"topicItem\":{\"type\":\"object\",\"additionalProperties\":false,\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"minProperties\":1,\"properties\":{\"$ref\":{\"type\":\"string\"},\"publish\":{\"$ref\":\"#/definitions/message\"},\"subscribe\":{\"$ref\":\"#/definitions/message\"},\"deprecated\":{\"type\":\"boolean\",\"default\":false}}},\"message\":{\"type\":\"object\",\"additionalProperties\":false,\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"properties\":{\"$ref\":{\"type\":\"string\"},\"headers\":{\"$ref\":\"#/definitions/schema\"},\"payload\":{\"$ref\":\"#/definitions/schema\"},\"tags\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/tag\"},\"uniqueItems\":true},\"summary\":{\"type\":\"string\",\"description\":\"A brief summary of the message.\"},\"description\":{\"type\":\"string\",\"description\":\"A longer description of the message. CommonMark is allowed.\"},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"},\"deprecated\":{\"type\":\"boolean\",\"default\":false},\"example\":{}}},\"vendorExtension\":{\"description\":\"Any property starting with x- is valid.\",\"additionalProperties\":true,\"additionalItems\":true},\"tag\":{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"name\"],\"properties\":{\"name\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"}},\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}}},\"SecurityScheme\":{\"oneOf\":[{\"$ref\":\"#/definitions/userPassword\"},{\"$ref\":\"#/definitions/apiKey\"},{\"$ref\":\"#/definitions/X509\"},{\"$ref\":\"#/definitions/symmetricEncryption\"},{\"$ref\":\"#/definitions/asymmetricEncryption\"},{\"$ref\":\"#/definitions/HTTPSecurityScheme\"}]},\"userPassword\":{\"type\":\"object\",\"required\":[\"type\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"userPassword\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"apiKey\":{\"type\":\"object\",\"required\":[\"type\",\"in\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"apiKey\"]},\"in\":{\"type\":\"string\",\"enum\":[\"user\",\"password\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"X509\":{\"type\":\"object\",\"required\":[\"type\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"X509\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"symmetricEncryption\":{\"type\":\"object\",\"required\":[\"type\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"symmetricEncryption\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"asymmetricEncryption\":{\"type\":\"object\",\"required\":[\"type\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"asymmetricEncryption\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"HTTPSecurityScheme\":{\"oneOf\":[{\"$ref\":\"#/definitions/NonBearerHTTPSecurityScheme\"},{\"$ref\":\"#/definitions/BearerHTTPSecurityScheme\"},{\"$ref\":\"#/definitions/APIKeyHTTPSecurityScheme\"}]},\"NonBearerHTTPSecurityScheme\":{\"not\":{\"type\":\"object\",\"properties\":{\"scheme\":{\"type\":\"string\",\"enum\":[\"bearer\"]}}},\"type\":\"object\",\"required\":[\"scheme\",\"type\"],\"properties\":{\"scheme\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"type\":{\"type\":\"string\",\"enum\":[\"http\"]}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"BearerHTTPSecurityScheme\":{\"type\":\"object\",\"required\":[\"type\",\"scheme\"],\"properties\":{\"scheme\":{\"type\":\"string\",\"enum\":[\"bearer\"]},\"bearerFormat\":{\"type\":\"string\"},\"type\":{\"type\":\"string\",\"enum\":[\"http\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"APIKeyHTTPSecurityScheme\":{\"type\":\"object\",\"required\":[\"type\",\"name\",\"in\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"httpApiKey\"]},\"name\":{\"type\":\"string\"},\"in\":{\"type\":\"string\",\"enum\":[\"header\",\"query\",\"cookie\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"SecurityRequirement\":{\"type\":\"object\",\"additionalProperties\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}}},\"title\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/title\"},\"description\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/description\"},\"default\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/default\"},\"multipleOf\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/multipleOf\"},\"maximum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/maximum\"},\"exclusiveMaximum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/exclusiveMaximum\"},\"minimum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/minimum\"},\"exclusiveMinimum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/exclusiveMinimum\"},\"maxLength\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveInteger\"},\"minLength\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0\"},\"pattern\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/pattern\"},\"maxItems\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveInteger\"},\"minItems\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0\"},\"uniqueItems\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/uniqueItems\"},\"enum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/enum\"}}}");
+module.exports = JSON.parse('{"title":"AsyncAPI 1.0 schema.","id":"http://asyncapi.hitchhq.com/v1/schema.json#","$schema":"http://json-schema.org/draft-04/schema#","type":"object","required":["asyncapi","info","topics"],"additionalProperties":false,"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"properties":{"asyncapi":{"type":"string","enum":["1.0.0"],"description":"The AsyncAPI specification version of this document."},"info":{"$ref":"#/definitions/info"},"baseTopic":{"type":"string","pattern":"^[^/.]","description":"The base topic to the API. Example: \'hitch\'.","default":""},"servers":{"type":"array","items":{"$ref":"#/definitions/server"},"uniqueItems":true},"topics":{"$ref":"#/definitions/topics"},"components":{"$ref":"#/definitions/components"},"tags":{"type":"array","items":{"$ref":"#/definitions/tag"},"uniqueItems":true},"security":{"type":"array","items":{"$ref":"#/definitions/SecurityRequirement"}},"externalDocs":{"$ref":"#/definitions/externalDocs"}},"definitions":{"Reference":{"type":"object","required":["$ref"],"properties":{"$ref":{"type":"string","format":"uri"}}},"info":{"type":"object","description":"General information about the API.","required":["version","title"],"additionalProperties":false,"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"properties":{"title":{"type":"string","description":"A unique and precise title of the API."},"version":{"type":"string","description":"A semantic version number of the API."},"description":{"type":"string","description":"A longer description of the API. Should be different from the title. CommonMark is allowed."},"termsOfService":{"type":"string","description":"A URL to the Terms of Service for the API. MUST be in the format of a URL.","format":"uri"},"contact":{"$ref":"#/definitions/contact"},"license":{"$ref":"#/definitions/license"}}},"contact":{"type":"object","description":"Contact information for the owners of the API.","additionalProperties":false,"properties":{"name":{"type":"string","description":"The identifying name of the contact person/organization."},"url":{"type":"string","description":"The URL pointing to the contact information.","format":"uri"},"email":{"type":"string","description":"The email address of the contact person/organization.","format":"email"}},"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}}},"license":{"type":"object","required":["name"],"additionalProperties":false,"properties":{"name":{"type":"string","description":"The name of the license type. It\'s encouraged to use an OSI compatible license."},"url":{"type":"string","description":"The URL pointing to the license.","format":"uri"}},"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}}},"server":{"type":"object","description":"An object representing a Server.","required":["url","scheme"],"additionalProperties":false,"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"properties":{"url":{"type":"string"},"description":{"type":"string"},"scheme":{"type":"string","description":"The transfer protocol.","enum":["kafka","kafka-secure","amqp","amqps","mqtt","mqtts","secure-mqtt","ws","wss","stomp","stomps"]},"schemeVersion":{"type":"string"},"variables":{"$ref":"#/definitions/serverVariables"}}},"serverVariables":{"type":"object","additionalProperties":{"$ref":"#/definitions/serverVariable"}},"serverVariable":{"type":"object","description":"An object representing a Server Variable for server URL template substitution.","minProperties":1,"additionalProperties":false,"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"properties":{"enum":{"type":"array","items":{"type":"string"},"uniqueItems":true},"default":{"type":"string"},"description":{"type":"string"}}},"topics":{"type":"object","description":"Relative paths to the individual topics. They must be relative to the \'baseTopic\'.","patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"},"^[^.]":{"$ref":"#/definitions/topicItem"}},"additionalProperties":false},"components":{"type":"object","description":"An object to hold a set of reusable objects for different aspects of the AsyncAPI Specification.","additionalProperties":false,"properties":{"schemas":{"$ref":"#/definitions/schemas"},"messages":{"$ref":"#/definitions/messages"},"securitySchemes":{"type":"object","patternProperties":{"^[a-zA-Z0-9\\\\.\\\\-_]+$":{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/SecurityScheme"}]}}}}},"schemas":{"type":"object","additionalProperties":{"$ref":"#/definitions/schema"},"description":"JSON objects describing schemas the API uses."},"messages":{"type":"object","additionalProperties":{"$ref":"#/definitions/message"},"description":"JSON objects describing the messages being consumed and produced by the API."},"schema":{"type":"object","description":"A deterministic version of a JSON Schema object.","patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"properties":{"$ref":{"type":"string"},"format":{"type":"string"},"title":{"$ref":"http://json-schema.org/draft-04/schema#/properties/title"},"description":{"$ref":"http://json-schema.org/draft-04/schema#/properties/description"},"default":{"$ref":"http://json-schema.org/draft-04/schema#/properties/default"},"multipleOf":{"$ref":"http://json-schema.org/draft-04/schema#/properties/multipleOf"},"maximum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/maximum"},"exclusiveMaximum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/exclusiveMaximum"},"minimum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/minimum"},"exclusiveMinimum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/exclusiveMinimum"},"maxLength":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveInteger"},"minLength":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"},"pattern":{"$ref":"http://json-schema.org/draft-04/schema#/properties/pattern"},"maxItems":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveInteger"},"minItems":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"},"uniqueItems":{"$ref":"http://json-schema.org/draft-04/schema#/properties/uniqueItems"},"maxProperties":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveInteger"},"minProperties":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"},"required":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/stringArray"},"enum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/enum"},"additionalProperties":{"anyOf":[{"$ref":"#/definitions/schema"},{"type":"boolean"}],"default":{}},"type":{"$ref":"http://json-schema.org/draft-04/schema#/properties/type"},"items":{"anyOf":[{"$ref":"#/definitions/schema"},{"type":"array","minItems":1,"items":{"$ref":"#/definitions/schema"}}],"default":{}},"allOf":{"type":"array","minItems":1,"items":{"$ref":"#/definitions/schema"}},"properties":{"type":"object","additionalProperties":{"$ref":"#/definitions/schema"},"default":{}},"discriminator":{"type":"string"},"readOnly":{"type":"boolean","default":false},"xml":{"$ref":"#/definitions/xml"},"externalDocs":{"$ref":"#/definitions/externalDocs"},"example":{}},"additionalProperties":false},"xml":{"type":"object","additionalProperties":false,"properties":{"name":{"type":"string"},"namespace":{"type":"string"},"prefix":{"type":"string"},"attribute":{"type":"boolean","default":false},"wrapped":{"type":"boolean","default":false}}},"externalDocs":{"type":"object","additionalProperties":false,"description":"information about external documentation","required":["url"],"properties":{"description":{"type":"string"},"url":{"type":"string","format":"uri"}},"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}}},"topicItem":{"type":"object","additionalProperties":false,"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"minProperties":1,"properties":{"$ref":{"type":"string"},"publish":{"$ref":"#/definitions/message"},"subscribe":{"$ref":"#/definitions/message"},"deprecated":{"type":"boolean","default":false}}},"message":{"type":"object","additionalProperties":false,"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"properties":{"$ref":{"type":"string"},"headers":{"$ref":"#/definitions/schema"},"payload":{"$ref":"#/definitions/schema"},"tags":{"type":"array","items":{"$ref":"#/definitions/tag"},"uniqueItems":true},"summary":{"type":"string","description":"A brief summary of the message."},"description":{"type":"string","description":"A longer description of the message. CommonMark is allowed."},"externalDocs":{"$ref":"#/definitions/externalDocs"},"deprecated":{"type":"boolean","default":false},"example":{}}},"vendorExtension":{"description":"Any property starting with x- is valid.","additionalProperties":true,"additionalItems":true},"tag":{"type":"object","additionalProperties":false,"required":["name"],"properties":{"name":{"type":"string"},"description":{"type":"string"},"externalDocs":{"$ref":"#/definitions/externalDocs"}},"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}}},"SecurityScheme":{"oneOf":[{"$ref":"#/definitions/userPassword"},{"$ref":"#/definitions/apiKey"},{"$ref":"#/definitions/X509"},{"$ref":"#/definitions/symmetricEncryption"},{"$ref":"#/definitions/asymmetricEncryption"},{"$ref":"#/definitions/HTTPSecurityScheme"}]},"userPassword":{"type":"object","required":["type"],"properties":{"type":{"type":"string","enum":["userPassword"]},"description":{"type":"string"}},"patternProperties":{"^x-":{}},"additionalProperties":false},"apiKey":{"type":"object","required":["type","in"],"properties":{"type":{"type":"string","enum":["apiKey"]},"in":{"type":"string","enum":["user","password"]},"description":{"type":"string"}},"patternProperties":{"^x-":{}},"additionalProperties":false},"X509":{"type":"object","required":["type"],"properties":{"type":{"type":"string","enum":["X509"]},"description":{"type":"string"}},"patternProperties":{"^x-":{}},"additionalProperties":false},"symmetricEncryption":{"type":"object","required":["type"],"properties":{"type":{"type":"string","enum":["symmetricEncryption"]},"description":{"type":"string"}},"patternProperties":{"^x-":{}},"additionalProperties":false},"asymmetricEncryption":{"type":"object","required":["type"],"properties":{"type":{"type":"string","enum":["asymmetricEncryption"]},"description":{"type":"string"}},"patternProperties":{"^x-":{}},"additionalProperties":false},"HTTPSecurityScheme":{"oneOf":[{"$ref":"#/definitions/NonBearerHTTPSecurityScheme"},{"$ref":"#/definitions/BearerHTTPSecurityScheme"},{"$ref":"#/definitions/APIKeyHTTPSecurityScheme"}]},"NonBearerHTTPSecurityScheme":{"not":{"type":"object","properties":{"scheme":{"type":"string","enum":["bearer"]}}},"type":"object","required":["scheme","type"],"properties":{"scheme":{"type":"string"},"description":{"type":"string"},"type":{"type":"string","enum":["http"]}},"patternProperties":{"^x-":{}},"additionalProperties":false},"BearerHTTPSecurityScheme":{"type":"object","required":["type","scheme"],"properties":{"scheme":{"type":"string","enum":["bearer"]},"bearerFormat":{"type":"string"},"type":{"type":"string","enum":["http"]},"description":{"type":"string"}},"patternProperties":{"^x-":{}},"additionalProperties":false},"APIKeyHTTPSecurityScheme":{"type":"object","required":["type","name","in"],"properties":{"type":{"type":"string","enum":["httpApiKey"]},"name":{"type":"string"},"in":{"type":"string","enum":["header","query","cookie"]},"description":{"type":"string"}},"patternProperties":{"^x-":{}},"additionalProperties":false},"SecurityRequirement":{"type":"object","additionalProperties":{"type":"array","items":{"type":"string"}}},"title":{"$ref":"http://json-schema.org/draft-04/schema#/properties/title"},"description":{"$ref":"http://json-schema.org/draft-04/schema#/properties/description"},"default":{"$ref":"http://json-schema.org/draft-04/schema#/properties/default"},"multipleOf":{"$ref":"http://json-schema.org/draft-04/schema#/properties/multipleOf"},"maximum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/maximum"},"exclusiveMaximum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/exclusiveMaximum"},"minimum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/minimum"},"exclusiveMinimum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/exclusiveMinimum"},"maxLength":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveInteger"},"minLength":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"},"pattern":{"$ref":"http://json-schema.org/draft-04/schema#/properties/pattern"},"maxItems":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveInteger"},"minItems":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"},"uniqueItems":{"$ref":"http://json-schema.org/draft-04/schema#/properties/uniqueItems"},"enum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/enum"}}}');
 
 /***/ }),
 
@@ -14,7 +13,7 @@ module.exports = JSON.parse("{\"title\":\"AsyncAPI 1.0 schema.\",\"id\":\"http:/
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse("{\"title\":\"AsyncAPI 1.1.0 schema.\",\"id\":\"http://asyncapi.hitchhq.com/v1/schema.json#\",\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"required\":[\"asyncapi\",\"info\",\"topics\"],\"additionalProperties\":false,\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"properties\":{\"asyncapi\":{\"type\":\"string\",\"enum\":[\"1.0.0\",\"1.1.0\"],\"description\":\"The AsyncAPI specification version of this document.\"},\"info\":{\"$ref\":\"#/definitions/info\"},\"baseTopic\":{\"type\":\"string\",\"pattern\":\"^[^/.]\",\"description\":\"The base topic to the API. Example: 'hitch'.\",\"default\":\"\"},\"servers\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/server\"},\"uniqueItems\":true},\"topics\":{\"$ref\":\"#/definitions/topics\"},\"components\":{\"$ref\":\"#/definitions/components\"},\"tags\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/tag\"},\"uniqueItems\":true},\"security\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/SecurityRequirement\"}},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"}},\"definitions\":{\"Reference\":{\"type\":\"object\",\"required\":[\"$ref\"],\"properties\":{\"$ref\":{\"type\":\"string\",\"format\":\"uri\"}}},\"info\":{\"type\":\"object\",\"description\":\"General information about the API.\",\"required\":[\"version\",\"title\"],\"additionalProperties\":false,\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"properties\":{\"title\":{\"type\":\"string\",\"description\":\"A unique and precise title of the API.\"},\"version\":{\"type\":\"string\",\"description\":\"A semantic version number of the API.\"},\"description\":{\"type\":\"string\",\"description\":\"A longer description of the API. Should be different from the title. CommonMark is allowed.\"},\"termsOfService\":{\"type\":\"string\",\"description\":\"A URL to the Terms of Service for the API. MUST be in the format of a URL.\",\"format\":\"uri\"},\"contact\":{\"$ref\":\"#/definitions/contact\"},\"license\":{\"$ref\":\"#/definitions/license\"}}},\"contact\":{\"type\":\"object\",\"description\":\"Contact information for the owners of the API.\",\"additionalProperties\":false,\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"The identifying name of the contact person/organization.\"},\"url\":{\"type\":\"string\",\"description\":\"The URL pointing to the contact information.\",\"format\":\"uri\"},\"email\":{\"type\":\"string\",\"description\":\"The email address of the contact person/organization.\",\"format\":\"email\"}},\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}}},\"license\":{\"type\":\"object\",\"required\":[\"name\"],\"additionalProperties\":false,\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"The name of the license type. It's encouraged to use an OSI compatible license.\"},\"url\":{\"type\":\"string\",\"description\":\"The URL pointing to the license.\",\"format\":\"uri\"}},\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}}},\"server\":{\"type\":\"object\",\"description\":\"An object representing a Server.\",\"required\":[\"url\",\"scheme\"],\"additionalProperties\":false,\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"properties\":{\"url\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"scheme\":{\"type\":\"string\",\"description\":\"The transfer protocol.\",\"enum\":[\"kafka\",\"kafka-secure\",\"amqp\",\"amqps\",\"mqtt\",\"mqtts\",\"secure-mqtt\",\"ws\",\"wss\",\"stomp\",\"stomps\",\"jms\"]},\"schemeVersion\":{\"type\":\"string\"},\"variables\":{\"$ref\":\"#/definitions/serverVariables\"}}},\"serverVariables\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/serverVariable\"}},\"serverVariable\":{\"type\":\"object\",\"description\":\"An object representing a Server Variable for server URL template substitution.\",\"minProperties\":1,\"additionalProperties\":false,\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"properties\":{\"enum\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"uniqueItems\":true},\"default\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"}}},\"topics\":{\"type\":\"object\",\"description\":\"Relative paths to the individual topics. They must be relative to the 'baseTopic'.\",\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"},\"^[^.]\":{\"$ref\":\"#/definitions/topicItem\"}},\"additionalProperties\":false},\"components\":{\"type\":\"object\",\"description\":\"An object to hold a set of reusable objects for different aspects of the AsyncAPI Specification.\",\"additionalProperties\":false,\"properties\":{\"schemas\":{\"$ref\":\"#/definitions/schemas\"},\"messages\":{\"$ref\":\"#/definitions/messages\"},\"securitySchemes\":{\"type\":\"object\",\"patternProperties\":{\"^[a-zA-Z0-9\\\\.\\\\-_]+$\":{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/SecurityScheme\"}]}}}}},\"schemas\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/schema\"},\"description\":\"JSON objects describing schemas the API uses.\"},\"messages\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/message\"},\"description\":\"JSON objects describing the messages being consumed and produced by the API.\"},\"schema\":{\"type\":\"object\",\"description\":\"A deterministic version of a JSON Schema object.\",\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"properties\":{\"$ref\":{\"type\":\"string\"},\"format\":{\"type\":\"string\"},\"title\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/title\"},\"description\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/description\"},\"default\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/default\"},\"multipleOf\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/multipleOf\"},\"maximum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/maximum\"},\"exclusiveMaximum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/exclusiveMaximum\"},\"minimum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/minimum\"},\"exclusiveMinimum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/exclusiveMinimum\"},\"maxLength\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveInteger\"},\"minLength\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0\"},\"pattern\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/pattern\"},\"maxItems\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveInteger\"},\"minItems\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0\"},\"uniqueItems\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/uniqueItems\"},\"maxProperties\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveInteger\"},\"minProperties\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0\"},\"required\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/stringArray\"},\"enum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/enum\"},\"additionalProperties\":{\"anyOf\":[{\"$ref\":\"#/definitions/schema\"},{\"type\":\"boolean\"}],\"default\":{}},\"type\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/type\"},\"items\":{\"anyOf\":[{\"$ref\":\"#/definitions/schema\"},{\"type\":\"array\",\"minItems\":1,\"items\":{\"$ref\":\"#/definitions/schema\"}}],\"default\":{}},\"allOf\":{\"type\":\"array\",\"minItems\":1,\"items\":{\"$ref\":\"#/definitions/schema\"}},\"oneOf\":{\"type\":\"array\",\"minItems\":2,\"items\":{\"$ref\":\"#/definitions/schema\"}},\"anyOf\":{\"type\":\"array\",\"minItems\":2,\"items\":{\"$ref\":\"#/definitions/schema\"}},\"not\":{\"$ref\":\"#/definitions/schema\"},\"properties\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/schema\"},\"default\":{}},\"discriminator\":{\"type\":\"string\"},\"readOnly\":{\"type\":\"boolean\",\"default\":false},\"xml\":{\"$ref\":\"#/definitions/xml\"},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"},\"example\":{}},\"additionalProperties\":false},\"xml\":{\"type\":\"object\",\"additionalProperties\":false,\"properties\":{\"name\":{\"type\":\"string\"},\"namespace\":{\"type\":\"string\"},\"prefix\":{\"type\":\"string\"},\"attribute\":{\"type\":\"boolean\",\"default\":false},\"wrapped\":{\"type\":\"boolean\",\"default\":false}}},\"externalDocs\":{\"type\":\"object\",\"additionalProperties\":false,\"description\":\"information about external documentation\",\"required\":[\"url\"],\"properties\":{\"description\":{\"type\":\"string\"},\"url\":{\"type\":\"string\",\"format\":\"uri\"}},\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}}},\"topicItem\":{\"type\":\"object\",\"additionalProperties\":false,\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"minProperties\":1,\"properties\":{\"$ref\":{\"type\":\"string\"},\"parameters\":{\"type\":\"array\",\"uniqueItems\":true,\"minItems\":1,\"items\":{\"$ref\":\"#/definitions/parameter\"}},\"publish\":{\"$ref\":\"#/definitions/operation\"},\"subscribe\":{\"$ref\":\"#/definitions/operation\"},\"deprecated\":{\"type\":\"boolean\",\"default\":false}}},\"parameter\":{\"additionalProperties\":false,\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"properties\":{\"description\":{\"type\":\"string\",\"description\":\"A brief description of the parameter. This could contain examples of use.  GitHub Flavored Markdown is allowed.\"},\"name\":{\"type\":\"string\",\"description\":\"The name of the parameter.\"},\"schema\":{\"$ref\":\"#/definitions/schema\"}}},\"operation\":{\"oneOf\":[{\"$ref\":\"#/definitions/message\"},{\"type\":\"object\",\"required\":[\"oneOf\"],\"additionalProperties\":false,\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"properties\":{\"oneOf\":{\"type\":\"array\",\"minItems\":2,\"items\":{\"$ref\":\"#/definitions/message\"}}}}]},\"message\":{\"type\":\"object\",\"additionalProperties\":false,\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"properties\":{\"$ref\":{\"type\":\"string\"},\"headers\":{\"$ref\":\"#/definitions/schema\"},\"payload\":{\"$ref\":\"#/definitions/schema\"},\"tags\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/tag\"},\"uniqueItems\":true},\"summary\":{\"type\":\"string\",\"description\":\"A brief summary of the message.\"},\"description\":{\"type\":\"string\",\"description\":\"A longer description of the message. CommonMark is allowed.\"},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"},\"deprecated\":{\"type\":\"boolean\",\"default\":false},\"example\":{}}},\"vendorExtension\":{\"description\":\"Any property starting with x- is valid.\",\"additionalProperties\":true,\"additionalItems\":true},\"tag\":{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"name\"],\"properties\":{\"name\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"}},\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}}},\"SecurityScheme\":{\"oneOf\":[{\"$ref\":\"#/definitions/userPassword\"},{\"$ref\":\"#/definitions/apiKey\"},{\"$ref\":\"#/definitions/X509\"},{\"$ref\":\"#/definitions/symmetricEncryption\"},{\"$ref\":\"#/definitions/asymmetricEncryption\"},{\"$ref\":\"#/definitions/HTTPSecurityScheme\"}]},\"userPassword\":{\"type\":\"object\",\"required\":[\"type\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"userPassword\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"apiKey\":{\"type\":\"object\",\"required\":[\"type\",\"in\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"apiKey\"]},\"in\":{\"type\":\"string\",\"enum\":[\"user\",\"password\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"X509\":{\"type\":\"object\",\"required\":[\"type\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"X509\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"symmetricEncryption\":{\"type\":\"object\",\"required\":[\"type\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"symmetricEncryption\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"asymmetricEncryption\":{\"type\":\"object\",\"required\":[\"type\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"asymmetricEncryption\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"HTTPSecurityScheme\":{\"oneOf\":[{\"$ref\":\"#/definitions/NonBearerHTTPSecurityScheme\"},{\"$ref\":\"#/definitions/BearerHTTPSecurityScheme\"},{\"$ref\":\"#/definitions/APIKeyHTTPSecurityScheme\"}]},\"NonBearerHTTPSecurityScheme\":{\"not\":{\"type\":\"object\",\"properties\":{\"scheme\":{\"type\":\"string\",\"enum\":[\"bearer\"]}}},\"type\":\"object\",\"required\":[\"scheme\",\"type\"],\"properties\":{\"scheme\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"type\":{\"type\":\"string\",\"enum\":[\"http\"]}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"BearerHTTPSecurityScheme\":{\"type\":\"object\",\"required\":[\"type\",\"scheme\"],\"properties\":{\"scheme\":{\"type\":\"string\",\"enum\":[\"bearer\"]},\"bearerFormat\":{\"type\":\"string\"},\"type\":{\"type\":\"string\",\"enum\":[\"http\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"APIKeyHTTPSecurityScheme\":{\"type\":\"object\",\"required\":[\"type\",\"name\",\"in\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"httpApiKey\"]},\"name\":{\"type\":\"string\"},\"in\":{\"type\":\"string\",\"enum\":[\"header\",\"query\",\"cookie\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"SecurityRequirement\":{\"type\":\"object\",\"additionalProperties\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}}},\"title\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/title\"},\"description\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/description\"},\"default\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/default\"},\"multipleOf\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/multipleOf\"},\"maximum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/maximum\"},\"exclusiveMaximum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/exclusiveMaximum\"},\"minimum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/minimum\"},\"exclusiveMinimum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/exclusiveMinimum\"},\"maxLength\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveInteger\"},\"minLength\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0\"},\"pattern\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/pattern\"},\"maxItems\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveInteger\"},\"minItems\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0\"},\"uniqueItems\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/uniqueItems\"},\"enum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/enum\"}}}");
+module.exports = JSON.parse('{"title":"AsyncAPI 1.1.0 schema.","id":"http://asyncapi.hitchhq.com/v1/schema.json#","$schema":"http://json-schema.org/draft-04/schema#","type":"object","required":["asyncapi","info","topics"],"additionalProperties":false,"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"properties":{"asyncapi":{"type":"string","enum":["1.0.0","1.1.0"],"description":"The AsyncAPI specification version of this document."},"info":{"$ref":"#/definitions/info"},"baseTopic":{"type":"string","pattern":"^[^/.]","description":"The base topic to the API. Example: \'hitch\'.","default":""},"servers":{"type":"array","items":{"$ref":"#/definitions/server"},"uniqueItems":true},"topics":{"$ref":"#/definitions/topics"},"components":{"$ref":"#/definitions/components"},"tags":{"type":"array","items":{"$ref":"#/definitions/tag"},"uniqueItems":true},"security":{"type":"array","items":{"$ref":"#/definitions/SecurityRequirement"}},"externalDocs":{"$ref":"#/definitions/externalDocs"}},"definitions":{"Reference":{"type":"object","required":["$ref"],"properties":{"$ref":{"type":"string","format":"uri"}}},"info":{"type":"object","description":"General information about the API.","required":["version","title"],"additionalProperties":false,"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"properties":{"title":{"type":"string","description":"A unique and precise title of the API."},"version":{"type":"string","description":"A semantic version number of the API."},"description":{"type":"string","description":"A longer description of the API. Should be different from the title. CommonMark is allowed."},"termsOfService":{"type":"string","description":"A URL to the Terms of Service for the API. MUST be in the format of a URL.","format":"uri"},"contact":{"$ref":"#/definitions/contact"},"license":{"$ref":"#/definitions/license"}}},"contact":{"type":"object","description":"Contact information for the owners of the API.","additionalProperties":false,"properties":{"name":{"type":"string","description":"The identifying name of the contact person/organization."},"url":{"type":"string","description":"The URL pointing to the contact information.","format":"uri"},"email":{"type":"string","description":"The email address of the contact person/organization.","format":"email"}},"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}}},"license":{"type":"object","required":["name"],"additionalProperties":false,"properties":{"name":{"type":"string","description":"The name of the license type. It\'s encouraged to use an OSI compatible license."},"url":{"type":"string","description":"The URL pointing to the license.","format":"uri"}},"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}}},"server":{"type":"object","description":"An object representing a Server.","required":["url","scheme"],"additionalProperties":false,"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"properties":{"url":{"type":"string"},"description":{"type":"string"},"scheme":{"type":"string","description":"The transfer protocol.","enum":["kafka","kafka-secure","amqp","amqps","mqtt","mqtts","secure-mqtt","ws","wss","stomp","stomps","jms"]},"schemeVersion":{"type":"string"},"variables":{"$ref":"#/definitions/serverVariables"}}},"serverVariables":{"type":"object","additionalProperties":{"$ref":"#/definitions/serverVariable"}},"serverVariable":{"type":"object","description":"An object representing a Server Variable for server URL template substitution.","minProperties":1,"additionalProperties":false,"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"properties":{"enum":{"type":"array","items":{"type":"string"},"uniqueItems":true},"default":{"type":"string"},"description":{"type":"string"}}},"topics":{"type":"object","description":"Relative paths to the individual topics. They must be relative to the \'baseTopic\'.","patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"},"^[^.]":{"$ref":"#/definitions/topicItem"}},"additionalProperties":false},"components":{"type":"object","description":"An object to hold a set of reusable objects for different aspects of the AsyncAPI Specification.","additionalProperties":false,"properties":{"schemas":{"$ref":"#/definitions/schemas"},"messages":{"$ref":"#/definitions/messages"},"securitySchemes":{"type":"object","patternProperties":{"^[a-zA-Z0-9\\\\.\\\\-_]+$":{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/SecurityScheme"}]}}}}},"schemas":{"type":"object","additionalProperties":{"$ref":"#/definitions/schema"},"description":"JSON objects describing schemas the API uses."},"messages":{"type":"object","additionalProperties":{"$ref":"#/definitions/message"},"description":"JSON objects describing the messages being consumed and produced by the API."},"schema":{"type":"object","description":"A deterministic version of a JSON Schema object.","patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"properties":{"$ref":{"type":"string"},"format":{"type":"string"},"title":{"$ref":"http://json-schema.org/draft-04/schema#/properties/title"},"description":{"$ref":"http://json-schema.org/draft-04/schema#/properties/description"},"default":{"$ref":"http://json-schema.org/draft-04/schema#/properties/default"},"multipleOf":{"$ref":"http://json-schema.org/draft-04/schema#/properties/multipleOf"},"maximum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/maximum"},"exclusiveMaximum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/exclusiveMaximum"},"minimum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/minimum"},"exclusiveMinimum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/exclusiveMinimum"},"maxLength":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveInteger"},"minLength":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"},"pattern":{"$ref":"http://json-schema.org/draft-04/schema#/properties/pattern"},"maxItems":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveInteger"},"minItems":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"},"uniqueItems":{"$ref":"http://json-schema.org/draft-04/schema#/properties/uniqueItems"},"maxProperties":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveInteger"},"minProperties":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"},"required":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/stringArray"},"enum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/enum"},"additionalProperties":{"anyOf":[{"$ref":"#/definitions/schema"},{"type":"boolean"}],"default":{}},"type":{"$ref":"http://json-schema.org/draft-04/schema#/properties/type"},"items":{"anyOf":[{"$ref":"#/definitions/schema"},{"type":"array","minItems":1,"items":{"$ref":"#/definitions/schema"}}],"default":{}},"allOf":{"type":"array","minItems":1,"items":{"$ref":"#/definitions/schema"}},"oneOf":{"type":"array","minItems":2,"items":{"$ref":"#/definitions/schema"}},"anyOf":{"type":"array","minItems":2,"items":{"$ref":"#/definitions/schema"}},"not":{"$ref":"#/definitions/schema"},"properties":{"type":"object","additionalProperties":{"$ref":"#/definitions/schema"},"default":{}},"discriminator":{"type":"string"},"readOnly":{"type":"boolean","default":false},"xml":{"$ref":"#/definitions/xml"},"externalDocs":{"$ref":"#/definitions/externalDocs"},"example":{}},"additionalProperties":false},"xml":{"type":"object","additionalProperties":false,"properties":{"name":{"type":"string"},"namespace":{"type":"string"},"prefix":{"type":"string"},"attribute":{"type":"boolean","default":false},"wrapped":{"type":"boolean","default":false}}},"externalDocs":{"type":"object","additionalProperties":false,"description":"information about external documentation","required":["url"],"properties":{"description":{"type":"string"},"url":{"type":"string","format":"uri"}},"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}}},"topicItem":{"type":"object","additionalProperties":false,"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"minProperties":1,"properties":{"$ref":{"type":"string"},"parameters":{"type":"array","uniqueItems":true,"minItems":1,"items":{"$ref":"#/definitions/parameter"}},"publish":{"$ref":"#/definitions/operation"},"subscribe":{"$ref":"#/definitions/operation"},"deprecated":{"type":"boolean","default":false}}},"parameter":{"additionalProperties":false,"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"properties":{"description":{"type":"string","description":"A brief description of the parameter. This could contain examples of use.  GitHub Flavored Markdown is allowed."},"name":{"type":"string","description":"The name of the parameter."},"schema":{"$ref":"#/definitions/schema"}}},"operation":{"oneOf":[{"$ref":"#/definitions/message"},{"type":"object","required":["oneOf"],"additionalProperties":false,"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"properties":{"oneOf":{"type":"array","minItems":2,"items":{"$ref":"#/definitions/message"}}}}]},"message":{"type":"object","additionalProperties":false,"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"properties":{"$ref":{"type":"string"},"headers":{"$ref":"#/definitions/schema"},"payload":{"$ref":"#/definitions/schema"},"tags":{"type":"array","items":{"$ref":"#/definitions/tag"},"uniqueItems":true},"summary":{"type":"string","description":"A brief summary of the message."},"description":{"type":"string","description":"A longer description of the message. CommonMark is allowed."},"externalDocs":{"$ref":"#/definitions/externalDocs"},"deprecated":{"type":"boolean","default":false},"example":{}}},"vendorExtension":{"description":"Any property starting with x- is valid.","additionalProperties":true,"additionalItems":true},"tag":{"type":"object","additionalProperties":false,"required":["name"],"properties":{"name":{"type":"string"},"description":{"type":"string"},"externalDocs":{"$ref":"#/definitions/externalDocs"}},"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}}},"SecurityScheme":{"oneOf":[{"$ref":"#/definitions/userPassword"},{"$ref":"#/definitions/apiKey"},{"$ref":"#/definitions/X509"},{"$ref":"#/definitions/symmetricEncryption"},{"$ref":"#/definitions/asymmetricEncryption"},{"$ref":"#/definitions/HTTPSecurityScheme"}]},"userPassword":{"type":"object","required":["type"],"properties":{"type":{"type":"string","enum":["userPassword"]},"description":{"type":"string"}},"patternProperties":{"^x-":{}},"additionalProperties":false},"apiKey":{"type":"object","required":["type","in"],"properties":{"type":{"type":"string","enum":["apiKey"]},"in":{"type":"string","enum":["user","password"]},"description":{"type":"string"}},"patternProperties":{"^x-":{}},"additionalProperties":false},"X509":{"type":"object","required":["type"],"properties":{"type":{"type":"string","enum":["X509"]},"description":{"type":"string"}},"patternProperties":{"^x-":{}},"additionalProperties":false},"symmetricEncryption":{"type":"object","required":["type"],"properties":{"type":{"type":"string","enum":["symmetricEncryption"]},"description":{"type":"string"}},"patternProperties":{"^x-":{}},"additionalProperties":false},"asymmetricEncryption":{"type":"object","required":["type"],"properties":{"type":{"type":"string","enum":["asymmetricEncryption"]},"description":{"type":"string"}},"patternProperties":{"^x-":{}},"additionalProperties":false},"HTTPSecurityScheme":{"oneOf":[{"$ref":"#/definitions/NonBearerHTTPSecurityScheme"},{"$ref":"#/definitions/BearerHTTPSecurityScheme"},{"$ref":"#/definitions/APIKeyHTTPSecurityScheme"}]},"NonBearerHTTPSecurityScheme":{"not":{"type":"object","properties":{"scheme":{"type":"string","enum":["bearer"]}}},"type":"object","required":["scheme","type"],"properties":{"scheme":{"type":"string"},"description":{"type":"string"},"type":{"type":"string","enum":["http"]}},"patternProperties":{"^x-":{}},"additionalProperties":false},"BearerHTTPSecurityScheme":{"type":"object","required":["type","scheme"],"properties":{"scheme":{"type":"string","enum":["bearer"]},"bearerFormat":{"type":"string"},"type":{"type":"string","enum":["http"]},"description":{"type":"string"}},"patternProperties":{"^x-":{}},"additionalProperties":false},"APIKeyHTTPSecurityScheme":{"type":"object","required":["type","name","in"],"properties":{"type":{"type":"string","enum":["httpApiKey"]},"name":{"type":"string"},"in":{"type":"string","enum":["header","query","cookie"]},"description":{"type":"string"}},"patternProperties":{"^x-":{}},"additionalProperties":false},"SecurityRequirement":{"type":"object","additionalProperties":{"type":"array","items":{"type":"string"}}},"title":{"$ref":"http://json-schema.org/draft-04/schema#/properties/title"},"description":{"$ref":"http://json-schema.org/draft-04/schema#/properties/description"},"default":{"$ref":"http://json-schema.org/draft-04/schema#/properties/default"},"multipleOf":{"$ref":"http://json-schema.org/draft-04/schema#/properties/multipleOf"},"maximum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/maximum"},"exclusiveMaximum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/exclusiveMaximum"},"minimum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/minimum"},"exclusiveMinimum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/exclusiveMinimum"},"maxLength":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveInteger"},"minLength":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"},"pattern":{"$ref":"http://json-schema.org/draft-04/schema#/properties/pattern"},"maxItems":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveInteger"},"minItems":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"},"uniqueItems":{"$ref":"http://json-schema.org/draft-04/schema#/properties/uniqueItems"},"enum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/enum"}}}');
 
 /***/ }),
 
@@ -22,7 +21,7 @@ module.exports = JSON.parse("{\"title\":\"AsyncAPI 1.1.0 schema.\",\"id\":\"http
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse("{\"title\":\"AsyncAPI 1.2.0 schema.\",\"id\":\"http://asyncapi.hitchhq.com/v1/schema.json#\",\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"required\":[\"asyncapi\",\"info\"],\"oneOf\":[{\"required\":[\"topics\"]},{\"required\":[\"stream\"]},{\"required\":[\"events\"]}],\"additionalProperties\":false,\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"properties\":{\"asyncapi\":{\"type\":\"string\",\"enum\":[\"1.0.0\",\"1.1.0\",\"1.2.0\"],\"description\":\"The AsyncAPI specification version of this document.\"},\"info\":{\"$ref\":\"#/definitions/info\"},\"baseTopic\":{\"type\":\"string\",\"pattern\":\"^[^/.]\",\"description\":\"The base topic to the API. Example: 'hitch'.\",\"default\":\"\"},\"servers\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/server\"},\"uniqueItems\":true},\"topics\":{\"$ref\":\"#/definitions/topics\"},\"stream\":{\"$ref\":\"#/definitions/stream\",\"description\":\"The list of messages a consumer can read or write from/to a streaming API.\"},\"events\":{\"$ref\":\"#/definitions/events\",\"description\":\"The list of messages an events API sends and/or receives.\"},\"components\":{\"$ref\":\"#/definitions/components\"},\"tags\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/tag\"},\"uniqueItems\":true},\"security\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/SecurityRequirement\"}},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"}},\"definitions\":{\"Reference\":{\"type\":\"object\",\"required\":[\"$ref\"],\"properties\":{\"$ref\":{\"type\":\"string\",\"format\":\"uri\"}}},\"info\":{\"type\":\"object\",\"description\":\"General information about the API.\",\"required\":[\"version\",\"title\"],\"additionalProperties\":false,\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"properties\":{\"title\":{\"type\":\"string\",\"description\":\"A unique and precise title of the API.\"},\"version\":{\"type\":\"string\",\"description\":\"A semantic version number of the API.\"},\"description\":{\"type\":\"string\",\"description\":\"A longer description of the API. Should be different from the title. CommonMark is allowed.\"},\"termsOfService\":{\"type\":\"string\",\"description\":\"A URL to the Terms of Service for the API. MUST be in the format of a URL.\",\"format\":\"uri\"},\"contact\":{\"$ref\":\"#/definitions/contact\"},\"license\":{\"$ref\":\"#/definitions/license\"}}},\"contact\":{\"type\":\"object\",\"description\":\"Contact information for the owners of the API.\",\"additionalProperties\":false,\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"The identifying name of the contact person/organization.\"},\"url\":{\"type\":\"string\",\"description\":\"The URL pointing to the contact information.\",\"format\":\"uri\"},\"email\":{\"type\":\"string\",\"description\":\"The email address of the contact person/organization.\",\"format\":\"email\"}},\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}}},\"license\":{\"type\":\"object\",\"required\":[\"name\"],\"additionalProperties\":false,\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"The name of the license type. It's encouraged to use an OSI compatible license.\"},\"url\":{\"type\":\"string\",\"description\":\"The URL pointing to the license.\",\"format\":\"uri\"}},\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}}},\"server\":{\"type\":\"object\",\"description\":\"An object representing a Server.\",\"required\":[\"url\",\"scheme\"],\"additionalProperties\":false,\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"properties\":{\"url\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"scheme\":{\"type\":\"string\",\"description\":\"The transfer protocol.\",\"enum\":[\"kafka\",\"kafka-secure\",\"amqp\",\"amqps\",\"mqtt\",\"mqtts\",\"secure-mqtt\",\"ws\",\"wss\",\"stomp\",\"stomps\",\"jms\",\"http\",\"https\"]},\"schemeVersion\":{\"type\":\"string\"},\"variables\":{\"$ref\":\"#/definitions/serverVariables\"}}},\"serverVariables\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/serverVariable\"}},\"serverVariable\":{\"type\":\"object\",\"description\":\"An object representing a Server Variable for server URL template substitution.\",\"minProperties\":1,\"additionalProperties\":false,\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"properties\":{\"enum\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"uniqueItems\":true},\"default\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"}}},\"topics\":{\"type\":\"object\",\"description\":\"Relative paths to the individual topics. They must be relative to the 'baseTopic'.\",\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"},\"^[^.]\":{\"$ref\":\"#/definitions/topicItem\"}},\"additionalProperties\":false},\"components\":{\"type\":\"object\",\"description\":\"An object to hold a set of reusable objects for different aspects of the AsyncAPI Specification.\",\"additionalProperties\":false,\"properties\":{\"schemas\":{\"$ref\":\"#/definitions/schemas\"},\"messages\":{\"$ref\":\"#/definitions/messages\"},\"securitySchemes\":{\"type\":\"object\",\"patternProperties\":{\"^[a-zA-Z0-9\\\\.\\\\-_]+$\":{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/SecurityScheme\"}]}}},\"parameters\":{\"$ref\":\"#/definitions/parameters\"}}},\"schemas\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/schema\"},\"description\":\"JSON objects describing schemas the API uses.\"},\"messages\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/message\"},\"description\":\"JSON objects describing the messages being consumed and produced by the API.\"},\"parameters\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/parameter\"},\"description\":\"JSON objects describing re-usable topic parameters.\"},\"schema\":{\"type\":\"object\",\"description\":\"A deterministic version of a JSON Schema object.\",\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"properties\":{\"$ref\":{\"type\":\"string\"},\"format\":{\"type\":\"string\"},\"title\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/title\"},\"description\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/description\"},\"default\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/default\"},\"multipleOf\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/multipleOf\"},\"maximum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/maximum\"},\"exclusiveMaximum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/exclusiveMaximum\"},\"minimum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/minimum\"},\"exclusiveMinimum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/exclusiveMinimum\"},\"maxLength\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveInteger\"},\"minLength\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0\"},\"pattern\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/pattern\"},\"maxItems\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveInteger\"},\"minItems\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0\"},\"uniqueItems\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/uniqueItems\"},\"maxProperties\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveInteger\"},\"minProperties\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0\"},\"required\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/stringArray\"},\"enum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/enum\"},\"additionalProperties\":{\"anyOf\":[{\"$ref\":\"#/definitions/schema\"},{\"type\":\"boolean\"}],\"default\":{}},\"type\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/type\"},\"items\":{\"anyOf\":[{\"$ref\":\"#/definitions/schema\"},{\"type\":\"array\",\"minItems\":1,\"items\":{\"$ref\":\"#/definitions/schema\"}}],\"default\":{}},\"allOf\":{\"type\":\"array\",\"minItems\":1,\"items\":{\"$ref\":\"#/definitions/schema\"}},\"oneOf\":{\"type\":\"array\",\"minItems\":2,\"items\":{\"$ref\":\"#/definitions/schema\"}},\"anyOf\":{\"type\":\"array\",\"minItems\":2,\"items\":{\"$ref\":\"#/definitions/schema\"}},\"not\":{\"$ref\":\"#/definitions/schema\"},\"properties\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/schema\"},\"default\":{}},\"discriminator\":{\"type\":\"string\"},\"readOnly\":{\"type\":\"boolean\",\"default\":false},\"xml\":{\"$ref\":\"#/definitions/xml\"},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"},\"example\":{}},\"additionalProperties\":false},\"xml\":{\"type\":\"object\",\"additionalProperties\":false,\"properties\":{\"name\":{\"type\":\"string\"},\"namespace\":{\"type\":\"string\"},\"prefix\":{\"type\":\"string\"},\"attribute\":{\"type\":\"boolean\",\"default\":false},\"wrapped\":{\"type\":\"boolean\",\"default\":false}}},\"externalDocs\":{\"type\":\"object\",\"additionalProperties\":false,\"description\":\"information about external documentation\",\"required\":[\"url\"],\"properties\":{\"description\":{\"type\":\"string\"},\"url\":{\"type\":\"string\",\"format\":\"uri\"}},\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}}},\"topicItem\":{\"type\":\"object\",\"additionalProperties\":false,\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"minProperties\":1,\"properties\":{\"$ref\":{\"type\":\"string\"},\"parameters\":{\"type\":\"array\",\"uniqueItems\":true,\"minItems\":1,\"items\":{\"$ref\":\"#/definitions/parameter\"}},\"publish\":{\"$ref\":\"#/definitions/operation\"},\"subscribe\":{\"$ref\":\"#/definitions/operation\"},\"deprecated\":{\"type\":\"boolean\",\"default\":false}}},\"parameter\":{\"additionalProperties\":false,\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"properties\":{\"description\":{\"type\":\"string\",\"description\":\"A brief description of the parameter. This could contain examples of use.  GitHub Flavored Markdown is allowed.\"},\"name\":{\"type\":\"string\",\"description\":\"The name of the parameter.\"},\"schema\":{\"$ref\":\"#/definitions/schema\"},\"$ref\":{\"type\":\"string\"}}},\"operation\":{\"oneOf\":[{\"$ref\":\"#/definitions/message\"},{\"type\":\"object\",\"required\":[\"oneOf\"],\"additionalProperties\":false,\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"properties\":{\"oneOf\":{\"type\":\"array\",\"minItems\":2,\"items\":{\"$ref\":\"#/definitions/message\"}}}}]},\"stream\":{\"title\":\"Stream Object\",\"type\":\"object\",\"additionalProperties\":false,\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"minProperties\":1,\"properties\":{\"framing\":{\"title\":\"Stream Framing Object\",\"type\":\"object\",\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"minProperties\":1,\"oneOf\":[{\"additionalProperties\":false,\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"chunked\"]},\"delimiter\":{\"type\":\"string\",\"enum\":[\"\\\\r\\\\n\",\"\\\\n\"],\"default\":\"\\\\r\\\\n\"}}},{\"additionalProperties\":false,\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"sse\"]},\"delimiter\":{\"type\":\"string\",\"enum\":[\"\\\\n\\\\n\"],\"default\":\"\\\\n\\\\n\"}}}]},\"read\":{\"title\":\"Stream Read Object\",\"type\":\"array\",\"uniqueItems\":true,\"minItems\":1,\"items\":{\"$ref\":\"#/definitions/message\"}},\"write\":{\"title\":\"Stream Write Object\",\"type\":\"array\",\"uniqueItems\":true,\"minItems\":1,\"items\":{\"$ref\":\"#/definitions/message\"}}}},\"events\":{\"title\":\"Events Object\",\"type\":\"object\",\"additionalProperties\":false,\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"minProperties\":1,\"anyOf\":[{\"required\":[\"receive\"]},{\"required\":[\"send\"]}],\"properties\":{\"receive\":{\"title\":\"Events Receive Object\",\"type\":\"array\",\"uniqueItems\":true,\"minItems\":1,\"items\":{\"$ref\":\"#/definitions/message\"}},\"send\":{\"title\":\"Events Send Object\",\"type\":\"array\",\"uniqueItems\":true,\"minItems\":1,\"items\":{\"$ref\":\"#/definitions/message\"}}}},\"message\":{\"type\":\"object\",\"additionalProperties\":false,\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"properties\":{\"$ref\":{\"type\":\"string\"},\"headers\":{\"$ref\":\"#/definitions/schema\"},\"payload\":{\"$ref\":\"#/definitions/schema\"},\"tags\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/tag\"},\"uniqueItems\":true},\"summary\":{\"type\":\"string\",\"description\":\"A brief summary of the message.\"},\"description\":{\"type\":\"string\",\"description\":\"A longer description of the message. CommonMark is allowed.\"},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"},\"deprecated\":{\"type\":\"boolean\",\"default\":false},\"example\":{}}},\"vendorExtension\":{\"description\":\"Any property starting with x- is valid.\",\"additionalProperties\":true,\"additionalItems\":true},\"tag\":{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"name\"],\"properties\":{\"name\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"}},\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}}},\"SecurityScheme\":{\"oneOf\":[{\"$ref\":\"#/definitions/userPassword\"},{\"$ref\":\"#/definitions/apiKey\"},{\"$ref\":\"#/definitions/X509\"},{\"$ref\":\"#/definitions/symmetricEncryption\"},{\"$ref\":\"#/definitions/asymmetricEncryption\"},{\"$ref\":\"#/definitions/HTTPSecurityScheme\"}]},\"userPassword\":{\"type\":\"object\",\"required\":[\"type\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"userPassword\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"apiKey\":{\"type\":\"object\",\"required\":[\"type\",\"in\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"apiKey\"]},\"in\":{\"type\":\"string\",\"enum\":[\"user\",\"password\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"X509\":{\"type\":\"object\",\"required\":[\"type\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"X509\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"symmetricEncryption\":{\"type\":\"object\",\"required\":[\"type\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"symmetricEncryption\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"asymmetricEncryption\":{\"type\":\"object\",\"required\":[\"type\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"asymmetricEncryption\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"HTTPSecurityScheme\":{\"oneOf\":[{\"$ref\":\"#/definitions/NonBearerHTTPSecurityScheme\"},{\"$ref\":\"#/definitions/BearerHTTPSecurityScheme\"},{\"$ref\":\"#/definitions/APIKeyHTTPSecurityScheme\"}]},\"NonBearerHTTPSecurityScheme\":{\"not\":{\"type\":\"object\",\"properties\":{\"scheme\":{\"type\":\"string\",\"enum\":[\"bearer\"]}}},\"type\":\"object\",\"required\":[\"scheme\",\"type\"],\"properties\":{\"scheme\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"type\":{\"type\":\"string\",\"enum\":[\"http\"]}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"BearerHTTPSecurityScheme\":{\"type\":\"object\",\"required\":[\"type\",\"scheme\"],\"properties\":{\"scheme\":{\"type\":\"string\",\"enum\":[\"bearer\"]},\"bearerFormat\":{\"type\":\"string\"},\"type\":{\"type\":\"string\",\"enum\":[\"http\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"APIKeyHTTPSecurityScheme\":{\"type\":\"object\",\"required\":[\"type\",\"name\",\"in\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"httpApiKey\"]},\"name\":{\"type\":\"string\"},\"in\":{\"type\":\"string\",\"enum\":[\"header\",\"query\",\"cookie\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"SecurityRequirement\":{\"type\":\"object\",\"additionalProperties\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}}},\"title\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/title\"},\"description\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/description\"},\"default\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/default\"},\"multipleOf\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/multipleOf\"},\"maximum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/maximum\"},\"exclusiveMaximum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/exclusiveMaximum\"},\"minimum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/minimum\"},\"exclusiveMinimum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/exclusiveMinimum\"},\"maxLength\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveInteger\"},\"minLength\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0\"},\"pattern\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/pattern\"},\"maxItems\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveInteger\"},\"minItems\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0\"},\"uniqueItems\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/uniqueItems\"},\"enum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/enum\"}}}");
+module.exports = JSON.parse('{"title":"AsyncAPI 1.2.0 schema.","id":"http://asyncapi.hitchhq.com/v1/schema.json#","$schema":"http://json-schema.org/draft-04/schema#","type":"object","required":["asyncapi","info"],"oneOf":[{"required":["topics"]},{"required":["stream"]},{"required":["events"]}],"additionalProperties":false,"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"properties":{"asyncapi":{"type":"string","enum":["1.0.0","1.1.0","1.2.0"],"description":"The AsyncAPI specification version of this document."},"info":{"$ref":"#/definitions/info"},"baseTopic":{"type":"string","pattern":"^[^/.]","description":"The base topic to the API. Example: \'hitch\'.","default":""},"servers":{"type":"array","items":{"$ref":"#/definitions/server"},"uniqueItems":true},"topics":{"$ref":"#/definitions/topics"},"stream":{"$ref":"#/definitions/stream","description":"The list of messages a consumer can read or write from/to a streaming API."},"events":{"$ref":"#/definitions/events","description":"The list of messages an events API sends and/or receives."},"components":{"$ref":"#/definitions/components"},"tags":{"type":"array","items":{"$ref":"#/definitions/tag"},"uniqueItems":true},"security":{"type":"array","items":{"$ref":"#/definitions/SecurityRequirement"}},"externalDocs":{"$ref":"#/definitions/externalDocs"}},"definitions":{"Reference":{"type":"object","required":["$ref"],"properties":{"$ref":{"type":"string","format":"uri"}}},"info":{"type":"object","description":"General information about the API.","required":["version","title"],"additionalProperties":false,"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"properties":{"title":{"type":"string","description":"A unique and precise title of the API."},"version":{"type":"string","description":"A semantic version number of the API."},"description":{"type":"string","description":"A longer description of the API. Should be different from the title. CommonMark is allowed."},"termsOfService":{"type":"string","description":"A URL to the Terms of Service for the API. MUST be in the format of a URL.","format":"uri"},"contact":{"$ref":"#/definitions/contact"},"license":{"$ref":"#/definitions/license"}}},"contact":{"type":"object","description":"Contact information for the owners of the API.","additionalProperties":false,"properties":{"name":{"type":"string","description":"The identifying name of the contact person/organization."},"url":{"type":"string","description":"The URL pointing to the contact information.","format":"uri"},"email":{"type":"string","description":"The email address of the contact person/organization.","format":"email"}},"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}}},"license":{"type":"object","required":["name"],"additionalProperties":false,"properties":{"name":{"type":"string","description":"The name of the license type. It\'s encouraged to use an OSI compatible license."},"url":{"type":"string","description":"The URL pointing to the license.","format":"uri"}},"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}}},"server":{"type":"object","description":"An object representing a Server.","required":["url","scheme"],"additionalProperties":false,"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"properties":{"url":{"type":"string"},"description":{"type":"string"},"scheme":{"type":"string","description":"The transfer protocol.","enum":["kafka","kafka-secure","amqp","amqps","mqtt","mqtts","secure-mqtt","ws","wss","stomp","stomps","jms","http","https"]},"schemeVersion":{"type":"string"},"variables":{"$ref":"#/definitions/serverVariables"}}},"serverVariables":{"type":"object","additionalProperties":{"$ref":"#/definitions/serverVariable"}},"serverVariable":{"type":"object","description":"An object representing a Server Variable for server URL template substitution.","minProperties":1,"additionalProperties":false,"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"properties":{"enum":{"type":"array","items":{"type":"string"},"uniqueItems":true},"default":{"type":"string"},"description":{"type":"string"}}},"topics":{"type":"object","description":"Relative paths to the individual topics. They must be relative to the \'baseTopic\'.","patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"},"^[^.]":{"$ref":"#/definitions/topicItem"}},"additionalProperties":false},"components":{"type":"object","description":"An object to hold a set of reusable objects for different aspects of the AsyncAPI Specification.","additionalProperties":false,"properties":{"schemas":{"$ref":"#/definitions/schemas"},"messages":{"$ref":"#/definitions/messages"},"securitySchemes":{"type":"object","patternProperties":{"^[a-zA-Z0-9\\\\.\\\\-_]+$":{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/SecurityScheme"}]}}},"parameters":{"$ref":"#/definitions/parameters"}}},"schemas":{"type":"object","additionalProperties":{"$ref":"#/definitions/schema"},"description":"JSON objects describing schemas the API uses."},"messages":{"type":"object","additionalProperties":{"$ref":"#/definitions/message"},"description":"JSON objects describing the messages being consumed and produced by the API."},"parameters":{"type":"object","additionalProperties":{"$ref":"#/definitions/parameter"},"description":"JSON objects describing re-usable topic parameters."},"schema":{"type":"object","description":"A deterministic version of a JSON Schema object.","patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"properties":{"$ref":{"type":"string"},"format":{"type":"string"},"title":{"$ref":"http://json-schema.org/draft-04/schema#/properties/title"},"description":{"$ref":"http://json-schema.org/draft-04/schema#/properties/description"},"default":{"$ref":"http://json-schema.org/draft-04/schema#/properties/default"},"multipleOf":{"$ref":"http://json-schema.org/draft-04/schema#/properties/multipleOf"},"maximum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/maximum"},"exclusiveMaximum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/exclusiveMaximum"},"minimum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/minimum"},"exclusiveMinimum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/exclusiveMinimum"},"maxLength":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveInteger"},"minLength":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"},"pattern":{"$ref":"http://json-schema.org/draft-04/schema#/properties/pattern"},"maxItems":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveInteger"},"minItems":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"},"uniqueItems":{"$ref":"http://json-schema.org/draft-04/schema#/properties/uniqueItems"},"maxProperties":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveInteger"},"minProperties":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"},"required":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/stringArray"},"enum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/enum"},"additionalProperties":{"anyOf":[{"$ref":"#/definitions/schema"},{"type":"boolean"}],"default":{}},"type":{"$ref":"http://json-schema.org/draft-04/schema#/properties/type"},"items":{"anyOf":[{"$ref":"#/definitions/schema"},{"type":"array","minItems":1,"items":{"$ref":"#/definitions/schema"}}],"default":{}},"allOf":{"type":"array","minItems":1,"items":{"$ref":"#/definitions/schema"}},"oneOf":{"type":"array","minItems":2,"items":{"$ref":"#/definitions/schema"}},"anyOf":{"type":"array","minItems":2,"items":{"$ref":"#/definitions/schema"}},"not":{"$ref":"#/definitions/schema"},"properties":{"type":"object","additionalProperties":{"$ref":"#/definitions/schema"},"default":{}},"discriminator":{"type":"string"},"readOnly":{"type":"boolean","default":false},"xml":{"$ref":"#/definitions/xml"},"externalDocs":{"$ref":"#/definitions/externalDocs"},"example":{}},"additionalProperties":false},"xml":{"type":"object","additionalProperties":false,"properties":{"name":{"type":"string"},"namespace":{"type":"string"},"prefix":{"type":"string"},"attribute":{"type":"boolean","default":false},"wrapped":{"type":"boolean","default":false}}},"externalDocs":{"type":"object","additionalProperties":false,"description":"information about external documentation","required":["url"],"properties":{"description":{"type":"string"},"url":{"type":"string","format":"uri"}},"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}}},"topicItem":{"type":"object","additionalProperties":false,"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"minProperties":1,"properties":{"$ref":{"type":"string"},"parameters":{"type":"array","uniqueItems":true,"minItems":1,"items":{"$ref":"#/definitions/parameter"}},"publish":{"$ref":"#/definitions/operation"},"subscribe":{"$ref":"#/definitions/operation"},"deprecated":{"type":"boolean","default":false}}},"parameter":{"additionalProperties":false,"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"properties":{"description":{"type":"string","description":"A brief description of the parameter. This could contain examples of use.  GitHub Flavored Markdown is allowed."},"name":{"type":"string","description":"The name of the parameter."},"schema":{"$ref":"#/definitions/schema"},"$ref":{"type":"string"}}},"operation":{"oneOf":[{"$ref":"#/definitions/message"},{"type":"object","required":["oneOf"],"additionalProperties":false,"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"properties":{"oneOf":{"type":"array","minItems":2,"items":{"$ref":"#/definitions/message"}}}}]},"stream":{"title":"Stream Object","type":"object","additionalProperties":false,"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"minProperties":1,"properties":{"framing":{"title":"Stream Framing Object","type":"object","patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"minProperties":1,"oneOf":[{"additionalProperties":false,"properties":{"type":{"type":"string","enum":["chunked"]},"delimiter":{"type":"string","enum":["\\\\r\\\\n","\\\\n"],"default":"\\\\r\\\\n"}}},{"additionalProperties":false,"properties":{"type":{"type":"string","enum":["sse"]},"delimiter":{"type":"string","enum":["\\\\n\\\\n"],"default":"\\\\n\\\\n"}}}]},"read":{"title":"Stream Read Object","type":"array","uniqueItems":true,"minItems":1,"items":{"$ref":"#/definitions/message"}},"write":{"title":"Stream Write Object","type":"array","uniqueItems":true,"minItems":1,"items":{"$ref":"#/definitions/message"}}}},"events":{"title":"Events Object","type":"object","additionalProperties":false,"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"minProperties":1,"anyOf":[{"required":["receive"]},{"required":["send"]}],"properties":{"receive":{"title":"Events Receive Object","type":"array","uniqueItems":true,"minItems":1,"items":{"$ref":"#/definitions/message"}},"send":{"title":"Events Send Object","type":"array","uniqueItems":true,"minItems":1,"items":{"$ref":"#/definitions/message"}}}},"message":{"type":"object","additionalProperties":false,"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"properties":{"$ref":{"type":"string"},"headers":{"$ref":"#/definitions/schema"},"payload":{"$ref":"#/definitions/schema"},"tags":{"type":"array","items":{"$ref":"#/definitions/tag"},"uniqueItems":true},"summary":{"type":"string","description":"A brief summary of the message."},"description":{"type":"string","description":"A longer description of the message. CommonMark is allowed."},"externalDocs":{"$ref":"#/definitions/externalDocs"},"deprecated":{"type":"boolean","default":false},"example":{}}},"vendorExtension":{"description":"Any property starting with x- is valid.","additionalProperties":true,"additionalItems":true},"tag":{"type":"object","additionalProperties":false,"required":["name"],"properties":{"name":{"type":"string"},"description":{"type":"string"},"externalDocs":{"$ref":"#/definitions/externalDocs"}},"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}}},"SecurityScheme":{"oneOf":[{"$ref":"#/definitions/userPassword"},{"$ref":"#/definitions/apiKey"},{"$ref":"#/definitions/X509"},{"$ref":"#/definitions/symmetricEncryption"},{"$ref":"#/definitions/asymmetricEncryption"},{"$ref":"#/definitions/HTTPSecurityScheme"}]},"userPassword":{"type":"object","required":["type"],"properties":{"type":{"type":"string","enum":["userPassword"]},"description":{"type":"string"}},"patternProperties":{"^x-":{}},"additionalProperties":false},"apiKey":{"type":"object","required":["type","in"],"properties":{"type":{"type":"string","enum":["apiKey"]},"in":{"type":"string","enum":["user","password"]},"description":{"type":"string"}},"patternProperties":{"^x-":{}},"additionalProperties":false},"X509":{"type":"object","required":["type"],"properties":{"type":{"type":"string","enum":["X509"]},"description":{"type":"string"}},"patternProperties":{"^x-":{}},"additionalProperties":false},"symmetricEncryption":{"type":"object","required":["type"],"properties":{"type":{"type":"string","enum":["symmetricEncryption"]},"description":{"type":"string"}},"patternProperties":{"^x-":{}},"additionalProperties":false},"asymmetricEncryption":{"type":"object","required":["type"],"properties":{"type":{"type":"string","enum":["asymmetricEncryption"]},"description":{"type":"string"}},"patternProperties":{"^x-":{}},"additionalProperties":false},"HTTPSecurityScheme":{"oneOf":[{"$ref":"#/definitions/NonBearerHTTPSecurityScheme"},{"$ref":"#/definitions/BearerHTTPSecurityScheme"},{"$ref":"#/definitions/APIKeyHTTPSecurityScheme"}]},"NonBearerHTTPSecurityScheme":{"not":{"type":"object","properties":{"scheme":{"type":"string","enum":["bearer"]}}},"type":"object","required":["scheme","type"],"properties":{"scheme":{"type":"string"},"description":{"type":"string"},"type":{"type":"string","enum":["http"]}},"patternProperties":{"^x-":{}},"additionalProperties":false},"BearerHTTPSecurityScheme":{"type":"object","required":["type","scheme"],"properties":{"scheme":{"type":"string","enum":["bearer"]},"bearerFormat":{"type":"string"},"type":{"type":"string","enum":["http"]},"description":{"type":"string"}},"patternProperties":{"^x-":{}},"additionalProperties":false},"APIKeyHTTPSecurityScheme":{"type":"object","required":["type","name","in"],"properties":{"type":{"type":"string","enum":["httpApiKey"]},"name":{"type":"string"},"in":{"type":"string","enum":["header","query","cookie"]},"description":{"type":"string"}},"patternProperties":{"^x-":{}},"additionalProperties":false},"SecurityRequirement":{"type":"object","additionalProperties":{"type":"array","items":{"type":"string"}}},"title":{"$ref":"http://json-schema.org/draft-04/schema#/properties/title"},"description":{"$ref":"http://json-schema.org/draft-04/schema#/properties/description"},"default":{"$ref":"http://json-schema.org/draft-04/schema#/properties/default"},"multipleOf":{"$ref":"http://json-schema.org/draft-04/schema#/properties/multipleOf"},"maximum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/maximum"},"exclusiveMaximum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/exclusiveMaximum"},"minimum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/minimum"},"exclusiveMinimum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/exclusiveMinimum"},"maxLength":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveInteger"},"minLength":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"},"pattern":{"$ref":"http://json-schema.org/draft-04/schema#/properties/pattern"},"maxItems":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveInteger"},"minItems":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"},"uniqueItems":{"$ref":"http://json-schema.org/draft-04/schema#/properties/uniqueItems"},"enum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/enum"}}}');
 
 /***/ }),
 
@@ -30,7 +29,7 @@ module.exports = JSON.parse("{\"title\":\"AsyncAPI 1.2.0 schema.\",\"id\":\"http
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse("{\"title\":\"AsyncAPI 2.0.0-rc1 schema.\",\"$schema\":\"http://json-schema.org/draft-07/schema#\",\"type\":\"object\",\"required\":[\"asyncapi\",\"id\",\"info\",\"channels\"],\"additionalProperties\":false,\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"properties\":{\"asyncapi\":{\"type\":\"string\",\"enum\":[\"2.0.0-rc1\"],\"description\":\"The AsyncAPI specification version of this document.\"},\"id\":{\"type\":\"string\",\"description\":\"A unique id representing the application.\",\"format\":\"uri-reference\"},\"info\":{\"$ref\":\"#/definitions/info\"},\"servers\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/server\"},\"uniqueItems\":true},\"defaultContentType\":{\"type\":\"string\"},\"channels\":{\"$ref\":\"#/definitions/channels\"},\"components\":{\"$ref\":\"#/definitions/components\"},\"tags\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/tag\"},\"uniqueItems\":true},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"}},\"definitions\":{\"Reference\":{\"type\":\"object\",\"required\":[\"$ref\"],\"properties\":{\"$ref\":{\"$ref\":\"#/definitions/ReferenceObject\"}}},\"ReferenceObject\":{\"type\":\"string\",\"format\":\"uri\"},\"info\":{\"type\":\"object\",\"description\":\"General information about the API.\",\"required\":[\"version\",\"title\"],\"additionalProperties\":false,\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"properties\":{\"title\":{\"type\":\"string\",\"description\":\"A unique and precise title of the API.\"},\"version\":{\"type\":\"string\",\"description\":\"A semantic version number of the API.\"},\"description\":{\"type\":\"string\",\"description\":\"A longer description of the API. Should be different from the title. CommonMark is allowed.\"},\"termsOfService\":{\"type\":\"string\",\"description\":\"A URL to the Terms of Service for the API. MUST be in the format of a URL.\",\"format\":\"uri\"},\"contact\":{\"$ref\":\"#/definitions/contact\"},\"license\":{\"$ref\":\"#/definitions/license\"}}},\"contact\":{\"type\":\"object\",\"description\":\"Contact information for the owners of the API.\",\"additionalProperties\":false,\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"The identifying name of the contact person/organization.\"},\"url\":{\"type\":\"string\",\"description\":\"The URL pointing to the contact information.\",\"format\":\"uri\"},\"email\":{\"type\":\"string\",\"description\":\"The email address of the contact person/organization.\",\"format\":\"email\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}}},\"license\":{\"type\":\"object\",\"required\":[\"name\"],\"additionalProperties\":false,\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"The name of the license type. It's encouraged to use an OSI compatible license.\"},\"url\":{\"type\":\"string\",\"description\":\"The URL pointing to the license.\",\"format\":\"uri\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}}},\"server\":{\"type\":\"object\",\"description\":\"An object representing a Server.\",\"required\":[\"url\",\"protocol\"],\"additionalProperties\":false,\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"properties\":{\"url\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"protocol\":{\"type\":\"string\",\"description\":\"The transfer protocol.\"},\"protocolVersion\":{\"type\":\"string\"},\"variables\":{\"$ref\":\"#/definitions/serverVariables\"},\"baseChannel\":{\"type\":\"string\",\"x-format\":\"uri-path\"},\"security\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/SecurityRequirement\"}}}},\"serverVariables\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/serverVariable\"}},\"serverVariable\":{\"type\":\"object\",\"description\":\"An object representing a Server Variable for server URL template substitution.\",\"minProperties\":1,\"additionalProperties\":false,\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"properties\":{\"enum\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"uniqueItems\":true},\"default\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"examples\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}}}},\"channels\":{\"type\":\"object\",\"propertyNames\":{\"type\":\"string\",\"format\":\"uri-template\",\"minLength\":1},\"additionalProperties\":{\"$ref\":\"#/definitions/channelItem\"}},\"components\":{\"type\":\"object\",\"description\":\"An object to hold a set of reusable objects for different aspects of the AsyncAPI Specification.\",\"additionalProperties\":false,\"properties\":{\"schemas\":{\"$ref\":\"#/definitions/schemas\"},\"messages\":{\"$ref\":\"#/definitions/messages\"},\"securitySchemes\":{\"type\":\"object\",\"patternProperties\":{\"^[\\\\w\\\\d\\\\.\\\\-_]+$\":{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/SecurityScheme\"}]}}},\"parameters\":{\"$ref\":\"#/definitions/parameters\"},\"correlationIds\":{\"type\":\"object\",\"patternProperties\":{\"^[\\\\w\\\\d\\\\.\\\\-_]+$\":{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/correlationId\"}]}}},\"traits\":{\"$ref\":\"#/definitions/traits\"}}},\"schemas\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/schema\"},\"description\":\"JSON objects describing schemas the API uses.\"},\"messages\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/message\"},\"description\":\"JSON objects describing the messages being consumed and produced by the API.\"},\"parameters\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/parameter\"},\"description\":\"JSON objects describing re-usable channel parameters.\"},\"schema\":{\"type\":\"object\",\"description\":\"A deterministic version of a JSON Schema object.\",\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"properties\":{\"$ref\":{\"$ref\":\"#/definitions/ReferenceObject\"},\"format\":{\"type\":\"string\"},\"title\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/title\"},\"description\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/description\"},\"default\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/default\"},\"multipleOf\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/multipleOf\"},\"maximum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/maximum\"},\"exclusiveMaximum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/exclusiveMaximum\"},\"minimum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/minimum\"},\"exclusiveMinimum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/exclusiveMinimum\"},\"maxLength\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveInteger\"},\"minLength\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0\"},\"pattern\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/pattern\"},\"maxItems\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveInteger\"},\"minItems\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0\"},\"uniqueItems\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/uniqueItems\"},\"maxProperties\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveInteger\"},\"minProperties\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0\"},\"required\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/stringArray\"},\"enum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/enum\"},\"deprecated\":{\"type\":\"boolean\",\"default\":false},\"additionalProperties\":{\"anyOf\":[{\"$ref\":\"#/definitions/schema\"},{\"type\":\"boolean\"}],\"default\":{}},\"type\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/type\"},\"items\":{\"anyOf\":[{\"$ref\":\"#/definitions/schema\"},{\"type\":\"array\",\"minItems\":1,\"items\":{\"$ref\":\"#/definitions/schema\"}}],\"default\":{}},\"allOf\":{\"type\":\"array\",\"minItems\":1,\"items\":{\"$ref\":\"#/definitions/schema\"}},\"oneOf\":{\"type\":\"array\",\"minItems\":2,\"items\":{\"$ref\":\"#/definitions/schema\"}},\"anyOf\":{\"type\":\"array\",\"minItems\":2,\"items\":{\"$ref\":\"#/definitions/schema\"}},\"not\":{\"$ref\":\"#/definitions/schema\"},\"properties\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/schema\"},\"default\":{}},\"discriminator\":{\"type\":\"string\"},\"readOnly\":{\"type\":\"boolean\",\"default\":false},\"xml\":{\"$ref\":\"#/definitions/xml\"},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"},\"example\":{},\"examples\":{\"type\":\"array\",\"items\":{}}},\"additionalProperties\":false},\"xml\":{\"type\":\"object\",\"additionalProperties\":false,\"properties\":{\"name\":{\"type\":\"string\"},\"namespace\":{\"type\":\"string\"},\"prefix\":{\"type\":\"string\"},\"attribute\":{\"type\":\"boolean\",\"default\":false},\"wrapped\":{\"type\":\"boolean\",\"default\":false}}},\"externalDocs\":{\"type\":\"object\",\"additionalProperties\":false,\"description\":\"information about external documentation\",\"required\":[\"url\"],\"properties\":{\"description\":{\"type\":\"string\"},\"url\":{\"type\":\"string\",\"format\":\"uri\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}}},\"channelItem\":{\"type\":\"object\",\"additionalProperties\":false,\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"minProperties\":1,\"properties\":{\"$ref\":{\"$ref\":\"#/definitions/ReferenceObject\"},\"parameters\":{\"type\":\"array\",\"uniqueItems\":true,\"minItems\":1,\"items\":{\"$ref\":\"#/definitions/parameter\"}},\"publish\":{\"$ref\":\"#/definitions/operation\"},\"subscribe\":{\"$ref\":\"#/definitions/operation\"},\"deprecated\":{\"type\":\"boolean\",\"default\":false},\"protocolInfo\":{\"type\":\"object\",\"additionalProperties\":{\"type\":\"object\"}}}},\"parameter\":{\"additionalProperties\":false,\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"properties\":{\"description\":{\"type\":\"string\",\"description\":\"A brief description of the parameter. This could contain examples of use. GitHub Flavored Markdown is allowed.\"},\"name\":{\"type\":\"string\",\"description\":\"The name of the parameter.\"},\"schema\":{\"$ref\":\"#/definitions/schema\"},\"$ref\":{\"$ref\":\"#/definitions/ReferenceObject\"}}},\"operation\":{\"type\":\"object\",\"additionalProperties\":false,\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"properties\":{\"traits\":{\"type\":\"array\",\"items\":{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/operationTrait\"},{\"type\":\"array\",\"items\":[{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/operationTrait\"}]},{\"type\":\"object\",\"additionalItems\":true}]}]}},\"summary\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"tags\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/tag\"},\"uniqueItems\":true},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"},\"operationId\":{\"type\":\"string\"},\"protocolInfo\":{\"type\":\"object\",\"additionalProperties\":{\"type\":\"object\"}},\"message\":{\"oneOf\":[{\"$ref\":\"#/definitions/message\"},{\"type\":\"object\",\"required\":[\"oneOf\"],\"additionalProperties\":false,\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"properties\":{\"oneOf\":{\"type\":\"array\",\"minItems\":2,\"items\":{\"$ref\":\"#/definitions/message\"}}}}]}}},\"message\":{\"type\":\"object\",\"additionalProperties\":false,\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"properties\":{\"schemaFormat\":{\"type\":\"string\"},\"contentType\":{\"type\":\"string\"},\"headers\":{\"type\":\"object\",\"additionalProperties\":{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/schema\"}]}},\"payload\":{},\"correlationId\":{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/correlationId\"}]},\"tags\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/tag\"},\"uniqueItems\":true},\"summary\":{\"type\":\"string\",\"description\":\"A brief summary of the message.\"},\"name\":{\"type\":\"string\",\"description\":\"Name of the message.\"},\"title\":{\"type\":\"string\",\"description\":\"A human-friendly title for the message.\"},\"description\":{\"type\":\"string\",\"description\":\"A longer description of the message. CommonMark is allowed.\"},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"},\"deprecated\":{\"type\":\"boolean\",\"default\":false},\"examples\":{\"type\":\"array\",\"items\":{\"type\":\"object\"}},\"protocolInfo\":{\"type\":\"object\",\"additionalProperties\":{\"type\":\"object\"}},\"traits\":{\"type\":\"array\",\"items\":{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/messageTrait\"},{\"type\":\"array\",\"items\":[{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/messageTrait\"}]},{\"type\":\"object\",\"additionalItems\":true}]}]}}}},\"correlationId\":{\"type\":\"object\",\"required\":[\"location\"],\"additionalProperties\":false,\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"properties\":{\"description\":{\"type\":\"string\",\"description\":\"A optional description of the correlation ID. GitHub Flavored Markdown is allowed.\"},\"location\":{\"type\":\"string\",\"description\":\"A runtime expression that specifies the location of the correlation ID\",\"pattern\":\"^\\\\$message\\\\.(header|payload)#(/\\\\w+)+\"}}},\"specificationExtension\":{\"description\":\"Any property starting with x- is valid.\",\"additionalProperties\":true,\"additionalItems\":true},\"tag\":{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"name\"],\"properties\":{\"name\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}}},\"traits\":{\"type\":\"object\",\"additionalProperties\":{\"anyOf\":[{\"$ref\":\"#/definitions/operationTrait\"},{\"$ref\":\"#/definitions/messageTrait\"}]}},\"operationTrait\":{\"type\":\"object\",\"additionalProperties\":false,\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"properties\":{\"summary\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"tags\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/tag\"},\"uniqueItems\":true},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"},\"operationId\":{\"type\":\"string\"},\"protocolInfo\":{\"type\":\"object\",\"additionalProperties\":{\"type\":\"object\"}}}},\"messageTrait\":{\"type\":\"object\",\"additionalProperties\":false,\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"properties\":{\"schemaFormat\":{\"type\":\"string\"},\"contentType\":{\"type\":\"string\"},\"headers\":{\"type\":\"object\",\"additionalProperties\":{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/schema\"}]}},\"correlationId\":{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/correlationId\"}]},\"tags\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/tag\"},\"uniqueItems\":true},\"summary\":{\"type\":\"string\",\"description\":\"A brief summary of the message.\"},\"name\":{\"type\":\"string\",\"description\":\"Name of the message.\"},\"title\":{\"type\":\"string\",\"description\":\"A human-friendly title for the message.\"},\"description\":{\"type\":\"string\",\"description\":\"A longer description of the message. CommonMark is allowed.\"},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"},\"deprecated\":{\"type\":\"boolean\",\"default\":false},\"examples\":{\"type\":\"array\",\"items\":{\"type\":\"object\"}},\"protocolInfo\":{\"type\":\"object\",\"additionalProperties\":{\"type\":\"object\"}}}},\"SecurityScheme\":{\"oneOf\":[{\"$ref\":\"#/definitions/userPassword\"},{\"$ref\":\"#/definitions/apiKey\"},{\"$ref\":\"#/definitions/X509\"},{\"$ref\":\"#/definitions/symmetricEncryption\"},{\"$ref\":\"#/definitions/asymmetricEncryption\"},{\"$ref\":\"#/definitions/HTTPSecurityScheme\"},{\"$ref\":\"#/definitions/oauth2Flows\"},{\"$ref\":\"#/definitions/openIdConnect\"}]},\"userPassword\":{\"type\":\"object\",\"required\":[\"type\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"userPassword\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"additionalProperties\":false},\"apiKey\":{\"type\":\"object\",\"required\":[\"type\",\"in\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"apiKey\"]},\"in\":{\"type\":\"string\",\"enum\":[\"user\",\"password\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"additionalProperties\":false},\"X509\":{\"type\":\"object\",\"required\":[\"type\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"X509\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"additionalProperties\":false},\"symmetricEncryption\":{\"type\":\"object\",\"required\":[\"type\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"symmetricEncryption\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"additionalProperties\":false},\"asymmetricEncryption\":{\"type\":\"object\",\"required\":[\"type\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"asymmetricEncryption\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"additionalProperties\":false},\"HTTPSecurityScheme\":{\"oneOf\":[{\"$ref\":\"#/definitions/NonBearerHTTPSecurityScheme\"},{\"$ref\":\"#/definitions/BearerHTTPSecurityScheme\"},{\"$ref\":\"#/definitions/APIKeyHTTPSecurityScheme\"}]},\"NonBearerHTTPSecurityScheme\":{\"not\":{\"type\":\"object\",\"properties\":{\"scheme\":{\"type\":\"string\",\"enum\":[\"bearer\"]}}},\"type\":\"object\",\"required\":[\"scheme\",\"type\"],\"properties\":{\"scheme\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"type\":{\"type\":\"string\",\"enum\":[\"http\"]}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"additionalProperties\":false},\"BearerHTTPSecurityScheme\":{\"type\":\"object\",\"required\":[\"type\",\"scheme\"],\"properties\":{\"scheme\":{\"type\":\"string\",\"enum\":[\"bearer\"]},\"bearerFormat\":{\"type\":\"string\"},\"type\":{\"type\":\"string\",\"enum\":[\"http\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"additionalProperties\":false},\"APIKeyHTTPSecurityScheme\":{\"type\":\"object\",\"required\":[\"type\",\"name\",\"in\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"httpApiKey\"]},\"name\":{\"type\":\"string\"},\"in\":{\"type\":\"string\",\"enum\":[\"header\",\"query\",\"cookie\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"additionalProperties\":false},\"oauth2Flows\":{\"type\":\"object\",\"required\":[\"type\",\"flows\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"oauth2\"]},\"description\":{\"type\":\"string\"},\"flows\":{\"type\":\"object\",\"properties\":{\"implicit\":{\"allOf\":[{\"$ref\":\"#/definitions/oauth2Flow\"},{\"required\":[\"authorizationUrl\",\"scopes\"]},{\"not\":{\"required\":[\"tokenUrl\"]}}]},\"password\":{\"allOf\":[{\"$ref\":\"#/definitions/oauth2Flow\"},{\"required\":[\"tokenUrl\",\"scopes\"]},{\"not\":{\"required\":[\"authorizationUrl\"]}}]},\"clientCredentials\":{\"allOf\":[{\"$ref\":\"#/definitions/oauth2Flow\"},{\"required\":[\"tokenUrl\",\"scopes\"]},{\"not\":{\"required\":[\"authorizationUrl\"]}}]},\"authorizationCode\":{\"allOf\":[{\"$ref\":\"#/definitions/oauth2Flow\"},{\"required\":[\"authorizationUrl\",\"tokenUrl\",\"scopes\"]}]}},\"additionalProperties\":false,\"minProperties\":1}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}}},\"oauth2Flow\":{\"type\":\"object\",\"properties\":{\"authorizationUrl\":{\"type\":\"string\",\"format\":\"uri\"},\"tokenUrl\":{\"type\":\"string\",\"format\":\"uri\"},\"refreshUrl\":{\"type\":\"string\",\"format\":\"uri\"},\"scopes\":{\"$ref\":\"#/definitions/oauth2Scopes\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"additionalProperties\":false},\"oauth2Scopes\":{\"type\":\"object\",\"additionalProperties\":{\"type\":\"string\"}},\"openIdConnect\":{\"type\":\"object\",\"required\":[\"type\",\"openIdConnectUrl\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"openIdConnect\"]},\"description\":{\"type\":\"string\"},\"openIdConnectUrl\":{\"type\":\"string\",\"format\":\"uri\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"additionalProperties\":false},\"SecurityRequirement\":{\"type\":\"object\",\"additionalProperties\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"uniqueItems\":true}}}}");
+module.exports = JSON.parse('{"title":"AsyncAPI 2.0.0-rc1 schema.","$schema":"http://json-schema.org/draft-07/schema#","type":"object","required":["asyncapi","id","info","channels"],"additionalProperties":false,"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"properties":{"asyncapi":{"type":"string","enum":["2.0.0-rc1"],"description":"The AsyncAPI specification version of this document."},"id":{"type":"string","description":"A unique id representing the application.","format":"uri-reference"},"info":{"$ref":"#/definitions/info"},"servers":{"type":"array","items":{"$ref":"#/definitions/server"},"uniqueItems":true},"defaultContentType":{"type":"string"},"channels":{"$ref":"#/definitions/channels"},"components":{"$ref":"#/definitions/components"},"tags":{"type":"array","items":{"$ref":"#/definitions/tag"},"uniqueItems":true},"externalDocs":{"$ref":"#/definitions/externalDocs"}},"definitions":{"Reference":{"type":"object","required":["$ref"],"properties":{"$ref":{"$ref":"#/definitions/ReferenceObject"}}},"ReferenceObject":{"type":"string","format":"uri"},"info":{"type":"object","description":"General information about the API.","required":["version","title"],"additionalProperties":false,"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"properties":{"title":{"type":"string","description":"A unique and precise title of the API."},"version":{"type":"string","description":"A semantic version number of the API."},"description":{"type":"string","description":"A longer description of the API. Should be different from the title. CommonMark is allowed."},"termsOfService":{"type":"string","description":"A URL to the Terms of Service for the API. MUST be in the format of a URL.","format":"uri"},"contact":{"$ref":"#/definitions/contact"},"license":{"$ref":"#/definitions/license"}}},"contact":{"type":"object","description":"Contact information for the owners of the API.","additionalProperties":false,"properties":{"name":{"type":"string","description":"The identifying name of the contact person/organization."},"url":{"type":"string","description":"The URL pointing to the contact information.","format":"uri"},"email":{"type":"string","description":"The email address of the contact person/organization.","format":"email"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}}},"license":{"type":"object","required":["name"],"additionalProperties":false,"properties":{"name":{"type":"string","description":"The name of the license type. It\'s encouraged to use an OSI compatible license."},"url":{"type":"string","description":"The URL pointing to the license.","format":"uri"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}}},"server":{"type":"object","description":"An object representing a Server.","required":["url","protocol"],"additionalProperties":false,"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"properties":{"url":{"type":"string"},"description":{"type":"string"},"protocol":{"type":"string","description":"The transfer protocol."},"protocolVersion":{"type":"string"},"variables":{"$ref":"#/definitions/serverVariables"},"baseChannel":{"type":"string","x-format":"uri-path"},"security":{"type":"array","items":{"$ref":"#/definitions/SecurityRequirement"}}}},"serverVariables":{"type":"object","additionalProperties":{"$ref":"#/definitions/serverVariable"}},"serverVariable":{"type":"object","description":"An object representing a Server Variable for server URL template substitution.","minProperties":1,"additionalProperties":false,"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"properties":{"enum":{"type":"array","items":{"type":"string"},"uniqueItems":true},"default":{"type":"string"},"description":{"type":"string"},"examples":{"type":"array","items":{"type":"string"}}}},"channels":{"type":"object","propertyNames":{"type":"string","format":"uri-template","minLength":1},"additionalProperties":{"$ref":"#/definitions/channelItem"}},"components":{"type":"object","description":"An object to hold a set of reusable objects for different aspects of the AsyncAPI Specification.","additionalProperties":false,"properties":{"schemas":{"$ref":"#/definitions/schemas"},"messages":{"$ref":"#/definitions/messages"},"securitySchemes":{"type":"object","patternProperties":{"^[\\\\w\\\\d\\\\.\\\\-_]+$":{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/SecurityScheme"}]}}},"parameters":{"$ref":"#/definitions/parameters"},"correlationIds":{"type":"object","patternProperties":{"^[\\\\w\\\\d\\\\.\\\\-_]+$":{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/correlationId"}]}}},"traits":{"$ref":"#/definitions/traits"}}},"schemas":{"type":"object","additionalProperties":{"$ref":"#/definitions/schema"},"description":"JSON objects describing schemas the API uses."},"messages":{"type":"object","additionalProperties":{"$ref":"#/definitions/message"},"description":"JSON objects describing the messages being consumed and produced by the API."},"parameters":{"type":"object","additionalProperties":{"$ref":"#/definitions/parameter"},"description":"JSON objects describing re-usable channel parameters."},"schema":{"type":"object","description":"A deterministic version of a JSON Schema object.","patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"properties":{"$ref":{"$ref":"#/definitions/ReferenceObject"},"format":{"type":"string"},"title":{"$ref":"http://json-schema.org/draft-04/schema#/properties/title"},"description":{"$ref":"http://json-schema.org/draft-04/schema#/properties/description"},"default":{"$ref":"http://json-schema.org/draft-04/schema#/properties/default"},"multipleOf":{"$ref":"http://json-schema.org/draft-04/schema#/properties/multipleOf"},"maximum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/maximum"},"exclusiveMaximum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/exclusiveMaximum"},"minimum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/minimum"},"exclusiveMinimum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/exclusiveMinimum"},"maxLength":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveInteger"},"minLength":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"},"pattern":{"$ref":"http://json-schema.org/draft-04/schema#/properties/pattern"},"maxItems":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveInteger"},"minItems":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"},"uniqueItems":{"$ref":"http://json-schema.org/draft-04/schema#/properties/uniqueItems"},"maxProperties":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveInteger"},"minProperties":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"},"required":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/stringArray"},"enum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/enum"},"deprecated":{"type":"boolean","default":false},"additionalProperties":{"anyOf":[{"$ref":"#/definitions/schema"},{"type":"boolean"}],"default":{}},"type":{"$ref":"http://json-schema.org/draft-04/schema#/properties/type"},"items":{"anyOf":[{"$ref":"#/definitions/schema"},{"type":"array","minItems":1,"items":{"$ref":"#/definitions/schema"}}],"default":{}},"allOf":{"type":"array","minItems":1,"items":{"$ref":"#/definitions/schema"}},"oneOf":{"type":"array","minItems":2,"items":{"$ref":"#/definitions/schema"}},"anyOf":{"type":"array","minItems":2,"items":{"$ref":"#/definitions/schema"}},"not":{"$ref":"#/definitions/schema"},"properties":{"type":"object","additionalProperties":{"$ref":"#/definitions/schema"},"default":{}},"discriminator":{"type":"string"},"readOnly":{"type":"boolean","default":false},"xml":{"$ref":"#/definitions/xml"},"externalDocs":{"$ref":"#/definitions/externalDocs"},"example":{},"examples":{"type":"array","items":{}}},"additionalProperties":false},"xml":{"type":"object","additionalProperties":false,"properties":{"name":{"type":"string"},"namespace":{"type":"string"},"prefix":{"type":"string"},"attribute":{"type":"boolean","default":false},"wrapped":{"type":"boolean","default":false}}},"externalDocs":{"type":"object","additionalProperties":false,"description":"information about external documentation","required":["url"],"properties":{"description":{"type":"string"},"url":{"type":"string","format":"uri"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}}},"channelItem":{"type":"object","additionalProperties":false,"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"minProperties":1,"properties":{"$ref":{"$ref":"#/definitions/ReferenceObject"},"parameters":{"type":"array","uniqueItems":true,"minItems":1,"items":{"$ref":"#/definitions/parameter"}},"publish":{"$ref":"#/definitions/operation"},"subscribe":{"$ref":"#/definitions/operation"},"deprecated":{"type":"boolean","default":false},"protocolInfo":{"type":"object","additionalProperties":{"type":"object"}}}},"parameter":{"additionalProperties":false,"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"properties":{"description":{"type":"string","description":"A brief description of the parameter. This could contain examples of use. GitHub Flavored Markdown is allowed."},"name":{"type":"string","description":"The name of the parameter."},"schema":{"$ref":"#/definitions/schema"},"$ref":{"$ref":"#/definitions/ReferenceObject"}}},"operation":{"type":"object","additionalProperties":false,"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"properties":{"traits":{"type":"array","items":{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/operationTrait"},{"type":"array","items":[{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/operationTrait"}]},{"type":"object","additionalItems":true}]}]}},"summary":{"type":"string"},"description":{"type":"string"},"tags":{"type":"array","items":{"$ref":"#/definitions/tag"},"uniqueItems":true},"externalDocs":{"$ref":"#/definitions/externalDocs"},"operationId":{"type":"string"},"protocolInfo":{"type":"object","additionalProperties":{"type":"object"}},"message":{"oneOf":[{"$ref":"#/definitions/message"},{"type":"object","required":["oneOf"],"additionalProperties":false,"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"properties":{"oneOf":{"type":"array","minItems":2,"items":{"$ref":"#/definitions/message"}}}}]}}},"message":{"type":"object","additionalProperties":false,"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"properties":{"schemaFormat":{"type":"string"},"contentType":{"type":"string"},"headers":{"type":"object","additionalProperties":{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/schema"}]}},"payload":{},"correlationId":{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/correlationId"}]},"tags":{"type":"array","items":{"$ref":"#/definitions/tag"},"uniqueItems":true},"summary":{"type":"string","description":"A brief summary of the message."},"name":{"type":"string","description":"Name of the message."},"title":{"type":"string","description":"A human-friendly title for the message."},"description":{"type":"string","description":"A longer description of the message. CommonMark is allowed."},"externalDocs":{"$ref":"#/definitions/externalDocs"},"deprecated":{"type":"boolean","default":false},"examples":{"type":"array","items":{"type":"object"}},"protocolInfo":{"type":"object","additionalProperties":{"type":"object"}},"traits":{"type":"array","items":{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/messageTrait"},{"type":"array","items":[{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/messageTrait"}]},{"type":"object","additionalItems":true}]}]}}}},"correlationId":{"type":"object","required":["location"],"additionalProperties":false,"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"properties":{"description":{"type":"string","description":"A optional description of the correlation ID. GitHub Flavored Markdown is allowed."},"location":{"type":"string","description":"A runtime expression that specifies the location of the correlation ID","pattern":"^\\\\$message\\\\.(header|payload)#(/\\\\w+)+"}}},"specificationExtension":{"description":"Any property starting with x- is valid.","additionalProperties":true,"additionalItems":true},"tag":{"type":"object","additionalProperties":false,"required":["name"],"properties":{"name":{"type":"string"},"description":{"type":"string"},"externalDocs":{"$ref":"#/definitions/externalDocs"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}}},"traits":{"type":"object","additionalProperties":{"anyOf":[{"$ref":"#/definitions/operationTrait"},{"$ref":"#/definitions/messageTrait"}]}},"operationTrait":{"type":"object","additionalProperties":false,"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"properties":{"summary":{"type":"string"},"description":{"type":"string"},"tags":{"type":"array","items":{"$ref":"#/definitions/tag"},"uniqueItems":true},"externalDocs":{"$ref":"#/definitions/externalDocs"},"operationId":{"type":"string"},"protocolInfo":{"type":"object","additionalProperties":{"type":"object"}}}},"messageTrait":{"type":"object","additionalProperties":false,"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"properties":{"schemaFormat":{"type":"string"},"contentType":{"type":"string"},"headers":{"type":"object","additionalProperties":{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/schema"}]}},"correlationId":{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/correlationId"}]},"tags":{"type":"array","items":{"$ref":"#/definitions/tag"},"uniqueItems":true},"summary":{"type":"string","description":"A brief summary of the message."},"name":{"type":"string","description":"Name of the message."},"title":{"type":"string","description":"A human-friendly title for the message."},"description":{"type":"string","description":"A longer description of the message. CommonMark is allowed."},"externalDocs":{"$ref":"#/definitions/externalDocs"},"deprecated":{"type":"boolean","default":false},"examples":{"type":"array","items":{"type":"object"}},"protocolInfo":{"type":"object","additionalProperties":{"type":"object"}}}},"SecurityScheme":{"oneOf":[{"$ref":"#/definitions/userPassword"},{"$ref":"#/definitions/apiKey"},{"$ref":"#/definitions/X509"},{"$ref":"#/definitions/symmetricEncryption"},{"$ref":"#/definitions/asymmetricEncryption"},{"$ref":"#/definitions/HTTPSecurityScheme"},{"$ref":"#/definitions/oauth2Flows"},{"$ref":"#/definitions/openIdConnect"}]},"userPassword":{"type":"object","required":["type"],"properties":{"type":{"type":"string","enum":["userPassword"]},"description":{"type":"string"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"additionalProperties":false},"apiKey":{"type":"object","required":["type","in"],"properties":{"type":{"type":"string","enum":["apiKey"]},"in":{"type":"string","enum":["user","password"]},"description":{"type":"string"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"additionalProperties":false},"X509":{"type":"object","required":["type"],"properties":{"type":{"type":"string","enum":["X509"]},"description":{"type":"string"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"additionalProperties":false},"symmetricEncryption":{"type":"object","required":["type"],"properties":{"type":{"type":"string","enum":["symmetricEncryption"]},"description":{"type":"string"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"additionalProperties":false},"asymmetricEncryption":{"type":"object","required":["type"],"properties":{"type":{"type":"string","enum":["asymmetricEncryption"]},"description":{"type":"string"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"additionalProperties":false},"HTTPSecurityScheme":{"oneOf":[{"$ref":"#/definitions/NonBearerHTTPSecurityScheme"},{"$ref":"#/definitions/BearerHTTPSecurityScheme"},{"$ref":"#/definitions/APIKeyHTTPSecurityScheme"}]},"NonBearerHTTPSecurityScheme":{"not":{"type":"object","properties":{"scheme":{"type":"string","enum":["bearer"]}}},"type":"object","required":["scheme","type"],"properties":{"scheme":{"type":"string"},"description":{"type":"string"},"type":{"type":"string","enum":["http"]}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"additionalProperties":false},"BearerHTTPSecurityScheme":{"type":"object","required":["type","scheme"],"properties":{"scheme":{"type":"string","enum":["bearer"]},"bearerFormat":{"type":"string"},"type":{"type":"string","enum":["http"]},"description":{"type":"string"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"additionalProperties":false},"APIKeyHTTPSecurityScheme":{"type":"object","required":["type","name","in"],"properties":{"type":{"type":"string","enum":["httpApiKey"]},"name":{"type":"string"},"in":{"type":"string","enum":["header","query","cookie"]},"description":{"type":"string"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"additionalProperties":false},"oauth2Flows":{"type":"object","required":["type","flows"],"properties":{"type":{"type":"string","enum":["oauth2"]},"description":{"type":"string"},"flows":{"type":"object","properties":{"implicit":{"allOf":[{"$ref":"#/definitions/oauth2Flow"},{"required":["authorizationUrl","scopes"]},{"not":{"required":["tokenUrl"]}}]},"password":{"allOf":[{"$ref":"#/definitions/oauth2Flow"},{"required":["tokenUrl","scopes"]},{"not":{"required":["authorizationUrl"]}}]},"clientCredentials":{"allOf":[{"$ref":"#/definitions/oauth2Flow"},{"required":["tokenUrl","scopes"]},{"not":{"required":["authorizationUrl"]}}]},"authorizationCode":{"allOf":[{"$ref":"#/definitions/oauth2Flow"},{"required":["authorizationUrl","tokenUrl","scopes"]}]}},"additionalProperties":false,"minProperties":1}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}}},"oauth2Flow":{"type":"object","properties":{"authorizationUrl":{"type":"string","format":"uri"},"tokenUrl":{"type":"string","format":"uri"},"refreshUrl":{"type":"string","format":"uri"},"scopes":{"$ref":"#/definitions/oauth2Scopes"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"additionalProperties":false},"oauth2Scopes":{"type":"object","additionalProperties":{"type":"string"}},"openIdConnect":{"type":"object","required":["type","openIdConnectUrl"],"properties":{"type":{"type":"string","enum":["openIdConnect"]},"description":{"type":"string"},"openIdConnectUrl":{"type":"string","format":"uri"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"additionalProperties":false},"SecurityRequirement":{"type":"object","additionalProperties":{"type":"array","items":{"type":"string"},"uniqueItems":true}}}}');
 
 /***/ }),
 
@@ -38,7 +37,7 @@ module.exports = JSON.parse("{\"title\":\"AsyncAPI 2.0.0-rc1 schema.\",\"$schema
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse("{\"title\":\"AsyncAPI 2.0.0-rc2 schema.\",\"$schema\":\"http://json-schema.org/draft-07/schema#\",\"type\":\"object\",\"required\":[\"asyncapi\",\"info\",\"channels\"],\"additionalProperties\":false,\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"properties\":{\"asyncapi\":{\"type\":\"string\",\"enum\":[\"2.0.0-rc2\"],\"description\":\"The AsyncAPI specification version of this document.\"},\"id\":{\"type\":\"string\",\"description\":\"A unique id representing the application.\",\"format\":\"uri\"},\"info\":{\"$ref\":\"#/definitions/info\"},\"servers\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/server\"}},\"defaultContentType\":{\"type\":\"string\"},\"channels\":{\"$ref\":\"#/definitions/channels\"},\"components\":{\"$ref\":\"#/definitions/components\"},\"tags\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/tag\"},\"uniqueItems\":true},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"}},\"definitions\":{\"Reference\":{\"type\":\"object\",\"required\":[\"$ref\"],\"properties\":{\"$ref\":{\"$ref\":\"#/definitions/ReferenceObject\"}}},\"ReferenceObject\":{\"type\":\"string\",\"format\":\"uri-reference\"},\"info\":{\"type\":\"object\",\"description\":\"General information about the API.\",\"required\":[\"version\",\"title\"],\"additionalProperties\":false,\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"properties\":{\"title\":{\"type\":\"string\",\"description\":\"A unique and precise title of the API.\"},\"version\":{\"type\":\"string\",\"description\":\"A semantic version number of the API.\"},\"description\":{\"type\":\"string\",\"description\":\"A longer description of the API. Should be different from the title. CommonMark is allowed.\"},\"termsOfService\":{\"type\":\"string\",\"description\":\"A URL to the Terms of Service for the API. MUST be in the format of a URL.\",\"format\":\"uri\"},\"contact\":{\"$ref\":\"#/definitions/contact\"},\"license\":{\"$ref\":\"#/definitions/license\"}}},\"contact\":{\"type\":\"object\",\"description\":\"Contact information for the owners of the API.\",\"additionalProperties\":false,\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"The identifying name of the contact person/organization.\"},\"url\":{\"type\":\"string\",\"description\":\"The URL pointing to the contact information.\",\"format\":\"uri\"},\"email\":{\"type\":\"string\",\"description\":\"The email address of the contact person/organization.\",\"format\":\"email\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}}},\"license\":{\"type\":\"object\",\"required\":[\"name\"],\"additionalProperties\":false,\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"The name of the license type. It's encouraged to use an OSI compatible license.\"},\"url\":{\"type\":\"string\",\"description\":\"The URL pointing to the license.\",\"format\":\"uri\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}}},\"server\":{\"type\":\"object\",\"description\":\"An object representing a Server.\",\"required\":[\"url\",\"protocol\"],\"additionalProperties\":false,\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"properties\":{\"url\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"protocol\":{\"type\":\"string\",\"description\":\"The transfer protocol.\"},\"protocolVersion\":{\"type\":\"string\"},\"variables\":{\"$ref\":\"#/definitions/serverVariables\"},\"security\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/SecurityRequirement\"}},\"bindings\":{\"$ref\":\"#/definitions/bindingsObject\"}}},\"serverVariables\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/serverVariable\"}},\"serverVariable\":{\"type\":\"object\",\"description\":\"An object representing a Server Variable for server URL template substitution.\",\"minProperties\":1,\"additionalProperties\":false,\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"properties\":{\"enum\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"uniqueItems\":true},\"default\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"examples\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}}}},\"channels\":{\"type\":\"object\",\"propertyNames\":{\"type\":\"string\",\"format\":\"uri-template\",\"minLength\":1},\"additionalProperties\":{\"$ref\":\"#/definitions/channelItem\"}},\"components\":{\"type\":\"object\",\"description\":\"An object to hold a set of reusable objects for different aspects of the AsyncAPI Specification.\",\"additionalProperties\":false,\"properties\":{\"schemas\":{\"$ref\":\"#/definitions/schemas\"},\"messages\":{\"$ref\":\"#/definitions/messages\"},\"securitySchemes\":{\"type\":\"object\",\"patternProperties\":{\"^[\\\\w\\\\d\\\\.\\\\-_]+$\":{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/SecurityScheme\"}]}}},\"parameters\":{\"$ref\":\"#/definitions/parameters\"},\"correlationIds\":{\"type\":\"object\",\"patternProperties\":{\"^[\\\\w\\\\d\\\\.\\\\-_]+$\":{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/correlationId\"}]}}},\"operationTraits\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/operationTrait\"}},\"messageTraits\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/messageTrait\"}},\"serverBindings\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/bindingsObject\"}},\"channelBindings\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/bindingsObject\"}},\"operationBindings\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/bindingsObject\"}},\"messageBindings\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/bindingsObject\"}}}},\"schemas\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/schema\"},\"description\":\"JSON objects describing schemas the API uses.\"},\"messages\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/message\"},\"description\":\"JSON objects describing the messages being consumed and produced by the API.\"},\"parameters\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/parameter\"},\"description\":\"JSON objects describing re-usable channel parameters.\"},\"schema\":{\"allOf\":[{\"$ref\":\"http://json-schema.org/draft-07/schema#\"},{\"type\":\"object\",\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"properties\":{\"additionalProperties\":{\"$ref\":\"#/definitions/schema\"},\"items\":{\"anyOf\":[{\"$ref\":\"#/definitions/schema\"},{\"type\":\"array\",\"minItems\":1,\"items\":{\"$ref\":\"#/definitions/schema\"}}],\"default\":{}},\"allOf\":{\"type\":\"array\",\"minItems\":1,\"items\":{\"$ref\":\"#/definitions/schema\"}},\"oneOf\":{\"type\":\"array\",\"minItems\":2,\"items\":{\"$ref\":\"#/definitions/schema\"}},\"anyOf\":{\"type\":\"array\",\"minItems\":2,\"items\":{\"$ref\":\"#/definitions/schema\"}},\"not\":{\"$ref\":\"#/definitions/schema\"},\"properties\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/schema\"},\"default\":{}},\"patternProperties\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/schema\"},\"default\":{}},\"propertyNames\":{\"$ref\":\"#/definitions/schema\"},\"contains\":{\"$ref\":\"#/definitions/schema\"},\"discriminator\":{\"type\":\"string\"},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"},\"deprecated\":{\"type\":\"boolean\",\"default\":false}}}]},\"externalDocs\":{\"type\":\"object\",\"additionalProperties\":false,\"description\":\"information about external documentation\",\"required\":[\"url\"],\"properties\":{\"description\":{\"type\":\"string\"},\"url\":{\"type\":\"string\",\"format\":\"uri\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}}},\"channelItem\":{\"type\":\"object\",\"additionalProperties\":false,\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"minProperties\":1,\"properties\":{\"$ref\":{\"$ref\":\"#/definitions/ReferenceObject\"},\"parameters\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/parameter\"}},\"description\":{\"type\":\"string\",\"description\":\"A description of the channel.\"},\"publish\":{\"$ref\":\"#/definitions/operation\"},\"subscribe\":{\"$ref\":\"#/definitions/operation\"},\"deprecated\":{\"type\":\"boolean\",\"default\":false},\"bindings\":{\"$ref\":\"#/definitions/bindingsObject\"}}},\"parameter\":{\"additionalProperties\":false,\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"properties\":{\"description\":{\"type\":\"string\",\"description\":\"A brief description of the parameter. This could contain examples of use. GitHub Flavored Markdown is allowed.\"},\"schema\":{\"$ref\":\"#/definitions/schema\"},\"location\":{\"type\":\"string\",\"description\":\"A runtime expression that specifies the location of the parameter value\",\"pattern\":\"^\\\\$message\\\\.(header|payload)\\\\#(\\\\/(([^\\\\/~])|(~[01]))*)*\"},\"$ref\":{\"$ref\":\"#/definitions/ReferenceObject\"}}},\"operation\":{\"type\":\"object\",\"additionalProperties\":false,\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"properties\":{\"traits\":{\"type\":\"array\",\"items\":{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/operationTrait\"},{\"type\":\"array\",\"items\":[{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/operationTrait\"}]},{\"type\":\"object\",\"additionalItems\":true}]}]}},\"summary\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"tags\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/tag\"},\"uniqueItems\":true},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"},\"operationId\":{\"type\":\"string\"},\"bindings\":{\"$ref\":\"#/definitions/bindingsObject\"},\"message\":{\"$ref\":\"#/definitions/message\"}}},\"message\":{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"oneOf\":[{\"type\":\"object\",\"required\":[\"oneOf\"],\"additionalProperties\":false,\"properties\":{\"oneOf\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/message\"}}}},{\"type\":\"object\",\"additionalProperties\":false,\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"properties\":{\"schemaFormat\":{\"type\":\"string\"},\"contentType\":{\"type\":\"string\"},\"headers\":{\"$ref\":\"#/definitions/schema\"},\"payload\":{},\"correlationId\":{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/correlationId\"}]},\"tags\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/tag\"},\"uniqueItems\":true},\"summary\":{\"type\":\"string\",\"description\":\"A brief summary of the message.\"},\"name\":{\"type\":\"string\",\"description\":\"Name of the message.\"},\"title\":{\"type\":\"string\",\"description\":\"A human-friendly title for the message.\"},\"description\":{\"type\":\"string\",\"description\":\"A longer description of the message. CommonMark is allowed.\"},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"},\"deprecated\":{\"type\":\"boolean\",\"default\":false},\"examples\":{\"type\":\"array\",\"items\":{\"type\":\"object\"}},\"bindings\":{\"$ref\":\"#/definitions/bindingsObject\"},\"traits\":{\"type\":\"array\",\"items\":{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/messageTrait\"},{\"type\":\"array\",\"items\":[{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/messageTrait\"}]},{\"type\":\"object\",\"additionalItems\":true}]}]}}}}]}]},\"bindingsObject\":{\"type\":\"object\",\"additionalProperties\":true,\"properties\":{\"http\":{},\"ws\":{},\"amqp\":{},\"amqp1\":{},\"mqtt\":{},\"mqtt5\":{},\"kafka\":{},\"nats\":{},\"jms\":{},\"sns\":{},\"sqs\":{},\"stomp\":{},\"redis\":{}}},\"correlationId\":{\"type\":\"object\",\"required\":[\"location\"],\"additionalProperties\":false,\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"properties\":{\"description\":{\"type\":\"string\",\"description\":\"A optional description of the correlation ID. GitHub Flavored Markdown is allowed.\"},\"location\":{\"type\":\"string\",\"description\":\"A runtime expression that specifies the location of the correlation ID\",\"pattern\":\"^\\\\$message\\\\.(header|payload)\\\\#(\\\\/(([^\\\\/~])|(~[01]))*)*\"}}},\"specificationExtension\":{\"description\":\"Any property starting with x- is valid.\",\"additionalProperties\":true,\"additionalItems\":true},\"tag\":{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"name\"],\"properties\":{\"name\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}}},\"operationTrait\":{\"type\":\"object\",\"additionalProperties\":false,\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"properties\":{\"summary\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"tags\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/tag\"},\"uniqueItems\":true},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"},\"operationId\":{\"type\":\"string\"},\"bindings\":{\"$ref\":\"#/definitions/bindingsObject\"}}},\"messageTrait\":{\"type\":\"object\",\"additionalProperties\":false,\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"properties\":{\"schemaFormat\":{\"type\":\"string\"},\"contentType\":{\"type\":\"string\"},\"headers\":{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/schema\"}]},\"correlationId\":{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/correlationId\"}]},\"tags\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/tag\"},\"uniqueItems\":true},\"summary\":{\"type\":\"string\",\"description\":\"A brief summary of the message.\"},\"name\":{\"type\":\"string\",\"description\":\"Name of the message.\"},\"title\":{\"type\":\"string\",\"description\":\"A human-friendly title for the message.\"},\"description\":{\"type\":\"string\",\"description\":\"A longer description of the message. CommonMark is allowed.\"},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"},\"deprecated\":{\"type\":\"boolean\",\"default\":false},\"examples\":{\"type\":\"array\",\"items\":{\"type\":\"object\"}},\"bindings\":{\"$ref\":\"#/definitions/bindingsObject\"}}},\"SecurityScheme\":{\"oneOf\":[{\"$ref\":\"#/definitions/userPassword\"},{\"$ref\":\"#/definitions/apiKey\"},{\"$ref\":\"#/definitions/X509\"},{\"$ref\":\"#/definitions/symmetricEncryption\"},{\"$ref\":\"#/definitions/asymmetricEncryption\"},{\"$ref\":\"#/definitions/HTTPSecurityScheme\"},{\"$ref\":\"#/definitions/oauth2Flows\"},{\"$ref\":\"#/definitions/openIdConnect\"}]},\"userPassword\":{\"type\":\"object\",\"required\":[\"type\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"userPassword\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"additionalProperties\":false},\"apiKey\":{\"type\":\"object\",\"required\":[\"type\",\"in\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"apiKey\"]},\"in\":{\"type\":\"string\",\"enum\":[\"user\",\"password\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"additionalProperties\":false},\"X509\":{\"type\":\"object\",\"required\":[\"type\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"X509\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"additionalProperties\":false},\"symmetricEncryption\":{\"type\":\"object\",\"required\":[\"type\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"symmetricEncryption\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"additionalProperties\":false},\"asymmetricEncryption\":{\"type\":\"object\",\"required\":[\"type\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"asymmetricEncryption\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"additionalProperties\":false},\"HTTPSecurityScheme\":{\"oneOf\":[{\"$ref\":\"#/definitions/NonBearerHTTPSecurityScheme\"},{\"$ref\":\"#/definitions/BearerHTTPSecurityScheme\"},{\"$ref\":\"#/definitions/APIKeyHTTPSecurityScheme\"}]},\"NonBearerHTTPSecurityScheme\":{\"not\":{\"type\":\"object\",\"properties\":{\"scheme\":{\"type\":\"string\",\"enum\":[\"bearer\"]}}},\"type\":\"object\",\"required\":[\"scheme\",\"type\"],\"properties\":{\"scheme\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"type\":{\"type\":\"string\",\"enum\":[\"http\"]}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"additionalProperties\":false},\"BearerHTTPSecurityScheme\":{\"type\":\"object\",\"required\":[\"type\",\"scheme\"],\"properties\":{\"scheme\":{\"type\":\"string\",\"enum\":[\"bearer\"]},\"bearerFormat\":{\"type\":\"string\"},\"type\":{\"type\":\"string\",\"enum\":[\"http\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"additionalProperties\":false},\"APIKeyHTTPSecurityScheme\":{\"type\":\"object\",\"required\":[\"type\",\"name\",\"in\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"httpApiKey\"]},\"name\":{\"type\":\"string\"},\"in\":{\"type\":\"string\",\"enum\":[\"header\",\"query\",\"cookie\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"additionalProperties\":false},\"oauth2Flows\":{\"type\":\"object\",\"required\":[\"type\",\"flows\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"oauth2\"]},\"description\":{\"type\":\"string\"},\"flows\":{\"type\":\"object\",\"properties\":{\"implicit\":{\"allOf\":[{\"$ref\":\"#/definitions/oauth2Flow\"},{\"required\":[\"authorizationUrl\",\"scopes\"]},{\"not\":{\"required\":[\"tokenUrl\"]}}]},\"password\":{\"allOf\":[{\"$ref\":\"#/definitions/oauth2Flow\"},{\"required\":[\"tokenUrl\",\"scopes\"]},{\"not\":{\"required\":[\"authorizationUrl\"]}}]},\"clientCredentials\":{\"allOf\":[{\"$ref\":\"#/definitions/oauth2Flow\"},{\"required\":[\"tokenUrl\",\"scopes\"]},{\"not\":{\"required\":[\"authorizationUrl\"]}}]},\"authorizationCode\":{\"allOf\":[{\"$ref\":\"#/definitions/oauth2Flow\"},{\"required\":[\"authorizationUrl\",\"tokenUrl\",\"scopes\"]}]}},\"additionalProperties\":false,\"minProperties\":1}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}}},\"oauth2Flow\":{\"type\":\"object\",\"properties\":{\"authorizationUrl\":{\"type\":\"string\",\"format\":\"uri\"},\"tokenUrl\":{\"type\":\"string\",\"format\":\"uri\"},\"refreshUrl\":{\"type\":\"string\",\"format\":\"uri\"},\"scopes\":{\"$ref\":\"#/definitions/oauth2Scopes\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"additionalProperties\":false},\"oauth2Scopes\":{\"type\":\"object\",\"additionalProperties\":{\"type\":\"string\"}},\"openIdConnect\":{\"type\":\"object\",\"required\":[\"type\",\"openIdConnectUrl\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"openIdConnect\"]},\"description\":{\"type\":\"string\"},\"openIdConnectUrl\":{\"type\":\"string\",\"format\":\"uri\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"additionalProperties\":false},\"SecurityRequirement\":{\"type\":\"object\",\"additionalProperties\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"uniqueItems\":true}}}}");
+module.exports = JSON.parse('{"title":"AsyncAPI 2.0.0-rc2 schema.","$schema":"http://json-schema.org/draft-07/schema#","type":"object","required":["asyncapi","info","channels"],"additionalProperties":false,"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"properties":{"asyncapi":{"type":"string","enum":["2.0.0-rc2"],"description":"The AsyncAPI specification version of this document."},"id":{"type":"string","description":"A unique id representing the application.","format":"uri"},"info":{"$ref":"#/definitions/info"},"servers":{"type":"object","additionalProperties":{"$ref":"#/definitions/server"}},"defaultContentType":{"type":"string"},"channels":{"$ref":"#/definitions/channels"},"components":{"$ref":"#/definitions/components"},"tags":{"type":"array","items":{"$ref":"#/definitions/tag"},"uniqueItems":true},"externalDocs":{"$ref":"#/definitions/externalDocs"}},"definitions":{"Reference":{"type":"object","required":["$ref"],"properties":{"$ref":{"$ref":"#/definitions/ReferenceObject"}}},"ReferenceObject":{"type":"string","format":"uri-reference"},"info":{"type":"object","description":"General information about the API.","required":["version","title"],"additionalProperties":false,"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"properties":{"title":{"type":"string","description":"A unique and precise title of the API."},"version":{"type":"string","description":"A semantic version number of the API."},"description":{"type":"string","description":"A longer description of the API. Should be different from the title. CommonMark is allowed."},"termsOfService":{"type":"string","description":"A URL to the Terms of Service for the API. MUST be in the format of a URL.","format":"uri"},"contact":{"$ref":"#/definitions/contact"},"license":{"$ref":"#/definitions/license"}}},"contact":{"type":"object","description":"Contact information for the owners of the API.","additionalProperties":false,"properties":{"name":{"type":"string","description":"The identifying name of the contact person/organization."},"url":{"type":"string","description":"The URL pointing to the contact information.","format":"uri"},"email":{"type":"string","description":"The email address of the contact person/organization.","format":"email"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}}},"license":{"type":"object","required":["name"],"additionalProperties":false,"properties":{"name":{"type":"string","description":"The name of the license type. It\'s encouraged to use an OSI compatible license."},"url":{"type":"string","description":"The URL pointing to the license.","format":"uri"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}}},"server":{"type":"object","description":"An object representing a Server.","required":["url","protocol"],"additionalProperties":false,"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"properties":{"url":{"type":"string"},"description":{"type":"string"},"protocol":{"type":"string","description":"The transfer protocol."},"protocolVersion":{"type":"string"},"variables":{"$ref":"#/definitions/serverVariables"},"security":{"type":"array","items":{"$ref":"#/definitions/SecurityRequirement"}},"bindings":{"$ref":"#/definitions/bindingsObject"}}},"serverVariables":{"type":"object","additionalProperties":{"$ref":"#/definitions/serverVariable"}},"serverVariable":{"type":"object","description":"An object representing a Server Variable for server URL template substitution.","minProperties":1,"additionalProperties":false,"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"properties":{"enum":{"type":"array","items":{"type":"string"},"uniqueItems":true},"default":{"type":"string"},"description":{"type":"string"},"examples":{"type":"array","items":{"type":"string"}}}},"channels":{"type":"object","propertyNames":{"type":"string","format":"uri-template","minLength":1},"additionalProperties":{"$ref":"#/definitions/channelItem"}},"components":{"type":"object","description":"An object to hold a set of reusable objects for different aspects of the AsyncAPI Specification.","additionalProperties":false,"properties":{"schemas":{"$ref":"#/definitions/schemas"},"messages":{"$ref":"#/definitions/messages"},"securitySchemes":{"type":"object","patternProperties":{"^[\\\\w\\\\d\\\\.\\\\-_]+$":{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/SecurityScheme"}]}}},"parameters":{"$ref":"#/definitions/parameters"},"correlationIds":{"type":"object","patternProperties":{"^[\\\\w\\\\d\\\\.\\\\-_]+$":{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/correlationId"}]}}},"operationTraits":{"type":"object","additionalProperties":{"$ref":"#/definitions/operationTrait"}},"messageTraits":{"type":"object","additionalProperties":{"$ref":"#/definitions/messageTrait"}},"serverBindings":{"type":"object","additionalProperties":{"$ref":"#/definitions/bindingsObject"}},"channelBindings":{"type":"object","additionalProperties":{"$ref":"#/definitions/bindingsObject"}},"operationBindings":{"type":"object","additionalProperties":{"$ref":"#/definitions/bindingsObject"}},"messageBindings":{"type":"object","additionalProperties":{"$ref":"#/definitions/bindingsObject"}}}},"schemas":{"type":"object","additionalProperties":{"$ref":"#/definitions/schema"},"description":"JSON objects describing schemas the API uses."},"messages":{"type":"object","additionalProperties":{"$ref":"#/definitions/message"},"description":"JSON objects describing the messages being consumed and produced by the API."},"parameters":{"type":"object","additionalProperties":{"$ref":"#/definitions/parameter"},"description":"JSON objects describing re-usable channel parameters."},"schema":{"allOf":[{"$ref":"http://json-schema.org/draft-07/schema#"},{"type":"object","patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"properties":{"additionalProperties":{"$ref":"#/definitions/schema"},"items":{"anyOf":[{"$ref":"#/definitions/schema"},{"type":"array","minItems":1,"items":{"$ref":"#/definitions/schema"}}],"default":{}},"allOf":{"type":"array","minItems":1,"items":{"$ref":"#/definitions/schema"}},"oneOf":{"type":"array","minItems":2,"items":{"$ref":"#/definitions/schema"}},"anyOf":{"type":"array","minItems":2,"items":{"$ref":"#/definitions/schema"}},"not":{"$ref":"#/definitions/schema"},"properties":{"type":"object","additionalProperties":{"$ref":"#/definitions/schema"},"default":{}},"patternProperties":{"type":"object","additionalProperties":{"$ref":"#/definitions/schema"},"default":{}},"propertyNames":{"$ref":"#/definitions/schema"},"contains":{"$ref":"#/definitions/schema"},"discriminator":{"type":"string"},"externalDocs":{"$ref":"#/definitions/externalDocs"},"deprecated":{"type":"boolean","default":false}}}]},"externalDocs":{"type":"object","additionalProperties":false,"description":"information about external documentation","required":["url"],"properties":{"description":{"type":"string"},"url":{"type":"string","format":"uri"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}}},"channelItem":{"type":"object","additionalProperties":false,"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"minProperties":1,"properties":{"$ref":{"$ref":"#/definitions/ReferenceObject"},"parameters":{"type":"object","additionalProperties":{"$ref":"#/definitions/parameter"}},"description":{"type":"string","description":"A description of the channel."},"publish":{"$ref":"#/definitions/operation"},"subscribe":{"$ref":"#/definitions/operation"},"deprecated":{"type":"boolean","default":false},"bindings":{"$ref":"#/definitions/bindingsObject"}}},"parameter":{"additionalProperties":false,"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"properties":{"description":{"type":"string","description":"A brief description of the parameter. This could contain examples of use. GitHub Flavored Markdown is allowed."},"schema":{"$ref":"#/definitions/schema"},"location":{"type":"string","description":"A runtime expression that specifies the location of the parameter value","pattern":"^\\\\$message\\\\.(header|payload)\\\\#(\\\\/(([^\\\\/~])|(~[01]))*)*"},"$ref":{"$ref":"#/definitions/ReferenceObject"}}},"operation":{"type":"object","additionalProperties":false,"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"properties":{"traits":{"type":"array","items":{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/operationTrait"},{"type":"array","items":[{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/operationTrait"}]},{"type":"object","additionalItems":true}]}]}},"summary":{"type":"string"},"description":{"type":"string"},"tags":{"type":"array","items":{"$ref":"#/definitions/tag"},"uniqueItems":true},"externalDocs":{"$ref":"#/definitions/externalDocs"},"operationId":{"type":"string"},"bindings":{"$ref":"#/definitions/bindingsObject"},"message":{"$ref":"#/definitions/message"}}},"message":{"oneOf":[{"$ref":"#/definitions/Reference"},{"oneOf":[{"type":"object","required":["oneOf"],"additionalProperties":false,"properties":{"oneOf":{"type":"array","items":{"$ref":"#/definitions/message"}}}},{"type":"object","additionalProperties":false,"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"properties":{"schemaFormat":{"type":"string"},"contentType":{"type":"string"},"headers":{"$ref":"#/definitions/schema"},"payload":{},"correlationId":{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/correlationId"}]},"tags":{"type":"array","items":{"$ref":"#/definitions/tag"},"uniqueItems":true},"summary":{"type":"string","description":"A brief summary of the message."},"name":{"type":"string","description":"Name of the message."},"title":{"type":"string","description":"A human-friendly title for the message."},"description":{"type":"string","description":"A longer description of the message. CommonMark is allowed."},"externalDocs":{"$ref":"#/definitions/externalDocs"},"deprecated":{"type":"boolean","default":false},"examples":{"type":"array","items":{"type":"object"}},"bindings":{"$ref":"#/definitions/bindingsObject"},"traits":{"type":"array","items":{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/messageTrait"},{"type":"array","items":[{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/messageTrait"}]},{"type":"object","additionalItems":true}]}]}}}}]}]},"bindingsObject":{"type":"object","additionalProperties":true,"properties":{"http":{},"ws":{},"amqp":{},"amqp1":{},"mqtt":{},"mqtt5":{},"kafka":{},"nats":{},"jms":{},"sns":{},"sqs":{},"stomp":{},"redis":{}}},"correlationId":{"type":"object","required":["location"],"additionalProperties":false,"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"properties":{"description":{"type":"string","description":"A optional description of the correlation ID. GitHub Flavored Markdown is allowed."},"location":{"type":"string","description":"A runtime expression that specifies the location of the correlation ID","pattern":"^\\\\$message\\\\.(header|payload)\\\\#(\\\\/(([^\\\\/~])|(~[01]))*)*"}}},"specificationExtension":{"description":"Any property starting with x- is valid.","additionalProperties":true,"additionalItems":true},"tag":{"type":"object","additionalProperties":false,"required":["name"],"properties":{"name":{"type":"string"},"description":{"type":"string"},"externalDocs":{"$ref":"#/definitions/externalDocs"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}}},"operationTrait":{"type":"object","additionalProperties":false,"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"properties":{"summary":{"type":"string"},"description":{"type":"string"},"tags":{"type":"array","items":{"$ref":"#/definitions/tag"},"uniqueItems":true},"externalDocs":{"$ref":"#/definitions/externalDocs"},"operationId":{"type":"string"},"bindings":{"$ref":"#/definitions/bindingsObject"}}},"messageTrait":{"type":"object","additionalProperties":false,"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"properties":{"schemaFormat":{"type":"string"},"contentType":{"type":"string"},"headers":{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/schema"}]},"correlationId":{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/correlationId"}]},"tags":{"type":"array","items":{"$ref":"#/definitions/tag"},"uniqueItems":true},"summary":{"type":"string","description":"A brief summary of the message."},"name":{"type":"string","description":"Name of the message."},"title":{"type":"string","description":"A human-friendly title for the message."},"description":{"type":"string","description":"A longer description of the message. CommonMark is allowed."},"externalDocs":{"$ref":"#/definitions/externalDocs"},"deprecated":{"type":"boolean","default":false},"examples":{"type":"array","items":{"type":"object"}},"bindings":{"$ref":"#/definitions/bindingsObject"}}},"SecurityScheme":{"oneOf":[{"$ref":"#/definitions/userPassword"},{"$ref":"#/definitions/apiKey"},{"$ref":"#/definitions/X509"},{"$ref":"#/definitions/symmetricEncryption"},{"$ref":"#/definitions/asymmetricEncryption"},{"$ref":"#/definitions/HTTPSecurityScheme"},{"$ref":"#/definitions/oauth2Flows"},{"$ref":"#/definitions/openIdConnect"}]},"userPassword":{"type":"object","required":["type"],"properties":{"type":{"type":"string","enum":["userPassword"]},"description":{"type":"string"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"additionalProperties":false},"apiKey":{"type":"object","required":["type","in"],"properties":{"type":{"type":"string","enum":["apiKey"]},"in":{"type":"string","enum":["user","password"]},"description":{"type":"string"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"additionalProperties":false},"X509":{"type":"object","required":["type"],"properties":{"type":{"type":"string","enum":["X509"]},"description":{"type":"string"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"additionalProperties":false},"symmetricEncryption":{"type":"object","required":["type"],"properties":{"type":{"type":"string","enum":["symmetricEncryption"]},"description":{"type":"string"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"additionalProperties":false},"asymmetricEncryption":{"type":"object","required":["type"],"properties":{"type":{"type":"string","enum":["asymmetricEncryption"]},"description":{"type":"string"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"additionalProperties":false},"HTTPSecurityScheme":{"oneOf":[{"$ref":"#/definitions/NonBearerHTTPSecurityScheme"},{"$ref":"#/definitions/BearerHTTPSecurityScheme"},{"$ref":"#/definitions/APIKeyHTTPSecurityScheme"}]},"NonBearerHTTPSecurityScheme":{"not":{"type":"object","properties":{"scheme":{"type":"string","enum":["bearer"]}}},"type":"object","required":["scheme","type"],"properties":{"scheme":{"type":"string"},"description":{"type":"string"},"type":{"type":"string","enum":["http"]}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"additionalProperties":false},"BearerHTTPSecurityScheme":{"type":"object","required":["type","scheme"],"properties":{"scheme":{"type":"string","enum":["bearer"]},"bearerFormat":{"type":"string"},"type":{"type":"string","enum":["http"]},"description":{"type":"string"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"additionalProperties":false},"APIKeyHTTPSecurityScheme":{"type":"object","required":["type","name","in"],"properties":{"type":{"type":"string","enum":["httpApiKey"]},"name":{"type":"string"},"in":{"type":"string","enum":["header","query","cookie"]},"description":{"type":"string"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"additionalProperties":false},"oauth2Flows":{"type":"object","required":["type","flows"],"properties":{"type":{"type":"string","enum":["oauth2"]},"description":{"type":"string"},"flows":{"type":"object","properties":{"implicit":{"allOf":[{"$ref":"#/definitions/oauth2Flow"},{"required":["authorizationUrl","scopes"]},{"not":{"required":["tokenUrl"]}}]},"password":{"allOf":[{"$ref":"#/definitions/oauth2Flow"},{"required":["tokenUrl","scopes"]},{"not":{"required":["authorizationUrl"]}}]},"clientCredentials":{"allOf":[{"$ref":"#/definitions/oauth2Flow"},{"required":["tokenUrl","scopes"]},{"not":{"required":["authorizationUrl"]}}]},"authorizationCode":{"allOf":[{"$ref":"#/definitions/oauth2Flow"},{"required":["authorizationUrl","tokenUrl","scopes"]}]}},"additionalProperties":false,"minProperties":1}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}}},"oauth2Flow":{"type":"object","properties":{"authorizationUrl":{"type":"string","format":"uri"},"tokenUrl":{"type":"string","format":"uri"},"refreshUrl":{"type":"string","format":"uri"},"scopes":{"$ref":"#/definitions/oauth2Scopes"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"additionalProperties":false},"oauth2Scopes":{"type":"object","additionalProperties":{"type":"string"}},"openIdConnect":{"type":"object","required":["type","openIdConnectUrl"],"properties":{"type":{"type":"string","enum":["openIdConnect"]},"description":{"type":"string"},"openIdConnectUrl":{"type":"string","format":"uri"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"additionalProperties":false},"SecurityRequirement":{"type":"object","additionalProperties":{"type":"array","items":{"type":"string"},"uniqueItems":true}}}}');
 
 /***/ }),
 
@@ -46,7 +45,7 @@ module.exports = JSON.parse("{\"title\":\"AsyncAPI 2.0.0-rc2 schema.\",\"$schema
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse("{\"title\":\"AsyncAPI 2.0.0 schema.\",\"$schema\":\"http://json-schema.org/draft-07/schema#\",\"type\":\"object\",\"required\":[\"asyncapi\",\"info\",\"channels\"],\"additionalProperties\":false,\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"properties\":{\"asyncapi\":{\"type\":\"string\",\"enum\":[\"2.0.0\"],\"description\":\"The AsyncAPI specification version of this document.\"},\"id\":{\"type\":\"string\",\"description\":\"A unique id representing the application.\",\"format\":\"uri\"},\"info\":{\"$ref\":\"#/definitions/info\"},\"servers\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/server\"}},\"defaultContentType\":{\"type\":\"string\"},\"channels\":{\"$ref\":\"#/definitions/channels\"},\"components\":{\"$ref\":\"#/definitions/components\"},\"tags\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/tag\"},\"uniqueItems\":true},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"}},\"definitions\":{\"Reference\":{\"type\":\"object\",\"required\":[\"$ref\"],\"properties\":{\"$ref\":{\"$ref\":\"#/definitions/ReferenceObject\"}}},\"ReferenceObject\":{\"type\":\"string\",\"format\":\"uri-reference\"},\"info\":{\"type\":\"object\",\"description\":\"General information about the API.\",\"required\":[\"version\",\"title\"],\"additionalProperties\":false,\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"properties\":{\"title\":{\"type\":\"string\",\"description\":\"A unique and precise title of the API.\"},\"version\":{\"type\":\"string\",\"description\":\"A semantic version number of the API.\"},\"description\":{\"type\":\"string\",\"description\":\"A longer description of the API. Should be different from the title. CommonMark is allowed.\"},\"termsOfService\":{\"type\":\"string\",\"description\":\"A URL to the Terms of Service for the API. MUST be in the format of a URL.\",\"format\":\"uri\"},\"contact\":{\"$ref\":\"#/definitions/contact\"},\"license\":{\"$ref\":\"#/definitions/license\"}}},\"contact\":{\"type\":\"object\",\"description\":\"Contact information for the owners of the API.\",\"additionalProperties\":false,\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"The identifying name of the contact person/organization.\"},\"url\":{\"type\":\"string\",\"description\":\"The URL pointing to the contact information.\",\"format\":\"uri\"},\"email\":{\"type\":\"string\",\"description\":\"The email address of the contact person/organization.\",\"format\":\"email\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}}},\"license\":{\"type\":\"object\",\"required\":[\"name\"],\"additionalProperties\":false,\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"The name of the license type. It's encouraged to use an OSI compatible license.\"},\"url\":{\"type\":\"string\",\"description\":\"The URL pointing to the license.\",\"format\":\"uri\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}}},\"server\":{\"type\":\"object\",\"description\":\"An object representing a Server.\",\"required\":[\"url\",\"protocol\"],\"additionalProperties\":false,\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"properties\":{\"url\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"protocol\":{\"type\":\"string\",\"description\":\"The transfer protocol.\"},\"protocolVersion\":{\"type\":\"string\"},\"variables\":{\"$ref\":\"#/definitions/serverVariables\"},\"security\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/SecurityRequirement\"}},\"bindings\":{\"$ref\":\"#/definitions/bindingsObject\"}}},\"serverVariables\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/serverVariable\"}},\"serverVariable\":{\"type\":\"object\",\"description\":\"An object representing a Server Variable for server URL template substitution.\",\"additionalProperties\":false,\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"properties\":{\"enum\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"uniqueItems\":true},\"default\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"examples\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}}}},\"channels\":{\"type\":\"object\",\"propertyNames\":{\"type\":\"string\",\"format\":\"uri-template\",\"minLength\":1},\"additionalProperties\":{\"$ref\":\"#/definitions/channelItem\"}},\"components\":{\"type\":\"object\",\"description\":\"An object to hold a set of reusable objects for different aspects of the AsyncAPI Specification.\",\"additionalProperties\":false,\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"properties\":{\"schemas\":{\"$ref\":\"#/definitions/schemas\"},\"messages\":{\"$ref\":\"#/definitions/messages\"},\"securitySchemes\":{\"type\":\"object\",\"patternProperties\":{\"^[\\\\w\\\\d\\\\.\\\\-_]+$\":{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/SecurityScheme\"}]}}},\"parameters\":{\"$ref\":\"#/definitions/parameters\"},\"correlationIds\":{\"type\":\"object\",\"patternProperties\":{\"^[\\\\w\\\\d\\\\.\\\\-_]+$\":{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/correlationId\"}]}}},\"operationTraits\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/operationTrait\"}},\"messageTraits\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/messageTrait\"}},\"serverBindings\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/bindingsObject\"}},\"channelBindings\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/bindingsObject\"}},\"operationBindings\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/bindingsObject\"}},\"messageBindings\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/bindingsObject\"}}}},\"schemas\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/schema\"},\"description\":\"JSON objects describing schemas the API uses.\"},\"messages\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/message\"},\"description\":\"JSON objects describing the messages being consumed and produced by the API.\"},\"parameters\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/parameter\"},\"description\":\"JSON objects describing re-usable channel parameters.\"},\"schema\":{\"allOf\":[{\"$ref\":\"http://json-schema.org/draft-07/schema#\"},{\"type\":\"object\",\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"properties\":{\"additionalProperties\":{\"anyOf\":[{\"$ref\":\"#/definitions/schema\"},{\"type\":\"boolean\"}],\"default\":{}},\"items\":{\"anyOf\":[{\"$ref\":\"#/definitions/schema\"},{\"type\":\"array\",\"minItems\":1,\"items\":{\"$ref\":\"#/definitions/schema\"}}],\"default\":{}},\"allOf\":{\"type\":\"array\",\"minItems\":1,\"items\":{\"$ref\":\"#/definitions/schema\"}},\"oneOf\":{\"type\":\"array\",\"minItems\":1,\"items\":{\"$ref\":\"#/definitions/schema\"}},\"anyOf\":{\"type\":\"array\",\"minItems\":1,\"items\":{\"$ref\":\"#/definitions/schema\"}},\"not\":{\"$ref\":\"#/definitions/schema\"},\"properties\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/schema\"},\"default\":{}},\"patternProperties\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/schema\"},\"default\":{}},\"propertyNames\":{\"$ref\":\"#/definitions/schema\"},\"contains\":{\"$ref\":\"#/definitions/schema\"},\"discriminator\":{\"type\":\"string\"},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"},\"deprecated\":{\"type\":\"boolean\",\"default\":false}}}]},\"externalDocs\":{\"type\":\"object\",\"additionalProperties\":false,\"description\":\"information about external documentation\",\"required\":[\"url\"],\"properties\":{\"description\":{\"type\":\"string\"},\"url\":{\"type\":\"string\",\"format\":\"uri\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}}},\"channelItem\":{\"type\":\"object\",\"additionalProperties\":false,\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"properties\":{\"$ref\":{\"$ref\":\"#/definitions/ReferenceObject\"},\"parameters\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/parameter\"}},\"description\":{\"type\":\"string\",\"description\":\"A description of the channel.\"},\"publish\":{\"$ref\":\"#/definitions/operation\"},\"subscribe\":{\"$ref\":\"#/definitions/operation\"},\"deprecated\":{\"type\":\"boolean\",\"default\":false},\"bindings\":{\"$ref\":\"#/definitions/bindingsObject\"}}},\"parameter\":{\"additionalProperties\":false,\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"properties\":{\"description\":{\"type\":\"string\",\"description\":\"A brief description of the parameter. This could contain examples of use. GitHub Flavored Markdown is allowed.\"},\"schema\":{\"$ref\":\"#/definitions/schema\"},\"location\":{\"type\":\"string\",\"description\":\"A runtime expression that specifies the location of the parameter value\",\"pattern\":\"^\\\\$message\\\\.(header|payload)\\\\#(\\\\/(([^\\\\/~])|(~[01]))*)*\"},\"$ref\":{\"$ref\":\"#/definitions/ReferenceObject\"}}},\"operation\":{\"type\":\"object\",\"additionalProperties\":false,\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"properties\":{\"traits\":{\"type\":\"array\",\"items\":{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/operationTrait\"},{\"type\":\"array\",\"items\":[{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/operationTrait\"}]},{\"type\":\"object\",\"additionalItems\":true}]}]}},\"summary\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"tags\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/tag\"},\"uniqueItems\":true},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"},\"operationId\":{\"type\":\"string\"},\"bindings\":{\"$ref\":\"#/definitions/bindingsObject\"},\"message\":{\"$ref\":\"#/definitions/message\"}}},\"message\":{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"oneOf\":[{\"type\":\"object\",\"required\":[\"oneOf\"],\"additionalProperties\":false,\"properties\":{\"oneOf\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/message\"}}}},{\"type\":\"object\",\"additionalProperties\":false,\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"properties\":{\"schemaFormat\":{\"type\":\"string\"},\"contentType\":{\"type\":\"string\"},\"headers\":{\"allOf\":[{\"$ref\":\"#/definitions/schema\"},{\"properties\":{\"type\":{\"const\":\"object\"}}}]},\"payload\":{},\"correlationId\":{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/correlationId\"}]},\"tags\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/tag\"},\"uniqueItems\":true},\"summary\":{\"type\":\"string\",\"description\":\"A brief summary of the message.\"},\"name\":{\"type\":\"string\",\"description\":\"Name of the message.\"},\"title\":{\"type\":\"string\",\"description\":\"A human-friendly title for the message.\"},\"description\":{\"type\":\"string\",\"description\":\"A longer description of the message. CommonMark is allowed.\"},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"},\"deprecated\":{\"type\":\"boolean\",\"default\":false},\"examples\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"additionalProperties\":false,\"properties\":{\"headers\":{\"type\":\"object\"},\"payload\":{}}}},\"bindings\":{\"$ref\":\"#/definitions/bindingsObject\"},\"traits\":{\"type\":\"array\",\"items\":{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/messageTrait\"},{\"type\":\"array\",\"items\":[{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/messageTrait\"}]},{\"type\":\"object\",\"additionalItems\":true}]}]}}}}]}]},\"bindingsObject\":{\"type\":\"object\",\"additionalProperties\":true,\"properties\":{\"http\":{},\"ws\":{},\"amqp\":{},\"amqp1\":{},\"mqtt\":{},\"mqtt5\":{},\"kafka\":{},\"nats\":{},\"jms\":{},\"sns\":{},\"sqs\":{},\"stomp\":{},\"redis\":{}}},\"correlationId\":{\"type\":\"object\",\"required\":[\"location\"],\"additionalProperties\":false,\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"properties\":{\"description\":{\"type\":\"string\",\"description\":\"A optional description of the correlation ID. GitHub Flavored Markdown is allowed.\"},\"location\":{\"type\":\"string\",\"description\":\"A runtime expression that specifies the location of the correlation ID\",\"pattern\":\"^\\\\$message\\\\.(header|payload)\\\\#(\\\\/(([^\\\\/~])|(~[01]))*)*\"}}},\"specificationExtension\":{\"description\":\"Any property starting with x- is valid.\",\"additionalProperties\":true,\"additionalItems\":true},\"tag\":{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"name\"],\"properties\":{\"name\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}}},\"operationTrait\":{\"type\":\"object\",\"additionalProperties\":false,\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"properties\":{\"summary\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"tags\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/tag\"},\"uniqueItems\":true},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"},\"operationId\":{\"type\":\"string\"},\"bindings\":{\"$ref\":\"#/definitions/bindingsObject\"}}},\"messageTrait\":{\"type\":\"object\",\"additionalProperties\":false,\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"properties\":{\"schemaFormat\":{\"type\":\"string\"},\"contentType\":{\"type\":\"string\"},\"headers\":{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/schema\"}]},\"correlationId\":{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/correlationId\"}]},\"tags\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/tag\"},\"uniqueItems\":true},\"summary\":{\"type\":\"string\",\"description\":\"A brief summary of the message.\"},\"name\":{\"type\":\"string\",\"description\":\"Name of the message.\"},\"title\":{\"type\":\"string\",\"description\":\"A human-friendly title for the message.\"},\"description\":{\"type\":\"string\",\"description\":\"A longer description of the message. CommonMark is allowed.\"},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"},\"deprecated\":{\"type\":\"boolean\",\"default\":false},\"examples\":{\"type\":\"array\",\"items\":{\"type\":\"object\"}},\"bindings\":{\"$ref\":\"#/definitions/bindingsObject\"}}},\"SecurityScheme\":{\"oneOf\":[{\"$ref\":\"#/definitions/userPassword\"},{\"$ref\":\"#/definitions/apiKey\"},{\"$ref\":\"#/definitions/X509\"},{\"$ref\":\"#/definitions/symmetricEncryption\"},{\"$ref\":\"#/definitions/asymmetricEncryption\"},{\"$ref\":\"#/definitions/HTTPSecurityScheme\"},{\"$ref\":\"#/definitions/oauth2Flows\"},{\"$ref\":\"#/definitions/openIdConnect\"}]},\"userPassword\":{\"type\":\"object\",\"required\":[\"type\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"userPassword\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"additionalProperties\":false},\"apiKey\":{\"type\":\"object\",\"required\":[\"type\",\"in\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"apiKey\"]},\"in\":{\"type\":\"string\",\"enum\":[\"user\",\"password\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"additionalProperties\":false},\"X509\":{\"type\":\"object\",\"required\":[\"type\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"X509\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"additionalProperties\":false},\"symmetricEncryption\":{\"type\":\"object\",\"required\":[\"type\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"symmetricEncryption\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"additionalProperties\":false},\"asymmetricEncryption\":{\"type\":\"object\",\"required\":[\"type\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"asymmetricEncryption\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"additionalProperties\":false},\"HTTPSecurityScheme\":{\"oneOf\":[{\"$ref\":\"#/definitions/NonBearerHTTPSecurityScheme\"},{\"$ref\":\"#/definitions/BearerHTTPSecurityScheme\"},{\"$ref\":\"#/definitions/APIKeyHTTPSecurityScheme\"}]},\"NonBearerHTTPSecurityScheme\":{\"not\":{\"type\":\"object\",\"properties\":{\"scheme\":{\"type\":\"string\",\"enum\":[\"bearer\"]}}},\"type\":\"object\",\"required\":[\"scheme\",\"type\"],\"properties\":{\"scheme\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"type\":{\"type\":\"string\",\"enum\":[\"http\"]}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"additionalProperties\":false},\"BearerHTTPSecurityScheme\":{\"type\":\"object\",\"required\":[\"type\",\"scheme\"],\"properties\":{\"scheme\":{\"type\":\"string\",\"enum\":[\"bearer\"]},\"bearerFormat\":{\"type\":\"string\"},\"type\":{\"type\":\"string\",\"enum\":[\"http\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"additionalProperties\":false},\"APIKeyHTTPSecurityScheme\":{\"type\":\"object\",\"required\":[\"type\",\"name\",\"in\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"httpApiKey\"]},\"name\":{\"type\":\"string\"},\"in\":{\"type\":\"string\",\"enum\":[\"header\",\"query\",\"cookie\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"additionalProperties\":false},\"oauth2Flows\":{\"type\":\"object\",\"required\":[\"type\",\"flows\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"oauth2\"]},\"description\":{\"type\":\"string\"},\"flows\":{\"type\":\"object\",\"properties\":{\"implicit\":{\"allOf\":[{\"$ref\":\"#/definitions/oauth2Flow\"},{\"required\":[\"authorizationUrl\",\"scopes\"]},{\"not\":{\"required\":[\"tokenUrl\"]}}]},\"password\":{\"allOf\":[{\"$ref\":\"#/definitions/oauth2Flow\"},{\"required\":[\"tokenUrl\",\"scopes\"]},{\"not\":{\"required\":[\"authorizationUrl\"]}}]},\"clientCredentials\":{\"allOf\":[{\"$ref\":\"#/definitions/oauth2Flow\"},{\"required\":[\"tokenUrl\",\"scopes\"]},{\"not\":{\"required\":[\"authorizationUrl\"]}}]},\"authorizationCode\":{\"allOf\":[{\"$ref\":\"#/definitions/oauth2Flow\"},{\"required\":[\"authorizationUrl\",\"tokenUrl\",\"scopes\"]}]}},\"additionalProperties\":false}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}}},\"oauth2Flow\":{\"type\":\"object\",\"properties\":{\"authorizationUrl\":{\"type\":\"string\",\"format\":\"uri\"},\"tokenUrl\":{\"type\":\"string\",\"format\":\"uri\"},\"refreshUrl\":{\"type\":\"string\",\"format\":\"uri\"},\"scopes\":{\"$ref\":\"#/definitions/oauth2Scopes\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"additionalProperties\":false},\"oauth2Scopes\":{\"type\":\"object\",\"additionalProperties\":{\"type\":\"string\"}},\"openIdConnect\":{\"type\":\"object\",\"required\":[\"type\",\"openIdConnectUrl\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"openIdConnect\"]},\"description\":{\"type\":\"string\"},\"openIdConnectUrl\":{\"type\":\"string\",\"format\":\"uri\"}},\"patternProperties\":{\"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$\":{\"$ref\":\"#/definitions/specificationExtension\"}},\"additionalProperties\":false},\"SecurityRequirement\":{\"type\":\"object\",\"additionalProperties\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"uniqueItems\":true}}}}");
+module.exports = JSON.parse('{"title":"AsyncAPI 2.0.0 schema.","$schema":"http://json-schema.org/draft-07/schema#","type":"object","required":["asyncapi","info","channels"],"additionalProperties":false,"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"properties":{"asyncapi":{"type":"string","enum":["2.0.0"],"description":"The AsyncAPI specification version of this document."},"id":{"type":"string","description":"A unique id representing the application.","format":"uri"},"info":{"$ref":"#/definitions/info"},"servers":{"type":"object","additionalProperties":{"$ref":"#/definitions/server"}},"defaultContentType":{"type":"string"},"channels":{"$ref":"#/definitions/channels"},"components":{"$ref":"#/definitions/components"},"tags":{"type":"array","items":{"$ref":"#/definitions/tag"},"uniqueItems":true},"externalDocs":{"$ref":"#/definitions/externalDocs"}},"definitions":{"Reference":{"type":"object","required":["$ref"],"properties":{"$ref":{"$ref":"#/definitions/ReferenceObject"}}},"ReferenceObject":{"type":"string","format":"uri-reference"},"info":{"type":"object","description":"General information about the API.","required":["version","title"],"additionalProperties":false,"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"properties":{"title":{"type":"string","description":"A unique and precise title of the API."},"version":{"type":"string","description":"A semantic version number of the API."},"description":{"type":"string","description":"A longer description of the API. Should be different from the title. CommonMark is allowed."},"termsOfService":{"type":"string","description":"A URL to the Terms of Service for the API. MUST be in the format of a URL.","format":"uri"},"contact":{"$ref":"#/definitions/contact"},"license":{"$ref":"#/definitions/license"}}},"contact":{"type":"object","description":"Contact information for the owners of the API.","additionalProperties":false,"properties":{"name":{"type":"string","description":"The identifying name of the contact person/organization."},"url":{"type":"string","description":"The URL pointing to the contact information.","format":"uri"},"email":{"type":"string","description":"The email address of the contact person/organization.","format":"email"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}}},"license":{"type":"object","required":["name"],"additionalProperties":false,"properties":{"name":{"type":"string","description":"The name of the license type. It\'s encouraged to use an OSI compatible license."},"url":{"type":"string","description":"The URL pointing to the license.","format":"uri"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}}},"server":{"type":"object","description":"An object representing a Server.","required":["url","protocol"],"additionalProperties":false,"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"properties":{"url":{"type":"string"},"description":{"type":"string"},"protocol":{"type":"string","description":"The transfer protocol."},"protocolVersion":{"type":"string"},"variables":{"$ref":"#/definitions/serverVariables"},"security":{"type":"array","items":{"$ref":"#/definitions/SecurityRequirement"}},"bindings":{"$ref":"#/definitions/bindingsObject"}}},"serverVariables":{"type":"object","additionalProperties":{"$ref":"#/definitions/serverVariable"}},"serverVariable":{"type":"object","description":"An object representing a Server Variable for server URL template substitution.","additionalProperties":false,"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"properties":{"enum":{"type":"array","items":{"type":"string"},"uniqueItems":true},"default":{"type":"string"},"description":{"type":"string"},"examples":{"type":"array","items":{"type":"string"}}}},"channels":{"type":"object","propertyNames":{"type":"string","format":"uri-template","minLength":1},"additionalProperties":{"$ref":"#/definitions/channelItem"}},"components":{"type":"object","description":"An object to hold a set of reusable objects for different aspects of the AsyncAPI Specification.","additionalProperties":false,"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"properties":{"schemas":{"$ref":"#/definitions/schemas"},"messages":{"$ref":"#/definitions/messages"},"securitySchemes":{"type":"object","patternProperties":{"^[\\\\w\\\\d\\\\.\\\\-_]+$":{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/SecurityScheme"}]}}},"parameters":{"$ref":"#/definitions/parameters"},"correlationIds":{"type":"object","patternProperties":{"^[\\\\w\\\\d\\\\.\\\\-_]+$":{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/correlationId"}]}}},"operationTraits":{"type":"object","additionalProperties":{"$ref":"#/definitions/operationTrait"}},"messageTraits":{"type":"object","additionalProperties":{"$ref":"#/definitions/messageTrait"}},"serverBindings":{"type":"object","additionalProperties":{"$ref":"#/definitions/bindingsObject"}},"channelBindings":{"type":"object","additionalProperties":{"$ref":"#/definitions/bindingsObject"}},"operationBindings":{"type":"object","additionalProperties":{"$ref":"#/definitions/bindingsObject"}},"messageBindings":{"type":"object","additionalProperties":{"$ref":"#/definitions/bindingsObject"}}}},"schemas":{"type":"object","additionalProperties":{"$ref":"#/definitions/schema"},"description":"JSON objects describing schemas the API uses."},"messages":{"type":"object","additionalProperties":{"$ref":"#/definitions/message"},"description":"JSON objects describing the messages being consumed and produced by the API."},"parameters":{"type":"object","additionalProperties":{"$ref":"#/definitions/parameter"},"description":"JSON objects describing re-usable channel parameters."},"schema":{"allOf":[{"$ref":"http://json-schema.org/draft-07/schema#"},{"type":"object","patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"properties":{"additionalProperties":{"anyOf":[{"$ref":"#/definitions/schema"},{"type":"boolean"}],"default":{}},"items":{"anyOf":[{"$ref":"#/definitions/schema"},{"type":"array","minItems":1,"items":{"$ref":"#/definitions/schema"}}],"default":{}},"allOf":{"type":"array","minItems":1,"items":{"$ref":"#/definitions/schema"}},"oneOf":{"type":"array","minItems":1,"items":{"$ref":"#/definitions/schema"}},"anyOf":{"type":"array","minItems":1,"items":{"$ref":"#/definitions/schema"}},"not":{"$ref":"#/definitions/schema"},"properties":{"type":"object","additionalProperties":{"$ref":"#/definitions/schema"},"default":{}},"patternProperties":{"type":"object","additionalProperties":{"$ref":"#/definitions/schema"},"default":{}},"propertyNames":{"$ref":"#/definitions/schema"},"contains":{"$ref":"#/definitions/schema"},"discriminator":{"type":"string"},"externalDocs":{"$ref":"#/definitions/externalDocs"},"deprecated":{"type":"boolean","default":false}}}]},"externalDocs":{"type":"object","additionalProperties":false,"description":"information about external documentation","required":["url"],"properties":{"description":{"type":"string"},"url":{"type":"string","format":"uri"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}}},"channelItem":{"type":"object","additionalProperties":false,"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"properties":{"$ref":{"$ref":"#/definitions/ReferenceObject"},"parameters":{"type":"object","additionalProperties":{"$ref":"#/definitions/parameter"}},"description":{"type":"string","description":"A description of the channel."},"publish":{"$ref":"#/definitions/operation"},"subscribe":{"$ref":"#/definitions/operation"},"deprecated":{"type":"boolean","default":false},"bindings":{"$ref":"#/definitions/bindingsObject"}}},"parameter":{"additionalProperties":false,"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"properties":{"description":{"type":"string","description":"A brief description of the parameter. This could contain examples of use. GitHub Flavored Markdown is allowed."},"schema":{"$ref":"#/definitions/schema"},"location":{"type":"string","description":"A runtime expression that specifies the location of the parameter value","pattern":"^\\\\$message\\\\.(header|payload)\\\\#(\\\\/(([^\\\\/~])|(~[01]))*)*"},"$ref":{"$ref":"#/definitions/ReferenceObject"}}},"operation":{"type":"object","additionalProperties":false,"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"properties":{"traits":{"type":"array","items":{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/operationTrait"},{"type":"array","items":[{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/operationTrait"}]},{"type":"object","additionalItems":true}]}]}},"summary":{"type":"string"},"description":{"type":"string"},"tags":{"type":"array","items":{"$ref":"#/definitions/tag"},"uniqueItems":true},"externalDocs":{"$ref":"#/definitions/externalDocs"},"operationId":{"type":"string"},"bindings":{"$ref":"#/definitions/bindingsObject"},"message":{"$ref":"#/definitions/message"}}},"message":{"oneOf":[{"$ref":"#/definitions/Reference"},{"oneOf":[{"type":"object","required":["oneOf"],"additionalProperties":false,"properties":{"oneOf":{"type":"array","items":{"$ref":"#/definitions/message"}}}},{"type":"object","additionalProperties":false,"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"properties":{"schemaFormat":{"type":"string"},"contentType":{"type":"string"},"headers":{"allOf":[{"$ref":"#/definitions/schema"},{"properties":{"type":{"const":"object"}}}]},"payload":{},"correlationId":{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/correlationId"}]},"tags":{"type":"array","items":{"$ref":"#/definitions/tag"},"uniqueItems":true},"summary":{"type":"string","description":"A brief summary of the message."},"name":{"type":"string","description":"Name of the message."},"title":{"type":"string","description":"A human-friendly title for the message."},"description":{"type":"string","description":"A longer description of the message. CommonMark is allowed."},"externalDocs":{"$ref":"#/definitions/externalDocs"},"deprecated":{"type":"boolean","default":false},"examples":{"type":"array","items":{"type":"object","additionalProperties":false,"properties":{"headers":{"type":"object"},"payload":{}}}},"bindings":{"$ref":"#/definitions/bindingsObject"},"traits":{"type":"array","items":{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/messageTrait"},{"type":"array","items":[{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/messageTrait"}]},{"type":"object","additionalItems":true}]}]}}}}]}]},"bindingsObject":{"type":"object","additionalProperties":true,"properties":{"http":{},"ws":{},"amqp":{},"amqp1":{},"mqtt":{},"mqtt5":{},"kafka":{},"nats":{},"jms":{},"sns":{},"sqs":{},"stomp":{},"redis":{}}},"correlationId":{"type":"object","required":["location"],"additionalProperties":false,"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"properties":{"description":{"type":"string","description":"A optional description of the correlation ID. GitHub Flavored Markdown is allowed."},"location":{"type":"string","description":"A runtime expression that specifies the location of the correlation ID","pattern":"^\\\\$message\\\\.(header|payload)\\\\#(\\\\/(([^\\\\/~])|(~[01]))*)*"}}},"specificationExtension":{"description":"Any property starting with x- is valid.","additionalProperties":true,"additionalItems":true},"tag":{"type":"object","additionalProperties":false,"required":["name"],"properties":{"name":{"type":"string"},"description":{"type":"string"},"externalDocs":{"$ref":"#/definitions/externalDocs"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}}},"operationTrait":{"type":"object","additionalProperties":false,"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"properties":{"summary":{"type":"string"},"description":{"type":"string"},"tags":{"type":"array","items":{"$ref":"#/definitions/tag"},"uniqueItems":true},"externalDocs":{"$ref":"#/definitions/externalDocs"},"operationId":{"type":"string"},"bindings":{"$ref":"#/definitions/bindingsObject"}}},"messageTrait":{"type":"object","additionalProperties":false,"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"properties":{"schemaFormat":{"type":"string"},"contentType":{"type":"string"},"headers":{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/schema"}]},"correlationId":{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/correlationId"}]},"tags":{"type":"array","items":{"$ref":"#/definitions/tag"},"uniqueItems":true},"summary":{"type":"string","description":"A brief summary of the message."},"name":{"type":"string","description":"Name of the message."},"title":{"type":"string","description":"A human-friendly title for the message."},"description":{"type":"string","description":"A longer description of the message. CommonMark is allowed."},"externalDocs":{"$ref":"#/definitions/externalDocs"},"deprecated":{"type":"boolean","default":false},"examples":{"type":"array","items":{"type":"object"}},"bindings":{"$ref":"#/definitions/bindingsObject"}}},"SecurityScheme":{"oneOf":[{"$ref":"#/definitions/userPassword"},{"$ref":"#/definitions/apiKey"},{"$ref":"#/definitions/X509"},{"$ref":"#/definitions/symmetricEncryption"},{"$ref":"#/definitions/asymmetricEncryption"},{"$ref":"#/definitions/HTTPSecurityScheme"},{"$ref":"#/definitions/oauth2Flows"},{"$ref":"#/definitions/openIdConnect"}]},"userPassword":{"type":"object","required":["type"],"properties":{"type":{"type":"string","enum":["userPassword"]},"description":{"type":"string"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"additionalProperties":false},"apiKey":{"type":"object","required":["type","in"],"properties":{"type":{"type":"string","enum":["apiKey"]},"in":{"type":"string","enum":["user","password"]},"description":{"type":"string"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"additionalProperties":false},"X509":{"type":"object","required":["type"],"properties":{"type":{"type":"string","enum":["X509"]},"description":{"type":"string"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"additionalProperties":false},"symmetricEncryption":{"type":"object","required":["type"],"properties":{"type":{"type":"string","enum":["symmetricEncryption"]},"description":{"type":"string"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"additionalProperties":false},"asymmetricEncryption":{"type":"object","required":["type"],"properties":{"type":{"type":"string","enum":["asymmetricEncryption"]},"description":{"type":"string"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"additionalProperties":false},"HTTPSecurityScheme":{"oneOf":[{"$ref":"#/definitions/NonBearerHTTPSecurityScheme"},{"$ref":"#/definitions/BearerHTTPSecurityScheme"},{"$ref":"#/definitions/APIKeyHTTPSecurityScheme"}]},"NonBearerHTTPSecurityScheme":{"not":{"type":"object","properties":{"scheme":{"type":"string","enum":["bearer"]}}},"type":"object","required":["scheme","type"],"properties":{"scheme":{"type":"string"},"description":{"type":"string"},"type":{"type":"string","enum":["http"]}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"additionalProperties":false},"BearerHTTPSecurityScheme":{"type":"object","required":["type","scheme"],"properties":{"scheme":{"type":"string","enum":["bearer"]},"bearerFormat":{"type":"string"},"type":{"type":"string","enum":["http"]},"description":{"type":"string"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"additionalProperties":false},"APIKeyHTTPSecurityScheme":{"type":"object","required":["type","name","in"],"properties":{"type":{"type":"string","enum":["httpApiKey"]},"name":{"type":"string"},"in":{"type":"string","enum":["header","query","cookie"]},"description":{"type":"string"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"additionalProperties":false},"oauth2Flows":{"type":"object","required":["type","flows"],"properties":{"type":{"type":"string","enum":["oauth2"]},"description":{"type":"string"},"flows":{"type":"object","properties":{"implicit":{"allOf":[{"$ref":"#/definitions/oauth2Flow"},{"required":["authorizationUrl","scopes"]},{"not":{"required":["tokenUrl"]}}]},"password":{"allOf":[{"$ref":"#/definitions/oauth2Flow"},{"required":["tokenUrl","scopes"]},{"not":{"required":["authorizationUrl"]}}]},"clientCredentials":{"allOf":[{"$ref":"#/definitions/oauth2Flow"},{"required":["tokenUrl","scopes"]},{"not":{"required":["authorizationUrl"]}}]},"authorizationCode":{"allOf":[{"$ref":"#/definitions/oauth2Flow"},{"required":["authorizationUrl","tokenUrl","scopes"]}]}},"additionalProperties":false}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}}},"oauth2Flow":{"type":"object","properties":{"authorizationUrl":{"type":"string","format":"uri"},"tokenUrl":{"type":"string","format":"uri"},"refreshUrl":{"type":"string","format":"uri"},"scopes":{"$ref":"#/definitions/oauth2Scopes"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"additionalProperties":false},"oauth2Scopes":{"type":"object","additionalProperties":{"type":"string"}},"openIdConnect":{"type":"object","required":["type","openIdConnectUrl"],"properties":{"type":{"type":"string","enum":["openIdConnect"]},"description":{"type":"string"},"openIdConnectUrl":{"type":"string","format":"uri"}},"patternProperties":{"^x-[\\\\w\\\\d\\\\.\\\\-\\\\_]+$":{"$ref":"#/definitions/specificationExtension"}},"additionalProperties":false},"SecurityRequirement":{"type":"object","additionalProperties":{"type":"array","items":{"type":"string"},"uniqueItems":true}}}}');
 
 /***/ }),
 
@@ -54,7 +53,7 @@ module.exports = JSON.parse("{\"title\":\"AsyncAPI 2.0.0 schema.\",\"$schema\":\
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse("{\"name\":\"@oclif/command\",\"description\":\"oclif base command\",\"version\":\"1.8.0\",\"author\":\"Jeff Dickey @jdxcode\",\"bugs\":\"https://github.com/oclif/command/issues\",\"dependencies\":{\"@oclif/config\":\"^1.15.1\",\"@oclif/errors\":\"^1.3.3\",\"@oclif/parser\":\"^3.8.3\",\"@oclif/plugin-help\":\"^3\",\"debug\":\"^4.1.1\",\"semver\":\"^7.3.2\"},\"devDependencies\":{\"@oclif/plugin-plugins\":\"^1.7.7\",\"@types/chai\":\"^4.1.7\",\"@types/mocha\":\"^8.0.0\",\"@types/node\":\"^14.0.14\",\"@types/semver\":\"^7.3.1\",\"chai\":\"^4.2.0\",\"cli-ux\":\"^5.1.0\",\"conventional-changelog-cli\":\"^2.0.12\",\"eslint\":\"^7.3.1\",\"eslint-config-oclif\":\"^3.1.0\",\"eslint-config-oclif-typescript\":\"^0.2.0\",\"fancy-test\":\"^1.4.3\",\"globby\":\"^11.0.1\",\"mocha\":\"^6.0.2\",\"sinon\":\"^9.0.1\",\"ts-node\":\"^8.8.2\",\"typescript\":\"3.8.3\"},\"peerDependencies\":{\"@oclif/config\":\"^1\"},\"engines\":{\"node\":\">=8.0.0\"},\"files\":[\"/flush.js\",\"/flush.d.ts\",\"/lib\"],\"homepage\":\"https://github.com/oclif/command\",\"keywords\":[\"oclif\"],\"license\":\"MIT\",\"main\":\"lib/index.js\",\"oclif\":{\"devPlugins\":[\"@oclif/plugin-help\",\"@oclif/plugin-plugins\"]},\"repository\":\"oclif/command\",\"scripts\":{\"build\":\"rm -rf lib && tsc\",\"lint\":\"eslint . --ext .ts --config .eslintrc\",\"posttest\":\"yarn lint\",\"prepublishOnly\":\"yarn run build\",\"test\":\"mocha --forbid-only \\\"test/**/*.test.ts\\\"\",\"version\":\"conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md\",\"pretest\":\"yarn build --noEmit && tsc -p test --noEmit\"},\"types\":\"lib/index.d.ts\"}");
+module.exports = JSON.parse('{"name":"@oclif/command","description":"oclif base command","version":"1.8.0","author":"Jeff Dickey @jdxcode","bugs":"https://github.com/oclif/command/issues","dependencies":{"@oclif/config":"^1.15.1","@oclif/errors":"^1.3.3","@oclif/parser":"^3.8.3","@oclif/plugin-help":"^3","debug":"^4.1.1","semver":"^7.3.2"},"devDependencies":{"@oclif/plugin-plugins":"^1.7.7","@types/chai":"^4.1.7","@types/mocha":"^8.0.0","@types/node":"^14.0.14","@types/semver":"^7.3.1","chai":"^4.2.0","cli-ux":"^5.1.0","conventional-changelog-cli":"^2.0.12","eslint":"^7.3.1","eslint-config-oclif":"^3.1.0","eslint-config-oclif-typescript":"^0.2.0","fancy-test":"^1.4.3","globby":"^11.0.1","mocha":"^6.0.2","sinon":"^9.0.1","ts-node":"^8.8.2","typescript":"3.8.3"},"peerDependencies":{"@oclif/config":"^1"},"engines":{"node":">=8.0.0"},"files":["/flush.js","/flush.d.ts","/lib"],"homepage":"https://github.com/oclif/command","keywords":["oclif"],"license":"MIT","main":"lib/index.js","oclif":{"devPlugins":["@oclif/plugin-help","@oclif/plugin-plugins"]},"repository":"oclif/command","scripts":{"build":"rm -rf lib && tsc","lint":"eslint . --ext .ts --config .eslintrc","posttest":"yarn lint","prepublishOnly":"yarn run build","test":"mocha --forbid-only \\"test/**/*.test.ts\\"","version":"conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md","pretest":"yarn build --noEmit && tsc -p test --noEmit"},"types":"lib/index.d.ts"}');
 
 /***/ }),
 
@@ -62,61 +61,12 @@ module.exports = JSON.parse("{\"name\":\"@oclif/command\",\"description\":\"ocli
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse("{\"name\":\"@oclif/config\",\"description\":\"base config object and standard interfaces for oclif components\",\"version\":\"1.17.0\",\"author\":\"Jeff Dickey @jdxcode\",\"bugs\":\"https://github.com/oclif/config/issues\",\"dependencies\":{\"@oclif/errors\":\"^1.3.3\",\"@oclif/parser\":\"^3.8.0\",\"debug\":\"^4.1.1\",\"globby\":\"^11.0.1\",\"is-wsl\":\"^2.1.1\",\"tslib\":\"^2.0.0\"},\"devDependencies\":{\"@types/chai\":\"^4.1.7\",\"@types/indent-string\":\"^4.0.1\",\"@types/lodash\":\"^4.14.123\",\"@types/mocha\":\"^8.0.0\",\"@types/node\":\"^14.0.14\",\"@types/proxyquire\":\"^1.3.28\",\"@types/wrap-ansi\":\"^3.0.0\",\"chai\":\"^4.2.0\",\"conventional-changelog-cli\":\"^2.0.21\",\"eslint\":\"^7.3.1\",\"eslint-config-oclif\":\"^3.1.0\",\"eslint-config-oclif-typescript\":\"^0.2.0\",\"fancy-test\":\"^1.4.3\",\"lodash\":\"^4.17.11\",\"mocha\":\"^6.1.4\",\"proxyquire\":\"^2.1.0\",\"ts-node\":\"^8.1.0\",\"typescript\":\"3.8.3\"},\"engines\":{\"node\":\">=8.0.0\"},\"files\":[\"/lib\"],\"homepage\":\"https://github.com/oclif/config\",\"keywords\":[\"oclif\"],\"license\":\"MIT\",\"main\":\"lib/index.js\",\"repository\":\"oclif/config\",\"scripts\":{\"build\":\"rm -rf lib && tsc\",\"lint\":\"eslint . --ext .ts --config .eslintrc\",\"posttest\":\"yarn lint\",\"prepack\":\"yarn run build\",\"test\":\"mocha --forbid-only \\\"test/**/*.test.ts\\\"\",\"version\":\"conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md\",\"pretest\":\"yarn build --noEmit && tsc -p test --noEmit\"},\"types\":\"lib/index.d.ts\"}");
-
-/***/ }),
-
-/***/ 3109:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __webpack_require__(75636);
-const core = tslib_1.__importStar(__webpack_require__(42186));
-const preview_1 = tslib_1.__importDefault(__webpack_require__(5363));
-const deploy_1 = tslib_1.__importDefault(__webpack_require__(77402));
-async function run() {
-    try {
-        const file = core.getInput('file');
-        const doc = core.getInput('doc');
-        const hub = core.getInput('hub');
-        const token = core.getInput('token');
-        const command = core.getInput('command') || 'deploy';
-        const cliParams = [file];
-        let deployCliParams = ['--doc', doc, '--token', token];
-        if (hub) {
-            deployCliParams = deployCliParams.concat(['--hub', hub]);
-        }
-        // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
-        core.debug(`Waiting for bump ${command} ...`);
-        core.debug(new Date().toTimeString());
-        switch (command) {
-            case 'preview':
-                await preview_1.default.run(cliParams);
-                break;
-            case 'dry-run':
-            case 'validate':
-                await deploy_1.default.run(cliParams.concat(deployCliParams).concat(['--dry-run']));
-                break;
-            case 'deploy':
-                await deploy_1.default.run(cliParams.concat(deployCliParams));
-                break;
-        }
-        core.debug(new Date().toTimeString());
-    }
-    catch (error) {
-        core.setFailed(error.message);
-    }
-}
-exports.default = run;
-run();
-
+module.exports = JSON.parse('{"name":"@oclif/config","description":"base config object and standard interfaces for oclif components","version":"1.17.0","author":"Jeff Dickey @jdxcode","bugs":"https://github.com/oclif/config/issues","dependencies":{"@oclif/errors":"^1.3.3","@oclif/parser":"^3.8.0","debug":"^4.1.1","globby":"^11.0.1","is-wsl":"^2.1.1","tslib":"^2.0.0"},"devDependencies":{"@types/chai":"^4.1.7","@types/indent-string":"^4.0.1","@types/lodash":"^4.14.123","@types/mocha":"^8.0.0","@types/node":"^14.0.14","@types/proxyquire":"^1.3.28","@types/wrap-ansi":"^3.0.0","chai":"^4.2.0","conventional-changelog-cli":"^2.0.21","eslint":"^7.3.1","eslint-config-oclif":"^3.1.0","eslint-config-oclif-typescript":"^0.2.0","fancy-test":"^1.4.3","lodash":"^4.17.11","mocha":"^6.1.4","proxyquire":"^2.1.0","ts-node":"^8.1.0","typescript":"3.8.3"},"engines":{"node":">=8.0.0"},"files":["/lib"],"homepage":"https://github.com/oclif/config","keywords":["oclif"],"license":"MIT","main":"lib/index.js","repository":"oclif/config","scripts":{"build":"rm -rf lib && tsc","lint":"eslint . --ext .ts --config .eslintrc","posttest":"yarn lint","prepack":"yarn run build","test":"mocha --forbid-only \\"test/**/*.test.ts\\"","version":"conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md","pretest":"yarn build --noEmit && tsc -p test --noEmit"},"types":"lib/index.d.ts"}');
 
 /***/ }),
 
 /***/ 87351:
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
 
@@ -141,8 +91,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.issue = exports.issueCommand = void 0;
-const os = __importStar(__webpack_require__(12087));
-const utils_1 = __webpack_require__(5278);
+const os = __importStar(__nccwpck_require__(12087));
+const utils_1 = __nccwpck_require__(5278);
 /**
  * Commands
  *
@@ -215,7 +165,7 @@ function escapeProperty(s) {
 /***/ }),
 
 /***/ 42186:
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
 
@@ -248,12 +198,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.getState = exports.saveState = exports.group = exports.endGroup = exports.startGroup = exports.info = exports.warning = exports.error = exports.debug = exports.isDebug = exports.setFailed = exports.setCommandEcho = exports.setOutput = exports.getBooleanInput = exports.getInput = exports.addPath = exports.setSecret = exports.exportVariable = exports.ExitCode = void 0;
-const command_1 = __webpack_require__(87351);
-const file_command_1 = __webpack_require__(717);
-const utils_1 = __webpack_require__(5278);
-const os = __importStar(__webpack_require__(12087));
-const path = __importStar(__webpack_require__(85622));
+exports.getState = exports.saveState = exports.group = exports.endGroup = exports.startGroup = exports.info = exports.warning = exports.error = exports.debug = exports.isDebug = exports.setFailed = exports.setCommandEcho = exports.setOutput = exports.getBooleanInput = exports.getMultilineInput = exports.getInput = exports.addPath = exports.setSecret = exports.exportVariable = exports.ExitCode = void 0;
+const command_1 = __nccwpck_require__(87351);
+const file_command_1 = __nccwpck_require__(717);
+const utils_1 = __nccwpck_require__(5278);
+const os = __importStar(__nccwpck_require__(12087));
+const path = __importStar(__nccwpck_require__(85622));
 /**
  * The code to exit an action
  */
@@ -334,6 +284,21 @@ function getInput(name, options) {
     return val.trim();
 }
 exports.getInput = getInput;
+/**
+ * Gets the values of an multiline input.  Each value is also trimmed.
+ *
+ * @param     name     name of the input to get
+ * @param     options  optional. See InputOptions.
+ * @returns   string[]
+ *
+ */
+function getMultilineInput(name, options) {
+    const inputs = getInput(name, options)
+        .split('\n')
+        .filter(x => x !== '');
+    return inputs;
+}
+exports.getMultilineInput = getMultilineInput;
 /**
  * Gets the input value of the boolean type in the YAML 1.2 "core schema" specification.
  * Support boolean input list: `true | True | TRUE | false | False | FALSE` .
@@ -501,7 +466,7 @@ exports.getState = getState;
 /***/ }),
 
 /***/ 717:
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
 
@@ -529,9 +494,9 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.issueCommand = void 0;
 // We use any as a valid input type
 /* eslint-disable @typescript-eslint/no-explicit-any */
-const fs = __importStar(__webpack_require__(35747));
-const os = __importStar(__webpack_require__(12087));
-const utils_1 = __webpack_require__(5278);
+const fs = __importStar(__nccwpck_require__(35747));
+const os = __importStar(__nccwpck_require__(12087));
+const utils_1 = __nccwpck_require__(5278);
 function issueCommand(command, message) {
     const filePath = process.env[`GITHUB_${command}`];
     if (!filePath) {
@@ -577,14 +542,14 @@ exports.toCommandValue = toCommandValue;
 /***/ }),
 
 /***/ 53113:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const $Ref = __webpack_require__(59825);
-const Pointer = __webpack_require__(26040);
-const url = __webpack_require__(81279);
+const $Ref = __nccwpck_require__(59825);
+const Pointer = __nccwpck_require__(26040);
+const url = __nccwpck_require__(81279);
 
 module.exports = bundle;
 
@@ -846,15 +811,15 @@ function removeFromInventory (inventory, entry) {
 /***/ }),
 
 /***/ 82461:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const $Ref = __webpack_require__(59825);
-const Pointer = __webpack_require__(26040);
-const { ono } = __webpack_require__(33436);
-const url = __webpack_require__(81279);
+const $Ref = __nccwpck_require__(59825);
+const Pointer = __nccwpck_require__(26040);
+const { ono } = __nccwpck_require__(33436);
+const url = __nccwpck_require__(81279);
 
 module.exports = dereference;
 
@@ -1053,22 +1018,22 @@ function foundCircularReference (keyPath, $refs, options) {
 /***/ }),
 
 /***/ 85862:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 /* eslint-disable no-unused-vars */
 
 
-const $Refs = __webpack_require__(40957);
-const _parse = __webpack_require__(52430);
-const normalizeArgs = __webpack_require__(64608);
-const resolveExternal = __webpack_require__(45330);
-const _bundle = __webpack_require__(53113);
-const _dereference = __webpack_require__(82461);
-const url = __webpack_require__(81279);
-const { JSONParserError, InvalidPointerError, MissingPointerError, ResolverError, ParserError, UnmatchedParserError, UnmatchedResolverError, isHandledError, JSONParserErrorGroup } = __webpack_require__(1695);
-const maybe = __webpack_require__(59581);
-const { ono } = __webpack_require__(33436);
+const $Refs = __nccwpck_require__(40957);
+const _parse = __nccwpck_require__(52430);
+const normalizeArgs = __nccwpck_require__(64608);
+const resolveExternal = __nccwpck_require__(45330);
+const _bundle = __nccwpck_require__(53113);
+const _dereference = __nccwpck_require__(82461);
+const url = __nccwpck_require__(81279);
+const { JSONParserError, InvalidPointerError, MissingPointerError, ResolverError, ParserError, UnmatchedParserError, UnmatchedResolverError, isHandledError, JSONParserErrorGroup } = __nccwpck_require__(1695);
+const maybe = __nccwpck_require__(59581);
+const { ono } = __nccwpck_require__(33436);
 
 module.exports = $RefParser;
 module.exports.default = $RefParser;
@@ -1344,12 +1309,12 @@ function finalize (parser) {
 /***/ }),
 
 /***/ 64608:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const Options = __webpack_require__(36608);
+const Options = __nccwpck_require__(36608);
 
 module.exports = normalizeArgs;
 
@@ -1405,18 +1370,18 @@ function normalizeArgs (args) {
 /***/ }),
 
 /***/ 36608:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 /* eslint lines-around-comment: [2, {beforeBlockComment: false}] */
 
 
-const jsonParser = __webpack_require__(74683);
-const yamlParser = __webpack_require__(40525);
-const textParser = __webpack_require__(80164);
-const binaryParser = __webpack_require__(67922);
-const fileResolver = __webpack_require__(36859);
-const httpResolver = __webpack_require__(34147);
+const jsonParser = __nccwpck_require__(74683);
+const yamlParser = __nccwpck_require__(40525);
+const textParser = __nccwpck_require__(80164);
+const binaryParser = __nccwpck_require__(67922);
+const fileResolver = __nccwpck_require__(36859);
+const httpResolver = __nccwpck_require__(34147);
 
 module.exports = $RefParserOptions;
 
@@ -1534,15 +1499,15 @@ function isMergeable (val) {
 /***/ }),
 
 /***/ 52430:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { ono } = __webpack_require__(33436);
-const url = __webpack_require__(81279);
-const plugins = __webpack_require__(14601);
-const { ResolverError, ParserError, UnmatchedParserError, UnmatchedResolverError, isHandledError } = __webpack_require__(1695);
+const { ono } = __nccwpck_require__(33436);
+const url = __nccwpck_require__(81279);
+const plugins = __nccwpck_require__(14601);
+const { ResolverError, ParserError, UnmatchedParserError, UnmatchedResolverError, isHandledError } = __nccwpck_require__(1695);
 
 module.exports = parse;
 
@@ -1769,12 +1734,12 @@ module.exports = {
 /***/ }),
 
 /***/ 74683:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { ParserError } = __webpack_require__(1695);
+const { ParserError } = __nccwpck_require__(1695);
 
 module.exports = {
   /**
@@ -1840,12 +1805,12 @@ module.exports = {
 /***/ }),
 
 /***/ 80164:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { ParserError } = __webpack_require__(1695);
+const { ParserError } = __nccwpck_require__(1695);
 
 let TEXT_REGEXP = /\.(txt|htm|html|md|xml|js|min|map|css|scss|less|svg)$/i;
 
@@ -1914,13 +1879,13 @@ module.exports = {
 /***/ }),
 
 /***/ 40525:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { ParserError } = __webpack_require__(1695);
-const yaml = __webpack_require__(21917);
+const { ParserError } = __nccwpck_require__(1695);
+const yaml = __nccwpck_require__(21917);
 
 module.exports = {
   /**
@@ -1981,16 +1946,16 @@ module.exports = {
 /***/ }),
 
 /***/ 26040:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 module.exports = Pointer;
 
-const $Ref = __webpack_require__(59825);
-const url = __webpack_require__(81279);
-const { JSONParserError, InvalidPointerError, MissingPointerError, isHandledError } = __webpack_require__(1695);
+const $Ref = __nccwpck_require__(59825);
+const url = __nccwpck_require__(81279);
+const { JSONParserError, InvalidPointerError, MissingPointerError, isHandledError } = __nccwpck_require__(1695);
 const slashes = /\//g;
 const tildes = /~/g;
 const escapedSlash = /~1/g;
@@ -2280,16 +2245,16 @@ function unwrapOrThrow (value) {
 /***/ }),
 
 /***/ 59825:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 module.exports = $Ref;
 
-const Pointer = __webpack_require__(26040);
-const { InvalidPointerError, isHandledError, normalizeError } = __webpack_require__(1695);
-const { safePointerToPath, stripHash, getHash } = __webpack_require__(81279);
+const Pointer = __nccwpck_require__(26040);
+const { InvalidPointerError, isHandledError, normalizeError } = __nccwpck_require__(1695);
+const { safePointerToPath, stripHash, getHash } = __nccwpck_require__(81279);
 
 /**
  * This class represents a single JSON reference and its resolved value.
@@ -2573,14 +2538,14 @@ $Ref.dereference = function ($ref, resolvedValue) {
 /***/ }),
 
 /***/ 40957:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { ono } = __webpack_require__(33436);
-const $Ref = __webpack_require__(59825);
-const url = __webpack_require__(81279);
+const { ono } = __nccwpck_require__(33436);
+const $Ref = __nccwpck_require__(59825);
+const url = __nccwpck_require__(81279);
 
 module.exports = $Refs;
 
@@ -2778,16 +2743,16 @@ function getPaths ($refs, types) {
 /***/ }),
 
 /***/ 45330:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const $Ref = __webpack_require__(59825);
-const Pointer = __webpack_require__(26040);
-const parse = __webpack_require__(52430);
-const url = __webpack_require__(81279);
-const { isHandledError } = __webpack_require__(1695);
+const $Ref = __nccwpck_require__(59825);
+const Pointer = __nccwpck_require__(26040);
+const parse = __nccwpck_require__(52430);
+const url = __nccwpck_require__(81279);
+const { isHandledError } = __nccwpck_require__(1695);
 
 module.exports = resolveExternal;
 
@@ -2912,14 +2877,14 @@ async function resolve$Ref ($ref, path, $refs, options) {
 /***/ }),
 
 /***/ 36859:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
-const fs = __webpack_require__(35747);
-const { ono } = __webpack_require__(33436);
-const url = __webpack_require__(81279);
-const { ResolverError } = __webpack_require__(1695);
+const fs = __nccwpck_require__(35747);
+const { ono } = __nccwpck_require__(33436);
+const url = __nccwpck_require__(81279);
+const { ResolverError } = __nccwpck_require__(1695);
 
 module.exports = {
   /**
@@ -2984,16 +2949,16 @@ module.exports = {
 /***/ }),
 
 /***/ 34147:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const http = __webpack_require__(15876);
-const https = __webpack_require__(57211);
-const { ono } = __webpack_require__(33436);
-const url = __webpack_require__(81279);
-const { ResolverError } = __webpack_require__(1695);
+const http = __nccwpck_require__(15876);
+const https = __nccwpck_require__(57211);
+const { ono } = __nccwpck_require__(33436);
+const url = __nccwpck_require__(81279);
+const { ResolverError } = __nccwpck_require__(1695);
 
 module.exports = {
   /**
@@ -3172,14 +3137,14 @@ function get (u, httpOptions) {
 /***/ }),
 
 /***/ 1695:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const { Ono } = __webpack_require__(33436);
+const { Ono } = __nccwpck_require__(33436);
 
-const { stripHash, toFileSystemPath } = __webpack_require__(81279);
+const { stripHash, toFileSystemPath } = __nccwpck_require__(81279);
 
 const JSONParserError = exports.JSONParserError = class JSONParserError extends Error {
   constructor (message, source) {
@@ -3479,7 +3444,7 @@ function getResult (obj, prop, file, callback, $refs) {
 /***/ }),
 
 /***/ 81279:
-/***/ ((module, exports, __webpack_require__) => {
+/***/ ((module, exports, __nccwpck_require__) => {
 
 "use strict";
 
@@ -3506,8 +3471,8 @@ let urlDecodePatterns = [
   /\%40/g, "@"
 ];
 
-exports.parse = __webpack_require__(78835).parse;
-exports.resolve = __webpack_require__(78835).resolve;
+exports.parse = __nccwpck_require__(78835).parse;
+exports.resolve = __nccwpck_require__(78835).resolve;
 
 /**
  * Returns the current working directory (in Node) or the current page URL (in browsers).
@@ -3744,30 +3709,30 @@ exports.safePointerToPath = function safePointerToPath (pointer) {
 /***/ }),
 
 /***/ 78100:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 module.exports = {
-  '1.0.0': __webpack_require__(26727),
-  '1.1.0': __webpack_require__(56409),
-  '1.2.0': __webpack_require__(14679),
-  '2.0.0-rc1': __webpack_require__(34146),
-  '2.0.0-rc2': __webpack_require__(49121),
-  '2.0.0': __webpack_require__(88547),
+  '1.0.0': __nccwpck_require__(26727),
+  '1.1.0': __nccwpck_require__(56409),
+  '1.2.0': __nccwpck_require__(14679),
+  '2.0.0-rc1': __nccwpck_require__(34146),
+  '2.0.0-rc2': __nccwpck_require__(49121),
+  '2.0.0': __nccwpck_require__(88547),
 };
 
 
 /***/ }),
 
 /***/ 50326:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Ono = void 0;
-const extend_error_1 = __webpack_require__(43561);
-const normalize_1 = __webpack_require__(19322);
-const to_json_1 = __webpack_require__(24833);
+const extend_error_1 = __nccwpck_require__(43561);
+const normalize_1 = __nccwpck_require__(19322);
+const to_json_1 = __nccwpck_require__(24833);
 const constructor = Ono;
 exports.Ono = constructor;
 /**
@@ -3813,15 +3778,15 @@ Ono.extend = function extend(error, originalError, props) {
 /***/ }),
 
 /***/ 43561:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.extendError = void 0;
-const isomorphic_node_1 = __webpack_require__(26315);
-const stack_1 = __webpack_require__(55254);
-const to_json_1 = __webpack_require__(24833);
+const isomorphic_node_1 = __nccwpck_require__(26315);
+const stack_1 = __nccwpck_require__(55254);
+const to_json_1 = __nccwpck_require__(24833);
 const protectedProps = ["name", "message", "stack"];
 /**
  * Extends the new error with the properties of the original error and the `props` object.
@@ -3897,7 +3862,7 @@ function mergeErrors(newError, originalError) {
 /***/ }),
 
 /***/ 33436:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nccwpck_require__) {
 
 "use strict";
 
@@ -3914,11 +3879,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ono = void 0;
 /* eslint-env commonjs */
-const singleton_1 = __webpack_require__(54760);
+const singleton_1 = __nccwpck_require__(54760);
 Object.defineProperty(exports, "ono", ({ enumerable: true, get: function () { return singleton_1.ono; } }));
-var constructor_1 = __webpack_require__(50326);
+var constructor_1 = __nccwpck_require__(50326);
 Object.defineProperty(exports, "Ono", ({ enumerable: true, get: function () { return constructor_1.Ono; } }));
-__exportStar(__webpack_require__(97905), exports);
+__exportStar(__nccwpck_require__(97905), exports);
 exports.default = singleton_1.ono;
 // CommonJS default export hack
 if ( true && typeof module.exports === "object") {
@@ -3929,14 +3894,14 @@ if ( true && typeof module.exports === "object") {
 /***/ }),
 
 /***/ 26315:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.addInspectMethod = exports.format = void 0;
-const util = __webpack_require__(31669);
-const to_json_1 = __webpack_require__(24833);
+const util = __nccwpck_require__(31669);
+const to_json_1 = __nccwpck_require__(24833);
 // The `inspect()` method is actually a Symbol, not a string key.
 // https://nodejs.org/api/util.html#util_util_inspect_custom
 const inspectMethod = util.inspect.custom || Symbol.for("nodejs.util.inspect.custom");
@@ -3981,13 +3946,13 @@ function inspect() {
 /***/ }),
 
 /***/ 19322:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.normalizeArgs = exports.normalizeOptions = void 0;
-const isomorphic_node_1 = __webpack_require__(26315);
+const isomorphic_node_1 = __nccwpck_require__(26315);
 /**
  * Normalizes Ono options, accounting for defaults and optional options.
  */
@@ -4047,13 +4012,13 @@ exports.normalizeArgs = normalizeArgs;
 /***/ }),
 
 /***/ 54760:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ono = void 0;
-const constructor_1 = __webpack_require__(50326);
+const constructor_1 = __nccwpck_require__(50326);
 const singleton = ono;
 exports.ono = singleton;
 ono.error = new constructor_1.Ono(Error);
@@ -4255,29 +4220,29 @@ exports.getDeepKeys = getDeepKeys;
 /***/ }),
 
 /***/ 97905:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const util_1 = __webpack_require__(31669);
+const util_1 = __nccwpck_require__(31669);
 //# sourceMappingURL=types.js.map
 
 /***/ }),
 
 /***/ 18287:
-/***/ ((module, exports, __webpack_require__) => {
+/***/ ((module, exports, __nccwpck_require__) => {
 
 "use strict";
-/* module decorator */ module = __webpack_require__.nmd(module);
+/* module decorator */ module = __nccwpck_require__.nmd(module);
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const pjson = __webpack_require__(38147);
-const Config = __webpack_require__(54412);
-const Errors = __webpack_require__(52564);
-const util_1 = __webpack_require__(31669);
-const util_2 = __webpack_require__(82699);
-const plugin_help_1 = __webpack_require__(46765);
+const pjson = __nccwpck_require__(38147);
+const Config = __nccwpck_require__(54412);
+const Errors = __nccwpck_require__(52564);
+const util_1 = __nccwpck_require__(31669);
+const util_2 = __nccwpck_require__(82699);
+const plugin_help_1 = __nccwpck_require__(46765);
 /**
  * swallows stdout epipe errors
  * this occurs when stdout closes such as when piping to head
@@ -4297,7 +4262,7 @@ class Command {
         this.config = config;
         this.id = this.ctor.id;
         try {
-            this.debug = __webpack_require__(38237)(this.id ? `${this.config.bin}:${this.id}` : this.config.bin);
+            this.debug = __nccwpck_require__(38237)(this.id ? `${this.config.bin}:${this.id}` : this.config.bin);
         }
         catch (_a) {
             this.debug = () => { };
@@ -4355,7 +4320,7 @@ class Command {
     parse(options, argv = this.argv) {
         if (!options)
             options = this.constructor;
-        return __webpack_require__(41150).parse(argv, Object.assign({ context: this }, options));
+        return __nccwpck_require__(41150).parse(argv, Object.assign({ context: this }, options));
     }
     async catch(err) {
         if (!err.message)
@@ -4367,8 +4332,8 @@ class Command {
             return this._version();
         }
         try {
-            const { cli } = __webpack_require__(81982);
-            const chalk = __webpack_require__(38707); // eslint-disable-line node/no-extraneous-require
+            const { cli } = __nccwpck_require__(81982);
+            const chalk = __nccwpck_require__(38707); // eslint-disable-line node/no-extraneous-require
             cli.action.stop(chalk.bold.red('!'));
         }
         catch (_a) { }
@@ -4376,7 +4341,7 @@ class Command {
     }
     async finally(_) {
         try {
-            const config = __webpack_require__(52564).config;
+            const config = __nccwpck_require__(52564).config;
             if (config.errorLogger)
                 await config.errorLogger.flush();
             // tslint:disable-next-line no-console
@@ -4438,12 +4403,12 @@ Command.run = async function (argv, opts) {
 /***/ }),
 
 /***/ 25754:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const Parser = __webpack_require__(41150);
+const Parser = __nccwpck_require__(41150);
 function build(defaults) {
     return Parser.flags.build(defaults);
 }
@@ -4462,7 +4427,7 @@ const _enum = (opts) => {
 exports.enum = _enum;
 const stringFlag = build({});
 exports.string = stringFlag;
-var flags_1 = __webpack_require__(40331);
+var flags_1 = __nccwpck_require__(40331);
 exports.boolean = flags_1.boolean;
 exports.integer = flags_1.integer;
 exports.version = (opts = {}) => {
@@ -4485,13 +4450,13 @@ exports.help = (opts = {}) => {
 /***/ }),
 
 /***/ 82708:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const path = __webpack_require__(85622);
-const semver = __webpack_require__(11383);
+const path = __nccwpck_require__(85622);
+const semver = __nccwpck_require__(11383);
 function checkCWD() {
     try {
         process.cwd();
@@ -4504,18 +4469,18 @@ function checkCWD() {
 }
 function checkNodeVersion() {
     const root = path.join(__dirname, '..');
-    const pjson = __webpack_require__(38147);
+    const pjson = __nccwpck_require__(38147);
     if (!semver.satisfies(process.versions.node, pjson.engines.node)) {
         process.stderr.write(`WARNING\nWARNING Node version must be ${pjson.engines.node} to use this CLI\nWARNING Current node version: ${process.versions.node}\nWARNING\n`);
     }
 }
 checkCWD();
 checkNodeVersion();
-const command_1 = __webpack_require__(18287);
+const command_1 = __nccwpck_require__(18287);
 exports.Command = command_1.default;
-const flags = __webpack_require__(25754);
+const flags = __nccwpck_require__(25754);
 exports.flags = flags;
-var main_1 = __webpack_require__(85578);
+var main_1 = __nccwpck_require__(85578);
 exports.run = main_1.run;
 exports.Main = main_1.Main;
 exports.default = command_1.default;
@@ -4524,14 +4489,14 @@ exports.default = command_1.default;
 /***/ }),
 
 /***/ 85578:
-/***/ ((module, exports, __webpack_require__) => {
+/***/ ((module, exports, __nccwpck_require__) => {
 
 "use strict";
-/* module decorator */ module = __webpack_require__.nmd(module);
+/* module decorator */ module = __nccwpck_require__.nmd(module);
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const _1 = __webpack_require__(82708);
-const plugin_help_1 = __webpack_require__(46765);
+const _1 = __nccwpck_require__(82708);
+const plugin_help_1 = __nccwpck_require__(46765);
 const ROOT_INDEX_CMD_ID = '';
 class Main extends _1.Command {
     static run(argv = process.argv.slice(2), options) {
@@ -4630,12 +4595,12 @@ exports.sortBy = sortBy;
 /***/ }),
 
 /***/ 24499:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const util_1 = __webpack_require__(54103);
+const util_1 = __nccwpck_require__(54103);
 var Command;
 (function (Command) {
     // eslint-disable-next-line no-inner-declarations
@@ -4692,24 +4657,24 @@ var Command;
 /***/ }),
 
 /***/ 53969:
-/***/ ((module, exports, __webpack_require__) => {
+/***/ ((module, exports, __nccwpck_require__) => {
 
 "use strict";
-/* module decorator */ module = __webpack_require__.nmd(module);
+/* module decorator */ module = __nccwpck_require__.nmd(module);
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const errors_1 = __webpack_require__(52564);
-const os = __webpack_require__(12087);
-const path = __webpack_require__(85622);
-const url_1 = __webpack_require__(78835);
-const util_1 = __webpack_require__(31669);
-const debug_1 = __webpack_require__(40673);
-const Plugin = __webpack_require__(25082);
-const ts_node_1 = __webpack_require__(39584);
-const util_2 = __webpack_require__(54103);
+const errors_1 = __nccwpck_require__(52564);
+const os = __nccwpck_require__(12087);
+const path = __nccwpck_require__(85622);
+const url_1 = __nccwpck_require__(78835);
+const util_1 = __nccwpck_require__(31669);
+const debug_1 = __nccwpck_require__(40673);
+const Plugin = __nccwpck_require__(25082);
+const ts_node_1 = __nccwpck_require__(39584);
+const util_2 = __nccwpck_require__(54103);
 // eslint-disable-next-line new-cap
 const debug = debug_1.default();
-const _pjson = __webpack_require__(63309);
+const _pjson = __nccwpck_require__(63309);
 function channelFromVersion(version) {
     const m = version.match(/[^-]+(?:-([^.]+))?/);
     return (m && m[1]) || 'stable';
@@ -4723,7 +4688,7 @@ function hasManifest(p) {
         return false;
     }
 }
-const WSL = __webpack_require__(52559);
+const WSL = __nccwpck_require__(52559);
 class Config {
     // eslint-disable-next-line no-useless-constructor
     constructor(options) {
@@ -4817,7 +4782,7 @@ class Config {
     async runHook(event, opts) {
         debug('start %s hook', event);
         const promises = this.plugins.map(p => {
-            const debug = __webpack_require__(38237)([this.bin, p.name, 'hooks', event].join(':'));
+            const debug = __nccwpck_require__(38237)([this.bin, p.name, 'hooks', event].join(':'));
             const context = {
                 config: this,
                 debug,
@@ -4936,7 +4901,7 @@ class Config {
             options = ext;
         else if (ext)
             options.ext = ext;
-        const _ = __webpack_require__(90250);
+        const _ = __nccwpck_require__(90250);
         return _.template(this.pjson.oclif.update.s3.templates[options.platform ? 'target' : 'vanilla'][type])(Object.assign(Object.assign({}, this), options));
     }
     s3Url(key) {
@@ -4983,7 +4948,7 @@ class Config {
         if (this.scopedEnvVarTrue('DEBUG'))
             return 1;
         try {
-            const { enabled } = __webpack_require__(38237)(this.bin);
+            const { enabled } = __nccwpck_require__(38237)(this.bin);
             if (enabled)
                 return 1;
         }
@@ -5078,7 +5043,7 @@ exports.load = load;
 /***/ }),
 
 /***/ 40673:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
@@ -5086,7 +5051,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 // tslint:disable no-console
 let debug;
 try {
-    debug = __webpack_require__(38237);
+    debug = __nccwpck_require__(38237);
 }
 catch (_a) { }
 function displayWarnings() {
@@ -5111,42 +5076,42 @@ exports.default = (...scope) => {
 /***/ }),
 
 /***/ 54412:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 try {
     // eslint-disable-next-line node/no-missing-require
-    __webpack_require__(8387);
+    __nccwpck_require__(8387);
 }
 catch (_a) { }
-var config_1 = __webpack_require__(53969);
+var config_1 = __nccwpck_require__(53969);
 exports.Config = config_1.Config;
 exports.load = config_1.load;
-var command_1 = __webpack_require__(24499);
+var command_1 = __nccwpck_require__(24499);
 exports.Command = command_1.Command;
-var plugin_1 = __webpack_require__(25082);
+var plugin_1 = __nccwpck_require__(25082);
 exports.Plugin = plugin_1.Plugin;
 
 
 /***/ }),
 
 /***/ 25082:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const errors_1 = __webpack_require__(52564);
-const path = __webpack_require__(85622);
-const util_1 = __webpack_require__(31669);
-const command_1 = __webpack_require__(24499);
-const debug_1 = __webpack_require__(40673);
-const ts_node_1 = __webpack_require__(39584);
-const util_2 = __webpack_require__(54103);
+const errors_1 = __nccwpck_require__(52564);
+const path = __nccwpck_require__(85622);
+const util_1 = __nccwpck_require__(31669);
+const command_1 = __nccwpck_require__(24499);
+const debug_1 = __nccwpck_require__(40673);
+const ts_node_1 = __nccwpck_require__(39584);
+const util_2 = __nccwpck_require__(54103);
 const ROOT_INDEX_CMD_ID = '';
-const _pjson = __webpack_require__(63309);
+const _pjson = __nccwpck_require__(63309);
 const hasManifest = function (p) {
     try {
         require(p);
@@ -5397,14 +5362,14 @@ exports.Plugin = Plugin;
 /***/ }),
 
 /***/ 39584:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const fs = __webpack_require__(35747);
-const path = __webpack_require__(85622);
-const debug_1 = __webpack_require__(40673);
+const fs = __nccwpck_require__(35747);
+const path = __nccwpck_require__(85622);
+const debug_1 = __nccwpck_require__(40673);
 // eslint-disable-next-line new-cap
 const debug = debug_1.default();
 const tsconfigs = {};
@@ -5414,7 +5379,7 @@ function loadTSConfig(root) {
     const tsconfigPath = path.join(root, 'tsconfig.json');
     let typescript;
     try {
-        typescript = __webpack_require__(75034);
+        typescript = __nccwpck_require__(75034);
     }
     catch (_a) {
         try {
@@ -5513,13 +5478,13 @@ exports.tsPath = tsPath;
 /***/ }),
 
 /***/ 54103:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const fs = __webpack_require__(35747);
-const debug = __webpack_require__(38237)('@oclif/config');
+const fs = __nccwpck_require__(35747);
+const debug = __nccwpck_require__(38237)('@oclif/config');
 function flatMap(arr, fn) {
     return arr.reduce((arr, i) => arr.concat(fn(i)), []);
 }
@@ -5571,12 +5536,12 @@ exports.uniq = uniq;
 /***/ }),
 
 /***/ 46418:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const logger_1 = __webpack_require__(41434);
+const logger_1 = __nccwpck_require__(41434);
 // eslint-disable-next-line no-multi-assign
 const g = global.oclif = global.oclif || {};
 function displayWarnings() {
@@ -5614,13 +5579,13 @@ exports.config = {
 /***/ }),
 
 /***/ 68954:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 // tslint:disable no-implicit-dependencies
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const config_1 = __webpack_require__(46418);
+const config_1 = __nccwpck_require__(46418);
 function addOclifExitCode(error, options) {
     if (!('oclif' in error)) {
         error.oclif = {};
@@ -5637,7 +5602,7 @@ class CLIError extends Error {
         this.code = options.code;
     }
     get stack() {
-        const clean = __webpack_require__(27972);
+        const clean = __nccwpck_require__(27972);
         return clean(super.stack, { pretty: true });
     }
     /**
@@ -5648,11 +5613,11 @@ class CLIError extends Error {
         if (config_1.config.debug) {
             return this.stack;
         }
-        const wrap = __webpack_require__(59824);
-        const indent = __webpack_require__(98043);
+        const wrap = __nccwpck_require__(59824);
+        const indent = __nccwpck_require__(98043);
         let output = `${this.name}: ${this.message}`;
         // eslint-disable-next-line node/no-missing-require
-        output = wrap(output, __webpack_require__(13176).errtermwidth - 6, { trim: false, hard: true });
+        output = wrap(output, __nccwpck_require__(13176).errtermwidth - 6, { trim: false, hard: true });
         output = indent(output, 3);
         output = indent(output, 1, { indent: this.bang, includeEmptyLines: true });
         output = indent(output, 1);
@@ -5661,7 +5626,7 @@ class CLIError extends Error {
     get bang() {
         let red = ((s) => s);
         try {
-            red = __webpack_require__(38707).red;
+            red = __nccwpck_require__(38707).red;
         }
         catch (_a) { }
         return red(process.platform === 'win32' ? '»' : '›');
@@ -5677,7 +5642,7 @@ exports.CLIError = CLIError;
         get bang() {
             let yellow = ((s) => s);
             try {
-                yellow = __webpack_require__(38707).yellow;
+                yellow = __nccwpck_require__(38707).yellow;
             }
             catch (_a) { }
             return yellow(process.platform === 'win32' ? '»' : '›');
@@ -5690,12 +5655,12 @@ exports.CLIError = CLIError;
 /***/ }),
 
 /***/ 7711:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const cli_1 = __webpack_require__(68954);
+const cli_1 = __nccwpck_require__(68954);
 class ExitError extends cli_1.CLIError {
     constructor(exitCode = 0) {
         super(`EEXIT: ${exitCode}`, { exit: exitCode });
@@ -5711,15 +5676,15 @@ exports.ExitError = ExitError;
 /***/ }),
 
 /***/ 10444:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const wrap = __webpack_require__(59824);
-const indent = __webpack_require__(98043);
-const screen = __webpack_require__(13176);
-const config_1 = __webpack_require__(46418);
+const wrap = __nccwpck_require__(59824);
+const indent = __nccwpck_require__(98043);
+const screen = __nccwpck_require__(13176);
+const config_1 = __nccwpck_require__(46418);
 function applyPrettyPrintOptions(error, options) {
     const prettyErrorKeys = ['message', 'code', 'ref', 'suggestions'];
     prettyErrorKeys.forEach(key => {
@@ -5766,18 +5731,18 @@ exports.default = prettyPrint;
 /***/ }),
 
 /***/ 30690:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 /* eslint-disable no-process-exit */
 /* eslint-disable unicorn/no-process-exit */
-const config_1 = __webpack_require__(46418);
-const pretty_print_1 = __webpack_require__(10444);
-const _1 = __webpack_require__(52564);
-const clean = __webpack_require__(27972);
-const cli_1 = __webpack_require__(68954);
+const config_1 = __nccwpck_require__(46418);
+const pretty_print_1 = __nccwpck_require__(10444);
+const _1 = __nccwpck_require__(52564);
+const clean = __nccwpck_require__(27972);
+const cli_1 = __nccwpck_require__(68954);
 exports.handle = (err) => {
     var _a, _b, _c;
     try {
@@ -5814,26 +5779,26 @@ exports.handle = (err) => {
 /***/ }),
 
 /***/ 52564:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 // tslint:disable no-console
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-var handle_1 = __webpack_require__(30690);
+var handle_1 = __nccwpck_require__(30690);
 exports.handle = handle_1.handle;
-var exit_1 = __webpack_require__(7711);
+var exit_1 = __nccwpck_require__(7711);
 exports.ExitError = exit_1.ExitError;
-var cli_1 = __webpack_require__(68954);
+var cli_1 = __nccwpck_require__(68954);
 exports.CLIError = cli_1.CLIError;
-var logger_1 = __webpack_require__(41434);
+var logger_1 = __nccwpck_require__(41434);
 exports.Logger = logger_1.Logger;
-var config_1 = __webpack_require__(46418);
+var config_1 = __nccwpck_require__(46418);
 exports.config = config_1.config;
-const config_2 = __webpack_require__(46418);
-const cli_2 = __webpack_require__(68954);
-const exit_2 = __webpack_require__(7711);
-const pretty_print_1 = __webpack_require__(10444);
+const config_2 = __nccwpck_require__(46418);
+const cli_2 = __nccwpck_require__(68954);
+const exit_2 = __nccwpck_require__(7711);
+const pretty_print_1 = __nccwpck_require__(10444);
 function exit(code = 0) {
     throw new exit_2.ExitError(code);
 }
@@ -5884,12 +5849,12 @@ exports.warn = warn;
 /***/ }),
 
 /***/ 41434:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const path = __webpack_require__(85622);
+const path = __nccwpck_require__(85622);
 const timestamp = () => new Date().toISOString();
 let timer;
 const wait = (ms) => new Promise(resolve => {
@@ -5910,7 +5875,7 @@ class Logger {
         this.buffer = [];
     }
     log(msg) {
-        const stripAnsi = __webpack_require__(45591);
+        const stripAnsi = __nccwpck_require__(45591);
         msg = stripAnsi(chomp(msg));
         const lines = msg.split('\n').map(l => `${timestamp()} ${l}`.trimRight());
         this.buffer.push(...lines);
@@ -5924,7 +5889,7 @@ class Logger {
                 return;
             const mylines = this.buffer;
             this.buffer = [];
-            const fs = __webpack_require__(5630);
+            const fs = __nccwpck_require__(5630);
             await fs.mkdirp(path.dirname(this.file));
             await fs.appendFile(this.file, mylines.join('\n') + '\n');
         });
@@ -6793,22 +6758,22 @@ exports.default = () => {
 /***/ }),
 
 /***/ 33925:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __webpack_require__(75636);
-const errors_1 = __webpack_require__(52564);
-const deps_1 = tslib_1.__importDefault(__webpack_require__(17195));
-var errors_2 = __webpack_require__(52564);
+const tslib_1 = __nccwpck_require__(4351);
+const errors_1 = __nccwpck_require__(52564);
+const deps_1 = tslib_1.__importDefault(__nccwpck_require__(17195));
+var errors_2 = __nccwpck_require__(52564);
 exports.CLIError = errors_2.CLIError;
 // eslint-disable-next-line new-cap
 const m = deps_1.default()
     // eslint-disable-next-line node/no-missing-require
-    .add('help', () => __webpack_require__(50283))
+    .add('help', () => __nccwpck_require__(50283))
     // eslint-disable-next-line node/no-missing-require
-    .add('list', () => __webpack_require__(25119));
+    .add('list', () => __nccwpck_require__(25119));
 class CLIParseError extends errors_1.CLIError {
     constructor(options) {
         options.message += '\nSee more help with --help';
@@ -6916,18 +6881,18 @@ exports.defaultFlags = {
 /***/ }),
 
 /***/ 50283:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __webpack_require__(75636);
-const deps_1 = tslib_1.__importDefault(__webpack_require__(17195));
+const tslib_1 = __nccwpck_require__(4351);
+const deps_1 = tslib_1.__importDefault(__nccwpck_require__(17195));
 // eslint-disable-next-line new-cap
 const m = deps_1.default()
-    .add('chalk', () => __webpack_require__(38707))
+    .add('chalk', () => __nccwpck_require__(38707))
     // eslint-disable-next-line node/no-missing-require
-    .add('util', () => __webpack_require__(78120));
+    .add('util', () => __nccwpck_require__(78120));
 function flagUsage(flag, options = {}) {
     const label = [];
     if (flag.helpLabel) {
@@ -6960,25 +6925,25 @@ exports.flagUsages = flagUsages;
 /***/ }),
 
 /***/ 41150:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 // tslint:disable interface-over-type-literal
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __webpack_require__(75636);
-const args = tslib_1.__importStar(__webpack_require__(18791));
+const tslib_1 = __nccwpck_require__(4351);
+const args = tslib_1.__importStar(__nccwpck_require__(18791));
 exports.args = args;
-const deps_1 = tslib_1.__importDefault(__webpack_require__(17195));
-const flags = tslib_1.__importStar(__webpack_require__(40331));
+const deps_1 = tslib_1.__importDefault(__nccwpck_require__(17195));
+const flags = tslib_1.__importStar(__nccwpck_require__(40331));
 exports.flags = flags;
-const parse_1 = __webpack_require__(72546);
-var help_1 = __webpack_require__(50283);
+const parse_1 = __nccwpck_require__(72546);
+var help_1 = __nccwpck_require__(50283);
 exports.flagUsages = help_1.flagUsages;
 // eslint-disable-next-line new-cap
 const m = deps_1.default()
     // eslint-disable-next-line node/no-missing-require
-    .add('validate', () => __webpack_require__(67385)/* .validate */ .G);
+    .add('validate', () => __nccwpck_require__(67385)/* .validate */ .G);
 function parse(argv, options) {
     const input = {
         argv,
@@ -6999,15 +6964,15 @@ exports.parse = parse;
 /***/ }),
 
 /***/ 25119:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const screen_1 = __webpack_require__(85767);
-const util_1 = __webpack_require__(78120);
+const screen_1 = __nccwpck_require__(85767);
+const util_1 = __nccwpck_require__(78120);
 function linewrap(length, s) {
-    const lw = __webpack_require__(49094);
+    const lw = __nccwpck_require__(49094);
     return lw(length, screen_1.stdtermwidth, {
         skipScheme: 'ansi-color',
     })(s).trim();
@@ -7035,20 +7000,20 @@ exports.renderList = renderList;
 /***/ }),
 
 /***/ 72546:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 // tslint:disable interface-over-type-literal
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __webpack_require__(75636);
-const deps_1 = tslib_1.__importDefault(__webpack_require__(17195));
+const tslib_1 = __nccwpck_require__(4351);
+const deps_1 = tslib_1.__importDefault(__nccwpck_require__(17195));
 // eslint-disable-next-line new-cap
 const m = deps_1.default()
     // eslint-disable-next-line node/no-missing-require
-    .add('errors', () => __webpack_require__(33925))
+    .add('errors', () => __nccwpck_require__(33925))
     // eslint-disable-next-line node/no-missing-require
-    .add('util', () => __webpack_require__(78120));
+    .add('util', () => __nccwpck_require__(78120));
 let debug;
 try {
     // eslint-disable-next-line no-negated-condition
@@ -7056,7 +7021,7 @@ try {
         debug = () => { };
     else
         // eslint-disable-next-line node/no-extraneous-require
-        debug = __webpack_require__(38237)('@oclif/parser');
+        debug = __nccwpck_require__(38237)('@oclif/parser');
 }
 catch (_a) {
     debug = () => { };
@@ -7375,14 +7340,14 @@ exports.sortBy = sortBy;
 /***/ }),
 
 /***/ 67385:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
-const errors_1 = __webpack_require__(52564);
-const errors_2 = __webpack_require__(33925);
+const errors_1 = __nccwpck_require__(52564);
+const errors_2 = __nccwpck_require__(33925);
 function validate(parse) {
     function validateArgs() {
         const maxArgs = parse.input.args.length;
@@ -7442,22 +7407,22 @@ exports.G = validate;
 /***/ }),
 
 /***/ 33770:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const chalk = __webpack_require__(94294);
-const indent = __webpack_require__(98043);
-const stripAnsi = __webpack_require__(45591);
-const list_1 = __webpack_require__(99847);
-const util_1 = __webpack_require__(89977);
+const chalk = __nccwpck_require__(94294);
+const indent = __nccwpck_require__(98043);
+const stripAnsi = __nccwpck_require__(45591);
+const list_1 = __nccwpck_require__(99847);
+const util_1 = __nccwpck_require__(89977);
 const { underline, bold, } = chalk;
 let { dim, } = chalk;
 if (process.env.ConEmuANSI === 'ON') {
     dim = chalk.gray;
 }
-const wrap = __webpack_require__(57915);
+const wrap = __nccwpck_require__(57915);
 class CommandHelp {
     constructor(command, config, opts) {
         this.command = command;
@@ -7601,23 +7566,23 @@ exports.default = CommandHelp;
 /***/ }),
 
 /***/ 46765:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const errors_1 = __webpack_require__(52564);
-const chalk = __webpack_require__(94294);
-const indent = __webpack_require__(98043);
-const stripAnsi = __webpack_require__(45591);
-const command_1 = __webpack_require__(33770);
-const list_1 = __webpack_require__(99847);
-const root_1 = __webpack_require__(2178);
-const screen_1 = __webpack_require__(60789);
-const util_1 = __webpack_require__(89977);
-const util_2 = __webpack_require__(89977);
+const errors_1 = __nccwpck_require__(52564);
+const chalk = __nccwpck_require__(94294);
+const indent = __nccwpck_require__(98043);
+const stripAnsi = __nccwpck_require__(45591);
+const command_1 = __nccwpck_require__(33770);
+const list_1 = __nccwpck_require__(99847);
+const root_1 = __nccwpck_require__(2178);
+const screen_1 = __nccwpck_require__(60789);
+const util_1 = __nccwpck_require__(89977);
+const util_2 = __nccwpck_require__(89977);
 exports.getHelpClass = util_2.getHelpClass;
-const wrap = __webpack_require__(57915);
+const wrap = __nccwpck_require__(57915);
 const { bold, } = chalk;
 const ROOT_INDEX_CMD_ID = '';
 function getHelpSubject(args) {
@@ -7822,16 +7787,16 @@ exports.Help = Help;
 /***/ }),
 
 /***/ 99847:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const indent = __webpack_require__(98043);
-const stripAnsi = __webpack_require__(45591);
-const width = __webpack_require__(42577);
-const wrap = __webpack_require__(57915);
-const widestLine = __webpack_require__(60866);
+const indent = __nccwpck_require__(98043);
+const stripAnsi = __nccwpck_require__(45591);
+const width = __nccwpck_require__(42577);
+const wrap = __nccwpck_require__(57915);
+const widestLine = __nccwpck_require__(60866);
 function renderList(input, opts) {
     if (input.length === 0) {
         return '';
@@ -7906,16 +7871,16 @@ exports.renderList = renderList;
 /***/ }),
 
 /***/ 2178:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const chalk = __webpack_require__(94294);
-const indent = __webpack_require__(98043);
-const stripAnsi = __webpack_require__(45591);
-const util_1 = __webpack_require__(89977);
-const wrap = __webpack_require__(57915);
+const chalk = __nccwpck_require__(94294);
+const indent = __nccwpck_require__(98043);
+const stripAnsi = __nccwpck_require__(45591);
+const util_1 = __nccwpck_require__(89977);
+const wrap = __nccwpck_require__(57915);
 const { bold, } = chalk;
 class RootHelp {
     constructor(config, opts) {
@@ -7993,13 +7958,13 @@ exports.errtermwidth = columns || termwidth(process.stderr);
 /***/ }),
 
 /***/ 89977:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const ts_node_1 = __webpack_require__(39584);
-const lodashTemplate = __webpack_require__(60417);
+const ts_node_1 = __nccwpck_require__(39584);
+const lodashTemplate = __nccwpck_require__(60417);
 function uniqBy(arr, fn) {
     return arr.filter((a, i) => {
         const aVal = fn(a);
@@ -8097,10 +8062,10 @@ module.exports = () => {
 /***/ }),
 
 /***/ 87236:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
-/* module decorator */ module = __webpack_require__.nmd(module);
+/* module decorator */ module = __nccwpck_require__.nmd(module);
 
 
 const wrapAnsi16 = (fn, offset) => (...args) => {
@@ -8143,7 +8108,7 @@ const setLazyProperty = (object, property, get) => {
 let colorConvert;
 const makeDynamicStyles = (wrap, targetSpace, identity, isBackground) => {
 	if (colorConvert === undefined) {
-		colorConvert = __webpack_require__(93130);
+		colorConvert = __nccwpck_require__(93130);
 	}
 
 	const offset = isBackground ? 10 : 0;
@@ -8269,16 +8234,16 @@ Object.defineProperty(module, 'exports', {
 /***/ }),
 
 /***/ 94294:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
-const ansiStyles = __webpack_require__(87236);
-const {stdout: stdoutColor, stderr: stderrColor} = __webpack_require__(70976);
+const ansiStyles = __nccwpck_require__(87236);
+const {stdout: stdoutColor, stderr: stderrColor} = __nccwpck_require__(70976);
 const {
 	stringReplaceAll,
 	stringEncaseCRLFWithFirstIndex
-} = __webpack_require__(93715);
+} = __nccwpck_require__(93715);
 
 const {isArray} = Array;
 
@@ -8487,7 +8452,7 @@ const chalkTag = (chalk, ...strings) => {
 	}
 
 	if (template === undefined) {
-		template = __webpack_require__(39160);
+		template = __nccwpck_require__(39160);
 	}
 
 	return template(chalk, parts.join(''));
@@ -8695,11 +8660,11 @@ module.exports = {
 /***/ }),
 
 /***/ 71406:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 /* MIT license */
 /* eslint-disable no-mixed-operators */
-const cssKeywords = __webpack_require__(98660);
+const cssKeywords = __nccwpck_require__(98660);
 
 // NOTE: conversions should only return primitive values (i.e. arrays, or
 //       values that give correct `typeof` results).
@@ -9541,10 +9506,10 @@ convert.rgb.gray = function (rgb) {
 /***/ }),
 
 /***/ 93130:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const conversions = __webpack_require__(71406);
-const route = __webpack_require__(57845);
+const conversions = __nccwpck_require__(71406);
+const route = __nccwpck_require__(57845);
 
 const convert = {};
 
@@ -9629,9 +9594,9 @@ module.exports = convert;
 /***/ }),
 
 /***/ 57845:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const conversions = __webpack_require__(71406);
+const conversions = __nccwpck_require__(71406);
 
 /*
 	This function routes a model to all other models.
@@ -9963,13 +9928,13 @@ module.exports = x => {
 /***/ }),
 
 /***/ 70976:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
-const os = __webpack_require__(12087);
-const tty = __webpack_require__(33867);
-const hasFlag = __webpack_require__(85815);
+const os = __nccwpck_require__(12087);
+const tty = __nccwpck_require__(33867);
+const hasFlag = __nccwpck_require__(85815);
 
 const {env} = process;
 
@@ -10106,13 +10071,13 @@ module.exports = {
 /***/ }),
 
 /***/ 57915:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
-const stringWidth = __webpack_require__(64537);
-const stripAnsi = __webpack_require__(59284);
-const ansiStyles = __webpack_require__(52068);
+const stringWidth = __nccwpck_require__(64537);
+const stripAnsi = __nccwpck_require__(59284);
+const ansiStyles = __nccwpck_require__(52068);
 
 const ESCAPES = new Set([
 	'\u001B',
@@ -10269,12 +10234,12 @@ module.exports = (string, columns, options) => {
 /***/ }),
 
 /***/ 64537:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
-const stripAnsi = __webpack_require__(59284);
-const isFullwidthCodePoint = __webpack_require__(35565);
+const stripAnsi = __nccwpck_require__(59284);
+const isFullwidthCodePoint = __nccwpck_require__(35565);
 
 module.exports = str => {
 	if (typeof str !== 'string' || str.length === 0) {
@@ -10313,11 +10278,11 @@ module.exports = str => {
 /***/ }),
 
 /***/ 59284:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
-const ansiRegex = __webpack_require__(97546);
+const ansiRegex = __nccwpck_require__(97546);
 
 module.exports = input => typeof input === 'string' ? input.replace(ansiRegex(), '') : input;
 
@@ -10540,12 +10505,12 @@ module.exports = ({onlyFirst = false} = {}) => {
 /***/ }),
 
 /***/ 52068:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
-/* module decorator */ module = __webpack_require__.nmd(module);
+/* module decorator */ module = __nccwpck_require__.nmd(module);
 
-const colorConvert = __webpack_require__(86931);
+const colorConvert = __nccwpck_require__(86931);
 
 const wrapAnsi16 = (fn, offset) => function () {
 	const code = fn.apply(colorConvert, arguments);
@@ -10787,31 +10752,31 @@ colors.close   =  close;
 /***/ }),
 
 /***/ 96545:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-module.exports = __webpack_require__(52618);
+module.exports = __nccwpck_require__(52618);
 
 /***/ }),
 
 /***/ 68104:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(20328);
-var settle = __webpack_require__(13211);
-var buildFullPath = __webpack_require__(41934);
-var buildURL = __webpack_require__(30646);
-var http = __webpack_require__(15876);
-var https = __webpack_require__(57211);
-var httpFollow = __webpack_require__(67707).http;
-var httpsFollow = __webpack_require__(67707).https;
-var url = __webpack_require__(78835);
-var zlib = __webpack_require__(78761);
-var pkg = __webpack_require__(20696);
-var createError = __webpack_require__(15226);
-var enhanceError = __webpack_require__(21516);
+var utils = __nccwpck_require__(20328);
+var settle = __nccwpck_require__(13211);
+var buildFullPath = __nccwpck_require__(41934);
+var buildURL = __nccwpck_require__(30646);
+var http = __nccwpck_require__(15876);
+var https = __nccwpck_require__(57211);
+var httpFollow = __nccwpck_require__(67707).http;
+var httpsFollow = __nccwpck_require__(67707).https;
+var url = __nccwpck_require__(78835);
+var zlib = __nccwpck_require__(78761);
+var pkg = __nccwpck_require__(20696);
+var createError = __nccwpck_require__(15226);
+var enhanceError = __nccwpck_require__(21516);
 
 var isHttps = /https:?/;
 
@@ -11105,19 +11070,19 @@ module.exports = function httpAdapter(config) {
 /***/ }),
 
 /***/ 3454:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(20328);
-var settle = __webpack_require__(13211);
-var cookies = __webpack_require__(21545);
-var buildURL = __webpack_require__(30646);
-var buildFullPath = __webpack_require__(41934);
-var parseHeaders = __webpack_require__(86455);
-var isURLSameOrigin = __webpack_require__(33608);
-var createError = __webpack_require__(15226);
+var utils = __nccwpck_require__(20328);
+var settle = __nccwpck_require__(13211);
+var cookies = __nccwpck_require__(21545);
+var buildURL = __nccwpck_require__(30646);
+var buildFullPath = __nccwpck_require__(41934);
+var parseHeaders = __nccwpck_require__(86455);
+var isURLSameOrigin = __nccwpck_require__(33608);
+var createError = __nccwpck_require__(15226);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -11292,16 +11257,16 @@ module.exports = function xhrAdapter(config) {
 /***/ }),
 
 /***/ 52618:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(20328);
-var bind = __webpack_require__(77065);
-var Axios = __webpack_require__(98178);
-var mergeConfig = __webpack_require__(74831);
-var defaults = __webpack_require__(98190);
+var utils = __nccwpck_require__(20328);
+var bind = __nccwpck_require__(77065);
+var Axios = __nccwpck_require__(98178);
+var mergeConfig = __nccwpck_require__(74831);
+var defaults = __nccwpck_require__(98190);
 
 /**
  * Create an instance of Axios
@@ -11334,18 +11299,18 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(98875);
-axios.CancelToken = __webpack_require__(71587);
-axios.isCancel = __webpack_require__(64057);
+axios.Cancel = __nccwpck_require__(98875);
+axios.CancelToken = __nccwpck_require__(71587);
+axios.isCancel = __nccwpck_require__(64057);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(74850);
+axios.spread = __nccwpck_require__(74850);
 
 // Expose isAxiosError
-axios.isAxiosError = __webpack_require__(60650);
+axios.isAxiosError = __nccwpck_require__(60650);
 
 module.exports = axios;
 
@@ -11383,12 +11348,12 @@ module.exports = Cancel;
 /***/ }),
 
 /***/ 71587:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var Cancel = __webpack_require__(98875);
+var Cancel = __nccwpck_require__(98875);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -11461,16 +11426,16 @@ module.exports = function isCancel(value) {
 /***/ }),
 
 /***/ 98178:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(20328);
-var buildURL = __webpack_require__(30646);
-var InterceptorManager = __webpack_require__(3214);
-var dispatchRequest = __webpack_require__(85062);
-var mergeConfig = __webpack_require__(74831);
+var utils = __nccwpck_require__(20328);
+var buildURL = __nccwpck_require__(30646);
+var InterceptorManager = __nccwpck_require__(3214);
+var dispatchRequest = __nccwpck_require__(85062);
+var mergeConfig = __nccwpck_require__(74831);
 
 /**
  * Create a new instance of Axios
@@ -11564,12 +11529,12 @@ module.exports = Axios;
 /***/ }),
 
 /***/ 3214:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(20328);
+var utils = __nccwpck_require__(20328);
 
 function InterceptorManager() {
   this.handlers = [];
@@ -11624,13 +11589,13 @@ module.exports = InterceptorManager;
 /***/ }),
 
 /***/ 41934:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var isAbsoluteURL = __webpack_require__(41301);
-var combineURLs = __webpack_require__(57189);
+var isAbsoluteURL = __nccwpck_require__(41301);
+var combineURLs = __nccwpck_require__(57189);
 
 /**
  * Creates a new URL by combining the baseURL with the requestedURL,
@@ -11652,12 +11617,12 @@ module.exports = function buildFullPath(baseURL, requestedURL) {
 /***/ }),
 
 /***/ 15226:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var enhanceError = __webpack_require__(21516);
+var enhanceError = __nccwpck_require__(21516);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -11678,15 +11643,15 @@ module.exports = function createError(message, config, code, request, response) 
 /***/ }),
 
 /***/ 85062:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(20328);
-var transformData = __webpack_require__(19812);
-var isCancel = __webpack_require__(64057);
-var defaults = __webpack_require__(98190);
+var utils = __nccwpck_require__(20328);
+var transformData = __nccwpck_require__(19812);
+var isCancel = __nccwpck_require__(64057);
+var defaults = __nccwpck_require__(98190);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -11815,12 +11780,12 @@ module.exports = function enhanceError(error, config, code, request, response) {
 /***/ }),
 
 /***/ 74831:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(20328);
+var utils = __nccwpck_require__(20328);
 
 /**
  * Config-specific merge-function which creates a new config-object
@@ -11910,12 +11875,12 @@ module.exports = function mergeConfig(config1, config2) {
 /***/ }),
 
 /***/ 13211:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var createError = __webpack_require__(15226);
+var createError = __nccwpck_require__(15226);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -11943,12 +11908,12 @@ module.exports = function settle(resolve, reject, response) {
 /***/ }),
 
 /***/ 19812:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(20328);
+var utils = __nccwpck_require__(20328);
 
 /**
  * Transform the data for a request or a response
@@ -11971,13 +11936,13 @@ module.exports = function transformData(data, headers, fns) {
 /***/ }),
 
 /***/ 98190:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(20328);
-var normalizeHeaderName = __webpack_require__(36240);
+var utils = __nccwpck_require__(20328);
+var normalizeHeaderName = __nccwpck_require__(36240);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -11993,10 +11958,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(3454);
+    adapter = __nccwpck_require__(3454);
   } else if (typeof process !== 'undefined' && Object.prototype.toString.call(process) === '[object process]') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(68104);
+    adapter = __nccwpck_require__(68104);
   }
   return adapter;
 }
@@ -12096,12 +12061,12 @@ module.exports = function bind(fn, thisArg) {
 /***/ }),
 
 /***/ 30646:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(20328);
+var utils = __nccwpck_require__(20328);
 
 function encode(val) {
   return encodeURIComponent(val).
@@ -12196,12 +12161,12 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 /***/ }),
 
 /***/ 21545:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(20328);
+var utils = __nccwpck_require__(20328);
 
 module.exports = (
   utils.isStandardBrowserEnv() ?
@@ -12298,12 +12263,12 @@ module.exports = function isAxiosError(payload) {
 /***/ }),
 
 /***/ 33608:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(20328);
+var utils = __nccwpck_require__(20328);
 
 module.exports = (
   utils.isStandardBrowserEnv() ?
@@ -12374,12 +12339,12 @@ module.exports = (
 /***/ }),
 
 /***/ 36240:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(20328);
+var utils = __nccwpck_require__(20328);
 
 module.exports = function normalizeHeaderName(headers, normalizedName) {
   utils.forEach(headers, function processHeader(value, name) {
@@ -12394,12 +12359,12 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 /***/ }),
 
 /***/ 86455:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var utils = __webpack_require__(20328);
+var utils = __nccwpck_require__(20328);
 
 // Headers whose duplicates are ignored by node
 // c.f. https://nodejs.org/api/http.html#http_message_headers
@@ -12490,12 +12455,12 @@ module.exports = function spread(callback) {
 /***/ }),
 
 /***/ 20328:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var bind = __webpack_require__(77065);
+var bind = __nccwpck_require__(77065);
 
 /*global toString:true*/
 
@@ -12849,15 +12814,15 @@ module.exports = {
 /***/ }),
 
 /***/ 68959:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __webpack_require__(75636);
-const errors_1 = __webpack_require__(52564);
-const chalk_1 = tslib_1.__importDefault(__webpack_require__(38707));
-const debug_1 = tslib_1.__importDefault(__webpack_require__(38237));
+const tslib_1 = __nccwpck_require__(4351);
+const errors_1 = __nccwpck_require__(52564);
+const chalk_1 = tslib_1.__importDefault(__nccwpck_require__(38707));
+const debug_1 = tslib_1.__importDefault(__nccwpck_require__(38237));
 const debug = debug_1.default('bump-cli:api-client');
 class APIError extends errors_1.CLIError {
     constructor(httpError, info = [], exit = 100) {
@@ -12953,16 +12918,16 @@ exports.default = APIError;
 /***/ }),
 
 /***/ 32035:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.APIError = exports.BumpApi = void 0;
-const tslib_1 = __webpack_require__(75636);
-const axios_1 = tslib_1.__importDefault(__webpack_require__(96545));
-const vars_1 = __webpack_require__(52784);
-const error_1 = tslib_1.__importDefault(__webpack_require__(68959));
+const tslib_1 = __nccwpck_require__(4351);
+const axios_1 = tslib_1.__importDefault(__nccwpck_require__(96545));
+const vars_1 = __nccwpck_require__(52784);
+const error_1 = tslib_1.__importDefault(__nccwpck_require__(68959));
 exports.APIError = error_1.default;
 class BumpApi {
     // Check https://oclif.io/docs/config for details about Config.IConfig
@@ -13003,7 +12968,7 @@ class BumpApi {
     }
 }
 exports.BumpApi = BumpApi;
-tslib_1.__exportStar(__webpack_require__(44437), exports);
+tslib_1.__exportStar(__nccwpck_require__(44437), exports);
 
 
 /***/ }),
@@ -13067,15 +13032,15 @@ exports.fileArg = fileArg;
 /***/ }),
 
 /***/ 70740:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.cli = void 0;
-const tslib_1 = __webpack_require__(75636);
-const cli_ux_1 = tslib_1.__importDefault(__webpack_require__(81982));
-const success_1 = tslib_1.__importDefault(__webpack_require__(98087));
+const tslib_1 = __nccwpck_require__(4351);
+const cli_ux_1 = tslib_1.__importDefault(__nccwpck_require__(81982));
+const success_1 = tslib_1.__importDefault(__nccwpck_require__(98087));
 if (process.env.BUMP_LOG_LEVEL) {
     const logLevel = process.env.BUMP_LOG_LEVEL;
     cli_ux_1.default.config['outputLevel'] = logLevel;
@@ -13089,13 +13054,13 @@ exports.cli = cli;
 /***/ }),
 
 /***/ 98087:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __webpack_require__(75636);
-const chalk_1 = tslib_1.__importDefault(__webpack_require__(38707));
+const tslib_1 = __nccwpck_require__(4351);
+const chalk_1 = tslib_1.__importDefault(__nccwpck_require__(38707));
 function styledSuccess(message) {
     const lines = message.split('\n');
     for (let i = 0; i < lines.length; i++) {
@@ -13108,17 +13073,17 @@ exports.default = styledSuccess;
 /***/ }),
 
 /***/ 268:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __webpack_require__(75636);
-const command_1 = __webpack_require__(82708);
-const debug_1 = tslib_1.__importDefault(__webpack_require__(38237));
-const definition_1 = __webpack_require__(53524);
-const api_1 = __webpack_require__(32035);
-const package_json_1 = tslib_1.__importDefault(__webpack_require__(68051));
+const tslib_1 = __nccwpck_require__(4351);
+const command_1 = __nccwpck_require__(82708);
+const debug_1 = tslib_1.__importDefault(__nccwpck_require__(38237));
+const definition_1 = __nccwpck_require__(53524);
+const api_1 = __nccwpck_require__(32035);
+const package_json_1 = tslib_1.__importDefault(__nccwpck_require__(68051));
 class Command extends command_1.Command {
     constructor() {
         super(...arguments);
@@ -13158,16 +13123,16 @@ exports.default = Command;
 /***/ }),
 
 /***/ 77402:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __webpack_require__(75636);
-const command_1 = tslib_1.__importDefault(__webpack_require__(268));
-const flags = tslib_1.__importStar(__webpack_require__(63594));
-const args_1 = __webpack_require__(12364);
-const cli_1 = __webpack_require__(70740);
+const tslib_1 = __nccwpck_require__(4351);
+const command_1 = tslib_1.__importDefault(__nccwpck_require__(268));
+const flags = tslib_1.__importStar(__nccwpck_require__(63594));
+const args_1 = __nccwpck_require__(12364);
+const cli_1 = __nccwpck_require__(70740);
 class Deploy extends command_1.default {
     /*
       Oclif doesn't type parsed args & flags correctly and especially
@@ -13248,16 +13213,16 @@ Deploy.args = [args_1.fileArg];
 /***/ }),
 
 /***/ 5363:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __webpack_require__(75636);
-const command_1 = tslib_1.__importDefault(__webpack_require__(268));
-const flags = tslib_1.__importStar(__webpack_require__(63594));
-const args_1 = __webpack_require__(12364);
-const cli_1 = __webpack_require__(70740);
+const tslib_1 = __nccwpck_require__(4351);
+const command_1 = tslib_1.__importDefault(__nccwpck_require__(268));
+const flags = tslib_1.__importStar(__nccwpck_require__(63594));
+const args_1 = __nccwpck_require__(12364);
+const cli_1 = __nccwpck_require__(70740);
 class Preview extends command_1.default {
     async run() {
         const { args } = this.parse(Preview);
@@ -13289,24 +13254,24 @@ Preview.args = [args_1.fileArg];
 /***/ }),
 
 /***/ 53524:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.API = void 0;
-const tslib_1 = __webpack_require__(75636);
-const errors_1 = __webpack_require__(52564);
-const json_schema_ref_parser_1 = tslib_1.__importDefault(__webpack_require__(85862));
-const options_1 = __webpack_require__(36608);
-const specs_1 = tslib_1.__importDefault(__webpack_require__(78100));
-const path_1 = tslib_1.__importDefault(__webpack_require__(85622));
+const tslib_1 = __nccwpck_require__(4351);
+const errors_1 = __nccwpck_require__(52564);
+const json_schema_ref_parser_1 = tslib_1.__importDefault(__nccwpck_require__(85862));
+const options_1 = __nccwpck_require__(36608);
+const specs_1 = tslib_1.__importDefault(__nccwpck_require__(78100));
+const path_1 = tslib_1.__importDefault(__nccwpck_require__(85622));
 class SupportedFormat {
 }
 SupportedFormat.openapi = {
-    '2.0.x': __webpack_require__(65359),
-    '3.0.x': __webpack_require__(3486),
-    '3.1.x': __webpack_require__(393),
+    '2.0.x': __nccwpck_require__(65359),
+    '3.0.x': __nccwpck_require__(3486),
+    '3.1.x': __nccwpck_require__(393),
 };
 SupportedFormat.asyncapi = {
     '2.0.0': specs_1.default['2.0.0'],
@@ -13454,16 +13419,16 @@ exports.API = API;
 /***/ }),
 
 /***/ 63594:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.dryRun = exports.autoCreate = exports.token = exports.hub = exports.docName = exports.doc = void 0;
-const tslib_1 = __webpack_require__(75636);
-const command_1 = __webpack_require__(82708);
+const tslib_1 = __nccwpck_require__(4351);
+const command_1 = __nccwpck_require__(82708);
 // Re-export oclif flags https://oclif.io/docs/flags
-tslib_1.__exportStar(__webpack_require__(25754), exports);
+tslib_1.__exportStar(__nccwpck_require__(25754), exports);
 // Custom flags for bum-cli
 const doc = command_1.flags.build({
     char: 'd',
@@ -13546,29 +13511,29 @@ module.exports = function maybe (cb, promise) {
 /***/ }),
 
 /***/ 76021:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 module.exports = {
-    highlight: __webpack_require__(4621)
-  , highlightFile: __webpack_require__(41189)
-  , highlightFileSync: __webpack_require__(22611)
+    highlight: __nccwpck_require__(4621)
+  , highlightFile: __nccwpck_require__(41189)
+  , highlightFileSync: __nccwpck_require__(22611)
 }
 
 
 /***/ }),
 
 /***/ 4621:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var redeyed =  __webpack_require__(6818)
-var theme   =  __webpack_require__(9867)
-var colors  =  __webpack_require__(26218)
+var redeyed =  __nccwpck_require__(6818)
+var theme   =  __nccwpck_require__(9867)
+var colors  =  __nccwpck_require__(26218)
 
 var colorSurround =  colors.brightBlack
 var surroundClose =  '\u001b[39m'
@@ -13644,13 +13609,13 @@ module.exports = function highlight(code, opts) {
 /***/ }),
 
 /***/ 41189:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var fs = __webpack_require__(35747)
-var highlight = __webpack_require__(4621)
+var fs = __nccwpck_require__(35747)
+var highlight = __nccwpck_require__(4621)
 
 function isFunction(obj) {
   return toString.call(obj) === '[object Function]'
@@ -13677,13 +13642,13 @@ module.exports = function highlightFile(fullPath, opts, cb) {
 /***/ }),
 
 /***/ 22611:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var fs = __webpack_require__(35747)
-var highlight = __webpack_require__(4621)
+var fs = __nccwpck_require__(35747)
+var highlight = __nccwpck_require__(4621)
 
 module.exports = function highlightFileSync(fullPath, opts) {
   var code = fs.readFileSync(fullPath, 'utf-8')
@@ -13695,9 +13660,9 @@ module.exports = function highlightFileSync(fullPath, opts) {
 /***/ }),
 
 /***/ 9867:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var colors = __webpack_require__(26218)
+var colors = __nccwpck_require__(26218)
 
 // Change the below definitions in order to tweak the color theme.
 module.exports = {
@@ -13903,9 +13868,9 @@ module.exports = {
 /***/ }),
 
 /***/ 14054:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var colors = __webpack_require__(26218)
+var colors = __nccwpck_require__(26218)
 
 // mimics [jq](https://stedolan.github.io/jq/) highlighting for json files
 // mainly in the fact that the keys are a clearly different color than the strings
@@ -14079,15 +14044,15 @@ module.exports = {
 /***/ }),
 
 /***/ 38707:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
-const escapeStringRegexp = __webpack_require__(98691);
-const ansiStyles = __webpack_require__(52068);
-const stdoutColor = __webpack_require__(59318).stdout;
+const escapeStringRegexp = __nccwpck_require__(98691);
+const ansiStyles = __nccwpck_require__(52068);
+const stdoutColor = __nccwpck_require__(59318).stdout;
 
-const template = __webpack_require__(52138);
+const template = __nccwpck_require__(52138);
 
 const isSimpleWindowsTerm = process.platform === 'win32' && !(process.env.TERM || '').toLowerCase().startsWith('xterm');
 
@@ -14451,12 +14416,12 @@ module.exports = (chalk, tmp) => {
 /***/ }),
 
 /***/ 27972:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
-const os = __webpack_require__(12087);
-const escapeStringRegexp = __webpack_require__(51240);
+const os = __nccwpck_require__(12087);
+const escapeStringRegexp = __nccwpck_require__(51240);
 
 const extractPathRegex = /\s+at.*[(\s](.*)\)?/;
 const pathRegex = /^(?:(?:(?:node|(?:(?:node:)?internal\/[\w/]*|.*node_modules\/(?:babel-polyfill|pirates)\/.*)?\w+)(?:\.js)?:\d+:\d+)|native)/;
@@ -14525,15 +14490,15 @@ module.exports = string => {
 /***/ }),
 
 /***/ 17348:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const _SingleBar = __webpack_require__(37561);
-const _MultiBar = __webpack_require__(2013);
-const _Presets = __webpack_require__(35040);
-const _Formatter = __webpack_require__(18115);
-const _defaultFormatValue = __webpack_require__(56404);
-const _defaultFormatBar = __webpack_require__(76174);
-const _defaultFormatTime = __webpack_require__(53900);
+const _SingleBar = __nccwpck_require__(37561);
+const _MultiBar = __nccwpck_require__(2013);
+const _Presets = __nccwpck_require__(35040);
+const _Formatter = __nccwpck_require__(18115);
+const _defaultFormatValue = __nccwpck_require__(56404);
+const _defaultFormatBar = __nccwpck_require__(76174);
+const _defaultFormatTime = __nccwpck_require__(53900);
 
 // sub-module access
 module.exports = {
@@ -14716,12 +14681,12 @@ module.exports = function formatValue(v, options, type){
 /***/ }),
 
 /***/ 18115:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const _stringWidth = __webpack_require__(42577);
-const _defaultFormatValue = __webpack_require__(56404);
-const _defaultFormatBar = __webpack_require__(76174);
-const _defaultFormatTime = __webpack_require__(53900);
+const _stringWidth = __nccwpck_require__(42577);
+const _defaultFormatValue = __nccwpck_require__(56404);
+const _defaultFormatBar = __nccwpck_require__(76174);
+const _defaultFormatTime = __nccwpck_require__(53900);
 
 // generic formatter
 module.exports = function defaultFormatter(options, params, payload){
@@ -14803,12 +14768,12 @@ module.exports = function defaultFormatter(options, params, payload){
 /***/ }),
 
 /***/ 93455:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const _ETA = __webpack_require__(37954);
-const _Terminal = __webpack_require__(44411);
-const _formatter = __webpack_require__(18115);
-const _EventEmitter = __webpack_require__(28614);
+const _ETA = __nccwpck_require__(37954);
+const _Terminal = __nccwpck_require__(44411);
+const _formatter = __nccwpck_require__(18115);
+const _EventEmitter = __nccwpck_require__(28614);
 
 // Progress-Bar constructor
 module.exports = class GenericBar extends _EventEmitter{
@@ -15022,12 +14987,12 @@ module.exports = class GenericBar extends _EventEmitter{
 /***/ }),
 
 /***/ 2013:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const _Terminal = __webpack_require__(44411);
-const _BarElement = __webpack_require__(93455);
-const _options = __webpack_require__(98322);
-const _EventEmitter = __webpack_require__(28614);
+const _Terminal = __nccwpck_require__(44411);
+const _BarElement = __nccwpck_require__(93455);
+const _options = __nccwpck_require__(98322);
+const _EventEmitter = __nccwpck_require__(28614);
 
 // Progress-Bar constructor
 module.exports = class MultiBar extends _EventEmitter{
@@ -15331,10 +15296,10 @@ module.exports = {
 /***/ }),
 
 /***/ 37561:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const _GenericBar = __webpack_require__(93455);
-const _options = __webpack_require__(98322);
+const _GenericBar = __nccwpck_require__(93455);
+const _options = __nccwpck_require__(98322);
 
 // Progress-Bar constructor
 module.exports = class SingleBar extends _GenericBar{
@@ -15461,9 +15426,9 @@ module.exports = class SingleBar extends _GenericBar{
 /***/ }),
 
 /***/ 44411:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const _readline = __webpack_require__(51058);
+const _readline = __nccwpck_require__(51058);
 
 // low-level terminal interactions
 class Terminal{
@@ -15627,12 +15592,12 @@ module.exports = Terminal;
 /***/ }),
 
 /***/ 35040:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const _legacy = __webpack_require__(62594);
-const _shades_classic = __webpack_require__(18373);
-const _shades_grey = __webpack_require__(21106);
-const _rect = __webpack_require__(50441);
+const _legacy = __nccwpck_require__(62594);
+const _shades_classic = __nccwpck_require__(18373);
+const _shades_grey = __nccwpck_require__(21106);
+const _rect = __nccwpck_require__(50441);
 
 module.exports = {
     legacy: _legacy,
@@ -15679,9 +15644,9 @@ module.exports = {
 /***/ }),
 
 /***/ 21106:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const _colors = __webpack_require__(83045);
+const _colors = __nccwpck_require__(83045);
 
 // cli-progress legacy style as of 1.x
 module.exports = {
@@ -15693,14 +15658,14 @@ module.exports = {
 /***/ }),
 
 /***/ 52397:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __webpack_require__(22116);
-const castArray_1 = tslib_1.__importDefault(__webpack_require__(55996));
-const util_1 = __webpack_require__(31669);
+const tslib_1 = __nccwpck_require__(16965);
+const castArray_1 = tslib_1.__importDefault(__nccwpck_require__(55996));
+const util_1 = __nccwpck_require__(31669);
 class ActionBase {
     constructor() {
         this.std = 'stderr';
@@ -15874,17 +15839,17 @@ exports.ActionBase = ActionBase;
 /***/ }),
 
 /***/ 91525:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 var __webpack_unused_export__;
 
 // tslint:disable restrict-plus-operands
 __webpack_unused_export__ = ({ value: true });
-const tslib_1 = __webpack_require__(22116);
-const chalk_1 = tslib_1.__importDefault(__webpack_require__(91152));
-const supportsColor = tslib_1.__importStar(__webpack_require__(91691));
-const spinner_1 = tslib_1.__importDefault(__webpack_require__(60062));
+const tslib_1 = __nccwpck_require__(16965);
+const chalk_1 = tslib_1.__importDefault(__nccwpck_require__(91152));
+const supportsColor = tslib_1.__importStar(__nccwpck_require__(91691));
+const spinner_1 = tslib_1.__importDefault(__nccwpck_require__(60062));
 function color(s, frameIndex) {
     const prideColors = [
         chalk_1.default.keyword('pink'),
@@ -15915,13 +15880,13 @@ exports.Z = PrideSpinnerAction;
 /***/ }),
 
 /***/ 96419:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
-const base_1 = __webpack_require__(52397);
+const base_1 = __nccwpck_require__(52397);
 class SimpleAction extends base_1.ActionBase {
     constructor() {
         super(...arguments);
@@ -15977,19 +15942,19 @@ exports.Z = SimpleAction;
 /***/ }),
 
 /***/ 60062:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 // tslint:disable restrict-plus-operands
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __webpack_require__(22116);
-const chalk_1 = tslib_1.__importDefault(__webpack_require__(91152));
-const supportsColor = tslib_1.__importStar(__webpack_require__(91691));
-const deps_1 = tslib_1.__importDefault(__webpack_require__(74560));
-const base_1 = __webpack_require__(52397);
+const tslib_1 = __nccwpck_require__(16965);
+const chalk_1 = tslib_1.__importDefault(__nccwpck_require__(91152));
+const supportsColor = tslib_1.__importStar(__nccwpck_require__(91691));
+const deps_1 = tslib_1.__importDefault(__nccwpck_require__(74560));
+const base_1 = __nccwpck_require__(52397);
 /* eslint-disable-next-line node/no-missing-require */
-const spinners = __webpack_require__(9001);
+const spinners = __nccwpck_require__(9001);
 function color(s) {
     if (!supportsColor)
         return s;
@@ -16446,14 +16411,14 @@ module.exports = {
 /***/ }),
 
 /***/ 25155:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __webpack_require__(22116);
-const semver = tslib_1.__importStar(__webpack_require__(11383));
-const version = semver.parse(__webpack_require__(14062)/* .version */ .i8);
+const tslib_1 = __nccwpck_require__(16965);
+const semver = tslib_1.__importStar(__nccwpck_require__(11383));
+const version = semver.parse(__nccwpck_require__(14062)/* .version */ .i8);
 const g = global;
 const globals = g['cli-ux'] || (g['cli-ux'] = {});
 const actionType = (Boolean(process.stderr.isTTY) &&
@@ -16461,8 +16426,8 @@ const actionType = (Boolean(process.stderr.isTTY) &&
     !['dumb', 'emacs-color'].includes(process.env.TERM) &&
     'spinner') || 'simple';
 /* eslint-disable node/no-missing-require */
-const Action = actionType === 'spinner' ? __webpack_require__(60062).default : __webpack_require__(96419)/* .default */ .Z;
-const PrideAction = actionType === 'spinner' ? __webpack_require__(91525)/* .default */ .Z : __webpack_require__(96419)/* .default */ .Z;
+const Action = actionType === 'spinner' ? __nccwpck_require__(60062).default : __nccwpck_require__(96419)/* .default */ .Z;
+const PrideAction = actionType === 'spinner' ? __nccwpck_require__(91525)/* .default */ .Z : __nccwpck_require__(96419)/* .default */ .Z;
 /* eslint-enable node/no-missing-require */
 class Config {
     constructor() {
@@ -16499,7 +16464,7 @@ exports.default = exports.config;
 /***/ }),
 
 /***/ 74560:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
@@ -16507,46 +16472,46 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 /* eslint-disable node/no-missing-require */
 exports.default = {
     get stripAnsi() {
-        return __webpack_require__(45591);
+        return __nccwpck_require__(45591);
     },
     get ansiStyles() {
-        return __webpack_require__(76869);
+        return __nccwpck_require__(76869);
     },
     get ansiEscapes() {
-        return __webpack_require__(18512);
+        return __nccwpck_require__(18512);
     },
     get passwordPrompt() {
-        return __webpack_require__(71719);
+        return __nccwpck_require__(71719);
     },
     get screen() {
-        return __webpack_require__(6493);
+        return __nccwpck_require__(6493);
     },
     get open() {
-        return __webpack_require__(46099)/* .default */ .Z;
+        return __nccwpck_require__(46099)/* .default */ .Z;
     },
     get prompt() {
-        return __webpack_require__(46858);
+        return __nccwpck_require__(46858);
     },
     get styledObject() {
-        return __webpack_require__(20028)/* .default */ .Z;
+        return __nccwpck_require__(20028)/* .default */ .Z;
     },
     get styledHeader() {
-        return __webpack_require__(63272)/* .default */ .Z;
+        return __nccwpck_require__(63272)/* .default */ .Z;
     },
     get styledJSON() {
-        return __webpack_require__(7842)/* .default */ .Z;
+        return __nccwpck_require__(7842)/* .default */ .Z;
     },
     get table() {
-        return __webpack_require__(5402).table;
+        return __nccwpck_require__(5402).table;
     },
     get tree() {
-        return __webpack_require__(56673)/* .default */ .ZP;
+        return __nccwpck_require__(56673)/* .default */ .ZP;
     },
     get wait() {
-        return __webpack_require__(59477)/* .default */ .Z;
+        return __nccwpck_require__(59477)/* .default */ .Z;
     },
     get progress() {
-        return __webpack_require__(57867)/* .default */ .Z;
+        return __nccwpck_require__(57867)/* .default */ .Z;
     },
 };
 
@@ -16574,23 +16539,23 @@ exports.ExitError = ExitError;
 /***/ }),
 
 /***/ 81982:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __webpack_require__(22116);
-const Errors = tslib_1.__importStar(__webpack_require__(52564));
-const util = tslib_1.__importStar(__webpack_require__(31669));
-const base_1 = __webpack_require__(52397);
+const tslib_1 = __nccwpck_require__(16965);
+const Errors = tslib_1.__importStar(__nccwpck_require__(52564));
+const util = tslib_1.__importStar(__nccwpck_require__(31669));
+const base_1 = __nccwpck_require__(52397);
 exports.ActionBase = base_1.ActionBase;
-const config_1 = __webpack_require__(25155);
+const config_1 = __nccwpck_require__(25155);
 exports.config = config_1.config;
 exports.Config = config_1.Config;
-const deps_1 = tslib_1.__importDefault(__webpack_require__(74560));
-const exit_1 = __webpack_require__(29089);
+const deps_1 = tslib_1.__importDefault(__nccwpck_require__(74560));
+const exit_1 = __nccwpck_require__(29089);
 exports.ExitError = exit_1.ExitError;
-const Table = tslib_1.__importStar(__webpack_require__(5402));
+const Table = tslib_1.__importStar(__nccwpck_require__(5402));
 exports.Table = Table;
 exports.ux = {
     config: config_1.config,
@@ -16660,9 +16625,9 @@ exports.ux = {
         this.info(format || '', ...args);
     },
     url(text, uri, params = {}) {
-        const supports = __webpack_require__(18824);
+        const supports = __nccwpck_require__(18824);
         if (supports.stdout) {
-            const hyperlinker = __webpack_require__(59584);
+            const hyperlinker = __nccwpck_require__(59584);
             this.log(hyperlinker(text, uri, params));
         }
         else {
@@ -16670,7 +16635,7 @@ exports.ux = {
         }
     },
     annotation(text, annotation) {
-        const supports = __webpack_require__(18824);
+        const supports = __nccwpck_require__(18824);
         if (supports.stdout) {
             // \u001b]8;;https://google.com\u0007sometext\u001b]8;;\u0007
             this.log(`\u001B]1337;AddAnnotation=${text.length}|${annotation}\u0007${text}`);
@@ -16721,16 +16686,16 @@ if (!cliuxListener) {
 /***/ }),
 
 /***/ 46099:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
-const tslib_1 = __webpack_require__(22116);
+const tslib_1 = __nccwpck_require__(16965);
 // this code is largely taken from opn
-const childProcess = tslib_1.__importStar(__webpack_require__(63129));
-const isWsl = __webpack_require__(52559);
+const childProcess = tslib_1.__importStar(__nccwpck_require__(63129));
+const isWsl = __nccwpck_require__(52559);
 function open(target, opts = {}) {
     // opts = {wait: true, ...opts}
     let cmd;
@@ -16806,16 +16771,16 @@ exports.Z = open;
 /***/ }),
 
 /***/ 46858:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __webpack_require__(22116);
-const errors_1 = __webpack_require__(52564);
-const chalk_1 = tslib_1.__importDefault(__webpack_require__(91152));
-const config_1 = tslib_1.__importDefault(__webpack_require__(25155));
-const deps_1 = tslib_1.__importDefault(__webpack_require__(74560));
+const tslib_1 = __nccwpck_require__(16965);
+const errors_1 = __nccwpck_require__(52564);
+const chalk_1 = tslib_1.__importDefault(__nccwpck_require__(91152));
+const config_1 = tslib_1.__importDefault(__nccwpck_require__(25155));
+const deps_1 = tslib_1.__importDefault(__nccwpck_require__(74560));
 function normal(options, retries = 100) {
     if (retries < 0)
         throw new Error('no input');
@@ -16950,15 +16915,15 @@ exports.anykey = anykey;
 /***/ }),
 
 /***/ 63272:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 var __webpack_unused_export__;
 
 // tslint:disable restrict-plus-operands
 __webpack_unused_export__ = ({ value: true });
-const tslib_1 = __webpack_require__(22116);
-const chalk_1 = tslib_1.__importDefault(__webpack_require__(91152));
+const tslib_1 = __nccwpck_require__(16965);
+const chalk_1 = tslib_1.__importDefault(__nccwpck_require__(91152));
 function styledHeader(header) {
     process.stdout.write(chalk_1.default.dim('=== ') + chalk_1.default.bold(header) + '\n');
 }
@@ -16968,24 +16933,24 @@ exports.Z = styledHeader;
 /***/ }),
 
 /***/ 7842:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 var __webpack_unused_export__;
 
 // tslint:disable restrict-plus-operands
 __webpack_unused_export__ = ({ value: true });
-const tslib_1 = __webpack_require__(22116);
-const chalk_1 = tslib_1.__importDefault(__webpack_require__(91152));
-const __1 = tslib_1.__importDefault(__webpack_require__(81982));
+const tslib_1 = __nccwpck_require__(16965);
+const chalk_1 = tslib_1.__importDefault(__nccwpck_require__(91152));
+const __1 = tslib_1.__importDefault(__nccwpck_require__(81982));
 function styledJSON(obj) {
     const json = JSON.stringify(obj, null, 2);
     if (!chalk_1.default.level) {
         __1.default.info(json);
         return;
     }
-    const cardinal = __webpack_require__(76021);
-    const theme = __webpack_require__(14054);
+    const cardinal = __nccwpck_require__(76021);
+    const theme = __nccwpck_require__(14054);
     __1.default.info(cardinal.highlight(json, { json: true, theme }));
 }
 exports.Z = styledJSON;
@@ -16994,16 +16959,16 @@ exports.Z = styledJSON;
 /***/ }),
 
 /***/ 20028:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 var __webpack_unused_export__;
 
 // tslint:disable
 __webpack_unused_export__ = ({ value: true });
-const tslib_1 = __webpack_require__(22116);
-const chalk_1 = tslib_1.__importDefault(__webpack_require__(91152));
-const util = tslib_1.__importStar(__webpack_require__(31669));
+const tslib_1 = __nccwpck_require__(16965);
+const chalk_1 = tslib_1.__importDefault(__nccwpck_require__(91152));
+const util = tslib_1.__importStar(__nccwpck_require__(31669));
 function styledObject(obj, keys) {
     const output = [];
     const keyLengths = Object.keys(obj).map(key => key.toString().length);
@@ -17043,14 +17008,14 @@ exports.Z = styledObject;
 /***/ }),
 
 /***/ 57867:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
 // 3pp
-const cliProgress = __webpack_require__(17348);
+const cliProgress = __nccwpck_require__(17348);
 function progress(options) {
     // if no options passed, create empty options
     if (!options) {
@@ -17066,21 +17031,21 @@ exports.Z = progress;
 /***/ }),
 
 /***/ 5402:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const tslib_1 = __webpack_require__(22116);
-const command_1 = __webpack_require__(82708);
-const screen_1 = __webpack_require__(6493);
-const chalk_1 = tslib_1.__importDefault(__webpack_require__(91152));
-const capitalize_1 = tslib_1.__importDefault(__webpack_require__(33622));
-const sumBy_1 = tslib_1.__importDefault(__webpack_require__(93702));
-const js_yaml_1 = __webpack_require__(21917);
-const util_1 = __webpack_require__(31669);
-const sw = __webpack_require__(42577);
-const { orderBy } = __webpack_require__(56445);
+const tslib_1 = __nccwpck_require__(16965);
+const command_1 = __nccwpck_require__(82708);
+const screen_1 = __nccwpck_require__(6493);
+const chalk_1 = tslib_1.__importDefault(__nccwpck_require__(91152));
+const capitalize_1 = tslib_1.__importDefault(__nccwpck_require__(33622));
+const sumBy_1 = tslib_1.__importDefault(__nccwpck_require__(93702));
+const js_yaml_1 = __nccwpck_require__(21917);
+const util_1 = __nccwpck_require__(31669);
+const sw = __nccwpck_require__(42577);
+const { orderBy } = __nccwpck_require__(56445);
 class Table {
     constructor(data, columns, options = {}) {
         this.data = data;
@@ -17372,13 +17337,13 @@ exports.table = table;
 /***/ }),
 
 /***/ 56673:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
-const treeify = __webpack_require__(87817);
+const treeify = __nccwpck_require__(87817);
 class Tree {
     constructor() {
         this.nodes = {};
@@ -17435,10 +17400,10 @@ exports.Z = (ms = 1000) => {
 /***/ }),
 
 /***/ 76869:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
-/* module decorator */ module = __webpack_require__.nmd(module);
+/* module decorator */ module = __nccwpck_require__.nmd(module);
 
 
 const wrapAnsi16 = (fn, offset) => (...args) => {
@@ -17481,7 +17446,7 @@ const setLazyProperty = (object, property, get) => {
 let colorConvert;
 const makeDynamicStyles = (wrap, targetSpace, identity, isBackground) => {
 	if (colorConvert === undefined) {
-		colorConvert = __webpack_require__(18461);
+		colorConvert = __nccwpck_require__(18461);
 	}
 
 	const offset = isBackground ? 10 : 0;
@@ -17607,16 +17572,16 @@ Object.defineProperty(module, 'exports', {
 /***/ }),
 
 /***/ 91152:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
-const ansiStyles = __webpack_require__(76869);
-const {stdout: stdoutColor, stderr: stderrColor} = __webpack_require__(91691);
+const ansiStyles = __nccwpck_require__(76869);
+const {stdout: stdoutColor, stderr: stderrColor} = __nccwpck_require__(91691);
 const {
 	stringReplaceAll,
 	stringEncaseCRLFWithFirstIndex
-} = __webpack_require__(44088);
+} = __nccwpck_require__(44088);
 
 const {isArray} = Array;
 
@@ -17825,7 +17790,7 @@ const chalkTag = (chalk, ...strings) => {
 	}
 
 	if (template === undefined) {
-		template = __webpack_require__(18590);
+		template = __nccwpck_require__(18590);
 	}
 
 	return template(chalk, parts.join(''));
@@ -18033,11 +17998,11 @@ module.exports = {
 /***/ }),
 
 /***/ 87379:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 /* MIT license */
 /* eslint-disable no-mixed-operators */
-const cssKeywords = __webpack_require__(79903);
+const cssKeywords = __nccwpck_require__(79903);
 
 // NOTE: conversions should only return primitive values (i.e. arrays, or
 //       values that give correct `typeof` results).
@@ -18879,10 +18844,10 @@ convert.rgb.gray = function (rgb) {
 /***/ }),
 
 /***/ 18461:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const conversions = __webpack_require__(87379);
-const route = __webpack_require__(63152);
+const conversions = __nccwpck_require__(87379);
+const route = __nccwpck_require__(63152);
 
 const convert = {};
 
@@ -18967,9 +18932,9 @@ module.exports = convert;
 /***/ }),
 
 /***/ 63152:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const conversions = __webpack_require__(87379);
+const conversions = __nccwpck_require__(87379);
 
 /*
 	This function routes a model to all other models.
@@ -19247,13 +19212,13 @@ module.exports = (flag, argv = process.argv) => {
 /***/ }),
 
 /***/ 91691:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
-const os = __webpack_require__(12087);
-const tty = __webpack_require__(33867);
-const hasFlag = __webpack_require__(25779);
+const os = __nccwpck_require__(12087);
+const tty = __nccwpck_require__(33867);
+const hasFlag = __nccwpck_require__(25779);
 
 const {env} = process;
 
@@ -19389,37 +19354,9 @@ module.exports = {
 
 /***/ }),
 
-/***/ 22116:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ 16965:
+/***/ ((module) => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "__extends": () => /* binding */ __extends,
-/* harmony export */   "__assign": () => /* binding */ __assign,
-/* harmony export */   "__rest": () => /* binding */ __rest,
-/* harmony export */   "__decorate": () => /* binding */ __decorate,
-/* harmony export */   "__param": () => /* binding */ __param,
-/* harmony export */   "__metadata": () => /* binding */ __metadata,
-/* harmony export */   "__awaiter": () => /* binding */ __awaiter,
-/* harmony export */   "__generator": () => /* binding */ __generator,
-/* harmony export */   "__createBinding": () => /* binding */ __createBinding,
-/* harmony export */   "__exportStar": () => /* binding */ __exportStar,
-/* harmony export */   "__values": () => /* binding */ __values,
-/* harmony export */   "__read": () => /* binding */ __read,
-/* harmony export */   "__spread": () => /* binding */ __spread,
-/* harmony export */   "__spreadArrays": () => /* binding */ __spreadArrays,
-/* harmony export */   "__spreadArray": () => /* binding */ __spreadArray,
-/* harmony export */   "__await": () => /* binding */ __await,
-/* harmony export */   "__asyncGenerator": () => /* binding */ __asyncGenerator,
-/* harmony export */   "__asyncDelegator": () => /* binding */ __asyncDelegator,
-/* harmony export */   "__asyncValues": () => /* binding */ __asyncValues,
-/* harmony export */   "__makeTemplateObject": () => /* binding */ __makeTemplateObject,
-/* harmony export */   "__importStar": () => /* binding */ __importStar,
-/* harmony export */   "__importDefault": () => /* binding */ __importDefault,
-/* harmony export */   "__classPrivateFieldGet": () => /* binding */ __classPrivateFieldGet,
-/* harmony export */   "__classPrivateFieldSet": () => /* binding */ __classPrivateFieldSet
-/* harmony export */ });
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
 
@@ -19434,236 +19371,303 @@ LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
 OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 PERFORMANCE OF THIS SOFTWARE.
 ***************************************************************************** */
-/* global Reflect, Promise */
-
-var extendStatics = function(d, b) {
-    extendStatics = Object.setPrototypeOf ||
+/* global global, define, System, Reflect, Promise */
+var __extends;
+var __assign;
+var __rest;
+var __decorate;
+var __param;
+var __metadata;
+var __awaiter;
+var __generator;
+var __exportStar;
+var __values;
+var __read;
+var __spread;
+var __spreadArrays;
+var __spreadArray;
+var __await;
+var __asyncGenerator;
+var __asyncDelegator;
+var __asyncValues;
+var __makeTemplateObject;
+var __importStar;
+var __importDefault;
+var __classPrivateFieldGet;
+var __classPrivateFieldSet;
+var __createBinding;
+(function (factory) {
+    var root = typeof global === "object" ? global : typeof self === "object" ? self : typeof this === "object" ? this : {};
+    if (typeof define === "function" && define.amd) {
+        define("tslib", ["exports"], function (exports) { factory(createExporter(root, createExporter(exports))); });
+    }
+    else if ( true && typeof module.exports === "object") {
+        factory(createExporter(root, createExporter(module.exports)));
+    }
+    else {
+        factory(createExporter(root));
+    }
+    function createExporter(exports, previous) {
+        if (exports !== root) {
+            if (typeof Object.create === "function") {
+                Object.defineProperty(exports, "__esModule", { value: true });
+            }
+            else {
+                exports.__esModule = true;
+            }
+        }
+        return function (id, v) { return exports[id] = previous ? previous(id, v) : v; };
+    }
+})
+(function (exporter) {
+    var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
         function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-    return extendStatics(d, b);
-};
 
-function __extends(d, b) {
-    if (typeof b !== "function" && b !== null)
-        throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-    extendStatics(d, b);
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-}
+    __extends = function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
 
-var __assign = function() {
-    __assign = Object.assign || function __assign(t) {
+    __assign = Object.assign || function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
             s = arguments[i];
             for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
         }
         return t;
-    }
-    return __assign.apply(this, arguments);
-}
+    };
 
-function __rest(s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-}
-
-function __decorate(decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-}
-
-function __param(paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-}
-
-function __metadata(metadataKey, metadataValue) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
-}
-
-function __awaiter(thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-}
-
-function __generator(thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
+    __rest = function (s, e) {
+        var t = {};
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+            t[p] = s[p];
+        if (s != null && typeof Object.getOwnPropertySymbols === "function")
+            for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+                if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                    t[p[i]] = s[p[i]];
             }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-}
+        return t;
+    };
 
-var __createBinding = Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-});
+    __decorate = function (decorators, target, key, desc) {
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+    };
 
-function __exportStar(m, o) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(o, p)) __createBinding(o, m, p);
-}
+    __param = function (paramIndex, decorator) {
+        return function (target, key) { decorator(target, key, paramIndex); }
+    };
 
-function __values(o) {
-    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
-    if (m) return m.call(o);
-    if (o && typeof o.length === "number") return {
-        next: function () {
-            if (o && i >= o.length) o = void 0;
-            return { value: o && o[i++], done: !o };
+    __metadata = function (metadataKey, metadataValue) {
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
+    };
+
+    __awaiter = function (thisArg, _arguments, P, generator) {
+        function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+        return new (P || (P = Promise))(function (resolve, reject) {
+            function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+            function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+            function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+            step((generator = generator.apply(thisArg, _arguments || [])).next());
+        });
+    };
+
+    __generator = function (thisArg, body) {
+        var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+        return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+        function verb(n) { return function (v) { return step([n, v]); }; }
+        function step(op) {
+            if (f) throw new TypeError("Generator is already executing.");
+            while (_) try {
+                if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+                if (y = 0, t) op = [op[0] & 2, t.value];
+                switch (op[0]) {
+                    case 0: case 1: t = op; break;
+                    case 4: _.label++; return { value: op[1], done: false };
+                    case 5: _.label++; y = op[1]; op = [0]; continue;
+                    case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                    default:
+                        if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                        if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                        if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                        if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                        if (t[2]) _.ops.pop();
+                        _.trys.pop(); continue;
+                }
+                op = body.call(thisArg, _);
+            } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+            if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
         }
     };
-    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
-}
 
-function __read(o, n) {
-    var m = typeof Symbol === "function" && o[Symbol.iterator];
-    if (!m) return o;
-    var i = m.call(o), r, ar = [], e;
-    try {
-        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
-    }
-    catch (error) { e = { error: error }; }
-    finally {
+    __exportStar = function(m, o) {
+        for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(o, p)) __createBinding(o, m, p);
+    };
+
+    __createBinding = Object.create ? (function(o, m, k, k2) {
+        if (k2 === undefined) k2 = k;
+        Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    }) : (function(o, m, k, k2) {
+        if (k2 === undefined) k2 = k;
+        o[k2] = m[k];
+    });
+
+    __values = function (o) {
+        var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+        if (m) return m.call(o);
+        if (o && typeof o.length === "number") return {
+            next: function () {
+                if (o && i >= o.length) o = void 0;
+                return { value: o && o[i++], done: !o };
+            }
+        };
+        throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+    };
+
+    __read = function (o, n) {
+        var m = typeof Symbol === "function" && o[Symbol.iterator];
+        if (!m) return o;
+        var i = m.call(o), r, ar = [], e;
         try {
-            if (r && !r.done && (m = i["return"])) m.call(i);
+            while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
         }
-        finally { if (e) throw e.error; }
-    }
-    return ar;
-}
+        catch (error) { e = { error: error }; }
+        finally {
+            try {
+                if (r && !r.done && (m = i["return"])) m.call(i);
+            }
+            finally { if (e) throw e.error; }
+        }
+        return ar;
+    };
 
-/** @deprecated */
-function __spread() {
-    for (var ar = [], i = 0; i < arguments.length; i++)
-        ar = ar.concat(__read(arguments[i]));
-    return ar;
-}
+    /** @deprecated */
+    __spread = function () {
+        for (var ar = [], i = 0; i < arguments.length; i++)
+            ar = ar.concat(__read(arguments[i]));
+        return ar;
+    };
 
-/** @deprecated */
-function __spreadArrays() {
-    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
-    for (var r = Array(s), k = 0, i = 0; i < il; i++)
-        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
-            r[k] = a[j];
-    return r;
-}
+    /** @deprecated */
+    __spreadArrays = function () {
+        for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+        for (var r = Array(s), k = 0, i = 0; i < il; i++)
+            for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+                r[k] = a[j];
+        return r;
+    };
 
-function __spreadArray(to, from) {
-    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
-        to[j] = from[i];
-    return to;
-}
+    __spreadArray = function (to, from) {
+        for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
+            to[j] = from[i];
+        return to;
+    };
 
-function __await(v) {
-    return this instanceof __await ? (this.v = v, this) : new __await(v);
-}
+    __await = function (v) {
+        return this instanceof __await ? (this.v = v, this) : new __await(v);
+    };
 
-function __asyncGenerator(thisArg, _arguments, generator) {
-    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
-    var g = generator.apply(thisArg, _arguments || []), i, q = [];
-    return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
-    function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
-    function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
-    function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r); }
-    function fulfill(value) { resume("next", value); }
-    function reject(value) { resume("throw", value); }
-    function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
-}
+    __asyncGenerator = function (thisArg, _arguments, generator) {
+        if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+        var g = generator.apply(thisArg, _arguments || []), i, q = [];
+        return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
+        function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
+        function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
+        function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r);  }
+        function fulfill(value) { resume("next", value); }
+        function reject(value) { resume("throw", value); }
+        function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
+    };
 
-function __asyncDelegator(o) {
-    var i, p;
-    return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
-    function verb(n, f) { i[n] = o[n] ? function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; } : f; }
-}
+    __asyncDelegator = function (o) {
+        var i, p;
+        return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
+        function verb(n, f) { i[n] = o[n] ? function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; } : f; }
+    };
 
-function __asyncValues(o) {
-    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
-    var m = o[Symbol.asyncIterator], i;
-    return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
-    function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
-    function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
-}
+    __asyncValues = function (o) {
+        if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+        var m = o[Symbol.asyncIterator], i;
+        return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
+        function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
+        function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
+    };
 
-function __makeTemplateObject(cooked, raw) {
-    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
-    return cooked;
-};
+    __makeTemplateObject = function (cooked, raw) {
+        if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+        return cooked;
+    };
 
-var __setModuleDefault = Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-};
+    var __setModuleDefault = Object.create ? (function(o, v) {
+        Object.defineProperty(o, "default", { enumerable: true, value: v });
+    }) : function(o, v) {
+        o["default"] = v;
+    };
 
-function __importStar(mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-}
+    __importStar = function (mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+        __setModuleDefault(result, mod);
+        return result;
+    };
 
-function __importDefault(mod) {
-    return (mod && mod.__esModule) ? mod : { default: mod };
-}
+    __importDefault = function (mod) {
+        return (mod && mod.__esModule) ? mod : { "default": mod };
+    };
 
-function __classPrivateFieldGet(receiver, state, kind, f) {
-    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
-    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
-    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
-}
+    __classPrivateFieldGet = function (receiver, state, kind, f) {
+        if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+        if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+        return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+    };
 
-function __classPrivateFieldSet(receiver, state, value, kind, f) {
-    if (kind === "m") throw new TypeError("Private method is not writable");
-    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
-    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
-    return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
-}
+    __classPrivateFieldSet = function (receiver, state, value, kind, f) {
+        if (kind === "m") throw new TypeError("Private method is not writable");
+        if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
+        if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
+        return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
+    };
+
+    exporter("__extends", __extends);
+    exporter("__assign", __assign);
+    exporter("__rest", __rest);
+    exporter("__decorate", __decorate);
+    exporter("__param", __param);
+    exporter("__metadata", __metadata);
+    exporter("__awaiter", __awaiter);
+    exporter("__generator", __generator);
+    exporter("__exportStar", __exportStar);
+    exporter("__createBinding", __createBinding);
+    exporter("__values", __values);
+    exporter("__read", __read);
+    exporter("__spread", __spread);
+    exporter("__spreadArrays", __spreadArrays);
+    exporter("__spreadArray", __spreadArray);
+    exporter("__await", __await);
+    exporter("__asyncGenerator", __asyncGenerator);
+    exporter("__asyncDelegator", __asyncDelegator);
+    exporter("__asyncValues", __asyncValues);
+    exporter("__makeTemplateObject", __makeTemplateObject);
+    exporter("__importStar", __importStar);
+    exporter("__importDefault", __importDefault);
+    exporter("__classPrivateFieldGet", __classPrivateFieldGet);
+    exporter("__classPrivateFieldSet", __classPrivateFieldSet);
+});
 
 
 /***/ }),
 
 /***/ 97391:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 /* MIT license */
-var cssKeywords = __webpack_require__(78510);
+var cssKeywords = __nccwpck_require__(78510);
 
 // NOTE: conversions should only return primitive values (i.e. arrays, or
 //       values that give correct `typeof` results).
@@ -20535,10 +20539,10 @@ convert.rgb.gray = function (rgb) {
 /***/ }),
 
 /***/ 86931:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var conversions = __webpack_require__(97391);
-var route = __webpack_require__(30880);
+var conversions = __nccwpck_require__(97391);
+var route = __nccwpck_require__(30880);
 
 var convert = {};
 
@@ -20620,9 +20624,9 @@ module.exports = convert;
 /***/ }),
 
 /***/ 30880:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var conversions = __webpack_require__(97391);
+var conversions = __nccwpck_require__(97391);
 
 /*
 	this function routes a model to all other models.
@@ -20884,7 +20888,7 @@ module.exports = {
 /***/ }),
 
 /***/ 43595:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 /*
 
@@ -20921,12 +20925,12 @@ module['exports'] = colors;
 
 colors.themes = {};
 
-var util = __webpack_require__(31669);
-var ansiStyles = colors.styles = __webpack_require__(73104);
+var util = __nccwpck_require__(31669);
+var ansiStyles = colors.styles = __nccwpck_require__(73104);
 var defineProps = Object.defineProperties;
 var newLineRegex = new RegExp(/[\r\n]+/g);
 
-colors.supportsColor = __webpack_require__(10662).supportsColor;
+colors.supportsColor = __nccwpck_require__(10662).supportsColor;
 
 if (typeof colors.enabled === 'undefined') {
   colors.enabled = colors.supportsColor() !== false;
@@ -21078,15 +21082,15 @@ var sequencer = function sequencer(map, str) {
 };
 
 // custom formatter methods
-colors.trap = __webpack_require__(31302);
-colors.zalgo = __webpack_require__(97743);
+colors.trap = __nccwpck_require__(31302);
+colors.zalgo = __nccwpck_require__(97743);
 
 // maps
 colors.maps = {};
-colors.maps.america = __webpack_require__(76936)(colors);
-colors.maps.zebra = __webpack_require__(12989)(colors);
-colors.maps.rainbow = __webpack_require__(75210)(colors);
-colors.maps.random = __webpack_require__(13441)(colors);
+colors.maps.america = __nccwpck_require__(76936)(colors);
+colors.maps.zebra = __nccwpck_require__(12989)(colors);
+colors.maps.rainbow = __nccwpck_require__(75210)(colors);
+colors.maps.random = __nccwpck_require__(13441)(colors);
 
 for (var map in colors.maps) {
   (function(map) {
@@ -21272,9 +21276,9 @@ module['exports'] = function zalgo(text, options) {
 /***/ }),
 
 /***/ 2857:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var colors = __webpack_require__(43595);
+var colors = __nccwpck_require__(43595);
 
 module['exports'] = function() {
   //
@@ -21389,9 +21393,9 @@ module['exports'] = function() {
 /***/ }),
 
 /***/ 83045:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var colors = __webpack_require__(43595);
+var colors = __nccwpck_require__(43595);
 module['exports'] = colors;
 
 // Remark: By default, colors will add style properties to String.prototype.
@@ -21403,7 +21407,7 @@ module['exports'] = colors;
 //   colors.red("foo")
 //
 //
-__webpack_require__(2857)();
+__nccwpck_require__(2857)();
 
 
 /***/ }),
@@ -21620,7 +21624,7 @@ module.exports = function(flag, argv) {
 /***/ }),
 
 /***/ 10662:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 /*
@@ -21650,8 +21654,8 @@ THE SOFTWARE.
 
 
 
-var os = __webpack_require__(12087);
-var hasFlag = __webpack_require__(10223);
+var os = __nccwpck_require__(12087);
+var hasFlag = __nccwpck_require__(10223);
 
 var env = process.env;
 
@@ -21779,7 +21783,7 @@ module.exports = {
 /***/ }),
 
 /***/ 28222:
-/***/ ((module, exports, __webpack_require__) => {
+/***/ ((module, exports, __nccwpck_require__) => {
 
 /* eslint-env browser */
 
@@ -22035,7 +22039,7 @@ function localstorage() {
 	}
 }
 
-module.exports = __webpack_require__(46243)(exports);
+module.exports = __nccwpck_require__(46243)(exports);
 
 const {formatters} = module.exports;
 
@@ -22055,7 +22059,7 @@ formatters.j = function (v) {
 /***/ }),
 
 /***/ 46243:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 
 /**
@@ -22070,7 +22074,7 @@ function setup(env) {
 	createDebug.disable = disable;
 	createDebug.enable = enable;
 	createDebug.enabled = enabled;
-	createDebug.humanize = __webpack_require__(80900);
+	createDebug.humanize = __nccwpck_require__(80900);
 	createDebug.destroy = destroy;
 
 	Object.keys(env).forEach(key => {
@@ -22323,7 +22327,7 @@ module.exports = setup;
 /***/ }),
 
 /***/ 38237:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 /**
  * Detect Electron renderer / nwjs process, which is node, but we should
@@ -22331,23 +22335,23 @@ module.exports = setup;
  */
 
 if (typeof process === 'undefined' || process.type === 'renderer' || process.browser === true || process.__nwjs) {
-	module.exports = __webpack_require__(28222);
+	module.exports = __nccwpck_require__(28222);
 } else {
-	module.exports = __webpack_require__(35332);
+	module.exports = __nccwpck_require__(35332);
 }
 
 
 /***/ }),
 
 /***/ 35332:
-/***/ ((module, exports, __webpack_require__) => {
+/***/ ((module, exports, __nccwpck_require__) => {
 
 /**
  * Module dependencies.
  */
 
-const tty = __webpack_require__(33867);
-const util = __webpack_require__(31669);
+const tty = __nccwpck_require__(33867);
+const util = __nccwpck_require__(31669);
 
 /**
  * This is the Node.js implementation of `debug()`.
@@ -22373,7 +22377,7 @@ exports.colors = [6, 2, 3, 4, 5, 1];
 try {
 	// Optional dependency (as in, doesn't need to be installed, NOT like optionalDependencies in package.json)
 	// eslint-disable-next-line import/no-extraneous-dependencies
-	const supportsColor = __webpack_require__(59318);
+	const supportsColor = __nccwpck_require__(59318);
 
 	if (supportsColor && (supportsColor.stderr || supportsColor).level >= 2) {
 		exports.colors = [
@@ -22581,7 +22585,7 @@ function init(debug) {
 	}
 }
 
-module.exports = __webpack_require__(46243)(exports);
+module.exports = __nccwpck_require__(46243)(exports);
 
 const {formatters} = module.exports;
 
@@ -29352,7 +29356,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ }),
 
 /***/ 31133:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 var debug;
 
@@ -29360,7 +29364,7 @@ module.exports = function () {
   if (!debug) {
     try {
       /* eslint global-require: off */
-      debug = __webpack_require__(38237)("follow-redirects");
+      debug = __nccwpck_require__(38237)("follow-redirects");
     }
     catch (error) {
       debug = function () { /* */ };
@@ -29373,15 +29377,15 @@ module.exports = function () {
 /***/ }),
 
 /***/ 67707:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var url = __webpack_require__(78835);
+var url = __nccwpck_require__(78835);
 var URL = url.URL;
-var http = __webpack_require__(15876);
-var https = __webpack_require__(57211);
-var Writable = __webpack_require__(92413).Writable;
-var assert = __webpack_require__(42357);
-var debug = __webpack_require__(31133);
+var http = __nccwpck_require__(15876);
+var https = __nccwpck_require__(57211);
+var Writable = __nccwpck_require__(92413).Writable;
+var assert = __nccwpck_require__(42357);
+var debug = __nccwpck_require__(31133);
 
 // Create handlers that pass events from native requests
 var events = ["abort", "aborted", "connect", "error", "socket", "timeout"];
@@ -29911,16 +29915,16 @@ module.exports.wrap = wrap;
 /***/ }),
 
 /***/ 43338:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const fs = __webpack_require__(77758)
-const path = __webpack_require__(85622)
-const mkdirpSync = __webpack_require__(98605).mkdirsSync
-const utimesSync = __webpack_require__(52548).utimesMillisSync
-const stat = __webpack_require__(73901)
+const fs = __nccwpck_require__(77758)
+const path = __nccwpck_require__(85622)
+const mkdirpSync = __nccwpck_require__(98605).mkdirsSync
+const utimesSync = __nccwpck_require__(52548).utimesMillisSync
+const stat = __nccwpck_require__(73901)
 
 function copySync (src, dest, opts) {
   if (typeof opts === 'function') {
@@ -29993,7 +29997,7 @@ function copyFile (srcStat, src, dest, opts) {
 
 function copyFileFallback (srcStat, src, dest, opts) {
   const BUF_LENGTH = 64 * 1024
-  const _buff = __webpack_require__(47696)(BUF_LENGTH)
+  const _buff = __nccwpck_require__(47696)(BUF_LENGTH)
 
   const fdr = fs.openSync(src, 'r')
   const fdw = fs.openSync(dest, 'w', srcStat.mode)
@@ -30083,30 +30087,30 @@ module.exports = copySync
 /***/ }),
 
 /***/ 11135:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 module.exports = {
-  copySync: __webpack_require__(43338)
+  copySync: __nccwpck_require__(43338)
 }
 
 
 /***/ }),
 
 /***/ 38834:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const fs = __webpack_require__(77758)
-const path = __webpack_require__(85622)
-const mkdirp = __webpack_require__(98605).mkdirs
-const pathExists = __webpack_require__(43835).pathExists
-const utimes = __webpack_require__(52548).utimesMillis
-const stat = __webpack_require__(73901)
+const fs = __nccwpck_require__(77758)
+const path = __nccwpck_require__(85622)
+const mkdirp = __nccwpck_require__(98605).mkdirs
+const pathExists = __nccwpck_require__(43835).pathExists
+const utimes = __nccwpck_require__(52548).utimesMillis
+const stat = __nccwpck_require__(73901)
 
 function copy (src, dest, opts, cb) {
   if (typeof opts === 'function' && !cb) {
@@ -30316,30 +30320,30 @@ module.exports = copy
 /***/ }),
 
 /***/ 61335:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const u = __webpack_require__(9046)/* .fromCallback */ .E
+const u = __nccwpck_require__(9046)/* .fromCallback */ .E
 module.exports = {
-  copy: u(__webpack_require__(38834))
+  copy: u(__nccwpck_require__(38834))
 }
 
 
 /***/ }),
 
 /***/ 96970:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const u = __webpack_require__(9046)/* .fromCallback */ .E
-const fs = __webpack_require__(77758)
-const path = __webpack_require__(85622)
-const mkdir = __webpack_require__(98605)
-const remove = __webpack_require__(47357)
+const u = __nccwpck_require__(9046)/* .fromCallback */ .E
+const fs = __nccwpck_require__(77758)
+const path = __nccwpck_require__(85622)
+const mkdir = __nccwpck_require__(98605)
+const remove = __nccwpck_require__(47357)
 
 const emptyDir = u(function emptyDir (dir, callback) {
   callback = callback || function () {}
@@ -30386,16 +30390,16 @@ module.exports = {
 /***/ }),
 
 /***/ 2164:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const u = __webpack_require__(9046)/* .fromCallback */ .E
-const path = __webpack_require__(85622)
-const fs = __webpack_require__(77758)
-const mkdir = __webpack_require__(98605)
-const pathExists = __webpack_require__(43835).pathExists
+const u = __nccwpck_require__(9046)/* .fromCallback */ .E
+const path = __nccwpck_require__(85622)
+const fs = __nccwpck_require__(77758)
+const mkdir = __nccwpck_require__(98605)
+const pathExists = __nccwpck_require__(43835).pathExists
 
 function createFile (file, callback) {
   function makeFile () {
@@ -30443,14 +30447,14 @@ module.exports = {
 /***/ }),
 
 /***/ 40055:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const file = __webpack_require__(2164)
-const link = __webpack_require__(53797)
-const symlink = __webpack_require__(72549)
+const file = __nccwpck_require__(2164)
+const link = __nccwpck_require__(53797)
+const symlink = __nccwpck_require__(72549)
 
 module.exports = {
   // file
@@ -30474,16 +30478,16 @@ module.exports = {
 /***/ }),
 
 /***/ 53797:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const u = __webpack_require__(9046)/* .fromCallback */ .E
-const path = __webpack_require__(85622)
-const fs = __webpack_require__(77758)
-const mkdir = __webpack_require__(98605)
-const pathExists = __webpack_require__(43835).pathExists
+const u = __nccwpck_require__(9046)/* .fromCallback */ .E
+const path = __nccwpck_require__(85622)
+const fs = __nccwpck_require__(77758)
+const mkdir = __nccwpck_require__(98605)
+const pathExists = __nccwpck_require__(43835).pathExists
 
 function createLink (srcpath, dstpath, callback) {
   function makeLink (srcpath, dstpath) {
@@ -30543,14 +30547,14 @@ module.exports = {
 /***/ }),
 
 /***/ 53727:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const path = __webpack_require__(85622)
-const fs = __webpack_require__(77758)
-const pathExists = __webpack_require__(43835).pathExists
+const path = __nccwpck_require__(85622)
+const fs = __nccwpck_require__(77758)
+const pathExists = __nccwpck_require__(43835).pathExists
 
 /**
  * Function that returns two types of paths, one relative to symlink, and one
@@ -30650,12 +30654,12 @@ module.exports = {
 /***/ }),
 
 /***/ 18254:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const fs = __webpack_require__(77758)
+const fs = __nccwpck_require__(77758)
 
 function symlinkType (srcpath, type, callback) {
   callback = (typeof type === 'function') ? type : callback
@@ -30689,27 +30693,27 @@ module.exports = {
 /***/ }),
 
 /***/ 72549:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const u = __webpack_require__(9046)/* .fromCallback */ .E
-const path = __webpack_require__(85622)
-const fs = __webpack_require__(77758)
-const _mkdirs = __webpack_require__(98605)
+const u = __nccwpck_require__(9046)/* .fromCallback */ .E
+const path = __nccwpck_require__(85622)
+const fs = __nccwpck_require__(77758)
+const _mkdirs = __nccwpck_require__(98605)
 const mkdirs = _mkdirs.mkdirs
 const mkdirsSync = _mkdirs.mkdirsSync
 
-const _symlinkPaths = __webpack_require__(53727)
+const _symlinkPaths = __nccwpck_require__(53727)
 const symlinkPaths = _symlinkPaths.symlinkPaths
 const symlinkPathsSync = _symlinkPaths.symlinkPathsSync
 
-const _symlinkType = __webpack_require__(18254)
+const _symlinkType = __nccwpck_require__(18254)
 const symlinkType = _symlinkType.symlinkType
 const symlinkTypeSync = _symlinkType.symlinkTypeSync
 
-const pathExists = __webpack_require__(43835).pathExists
+const pathExists = __nccwpck_require__(43835).pathExists
 
 function createSymlink (srcpath, dstpath, type, callback) {
   callback = (typeof type === 'function') ? type : callback
@@ -30760,14 +30764,14 @@ module.exports = {
 /***/ }),
 
 /***/ 61176:
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 // This is adapted from https://github.com/normalize/mz
 // Copyright (c) 2014-2016 Jonathan Ong me@jongleberry.com and Contributors
-const u = __webpack_require__(9046)/* .fromCallback */ .E
-const fs = __webpack_require__(77758)
+const u = __nccwpck_require__(9046)/* .fromCallback */ .E
+const fs = __nccwpck_require__(77758)
 
 const api = [
   'access',
@@ -30877,7 +30881,7 @@ if (typeof fs.realpath.native === 'function') {
 /***/ }),
 
 /***/ 5630:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
@@ -30885,24 +30889,24 @@ if (typeof fs.realpath.native === 'function') {
 module.exports = Object.assign(
   {},
   // Export promiseified graceful-fs:
-  __webpack_require__(61176),
+  __nccwpck_require__(61176),
   // Export extra methods:
-  __webpack_require__(11135),
-  __webpack_require__(61335),
-  __webpack_require__(96970),
-  __webpack_require__(40055),
-  __webpack_require__(40213),
-  __webpack_require__(98605),
-  __webpack_require__(69665),
-  __webpack_require__(41497),
-  __webpack_require__(16570),
-  __webpack_require__(43835),
-  __webpack_require__(47357)
+  __nccwpck_require__(11135),
+  __nccwpck_require__(61335),
+  __nccwpck_require__(96970),
+  __nccwpck_require__(40055),
+  __nccwpck_require__(40213),
+  __nccwpck_require__(98605),
+  __nccwpck_require__(69665),
+  __nccwpck_require__(41497),
+  __nccwpck_require__(16570),
+  __nccwpck_require__(43835),
+  __nccwpck_require__(47357)
 )
 
 // Export fs.promises as a getter property so that we don't trigger
 // ExperimentalWarning before fs.promises is actually accessed.
-const fs = __webpack_require__(35747)
+const fs = __nccwpck_require__(35747)
 if (Object.getOwnPropertyDescriptor(fs, 'promises')) {
   Object.defineProperty(module.exports, "promises", ({
     get () { return fs.promises }
@@ -30913,16 +30917,16 @@ if (Object.getOwnPropertyDescriptor(fs, 'promises')) {
 /***/ }),
 
 /***/ 40213:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const u = __webpack_require__(9046)/* .fromCallback */ .E
-const jsonFile = __webpack_require__(18970)
+const u = __nccwpck_require__(9046)/* .fromCallback */ .E
+const jsonFile = __nccwpck_require__(18970)
 
-jsonFile.outputJson = u(__webpack_require__(60531))
-jsonFile.outputJsonSync = __webpack_require__(19421)
+jsonFile.outputJson = u(__nccwpck_require__(60531))
+jsonFile.outputJsonSync = __nccwpck_require__(19421)
 // aliases
 jsonFile.outputJSON = jsonFile.outputJson
 jsonFile.outputJSONSync = jsonFile.outputJsonSync
@@ -30937,13 +30941,13 @@ module.exports = jsonFile
 /***/ }),
 
 /***/ 18970:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const u = __webpack_require__(9046)/* .fromCallback */ .E
-const jsonFile = __webpack_require__(26160)
+const u = __nccwpck_require__(9046)/* .fromCallback */ .E
+const jsonFile = __nccwpck_require__(26160)
 
 module.exports = {
   // jsonfile exports
@@ -30957,15 +30961,15 @@ module.exports = {
 /***/ }),
 
 /***/ 19421:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const fs = __webpack_require__(77758)
-const path = __webpack_require__(85622)
-const mkdir = __webpack_require__(98605)
-const jsonFile = __webpack_require__(18970)
+const fs = __nccwpck_require__(77758)
+const path = __nccwpck_require__(85622)
+const mkdir = __nccwpck_require__(98605)
+const jsonFile = __nccwpck_require__(18970)
 
 function outputJsonSync (file, data, options) {
   const dir = path.dirname(file)
@@ -30983,15 +30987,15 @@ module.exports = outputJsonSync
 /***/ }),
 
 /***/ 60531:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const path = __webpack_require__(85622)
-const mkdir = __webpack_require__(98605)
-const pathExists = __webpack_require__(43835).pathExists
-const jsonFile = __webpack_require__(18970)
+const path = __nccwpck_require__(85622)
+const mkdir = __nccwpck_require__(98605)
+const pathExists = __nccwpck_require__(43835).pathExists
+const jsonFile = __nccwpck_require__(18970)
 
 function outputJson (file, data, options, callback) {
   if (typeof options === 'function') {
@@ -31018,13 +31022,13 @@ module.exports = outputJson
 /***/ }),
 
 /***/ 98605:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
-const u = __webpack_require__(9046)/* .fromCallback */ .E
-const mkdirs = u(__webpack_require__(59677))
-const mkdirsSync = __webpack_require__(30684)
+const u = __nccwpck_require__(9046)/* .fromCallback */ .E
+const mkdirs = u(__nccwpck_require__(59677))
+const mkdirsSync = __nccwpck_require__(30684)
 
 module.exports = {
   mkdirs,
@@ -31040,14 +31044,14 @@ module.exports = {
 /***/ }),
 
 /***/ 30684:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const fs = __webpack_require__(77758)
-const path = __webpack_require__(85622)
-const invalidWin32Path = __webpack_require__(71590).invalidWin32Path
+const fs = __nccwpck_require__(77758)
+const path = __nccwpck_require__(85622)
+const invalidWin32Path = __nccwpck_require__(71590).invalidWin32Path
 
 const o777 = parseInt('0777', 8)
 
@@ -31102,14 +31106,14 @@ module.exports = mkdirsSync
 /***/ }),
 
 /***/ 59677:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const fs = __webpack_require__(77758)
-const path = __webpack_require__(85622)
-const invalidWin32Path = __webpack_require__(71590).invalidWin32Path
+const fs = __nccwpck_require__(77758)
+const path = __nccwpck_require__(85622)
+const invalidWin32Path = __nccwpck_require__(71590).invalidWin32Path
 
 const o777 = parseInt('0777', 8)
 
@@ -31173,12 +31177,12 @@ module.exports = mkdirs
 /***/ }),
 
 /***/ 71590:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const path = __webpack_require__(85622)
+const path = __nccwpck_require__(85622)
 
 // get drive on windows
 function getRootPath (p) {
@@ -31206,30 +31210,30 @@ module.exports = {
 /***/ }),
 
 /***/ 69665:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 module.exports = {
-  moveSync: __webpack_require__(96445)
+  moveSync: __nccwpck_require__(96445)
 }
 
 
 /***/ }),
 
 /***/ 96445:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const fs = __webpack_require__(77758)
-const path = __webpack_require__(85622)
-const copySync = __webpack_require__(11135).copySync
-const removeSync = __webpack_require__(47357).removeSync
-const mkdirpSync = __webpack_require__(98605).mkdirpSync
-const stat = __webpack_require__(73901)
+const fs = __nccwpck_require__(77758)
+const path = __nccwpck_require__(85622)
+const copySync = __nccwpck_require__(11135).copySync
+const removeSync = __nccwpck_require__(47357).removeSync
+const mkdirpSync = __nccwpck_require__(98605).mkdirpSync
+const stat = __nccwpck_require__(73901)
 
 function moveSync (src, dest, opts) {
   opts = opts || {}
@@ -31274,32 +31278,32 @@ module.exports = moveSync
 /***/ }),
 
 /***/ 41497:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const u = __webpack_require__(9046)/* .fromCallback */ .E
+const u = __nccwpck_require__(9046)/* .fromCallback */ .E
 module.exports = {
-  move: u(__webpack_require__(72231))
+  move: u(__nccwpck_require__(72231))
 }
 
 
 /***/ }),
 
 /***/ 72231:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const fs = __webpack_require__(77758)
-const path = __webpack_require__(85622)
-const copy = __webpack_require__(61335).copy
-const remove = __webpack_require__(47357).remove
-const mkdirp = __webpack_require__(98605).mkdirp
-const pathExists = __webpack_require__(43835).pathExists
-const stat = __webpack_require__(73901)
+const fs = __nccwpck_require__(77758)
+const path = __nccwpck_require__(85622)
+const copy = __nccwpck_require__(61335).copy
+const remove = __nccwpck_require__(47357).remove
+const mkdirp = __nccwpck_require__(98605).mkdirp
+const pathExists = __nccwpck_require__(43835).pathExists
+const stat = __nccwpck_require__(73901)
 
 function move (src, dest, opts, cb) {
   if (typeof opts === 'function') {
@@ -31361,16 +31365,16 @@ module.exports = move
 /***/ }),
 
 /***/ 16570:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const u = __webpack_require__(9046)/* .fromCallback */ .E
-const fs = __webpack_require__(77758)
-const path = __webpack_require__(85622)
-const mkdir = __webpack_require__(98605)
-const pathExists = __webpack_require__(43835).pathExists
+const u = __nccwpck_require__(9046)/* .fromCallback */ .E
+const fs = __nccwpck_require__(77758)
+const path = __nccwpck_require__(85622)
+const mkdir = __nccwpck_require__(98605)
+const pathExists = __nccwpck_require__(43835).pathExists
 
 function outputFile (file, data, encoding, callback) {
   if (typeof encoding === 'function') {
@@ -31409,12 +31413,12 @@ module.exports = {
 /***/ }),
 
 /***/ 43835:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
-const u = __webpack_require__(9046)/* .fromPromise */ .p
-const fs = __webpack_require__(61176)
+const u = __nccwpck_require__(9046)/* .fromPromise */ .p
+const fs = __nccwpck_require__(61176)
 
 function pathExists (path) {
   return fs.access(path).then(() => true).catch(() => false)
@@ -31429,13 +31433,13 @@ module.exports = {
 /***/ }),
 
 /***/ 47357:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const u = __webpack_require__(9046)/* .fromCallback */ .E
-const rimraf = __webpack_require__(38761)
+const u = __nccwpck_require__(9046)/* .fromCallback */ .E
+const rimraf = __nccwpck_require__(38761)
 
 module.exports = {
   remove: u(rimraf),
@@ -31446,14 +31450,14 @@ module.exports = {
 /***/ }),
 
 /***/ 38761:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const fs = __webpack_require__(77758)
-const path = __webpack_require__(85622)
-const assert = __webpack_require__(42357)
+const fs = __nccwpck_require__(77758)
+const path = __nccwpck_require__(85622)
+const assert = __nccwpck_require__(42357)
 
 const isWindows = (process.platform === 'win32')
 
@@ -31788,13 +31792,13 @@ module.exports = function (size) {
 /***/ }),
 
 /***/ 73901:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const fs = __webpack_require__(77758)
-const path = __webpack_require__(85622)
+const fs = __nccwpck_require__(77758)
+const path = __nccwpck_require__(85622)
 
 const NODE_VERSION_MAJOR_WITH_BIGINT = 10
 const NODE_VERSION_MINOR_WITH_BIGINT = 5
@@ -31968,14 +31972,14 @@ module.exports = {
 /***/ }),
 
 /***/ 52548:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const fs = __webpack_require__(77758)
-const os = __webpack_require__(12087)
-const path = __webpack_require__(85622)
+const fs = __nccwpck_require__(77758)
+const os = __nccwpck_require__(12087)
+const path = __nccwpck_require__(85622)
 
 // HFS, ext{2,3}, FAT do not, Node.js v0.10 does not
 function hasMillisResSync () {
@@ -32086,14 +32090,14 @@ function clone (obj) {
 /***/ }),
 
 /***/ 77758:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var fs = __webpack_require__(35747)
-var polyfills = __webpack_require__(20263)
-var legacy = __webpack_require__(73086)
-var clone = __webpack_require__(67356)
+var fs = __nccwpck_require__(35747)
+var polyfills = __nccwpck_require__(20263)
+var legacy = __nccwpck_require__(73086)
+var clone = __nccwpck_require__(67356)
 
-var util = __webpack_require__(31669)
+var util = __nccwpck_require__(31669)
 
 /* istanbul ignore next - node 0.x polyfill */
 var gracefulQueue
@@ -32174,7 +32178,7 @@ if (!fs[gracefulQueue]) {
   if (/\bgfs4\b/i.test(process.env.NODE_DEBUG || '')) {
     process.on('exit', function() {
       debug(fs[gracefulQueue])
-      __webpack_require__(42357).equal(fs[gracefulQueue].length, 0)
+      __nccwpck_require__(42357).equal(fs[gracefulQueue].length, 0)
     })
   }
 }
@@ -32466,9 +32470,9 @@ function retry () {
 /***/ }),
 
 /***/ 73086:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var Stream = __webpack_require__(92413).Stream
+var Stream = __nccwpck_require__(92413).Stream
 
 module.exports = legacy
 
@@ -32591,9 +32595,9 @@ function legacy (fs) {
 /***/ }),
 
 /***/ 20263:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var constants = __webpack_require__(27619)
+var constants = __nccwpck_require__(27619)
 
 var origCwd = process.cwd
 var cwd = null
@@ -33050,11 +33054,11 @@ module.exports = (string, count = 1, options) => {
 /***/ }),
 
 /***/ 98768:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
-const fs = __webpack_require__(35747);
+const fs = __nccwpck_require__(35747);
 
 let isDocker;
 
@@ -33145,13 +33149,13 @@ module.exports.default = isFullwidthCodePoint;
 /***/ }),
 
 /***/ 52559:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
-const os = __webpack_require__(12087);
-const fs = __webpack_require__(35747);
-const isDocker = __webpack_require__(98768);
+const os = __nccwpck_require__(12087);
+const fs = __nccwpck_require__(35747);
+const isDocker = __nccwpck_require__(98768);
 
 const isWsl = () => {
 	if (process.platform !== 'linux') {
@@ -33184,14 +33188,14 @@ if (process.env.__IS_WSL_TEST__) {
 /***/ }),
 
 /***/ 97126:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var fs = __webpack_require__(35747)
+var fs = __nccwpck_require__(35747)
 var core
 if (process.platform === 'win32' || global.TESTING_WINDOWS) {
-  core = __webpack_require__(42001)
+  core = __nccwpck_require__(42001)
 } else {
-  core = __webpack_require__(9728)
+  core = __nccwpck_require__(9728)
 }
 
 module.exports = isexe
@@ -33248,12 +33252,12 @@ function sync (path, options) {
 /***/ }),
 
 /***/ 9728:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 module.exports = isexe
 isexe.sync = sync
 
-var fs = __webpack_require__(35747)
+var fs = __nccwpck_require__(35747)
 
 function isexe (path, options, cb) {
   fs.stat(path, function (er, stat) {
@@ -33296,12 +33300,12 @@ function checkMode (stat, options) {
 /***/ }),
 
 /***/ 42001:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 module.exports = isexe
 isexe.sync = sync
 
-var fs = __webpack_require__(35747)
+var fs = __nccwpck_require__(35747)
 
 function checkPathExt (path, options) {
   var pathext = options.pathExt !== undefined ?
@@ -33345,13 +33349,13 @@ function sync (path, options) {
 /***/ }),
 
 /***/ 21917:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 
-var yaml = __webpack_require__(40916);
+var yaml = __nccwpck_require__(40916);
 
 
 module.exports = yaml;
@@ -33360,14 +33364,14 @@ module.exports = yaml;
 /***/ }),
 
 /***/ 40916:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 
-var loader = __webpack_require__(45190);
-var dumper = __webpack_require__(73034);
+var loader = __nccwpck_require__(45190);
+var dumper = __nccwpck_require__(73034);
 
 
 function deprecated(name) {
@@ -33377,25 +33381,25 @@ function deprecated(name) {
 }
 
 
-module.exports.Type = __webpack_require__(30967);
-module.exports.Schema = __webpack_require__(66514);
-module.exports.FAILSAFE_SCHEMA = __webpack_require__(66037);
-module.exports.JSON_SCHEMA = __webpack_require__(1571);
-module.exports.CORE_SCHEMA = __webpack_require__(92183);
-module.exports.DEFAULT_SAFE_SCHEMA = __webpack_require__(48949);
-module.exports.DEFAULT_FULL_SCHEMA = __webpack_require__(56874);
+module.exports.Type = __nccwpck_require__(30967);
+module.exports.Schema = __nccwpck_require__(66514);
+module.exports.FAILSAFE_SCHEMA = __nccwpck_require__(66037);
+module.exports.JSON_SCHEMA = __nccwpck_require__(1571);
+module.exports.CORE_SCHEMA = __nccwpck_require__(92183);
+module.exports.DEFAULT_SAFE_SCHEMA = __nccwpck_require__(48949);
+module.exports.DEFAULT_FULL_SCHEMA = __nccwpck_require__(56874);
 module.exports.load                = loader.load;
 module.exports.loadAll             = loader.loadAll;
 module.exports.safeLoad            = loader.safeLoad;
 module.exports.safeLoadAll         = loader.safeLoadAll;
 module.exports.dump                = dumper.dump;
 module.exports.safeDump            = dumper.safeDump;
-module.exports.YAMLException = __webpack_require__(65199);
+module.exports.YAMLException = __nccwpck_require__(65199);
 
 // Deprecated schema names from JS-YAML 2.0.x
-module.exports.MINIMAL_SCHEMA = __webpack_require__(66037);
-module.exports.SAFE_SCHEMA = __webpack_require__(48949);
-module.exports.DEFAULT_SCHEMA = __webpack_require__(56874);
+module.exports.MINIMAL_SCHEMA = __nccwpck_require__(66037);
+module.exports.SAFE_SCHEMA = __nccwpck_require__(48949);
+module.exports.DEFAULT_SCHEMA = __nccwpck_require__(56874);
 
 // Deprecated functions from JS-YAML 1.x.x
 module.exports.scan           = deprecated('scan');
@@ -33474,17 +33478,17 @@ module.exports.extend         = extend;
 /***/ }),
 
 /***/ 73034:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 /*eslint-disable no-use-before-define*/
 
-var common              = __webpack_require__(59136);
-var YAMLException       = __webpack_require__(65199);
-var DEFAULT_FULL_SCHEMA = __webpack_require__(56874);
-var DEFAULT_SAFE_SCHEMA = __webpack_require__(48949);
+var common              = __nccwpck_require__(59136);
+var YAMLException       = __nccwpck_require__(65199);
+var DEFAULT_FULL_SCHEMA = __nccwpck_require__(56874);
+var DEFAULT_SAFE_SCHEMA = __nccwpck_require__(48949);
 
 var _toString       = Object.prototype.toString;
 var _hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -34383,18 +34387,18 @@ module.exports = YAMLException;
 /***/ }),
 
 /***/ 45190:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 /*eslint-disable max-len,no-use-before-define*/
 
-var common              = __webpack_require__(59136);
-var YAMLException       = __webpack_require__(65199);
-var Mark                = __webpack_require__(55426);
-var DEFAULT_SAFE_SCHEMA = __webpack_require__(48949);
-var DEFAULT_FULL_SCHEMA = __webpack_require__(56874);
+var common              = __nccwpck_require__(59136);
+var YAMLException       = __nccwpck_require__(65199);
+var Mark                = __nccwpck_require__(55426);
+var DEFAULT_SAFE_SCHEMA = __nccwpck_require__(48949);
+var DEFAULT_FULL_SCHEMA = __nccwpck_require__(56874);
 
 
 var _hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -36035,13 +36039,13 @@ module.exports.safeLoad    = safeLoad;
 /***/ }),
 
 /***/ 55426:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 
-var common = __webpack_require__(59136);
+var common = __nccwpck_require__(59136);
 
 
 function Mark(name, buffer, position, line, column) {
@@ -36119,16 +36123,16 @@ module.exports = Mark;
 /***/ }),
 
 /***/ 66514:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 /*eslint-disable max-len*/
 
-var common        = __webpack_require__(59136);
-var YAMLException = __webpack_require__(65199);
-var Type          = __webpack_require__(30967);
+var common        = __nccwpck_require__(59136);
+var YAMLException = __nccwpck_require__(65199);
+var Type          = __nccwpck_require__(30967);
 
 
 function compileList(schema, name, result) {
@@ -36235,7 +36239,7 @@ module.exports = Schema;
 /***/ }),
 
 /***/ 92183:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 // Standard YAML's Core schema.
@@ -36248,12 +36252,12 @@ module.exports = Schema;
 
 
 
-var Schema = __webpack_require__(66514);
+var Schema = __nccwpck_require__(66514);
 
 
 module.exports = new Schema({
   include: [
-    __webpack_require__(1571)
+    __nccwpck_require__(1571)
   ]
 });
 
@@ -36261,7 +36265,7 @@ module.exports = new Schema({
 /***/ }),
 
 /***/ 56874:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 // JS-YAML's default schema for `load` function.
@@ -36276,17 +36280,17 @@ module.exports = new Schema({
 
 
 
-var Schema = __webpack_require__(66514);
+var Schema = __nccwpck_require__(66514);
 
 
 module.exports = Schema.DEFAULT = new Schema({
   include: [
-    __webpack_require__(48949)
+    __nccwpck_require__(48949)
   ],
   explicit: [
-    __webpack_require__(25914),
-    __webpack_require__(69242),
-    __webpack_require__(27278)
+    __nccwpck_require__(25914),
+    __nccwpck_require__(69242),
+    __nccwpck_require__(27278)
   ]
 });
 
@@ -36294,7 +36298,7 @@ module.exports = Schema.DEFAULT = new Schema({
 /***/ }),
 
 /***/ 48949:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 // JS-YAML's default schema for `safeLoad` function.
@@ -36307,22 +36311,22 @@ module.exports = Schema.DEFAULT = new Schema({
 
 
 
-var Schema = __webpack_require__(66514);
+var Schema = __nccwpck_require__(66514);
 
 
 module.exports = new Schema({
   include: [
-    __webpack_require__(92183)
+    __nccwpck_require__(92183)
   ],
   implicit: [
-    __webpack_require__(83714),
-    __webpack_require__(81393)
+    __nccwpck_require__(83714),
+    __nccwpck_require__(81393)
   ],
   explicit: [
-    __webpack_require__(32551),
-    __webpack_require__(96668),
-    __webpack_require__(76039),
-    __webpack_require__(69237)
+    __nccwpck_require__(32551),
+    __nccwpck_require__(96668),
+    __nccwpck_require__(76039),
+    __nccwpck_require__(69237)
   ]
 });
 
@@ -36330,7 +36334,7 @@ module.exports = new Schema({
 /***/ }),
 
 /***/ 66037:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 // Standard YAML's Failsafe schema.
@@ -36340,14 +36344,14 @@ module.exports = new Schema({
 
 
 
-var Schema = __webpack_require__(66514);
+var Schema = __nccwpck_require__(66514);
 
 
 module.exports = new Schema({
   explicit: [
-    __webpack_require__(52672),
-    __webpack_require__(5490),
-    __webpack_require__(31173)
+    __nccwpck_require__(52672),
+    __nccwpck_require__(5490),
+    __nccwpck_require__(31173)
   ]
 });
 
@@ -36355,7 +36359,7 @@ module.exports = new Schema({
 /***/ }),
 
 /***/ 1571:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 // Standard YAML's JSON schema.
@@ -36369,18 +36373,18 @@ module.exports = new Schema({
 
 
 
-var Schema = __webpack_require__(66514);
+var Schema = __nccwpck_require__(66514);
 
 
 module.exports = new Schema({
   include: [
-    __webpack_require__(66037)
+    __nccwpck_require__(66037)
   ],
   implicit: [
-    __webpack_require__(22671),
-    __webpack_require__(94675),
-    __webpack_require__(89963),
-    __webpack_require__(15564)
+    __nccwpck_require__(22671),
+    __nccwpck_require__(94675),
+    __nccwpck_require__(89963),
+    __nccwpck_require__(15564)
   ]
 });
 
@@ -36388,12 +36392,12 @@ module.exports = new Schema({
 /***/ }),
 
 /***/ 30967:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var YAMLException = __webpack_require__(65199);
+var YAMLException = __nccwpck_require__(65199);
 
 var TYPE_CONSTRUCTOR_OPTIONS = [
   'kind',
@@ -36457,7 +36461,7 @@ module.exports = Type;
 /***/ }),
 
 /***/ 32551:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
@@ -36472,7 +36476,7 @@ try {
   NodeBuffer = _require('buffer').Buffer;
 } catch (__) {}
 
-var Type       = __webpack_require__(30967);
+var Type       = __nccwpck_require__(30967);
 
 
 // [ 64, 65, 66 ] -> [ padding, CR, LF ]
@@ -36603,12 +36607,12 @@ module.exports = new Type('tag:yaml.org,2002:binary', {
 /***/ }),
 
 /***/ 94675:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var Type = __webpack_require__(30967);
+var Type = __nccwpck_require__(30967);
 
 function resolveYamlBoolean(data) {
   if (data === null) return false;
@@ -36646,13 +36650,13 @@ module.exports = new Type('tag:yaml.org,2002:bool', {
 /***/ }),
 
 /***/ 15564:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var common = __webpack_require__(59136);
-var Type   = __webpack_require__(30967);
+var common = __nccwpck_require__(59136);
+var Type   = __nccwpck_require__(30967);
 
 var YAML_FLOAT_PATTERN = new RegExp(
   // 2.5e4, 2.5 and integers
@@ -36770,13 +36774,13 @@ module.exports = new Type('tag:yaml.org,2002:float', {
 /***/ }),
 
 /***/ 89963:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var common = __webpack_require__(59136);
-var Type   = __webpack_require__(30967);
+var common = __nccwpck_require__(59136);
+var Type   = __nccwpck_require__(30967);
 
 function isHexCode(c) {
   return ((0x30/* 0 */ <= c) && (c <= 0x39/* 9 */)) ||
@@ -36951,7 +36955,7 @@ module.exports = new Type('tag:yaml.org,2002:int', {
 /***/ }),
 
 /***/ 27278:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
@@ -36975,7 +36979,7 @@ try {
   if (typeof window !== 'undefined') esprima = window.esprima;
 }
 
-var Type = __webpack_require__(30967);
+var Type = __nccwpck_require__(30967);
 
 function resolveJavascriptFunction(data) {
   if (data === null) return false;
@@ -37052,12 +37056,12 @@ module.exports = new Type('tag:yaml.org,2002:js/function', {
 /***/ }),
 
 /***/ 69242:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var Type = __webpack_require__(30967);
+var Type = __nccwpck_require__(30967);
 
 function resolveJavascriptRegExp(data) {
   if (data === null) return false;
@@ -37120,12 +37124,12 @@ module.exports = new Type('tag:yaml.org,2002:js/regexp', {
 /***/ }),
 
 /***/ 25914:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var Type = __webpack_require__(30967);
+var Type = __nccwpck_require__(30967);
 
 function resolveJavascriptUndefined() {
   return true;
@@ -37156,12 +37160,12 @@ module.exports = new Type('tag:yaml.org,2002:js/undefined', {
 /***/ }),
 
 /***/ 31173:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var Type = __webpack_require__(30967);
+var Type = __nccwpck_require__(30967);
 
 module.exports = new Type('tag:yaml.org,2002:map', {
   kind: 'mapping',
@@ -37172,12 +37176,12 @@ module.exports = new Type('tag:yaml.org,2002:map', {
 /***/ }),
 
 /***/ 81393:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var Type = __webpack_require__(30967);
+var Type = __nccwpck_require__(30967);
 
 function resolveYamlMerge(data) {
   return data === '<<' || data === null;
@@ -37192,12 +37196,12 @@ module.exports = new Type('tag:yaml.org,2002:merge', {
 /***/ }),
 
 /***/ 22671:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var Type = __webpack_require__(30967);
+var Type = __nccwpck_require__(30967);
 
 function resolveYamlNull(data) {
   if (data === null) return true;
@@ -37234,12 +37238,12 @@ module.exports = new Type('tag:yaml.org,2002:null', {
 /***/ }),
 
 /***/ 96668:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var Type = __webpack_require__(30967);
+var Type = __nccwpck_require__(30967);
 
 var _hasOwnProperty = Object.prototype.hasOwnProperty;
 var _toString       = Object.prototype.toString;
@@ -37286,12 +37290,12 @@ module.exports = new Type('tag:yaml.org,2002:omap', {
 /***/ }),
 
 /***/ 76039:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var Type = __webpack_require__(30967);
+var Type = __nccwpck_require__(30967);
 
 var _toString = Object.prototype.toString;
 
@@ -37347,12 +37351,12 @@ module.exports = new Type('tag:yaml.org,2002:pairs', {
 /***/ }),
 
 /***/ 5490:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var Type = __webpack_require__(30967);
+var Type = __nccwpck_require__(30967);
 
 module.exports = new Type('tag:yaml.org,2002:seq', {
   kind: 'sequence',
@@ -37363,12 +37367,12 @@ module.exports = new Type('tag:yaml.org,2002:seq', {
 /***/ }),
 
 /***/ 69237:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var Type = __webpack_require__(30967);
+var Type = __nccwpck_require__(30967);
 
 var _hasOwnProperty = Object.prototype.hasOwnProperty;
 
@@ -37400,12 +37404,12 @@ module.exports = new Type('tag:yaml.org,2002:set', {
 /***/ }),
 
 /***/ 52672:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var Type = __webpack_require__(30967);
+var Type = __nccwpck_require__(30967);
 
 module.exports = new Type('tag:yaml.org,2002:str', {
   kind: 'scalar',
@@ -37416,12 +37420,12 @@ module.exports = new Type('tag:yaml.org,2002:str', {
 /***/ }),
 
 /***/ 83714:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-var Type = __webpack_require__(30967);
+var Type = __nccwpck_require__(30967);
 
 var YAML_DATE_REGEXP = new RegExp(
   '^([0-9][0-9][0-9][0-9])'          + // [1] year
@@ -37512,13 +37516,13 @@ module.exports = new Type('tag:yaml.org,2002:timestamp', {
 /***/ }),
 
 /***/ 26160:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 var _fs
 try {
-  _fs = __webpack_require__(77758)
+  _fs = __nccwpck_require__(77758)
 } catch (_) {
-  _fs = __webpack_require__(35747)
+  _fs = __nccwpck_require__(35747)
 }
 
 function readFile (file, options, callback) {
@@ -37673,9 +37677,9 @@ module.exports = reInterpolate;
 /***/ }),
 
 /***/ 60417:
-/***/ ((module, exports, __webpack_require__) => {
+/***/ ((module, exports, __nccwpck_require__) => {
 
-/* module decorator */ module = __webpack_require__.nmd(module);
+/* module decorator */ module = __nccwpck_require__.nmd(module);
 /**
  * Lodash (Custom Build) <https://lodash.com/>
  * Build: `lodash modularize exports="npm" -o ./`
@@ -37684,8 +37688,8 @@ module.exports = reInterpolate;
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
  * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
  */
-var reInterpolate = __webpack_require__(96008),
-    templateSettings = __webpack_require__(25477);
+var reInterpolate = __nccwpck_require__(96008),
+    templateSettings = __nccwpck_require__(25477);
 
 /** Used to detect hot functions by number of calls within a span of milliseconds. */
 var HOT_COUNT = 800,
@@ -39336,7 +39340,7 @@ module.exports = template;
 /***/ }),
 
 /***/ 25477:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 /**
  * Lodash (Custom Build) <https://lodash.com/>
@@ -39346,7 +39350,7 @@ module.exports = template;
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
  * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
  */
-var reInterpolate = __webpack_require__(96008);
+var reInterpolate = __nccwpck_require__(96008);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0;
@@ -39725,10 +39729,10 @@ module.exports = templateSettings;
 /***/ }),
 
 /***/ 71857:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var getNative = __webpack_require__(24479),
-    root = __webpack_require__(89882);
+var getNative = __nccwpck_require__(24479),
+    root = __nccwpck_require__(89882);
 
 /* Built-in method references that are verified to be native. */
 var DataView = getNative(root, 'DataView');
@@ -39739,13 +39743,13 @@ module.exports = DataView;
 /***/ }),
 
 /***/ 35902:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var hashClear = __webpack_require__(11789),
-    hashDelete = __webpack_require__(60712),
-    hashGet = __webpack_require__(45395),
-    hashHas = __webpack_require__(35232),
-    hashSet = __webpack_require__(47320);
+var hashClear = __nccwpck_require__(11789),
+    hashDelete = __nccwpck_require__(60712),
+    hashGet = __nccwpck_require__(45395),
+    hashHas = __nccwpck_require__(35232),
+    hashSet = __nccwpck_require__(47320);
 
 /**
  * Creates a hash object.
@@ -39778,13 +39782,13 @@ module.exports = Hash;
 /***/ }),
 
 /***/ 96608:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var listCacheClear = __webpack_require__(69792),
-    listCacheDelete = __webpack_require__(97716),
-    listCacheGet = __webpack_require__(45789),
-    listCacheHas = __webpack_require__(59386),
-    listCacheSet = __webpack_require__(17399);
+var listCacheClear = __nccwpck_require__(69792),
+    listCacheDelete = __nccwpck_require__(97716),
+    listCacheGet = __nccwpck_require__(45789),
+    listCacheHas = __nccwpck_require__(59386),
+    listCacheSet = __nccwpck_require__(17399);
 
 /**
  * Creates an list cache object.
@@ -39817,10 +39821,10 @@ module.exports = ListCache;
 /***/ }),
 
 /***/ 80881:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var getNative = __webpack_require__(24479),
-    root = __webpack_require__(89882);
+var getNative = __nccwpck_require__(24479),
+    root = __nccwpck_require__(89882);
 
 /* Built-in method references that are verified to be native. */
 var Map = getNative(root, 'Map');
@@ -39831,13 +39835,13 @@ module.exports = Map;
 /***/ }),
 
 /***/ 80938:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var mapCacheClear = __webpack_require__(1610),
-    mapCacheDelete = __webpack_require__(56657),
-    mapCacheGet = __webpack_require__(81372),
-    mapCacheHas = __webpack_require__(40609),
-    mapCacheSet = __webpack_require__(45582);
+var mapCacheClear = __nccwpck_require__(1610),
+    mapCacheDelete = __nccwpck_require__(56657),
+    mapCacheGet = __nccwpck_require__(81372),
+    mapCacheHas = __nccwpck_require__(40609),
+    mapCacheSet = __nccwpck_require__(45582);
 
 /**
  * Creates a map cache object to store key-value pairs.
@@ -39870,10 +39874,10 @@ module.exports = MapCache;
 /***/ }),
 
 /***/ 34671:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var getNative = __webpack_require__(24479),
-    root = __webpack_require__(89882);
+var getNative = __nccwpck_require__(24479),
+    root = __nccwpck_require__(89882);
 
 /* Built-in method references that are verified to be native. */
 var Promise = getNative(root, 'Promise');
@@ -39884,10 +39888,10 @@ module.exports = Promise;
 /***/ }),
 
 /***/ 35793:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var getNative = __webpack_require__(24479),
-    root = __webpack_require__(89882);
+var getNative = __nccwpck_require__(24479),
+    root = __nccwpck_require__(89882);
 
 /* Built-in method references that are verified to be native. */
 var Set = getNative(root, 'Set');
@@ -39898,11 +39902,11 @@ module.exports = Set;
 /***/ }),
 
 /***/ 72158:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var MapCache = __webpack_require__(80938),
-    setCacheAdd = __webpack_require__(16895),
-    setCacheHas = __webpack_require__(60804);
+var MapCache = __nccwpck_require__(80938),
+    setCacheAdd = __nccwpck_require__(16895),
+    setCacheHas = __nccwpck_require__(60804);
 
 /**
  *
@@ -39932,14 +39936,14 @@ module.exports = SetCache;
 /***/ }),
 
 /***/ 5323:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var ListCache = __webpack_require__(96608),
-    stackClear = __webpack_require__(62843),
-    stackDelete = __webpack_require__(14717),
-    stackGet = __webpack_require__(80021),
-    stackHas = __webpack_require__(3910),
-    stackSet = __webpack_require__(69955);
+var ListCache = __nccwpck_require__(96608),
+    stackClear = __nccwpck_require__(62843),
+    stackDelete = __nccwpck_require__(14717),
+    stackGet = __nccwpck_require__(80021),
+    stackHas = __nccwpck_require__(3910),
+    stackSet = __nccwpck_require__(69955);
 
 /**
  * Creates a stack cache object to store key-value pairs.
@@ -39966,9 +39970,9 @@ module.exports = Stack;
 /***/ }),
 
 /***/ 19213:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var root = __webpack_require__(89882);
+var root = __nccwpck_require__(89882);
 
 /** Built-in value references. */
 var Symbol = root.Symbol;
@@ -39979,9 +39983,9 @@ module.exports = Symbol;
 /***/ }),
 
 /***/ 93261:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var root = __webpack_require__(89882);
+var root = __nccwpck_require__(89882);
 
 /** Built-in value references. */
 var Uint8Array = root.Uint8Array;
@@ -39992,10 +39996,10 @@ module.exports = Uint8Array;
 /***/ }),
 
 /***/ 43915:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var getNative = __webpack_require__(24479),
-    root = __webpack_require__(89882);
+var getNative = __nccwpck_require__(24479),
+    root = __nccwpck_require__(89882);
 
 /* Built-in method references that are verified to be native. */
 var WeakMap = getNative(root, 'WeakMap');
@@ -40038,14 +40042,14 @@ module.exports = arrayFilter;
 /***/ }),
 
 /***/ 32237:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var baseTimes = __webpack_require__(37765),
-    isArguments = __webpack_require__(78495),
-    isArray = __webpack_require__(44869),
-    isBuffer = __webpack_require__(74190),
-    isIndex = __webpack_require__(32936),
-    isTypedArray = __webpack_require__(2496);
+var baseTimes = __nccwpck_require__(37765),
+    isArguments = __nccwpck_require__(78495),
+    isArray = __nccwpck_require__(44869),
+    isBuffer = __nccwpck_require__(74190),
+    isIndex = __nccwpck_require__(32936),
+    isTypedArray = __nccwpck_require__(2496);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -40198,9 +40202,9 @@ module.exports = asciiToArray;
 /***/ }),
 
 /***/ 96752:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var eq = __webpack_require__(61901);
+var eq = __nccwpck_require__(61901);
 
 /**
  * Gets the index at which the `key` is found in `array` of key-value pairs.
@@ -40226,10 +40230,10 @@ module.exports = assocIndexOf;
 /***/ }),
 
 /***/ 75758:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var castPath = __webpack_require__(2688),
-    toKey = __webpack_require__(69071);
+var castPath = __nccwpck_require__(2688),
+    toKey = __nccwpck_require__(69071);
 
 /**
  * The base implementation of `_.get` without support for default values.
@@ -40257,10 +40261,10 @@ module.exports = baseGet;
 /***/ }),
 
 /***/ 85951:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var arrayPush = __webpack_require__(60082),
-    isArray = __webpack_require__(44869);
+var arrayPush = __nccwpck_require__(60082),
+    isArray = __nccwpck_require__(44869);
 
 /**
  * The base implementation of `getAllKeys` and `getAllKeysIn` which uses
@@ -40284,11 +40288,11 @@ module.exports = baseGetAllKeys;
 /***/ }),
 
 /***/ 97497:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var Symbol = __webpack_require__(19213),
-    getRawTag = __webpack_require__(80923),
-    objectToString = __webpack_require__(14200);
+var Symbol = __nccwpck_require__(19213),
+    getRawTag = __nccwpck_require__(80923),
+    objectToString = __nccwpck_require__(14200);
 
 /** `Object#toString` result references. */
 var nullTag = '[object Null]',
@@ -40339,10 +40343,10 @@ module.exports = baseHasIn;
 /***/ }),
 
 /***/ 92177:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var baseGetTag = __webpack_require__(97497),
-    isObjectLike = __webpack_require__(85926);
+var baseGetTag = __nccwpck_require__(97497),
+    isObjectLike = __nccwpck_require__(85926);
 
 /** `Object#toString` result references. */
 var argsTag = '[object Arguments]';
@@ -40364,10 +40368,10 @@ module.exports = baseIsArguments;
 /***/ }),
 
 /***/ 88494:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var baseIsEqualDeep = __webpack_require__(43987),
-    isObjectLike = __webpack_require__(85926);
+var baseIsEqualDeep = __nccwpck_require__(43987),
+    isObjectLike = __nccwpck_require__(85926);
 
 /**
  * The base implementation of `_.isEqual` which supports partial comparisons
@@ -40399,16 +40403,16 @@ module.exports = baseIsEqual;
 /***/ }),
 
 /***/ 43987:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var Stack = __webpack_require__(5323),
-    equalArrays = __webpack_require__(86305),
-    equalByTag = __webpack_require__(29106),
-    equalObjects = __webpack_require__(70101),
-    getTag = __webpack_require__(50941),
-    isArray = __webpack_require__(44869),
-    isBuffer = __webpack_require__(74190),
-    isTypedArray = __webpack_require__(2496);
+var Stack = __nccwpck_require__(5323),
+    equalArrays = __nccwpck_require__(86305),
+    equalByTag = __nccwpck_require__(29106),
+    equalObjects = __nccwpck_require__(70101),
+    getTag = __nccwpck_require__(50941),
+    isArray = __nccwpck_require__(44869),
+    isBuffer = __nccwpck_require__(74190),
+    isTypedArray = __nccwpck_require__(2496);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1;
@@ -40489,10 +40493,10 @@ module.exports = baseIsEqualDeep;
 /***/ }),
 
 /***/ 79124:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var Stack = __webpack_require__(5323),
-    baseIsEqual = __webpack_require__(88494);
+var Stack = __nccwpck_require__(5323),
+    baseIsEqual = __nccwpck_require__(88494);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -40558,12 +40562,12 @@ module.exports = baseIsMatch;
 /***/ }),
 
 /***/ 50411:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var isFunction = __webpack_require__(17799),
-    isMasked = __webpack_require__(29058),
-    isObject = __webpack_require__(33334),
-    toSource = __webpack_require__(96928);
+var isFunction = __nccwpck_require__(17799),
+    isMasked = __nccwpck_require__(29058),
+    isObject = __nccwpck_require__(33334),
+    toSource = __nccwpck_require__(96928);
 
 /**
  * Used to match `RegExp`
@@ -40612,11 +40616,11 @@ module.exports = baseIsNative;
 /***/ }),
 
 /***/ 11528:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var baseGetTag = __webpack_require__(97497),
-    isLength = __webpack_require__(64530),
-    isObjectLike = __webpack_require__(85926);
+var baseGetTag = __nccwpck_require__(97497),
+    isLength = __nccwpck_require__(64530),
+    isObjectLike = __nccwpck_require__(85926);
 
 /** `Object#toString` result references. */
 var argsTag = '[object Arguments]',
@@ -40679,13 +40683,13 @@ module.exports = baseIsTypedArray;
 /***/ }),
 
 /***/ 60427:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var baseMatches = __webpack_require__(50599),
-    baseMatchesProperty = __webpack_require__(37591),
-    identity = __webpack_require__(57822),
-    isArray = __webpack_require__(44869),
-    property = __webpack_require__(17261);
+var baseMatches = __nccwpck_require__(50599),
+    baseMatchesProperty = __nccwpck_require__(37591),
+    identity = __nccwpck_require__(57822),
+    isArray = __nccwpck_require__(44869),
+    property = __nccwpck_require__(17261);
 
 /**
  * The base implementation of `_.iteratee`.
@@ -40717,10 +40721,10 @@ module.exports = baseIteratee;
 /***/ }),
 
 /***/ 67164:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var isPrototype = __webpack_require__(60010),
-    nativeKeys = __webpack_require__(35778);
+var isPrototype = __nccwpck_require__(60010),
+    nativeKeys = __nccwpck_require__(35778);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -40754,11 +40758,11 @@ module.exports = baseKeys;
 /***/ }),
 
 /***/ 50599:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var baseIsMatch = __webpack_require__(79124),
-    getMatchData = __webpack_require__(62458),
-    matchesStrictComparable = __webpack_require__(93509);
+var baseIsMatch = __nccwpck_require__(79124),
+    getMatchData = __nccwpck_require__(62458),
+    matchesStrictComparable = __nccwpck_require__(93509);
 
 /**
  * The base implementation of `_.matches` which doesn't clone `source`.
@@ -40783,15 +40787,15 @@ module.exports = baseMatches;
 /***/ }),
 
 /***/ 37591:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var baseIsEqual = __webpack_require__(88494),
-    get = __webpack_require__(56908),
-    hasIn = __webpack_require__(59409),
-    isKey = __webpack_require__(69084),
-    isStrictComparable = __webpack_require__(19789),
-    matchesStrictComparable = __webpack_require__(93509),
-    toKey = __webpack_require__(69071);
+var baseIsEqual = __nccwpck_require__(88494),
+    get = __nccwpck_require__(56908),
+    hasIn = __nccwpck_require__(59409),
+    isKey = __nccwpck_require__(69084),
+    isStrictComparable = __nccwpck_require__(19789),
+    matchesStrictComparable = __nccwpck_require__(93509),
+    toKey = __nccwpck_require__(69071);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -40844,9 +40848,9 @@ module.exports = baseProperty;
 /***/ }),
 
 /***/ 70974:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var baseGet = __webpack_require__(75758);
+var baseGet = __nccwpck_require__(75758);
 
 /**
  * A specialized version of `baseProperty` which supports deep paths.
@@ -40963,12 +40967,12 @@ module.exports = baseTimes;
 /***/ }),
 
 /***/ 96792:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var Symbol = __webpack_require__(19213),
-    arrayMap = __webpack_require__(94356),
-    isArray = __webpack_require__(44869),
-    isSymbol = __webpack_require__(66403);
+var Symbol = __nccwpck_require__(19213),
+    arrayMap = __nccwpck_require__(94356),
+    isArray = __nccwpck_require__(44869),
+    isSymbol = __nccwpck_require__(66403);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0;
@@ -41048,12 +41052,12 @@ module.exports = cacheHas;
 /***/ }),
 
 /***/ 2688:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var isArray = __webpack_require__(44869),
-    isKey = __webpack_require__(69084),
-    stringToPath = __webpack_require__(61853),
-    toString = __webpack_require__(32931);
+var isArray = __nccwpck_require__(44869),
+    isKey = __nccwpck_require__(69084),
+    stringToPath = __nccwpck_require__(61853),
+    toString = __nccwpck_require__(32931);
 
 /**
  * Casts `value` to a path array if it's not one.
@@ -41076,9 +41080,9 @@ module.exports = castPath;
 /***/ }),
 
 /***/ 95557:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var baseSlice = __webpack_require__(8758);
+var baseSlice = __nccwpck_require__(8758);
 
 /**
  * Casts `array` to a slice if it's needed.
@@ -41101,9 +41105,9 @@ module.exports = castSlice;
 /***/ }),
 
 /***/ 78380:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var root = __webpack_require__(89882);
+var root = __nccwpck_require__(89882);
 
 /** Used to detect overreaching core-js shims. */
 var coreJsData = root['__core-js_shared__'];
@@ -41114,12 +41118,12 @@ module.exports = coreJsData;
 /***/ }),
 
 /***/ 55898:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var castSlice = __webpack_require__(95557),
-    hasUnicode = __webpack_require__(69489),
-    stringToArray = __webpack_require__(1296),
-    toString = __webpack_require__(32931);
+var castSlice = __nccwpck_require__(95557),
+    hasUnicode = __nccwpck_require__(69489),
+    stringToArray = __nccwpck_require__(1296),
+    toString = __nccwpck_require__(32931);
 
 /**
  * Creates a function like `_.lowerFirst`.
@@ -41154,11 +41158,11 @@ module.exports = createCaseFirst;
 /***/ }),
 
 /***/ 86305:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var SetCache = __webpack_require__(72158),
-    arraySome = __webpack_require__(9410),
-    cacheHas = __webpack_require__(72675);
+var SetCache = __nccwpck_require__(72158),
+    arraySome = __nccwpck_require__(9410),
+    cacheHas = __nccwpck_require__(72675);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -41245,14 +41249,14 @@ module.exports = equalArrays;
 /***/ }),
 
 /***/ 29106:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var Symbol = __webpack_require__(19213),
-    Uint8Array = __webpack_require__(93261),
-    eq = __webpack_require__(61901),
-    equalArrays = __webpack_require__(86305),
-    mapToArray = __webpack_require__(5853),
-    setToArray = __webpack_require__(49553);
+var Symbol = __nccwpck_require__(19213),
+    Uint8Array = __nccwpck_require__(93261),
+    eq = __nccwpck_require__(61901),
+    equalArrays = __nccwpck_require__(86305),
+    mapToArray = __nccwpck_require__(5853),
+    setToArray = __nccwpck_require__(49553);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -41364,9 +41368,9 @@ module.exports = equalByTag;
 /***/ }),
 
 /***/ 70101:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var getAllKeys = __webpack_require__(28009);
+var getAllKeys = __nccwpck_require__(28009);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1;
@@ -41472,11 +41476,11 @@ module.exports = freeGlobal;
 /***/ }),
 
 /***/ 28009:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var baseGetAllKeys = __webpack_require__(85951),
-    getSymbols = __webpack_require__(56802),
-    keys = __webpack_require__(87645);
+var baseGetAllKeys = __nccwpck_require__(85951),
+    getSymbols = __nccwpck_require__(56802),
+    keys = __nccwpck_require__(87645);
 
 /**
  * Creates an array of own enumerable property names and symbols of `object`.
@@ -41495,9 +41499,9 @@ module.exports = getAllKeys;
 /***/ }),
 
 /***/ 69980:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var isKeyable = __webpack_require__(13308);
+var isKeyable = __nccwpck_require__(13308);
 
 /**
  * Gets the data for `map`.
@@ -41520,10 +41524,10 @@ module.exports = getMapData;
 /***/ }),
 
 /***/ 62458:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var isStrictComparable = __webpack_require__(19789),
-    keys = __webpack_require__(87645);
+var isStrictComparable = __nccwpck_require__(19789),
+    keys = __nccwpck_require__(87645);
 
 /**
  * Gets the property names, values, and compare flags of `object`.
@@ -41551,10 +41555,10 @@ module.exports = getMatchData;
 /***/ }),
 
 /***/ 24479:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var baseIsNative = __webpack_require__(50411),
-    getValue = __webpack_require__(13542);
+var baseIsNative = __nccwpck_require__(50411),
+    getValue = __nccwpck_require__(13542);
 
 /**
  * Gets the native function at `key` of `object`.
@@ -41575,9 +41579,9 @@ module.exports = getNative;
 /***/ }),
 
 /***/ 80923:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var Symbol = __webpack_require__(19213);
+var Symbol = __nccwpck_require__(19213);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -41628,10 +41632,10 @@ module.exports = getRawTag;
 /***/ }),
 
 /***/ 56802:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var arrayFilter = __webpack_require__(48388),
-    stubArray = __webpack_require__(8634);
+var arrayFilter = __nccwpck_require__(48388),
+    stubArray = __nccwpck_require__(8634);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -41665,15 +41669,15 @@ module.exports = getSymbols;
 /***/ }),
 
 /***/ 50941:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var DataView = __webpack_require__(71857),
-    Map = __webpack_require__(80881),
-    Promise = __webpack_require__(34671),
-    Set = __webpack_require__(35793),
-    WeakMap = __webpack_require__(43915),
-    baseGetTag = __webpack_require__(97497),
-    toSource = __webpack_require__(96928);
+var DataView = __nccwpck_require__(71857),
+    Map = __nccwpck_require__(80881),
+    Promise = __nccwpck_require__(34671),
+    Set = __nccwpck_require__(35793),
+    WeakMap = __nccwpck_require__(43915),
+    baseGetTag = __nccwpck_require__(97497),
+    toSource = __nccwpck_require__(96928);
 
 /** `Object#toString` result references. */
 var mapTag = '[object Map]',
@@ -41750,14 +41754,14 @@ module.exports = getValue;
 /***/ }),
 
 /***/ 77658:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var castPath = __webpack_require__(2688),
-    isArguments = __webpack_require__(78495),
-    isArray = __webpack_require__(44869),
-    isIndex = __webpack_require__(32936),
-    isLength = __webpack_require__(64530),
-    toKey = __webpack_require__(69071);
+var castPath = __nccwpck_require__(2688),
+    isArguments = __nccwpck_require__(78495),
+    isArray = __nccwpck_require__(44869),
+    isIndex = __nccwpck_require__(32936),
+    isLength = __nccwpck_require__(64530),
+    toKey = __nccwpck_require__(69071);
 
 /**
  * Checks if `path` exists on `object`.
@@ -41829,9 +41833,9 @@ module.exports = hasUnicode;
 /***/ }),
 
 /***/ 11789:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var nativeCreate = __webpack_require__(93041);
+var nativeCreate = __nccwpck_require__(93041);
 
 /**
  * Removes all key-value entries from the hash.
@@ -41875,9 +41879,9 @@ module.exports = hashDelete;
 /***/ }),
 
 /***/ 45395:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var nativeCreate = __webpack_require__(93041);
+var nativeCreate = __nccwpck_require__(93041);
 
 /** Used to stand-in for `undefined` hash values. */
 var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -41912,9 +41916,9 @@ module.exports = hashGet;
 /***/ }),
 
 /***/ 35232:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var nativeCreate = __webpack_require__(93041);
+var nativeCreate = __nccwpck_require__(93041);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -41942,9 +41946,9 @@ module.exports = hashHas;
 /***/ }),
 
 /***/ 47320:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var nativeCreate = __webpack_require__(93041);
+var nativeCreate = __nccwpck_require__(93041);
 
 /** Used to stand-in for `undefined` hash values. */
 var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -42004,10 +42008,10 @@ module.exports = isIndex;
 /***/ }),
 
 /***/ 69084:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var isArray = __webpack_require__(44869),
-    isSymbol = __webpack_require__(66403);
+var isArray = __nccwpck_require__(44869),
+    isSymbol = __nccwpck_require__(66403);
 
 /** Used to match property names within property paths. */
 var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
@@ -42062,9 +42066,9 @@ module.exports = isKeyable;
 /***/ }),
 
 /***/ 29058:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var coreJsData = __webpack_require__(78380);
+var coreJsData = __nccwpck_require__(78380);
 
 /** Used to detect methods masquerading as native. */
 var maskSrcKey = (function() {
@@ -42114,9 +42118,9 @@ module.exports = isPrototype;
 /***/ }),
 
 /***/ 19789:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var isObject = __webpack_require__(33334);
+var isObject = __nccwpck_require__(33334);
 
 /**
  * Checks if `value` is suitable for strict equality comparisons, i.e. `===`.
@@ -42156,9 +42160,9 @@ module.exports = listCacheClear;
 /***/ }),
 
 /***/ 97716:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var assocIndexOf = __webpack_require__(96752);
+var assocIndexOf = __nccwpck_require__(96752);
 
 /** Used for built-in method references. */
 var arrayProto = Array.prototype;
@@ -42198,9 +42202,9 @@ module.exports = listCacheDelete;
 /***/ }),
 
 /***/ 45789:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var assocIndexOf = __webpack_require__(96752);
+var assocIndexOf = __nccwpck_require__(96752);
 
 /**
  * Gets the list cache value for `key`.
@@ -42224,9 +42228,9 @@ module.exports = listCacheGet;
 /***/ }),
 
 /***/ 59386:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var assocIndexOf = __webpack_require__(96752);
+var assocIndexOf = __nccwpck_require__(96752);
 
 /**
  * Checks if a list cache value for `key` exists.
@@ -42247,9 +42251,9 @@ module.exports = listCacheHas;
 /***/ }),
 
 /***/ 17399:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var assocIndexOf = __webpack_require__(96752);
+var assocIndexOf = __nccwpck_require__(96752);
 
 /**
  * Sets the list cache `key` to `value`.
@@ -42280,11 +42284,11 @@ module.exports = listCacheSet;
 /***/ }),
 
 /***/ 1610:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var Hash = __webpack_require__(35902),
-    ListCache = __webpack_require__(96608),
-    Map = __webpack_require__(80881);
+var Hash = __nccwpck_require__(35902),
+    ListCache = __nccwpck_require__(96608),
+    Map = __nccwpck_require__(80881);
 
 /**
  * Removes all key-value entries from the map.
@@ -42308,9 +42312,9 @@ module.exports = mapCacheClear;
 /***/ }),
 
 /***/ 56657:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var getMapData = __webpack_require__(69980);
+var getMapData = __nccwpck_require__(69980);
 
 /**
  * Removes `key` and its value from the map.
@@ -42333,9 +42337,9 @@ module.exports = mapCacheDelete;
 /***/ }),
 
 /***/ 81372:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var getMapData = __webpack_require__(69980);
+var getMapData = __nccwpck_require__(69980);
 
 /**
  * Gets the map value for `key`.
@@ -42356,9 +42360,9 @@ module.exports = mapCacheGet;
 /***/ }),
 
 /***/ 40609:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var getMapData = __webpack_require__(69980);
+var getMapData = __nccwpck_require__(69980);
 
 /**
  * Checks if a map value for `key` exists.
@@ -42379,9 +42383,9 @@ module.exports = mapCacheHas;
 /***/ }),
 
 /***/ 45582:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var getMapData = __webpack_require__(69980);
+var getMapData = __nccwpck_require__(69980);
 
 /**
  * Sets the map `key` to `value`.
@@ -42460,9 +42464,9 @@ module.exports = matchesStrictComparable;
 /***/ }),
 
 /***/ 29422:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var memoize = __webpack_require__(19885);
+var memoize = __nccwpck_require__(19885);
 
 /** Used as the maximum memoize cache size. */
 var MAX_MEMOIZE_SIZE = 500;
@@ -42493,9 +42497,9 @@ module.exports = memoizeCapped;
 /***/ }),
 
 /***/ 93041:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var getNative = __webpack_require__(24479);
+var getNative = __nccwpck_require__(24479);
 
 /* Built-in method references that are verified to be native. */
 var nativeCreate = getNative(Object, 'create');
@@ -42506,9 +42510,9 @@ module.exports = nativeCreate;
 /***/ }),
 
 /***/ 35778:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var overArg = __webpack_require__(6320);
+var overArg = __nccwpck_require__(6320);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeKeys = overArg(Object.keys, Object);
@@ -42519,10 +42523,10 @@ module.exports = nativeKeys;
 /***/ }),
 
 /***/ 34643:
-/***/ ((module, exports, __webpack_require__) => {
+/***/ ((module, exports, __nccwpck_require__) => {
 
-/* module decorator */ module = __webpack_require__.nmd(module);
-var freeGlobal = __webpack_require__(52085);
+/* module decorator */ module = __nccwpck_require__.nmd(module);
+var freeGlobal = __nccwpck_require__(52085);
 
 /** Detect free variable `exports`. */
 var freeExports =  true && exports && !exports.nodeType && exports;
@@ -42608,9 +42612,9 @@ module.exports = overArg;
 /***/ }),
 
 /***/ 89882:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var freeGlobal = __webpack_require__(52085);
+var freeGlobal = __nccwpck_require__(52085);
 
 /** Detect free variable `self`. */
 var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
@@ -42696,9 +42700,9 @@ module.exports = setToArray;
 /***/ }),
 
 /***/ 62843:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var ListCache = __webpack_require__(96608);
+var ListCache = __nccwpck_require__(96608);
 
 /**
  * Removes all key-value entries from the stack.
@@ -42785,11 +42789,11 @@ module.exports = stackHas;
 /***/ }),
 
 /***/ 69955:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var ListCache = __webpack_require__(96608),
-    Map = __webpack_require__(80881),
-    MapCache = __webpack_require__(80938);
+var ListCache = __nccwpck_require__(96608),
+    Map = __nccwpck_require__(80881),
+    MapCache = __nccwpck_require__(80938);
 
 /** Used as the size to enable large array optimizations. */
 var LARGE_ARRAY_SIZE = 200;
@@ -42826,11 +42830,11 @@ module.exports = stackSet;
 /***/ }),
 
 /***/ 1296:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var asciiToArray = __webpack_require__(22187),
-    hasUnicode = __webpack_require__(69489),
-    unicodeToArray = __webpack_require__(41990);
+var asciiToArray = __nccwpck_require__(22187),
+    hasUnicode = __nccwpck_require__(69489),
+    unicodeToArray = __nccwpck_require__(41990);
 
 /**
  * Converts `string` to an array.
@@ -42851,9 +42855,9 @@ module.exports = stringToArray;
 /***/ }),
 
 /***/ 61853:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var memoizeCapped = __webpack_require__(29422);
+var memoizeCapped = __nccwpck_require__(29422);
 
 /** Used to match property names within property paths. */
 var rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
@@ -42885,9 +42889,9 @@ module.exports = stringToPath;
 /***/ }),
 
 /***/ 69071:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var isSymbol = __webpack_require__(66403);
+var isSymbol = __nccwpck_require__(66403);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0;
@@ -42993,10 +42997,10 @@ module.exports = unicodeToArray;
 /***/ }),
 
 /***/ 33622:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var toString = __webpack_require__(32931),
-    upperFirst = __webpack_require__(72598);
+var toString = __nccwpck_require__(32931),
+    upperFirst = __nccwpck_require__(72598);
 
 /**
  * Converts the first character of `string` to upper case and the remaining
@@ -43023,9 +43027,9 @@ module.exports = capitalize;
 /***/ }),
 
 /***/ 55996:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var isArray = __webpack_require__(44869);
+var isArray = __nccwpck_require__(44869);
 
 /**
  * Casts `value` as an array if it's not one.
@@ -43118,9 +43122,9 @@ module.exports = eq;
 /***/ }),
 
 /***/ 56908:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var baseGet = __webpack_require__(75758);
+var baseGet = __nccwpck_require__(75758);
 
 /**
  * Gets the value at `path` of `object`. If the resolved value is
@@ -43158,10 +43162,10 @@ module.exports = get;
 /***/ }),
 
 /***/ 59409:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var baseHasIn = __webpack_require__(84129),
-    hasPath = __webpack_require__(77658);
+var baseHasIn = __nccwpck_require__(84129),
+    hasPath = __nccwpck_require__(77658);
 
 /**
  * Checks if `path` is a direct or inherited property of `object`.
@@ -43227,10 +43231,10 @@ module.exports = identity;
 /***/ }),
 
 /***/ 78495:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var baseIsArguments = __webpack_require__(92177),
-    isObjectLike = __webpack_require__(85926);
+var baseIsArguments = __nccwpck_require__(92177),
+    isObjectLike = __nccwpck_require__(85926);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -43303,10 +43307,10 @@ module.exports = isArray;
 /***/ }),
 
 /***/ 18017:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var isFunction = __webpack_require__(17799),
-    isLength = __webpack_require__(64530);
+var isFunction = __nccwpck_require__(17799),
+    isLength = __nccwpck_require__(64530);
 
 /**
  * Checks if `value` is array-like. A value is considered array-like if it's
@@ -43343,11 +43347,11 @@ module.exports = isArrayLike;
 /***/ }),
 
 /***/ 74190:
-/***/ ((module, exports, __webpack_require__) => {
+/***/ ((module, exports, __nccwpck_require__) => {
 
-/* module decorator */ module = __webpack_require__.nmd(module);
-var root = __webpack_require__(89882),
-    stubFalse = __webpack_require__(67744);
+/* module decorator */ module = __nccwpck_require__.nmd(module);
+var root = __nccwpck_require__(89882),
+    stubFalse = __nccwpck_require__(67744);
 
 /** Detect free variable `exports`. */
 var freeExports =  true && exports && !exports.nodeType && exports;
@@ -43389,10 +43393,10 @@ module.exports = isBuffer;
 /***/ }),
 
 /***/ 17799:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var baseGetTag = __webpack_require__(97497),
-    isObject = __webpack_require__(33334);
+var baseGetTag = __nccwpck_require__(97497),
+    isObject = __nccwpck_require__(33334);
 
 /** `Object#toString` result references. */
 var asyncTag = '[object AsyncFunction]',
@@ -43549,10 +43553,10 @@ module.exports = isObjectLike;
 /***/ }),
 
 /***/ 66403:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var baseGetTag = __webpack_require__(97497),
-    isObjectLike = __webpack_require__(85926);
+var baseGetTag = __nccwpck_require__(97497),
+    isObjectLike = __nccwpck_require__(85926);
 
 /** `Object#toString` result references. */
 var symbolTag = '[object Symbol]';
@@ -43585,11 +43589,11 @@ module.exports = isSymbol;
 /***/ }),
 
 /***/ 2496:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var baseIsTypedArray = __webpack_require__(11528),
-    baseUnary = __webpack_require__(59258),
-    nodeUtil = __webpack_require__(34643);
+var baseIsTypedArray = __nccwpck_require__(11528),
+    baseUnary = __nccwpck_require__(59258),
+    nodeUtil = __nccwpck_require__(34643);
 
 /* Node.js helper references. */
 var nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
@@ -43619,11 +43623,11 @@ module.exports = isTypedArray;
 /***/ }),
 
 /***/ 87645:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var arrayLikeKeys = __webpack_require__(32237),
-    baseKeys = __webpack_require__(67164),
-    isArrayLike = __webpack_require__(18017);
+var arrayLikeKeys = __nccwpck_require__(32237),
+    baseKeys = __nccwpck_require__(67164),
+    isArrayLike = __nccwpck_require__(18017);
 
 /**
  * Creates an array of the own enumerable property names of `object`.
@@ -43663,9 +43667,9 @@ module.exports = keys;
 /***/ }),
 
 /***/ 90250:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __nccwpck_require__) {
 
-/* module decorator */ module = __webpack_require__.nmd(module);
+/* module decorator */ module = __nccwpck_require__.nmd(module);
 /**
  * @license
  * Lodash <https://lodash.com/>
@@ -60880,9 +60884,9 @@ module.exports = keys;
 /***/ }),
 
 /***/ 19885:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var MapCache = __webpack_require__(80938);
+var MapCache = __nccwpck_require__(80938);
 
 /** Error message constants. */
 var FUNC_ERROR_TEXT = 'Expected a function';
@@ -60960,12 +60964,12 @@ module.exports = memoize;
 /***/ }),
 
 /***/ 17261:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var baseProperty = __webpack_require__(96829),
-    basePropertyDeep = __webpack_require__(70974),
-    isKey = __webpack_require__(69084),
-    toKey = __webpack_require__(69071);
+var baseProperty = __nccwpck_require__(96829),
+    basePropertyDeep = __nccwpck_require__(70974),
+    isKey = __nccwpck_require__(69084),
+    toKey = __nccwpck_require__(69071);
 
 /**
  * Creates a function that returns the value at `path` of a given object.
@@ -61054,10 +61058,10 @@ module.exports = stubFalse;
 /***/ }),
 
 /***/ 93702:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var baseIteratee = __webpack_require__(60427),
-    baseSum = __webpack_require__(33193);
+var baseIteratee = __nccwpck_require__(60427),
+    baseSum = __nccwpck_require__(33193);
 
 /**
  * This method is like `_.sum` except that it accepts `iteratee` which is
@@ -61094,9 +61098,9 @@ module.exports = sumBy;
 /***/ }),
 
 /***/ 32931:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var baseToString = __webpack_require__(96792);
+var baseToString = __nccwpck_require__(96792);
 
 /**
  * Converts `value` to a string. An empty string is returned for `null`
@@ -61129,9 +61133,9 @@ module.exports = toString;
 /***/ }),
 
 /***/ 72598:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-var createCaseFirst = __webpack_require__(55898);
+var createCaseFirst = __nccwpck_require__(55898);
 
 /**
  * Converts the first character of `string` to upper case.
@@ -61158,13 +61162,13 @@ module.exports = upperFirst;
 /***/ }),
 
 /***/ 7129:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
 // A linked list to keep track of recently-used-ness
-const Yallist = __webpack_require__(40665)
+const Yallist = __nccwpck_require__(40665)
 
 const MAX = Symbol('max')
 const LENGTH = Symbol('length')
@@ -62384,7 +62388,7 @@ module.exports = (tree, opts = {}) => {
 /***/ }),
 
 /***/ 71719:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
@@ -62399,7 +62403,7 @@ let read = {
     // masking isn't available without setRawMode
     if (!stdin.setRawMode || process.env.TERM === 'dumb') return read.notty(ask)
     return new Promise(function (resolve, reject) {
-      const ansi = __webpack_require__(49413)
+      const ansi = __nccwpck_require__(49413)
 
       let input = ''
       stderr.write(ansi.eraseLine)
@@ -62463,7 +62467,7 @@ let read = {
   },
   notty: ask => {
     return new Promise((resolve, reject) => {
-      const spawn = __webpack_require__(67149)
+      const spawn = __nccwpck_require__(67149)
       stderr.write(ask)
       let output = spawn.sync('sh', ['-c', 'read -s PASS && echo $PASS'], {
         stdio: ['inherit', 'pipe', 'inherit'],
@@ -62646,14 +62650,14 @@ x.iTerm.setCwd = cwd => OSC + '50;CurrentDir=' + (cwd || process.cwd()) + BEL;
 /***/ }),
 
 /***/ 67149:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const cp = __webpack_require__(63129);
-const parse = __webpack_require__(43738);
-const enoent = __webpack_require__(71285);
+const cp = __nccwpck_require__(63129);
+const parse = __nccwpck_require__(43738);
+const enoent = __nccwpck_require__(71285);
 
 function spawn(command, args, options) {
     // Parse the arguments
@@ -62760,17 +62764,17 @@ module.exports = {
 /***/ }),
 
 /***/ 43738:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const path = __webpack_require__(85622);
-const niceTry = __webpack_require__(38560);
-const resolveCommand = __webpack_require__(15801);
-const escape = __webpack_require__(90190);
-const readShebang = __webpack_require__(83789);
-const semver = __webpack_require__(93399);
+const path = __nccwpck_require__(85622);
+const niceTry = __nccwpck_require__(38560);
+const resolveCommand = __nccwpck_require__(15801);
+const escape = __nccwpck_require__(90190);
+const readShebang = __nccwpck_require__(83789);
+const semver = __nccwpck_require__(93399);
 
 const isWin = process.platform === 'win32';
 const isExecutableRegExp = /\.(?:com|exe)$/i;
@@ -62946,13 +62950,13 @@ module.exports.argument = escapeArgument;
 /***/ }),
 
 /***/ 83789:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const fs = __webpack_require__(35747);
-const shebangCommand = __webpack_require__(16357);
+const fs = __nccwpck_require__(35747);
+const shebangCommand = __nccwpck_require__(16357);
 
 function readShebang(command) {
     // Read the first 150 bytes from the file
@@ -62986,14 +62990,14 @@ module.exports = readShebang;
 /***/ }),
 
 /***/ 15801:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 
-const path = __webpack_require__(85622);
-const which = __webpack_require__(21711);
-const pathKey = __webpack_require__(13656)();
+const path = __nccwpck_require__(85622);
+const which = __nccwpck_require__(21711);
+const pathKey = __nccwpck_require__(13656)();
 
 function resolveCommandAttempt(parsed, withoutPathExt) {
     const cwd = process.cwd();
@@ -64552,11 +64556,11 @@ function coerce (version) {
 /***/ }),
 
 /***/ 16357:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
-var shebangRegex = __webpack_require__(66302);
+var shebangRegex = __nccwpck_require__(66302);
 
 module.exports = function (str) {
 	var match = str.match(shebangRegex);
@@ -64589,7 +64593,7 @@ module.exports = /^#!.*/;
 /***/ }),
 
 /***/ 21711:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 module.exports = which
 which.sync = whichSync
@@ -64598,9 +64602,9 @@ var isWindows = process.platform === 'win32' ||
     process.env.OSTYPE === 'cygwin' ||
     process.env.OSTYPE === 'msys'
 
-var path = __webpack_require__(85622)
+var path = __nccwpck_require__(85622)
 var COLON = isWindows ? ';' : ':'
-var isexe = __webpack_require__(97126)
+var isexe = __nccwpck_require__(97126)
 
 function getNotFoundError (cmd) {
   var er = new Error('not found: ' + cmd)
@@ -64731,7 +64735,7 @@ function whichSync (cmd, opt) {
 /***/ }),
 
 /***/ 6818:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 ;(function() {
 'use strict'
@@ -64743,7 +64747,7 @@ var toString = Object.prototype.toString
 
 if ( true && typeof module.exports === 'object' && "function" === 'function') {
   // server side
-  esprima = __webpack_require__(78823)
+  esprima = __nccwpck_require__(78823)
   exportFn = function(redeyed) { module.exports = redeyed }
   bootstrap(esprima, exportFn)
 } else if (typeof define === 'function' && define.amd) {
@@ -65051,7 +65055,7 @@ function bootstrap(esprima, exportFn) {
 /***/ }),
 
 /***/ 91532:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 const ANY = Symbol('SemVer ANY')
 // hoisted class for cyclic dependency
@@ -65182,18 +65186,18 @@ class Comparator {
 
 module.exports = Comparator
 
-const parseOptions = __webpack_require__(40785)
-const {re, t} = __webpack_require__(9523)
-const cmp = __webpack_require__(75098)
-const debug = __webpack_require__(50427)
-const SemVer = __webpack_require__(48088)
-const Range = __webpack_require__(9828)
+const parseOptions = __nccwpck_require__(40785)
+const {re, t} = __nccwpck_require__(9523)
+const cmp = __nccwpck_require__(75098)
+const debug = __nccwpck_require__(50427)
+const SemVer = __nccwpck_require__(48088)
+const Range = __nccwpck_require__(9828)
 
 
 /***/ }),
 
 /***/ 9828:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 // hoisted class for cyclic dependency
 class Range {
@@ -65381,20 +65385,20 @@ class Range {
 }
 module.exports = Range
 
-const LRU = __webpack_require__(7129)
+const LRU = __nccwpck_require__(7129)
 const cache = new LRU({ max: 1000 })
 
-const parseOptions = __webpack_require__(40785)
-const Comparator = __webpack_require__(91532)
-const debug = __webpack_require__(50427)
-const SemVer = __webpack_require__(48088)
+const parseOptions = __nccwpck_require__(40785)
+const Comparator = __nccwpck_require__(91532)
+const debug = __nccwpck_require__(50427)
+const SemVer = __nccwpck_require__(48088)
 const {
   re,
   t,
   comparatorTrimReplace,
   tildeTrimReplace,
   caretTrimReplace
-} = __webpack_require__(9523)
+} = __nccwpck_require__(9523)
 
 const isNullSet = c => c.value === '<0.0.0-0'
 const isAny = c => c.value === ''
@@ -65710,14 +65714,14 @@ const testSet = (set, version, options) => {
 /***/ }),
 
 /***/ 48088:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const debug = __webpack_require__(50427)
-const { MAX_LENGTH, MAX_SAFE_INTEGER } = __webpack_require__(42293)
-const { re, t } = __webpack_require__(9523)
+const debug = __nccwpck_require__(50427)
+const { MAX_LENGTH, MAX_SAFE_INTEGER } = __nccwpck_require__(42293)
+const { re, t } = __nccwpck_require__(9523)
 
-const parseOptions = __webpack_require__(40785)
-const { compareIdentifiers } = __webpack_require__(92463)
+const parseOptions = __nccwpck_require__(40785)
+const { compareIdentifiers } = __nccwpck_require__(92463)
 class SemVer {
   constructor (version, options) {
     options = parseOptions(options)
@@ -66004,9 +66008,9 @@ module.exports = SemVer
 /***/ }),
 
 /***/ 48848:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const parse = __webpack_require__(75925)
+const parse = __nccwpck_require__(75925)
 const clean = (version, options) => {
   const s = parse(version.trim().replace(/^[=v]+/, ''), options)
   return s ? s.version : null
@@ -66017,14 +66021,14 @@ module.exports = clean
 /***/ }),
 
 /***/ 75098:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const eq = __webpack_require__(91898)
-const neq = __webpack_require__(6017)
-const gt = __webpack_require__(84123)
-const gte = __webpack_require__(15522)
-const lt = __webpack_require__(80194)
-const lte = __webpack_require__(77520)
+const eq = __nccwpck_require__(91898)
+const neq = __nccwpck_require__(6017)
+const gt = __nccwpck_require__(84123)
+const gte = __nccwpck_require__(15522)
+const lt = __nccwpck_require__(80194)
+const lte = __nccwpck_require__(77520)
 
 const cmp = (a, op, b, loose) => {
   switch (op) {
@@ -66072,11 +66076,11 @@ module.exports = cmp
 /***/ }),
 
 /***/ 13466:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const SemVer = __webpack_require__(48088)
-const parse = __webpack_require__(75925)
-const {re, t} = __webpack_require__(9523)
+const SemVer = __nccwpck_require__(48088)
+const parse = __nccwpck_require__(75925)
+const {re, t} = __nccwpck_require__(9523)
 
 const coerce = (version, options) => {
   if (version instanceof SemVer) {
@@ -66130,9 +66134,9 @@ module.exports = coerce
 /***/ }),
 
 /***/ 92156:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const SemVer = __webpack_require__(48088)
+const SemVer = __nccwpck_require__(48088)
 const compareBuild = (a, b, loose) => {
   const versionA = new SemVer(a, loose)
   const versionB = new SemVer(b, loose)
@@ -66144,9 +66148,9 @@ module.exports = compareBuild
 /***/ }),
 
 /***/ 62804:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const compare = __webpack_require__(44309)
+const compare = __nccwpck_require__(44309)
 const compareLoose = (a, b) => compare(a, b, true)
 module.exports = compareLoose
 
@@ -66154,9 +66158,9 @@ module.exports = compareLoose
 /***/ }),
 
 /***/ 44309:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const SemVer = __webpack_require__(48088)
+const SemVer = __nccwpck_require__(48088)
 const compare = (a, b, loose) =>
   new SemVer(a, loose).compare(new SemVer(b, loose))
 
@@ -66166,10 +66170,10 @@ module.exports = compare
 /***/ }),
 
 /***/ 64297:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const parse = __webpack_require__(75925)
-const eq = __webpack_require__(91898)
+const parse = __nccwpck_require__(75925)
+const eq = __nccwpck_require__(91898)
 
 const diff = (version1, version2) => {
   if (eq(version1, version2)) {
@@ -66196,9 +66200,9 @@ module.exports = diff
 /***/ }),
 
 /***/ 91898:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const compare = __webpack_require__(44309)
+const compare = __nccwpck_require__(44309)
 const eq = (a, b, loose) => compare(a, b, loose) === 0
 module.exports = eq
 
@@ -66206,9 +66210,9 @@ module.exports = eq
 /***/ }),
 
 /***/ 84123:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const compare = __webpack_require__(44309)
+const compare = __nccwpck_require__(44309)
 const gt = (a, b, loose) => compare(a, b, loose) > 0
 module.exports = gt
 
@@ -66216,9 +66220,9 @@ module.exports = gt
 /***/ }),
 
 /***/ 15522:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const compare = __webpack_require__(44309)
+const compare = __nccwpck_require__(44309)
 const gte = (a, b, loose) => compare(a, b, loose) >= 0
 module.exports = gte
 
@@ -66226,9 +66230,9 @@ module.exports = gte
 /***/ }),
 
 /***/ 30900:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const SemVer = __webpack_require__(48088)
+const SemVer = __nccwpck_require__(48088)
 
 const inc = (version, release, options, identifier) => {
   if (typeof (options) === 'string') {
@@ -66248,9 +66252,9 @@ module.exports = inc
 /***/ }),
 
 /***/ 80194:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const compare = __webpack_require__(44309)
+const compare = __nccwpck_require__(44309)
 const lt = (a, b, loose) => compare(a, b, loose) < 0
 module.exports = lt
 
@@ -66258,9 +66262,9 @@ module.exports = lt
 /***/ }),
 
 /***/ 77520:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const compare = __webpack_require__(44309)
+const compare = __nccwpck_require__(44309)
 const lte = (a, b, loose) => compare(a, b, loose) <= 0
 module.exports = lte
 
@@ -66268,9 +66272,9 @@ module.exports = lte
 /***/ }),
 
 /***/ 76688:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const SemVer = __webpack_require__(48088)
+const SemVer = __nccwpck_require__(48088)
 const major = (a, loose) => new SemVer(a, loose).major
 module.exports = major
 
@@ -66278,9 +66282,9 @@ module.exports = major
 /***/ }),
 
 /***/ 38447:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const SemVer = __webpack_require__(48088)
+const SemVer = __nccwpck_require__(48088)
 const minor = (a, loose) => new SemVer(a, loose).minor
 module.exports = minor
 
@@ -66288,9 +66292,9 @@ module.exports = minor
 /***/ }),
 
 /***/ 6017:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const compare = __webpack_require__(44309)
+const compare = __nccwpck_require__(44309)
 const neq = (a, b, loose) => compare(a, b, loose) !== 0
 module.exports = neq
 
@@ -66298,13 +66302,13 @@ module.exports = neq
 /***/ }),
 
 /***/ 75925:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const {MAX_LENGTH} = __webpack_require__(42293)
-const { re, t } = __webpack_require__(9523)
-const SemVer = __webpack_require__(48088)
+const {MAX_LENGTH} = __nccwpck_require__(42293)
+const { re, t } = __nccwpck_require__(9523)
+const SemVer = __nccwpck_require__(48088)
 
-const parseOptions = __webpack_require__(40785)
+const parseOptions = __nccwpck_require__(40785)
 const parse = (version, options) => {
   options = parseOptions(options)
 
@@ -66338,9 +66342,9 @@ module.exports = parse
 /***/ }),
 
 /***/ 42866:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const SemVer = __webpack_require__(48088)
+const SemVer = __nccwpck_require__(48088)
 const patch = (a, loose) => new SemVer(a, loose).patch
 module.exports = patch
 
@@ -66348,9 +66352,9 @@ module.exports = patch
 /***/ }),
 
 /***/ 24016:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const parse = __webpack_require__(75925)
+const parse = __nccwpck_require__(75925)
 const prerelease = (version, options) => {
   const parsed = parse(version, options)
   return (parsed && parsed.prerelease.length) ? parsed.prerelease : null
@@ -66361,9 +66365,9 @@ module.exports = prerelease
 /***/ }),
 
 /***/ 76417:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const compare = __webpack_require__(44309)
+const compare = __nccwpck_require__(44309)
 const rcompare = (a, b, loose) => compare(b, a, loose)
 module.exports = rcompare
 
@@ -66371,9 +66375,9 @@ module.exports = rcompare
 /***/ }),
 
 /***/ 8701:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const compareBuild = __webpack_require__(92156)
+const compareBuild = __nccwpck_require__(92156)
 const rsort = (list, loose) => list.sort((a, b) => compareBuild(b, a, loose))
 module.exports = rsort
 
@@ -66381,9 +66385,9 @@ module.exports = rsort
 /***/ }),
 
 /***/ 6055:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const Range = __webpack_require__(9828)
+const Range = __nccwpck_require__(9828)
 const satisfies = (version, range, options) => {
   try {
     range = new Range(range, options)
@@ -66398,9 +66402,9 @@ module.exports = satisfies
 /***/ }),
 
 /***/ 61426:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const compareBuild = __webpack_require__(92156)
+const compareBuild = __nccwpck_require__(92156)
 const sort = (list, loose) => list.sort((a, b) => compareBuild(a, b, loose))
 module.exports = sort
 
@@ -66408,9 +66412,9 @@ module.exports = sort
 /***/ }),
 
 /***/ 19601:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const parse = __webpack_require__(75925)
+const parse = __nccwpck_require__(75925)
 const valid = (version, options) => {
   const v = parse(version, options)
   return v ? v.version : null
@@ -66421,55 +66425,55 @@ module.exports = valid
 /***/ }),
 
 /***/ 11383:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 // just pre-load all the stuff that index.js lazily exports
-const internalRe = __webpack_require__(9523)
+const internalRe = __nccwpck_require__(9523)
 module.exports = {
   re: internalRe.re,
   src: internalRe.src,
   tokens: internalRe.t,
-  SEMVER_SPEC_VERSION: __webpack_require__(42293).SEMVER_SPEC_VERSION,
-  SemVer: __webpack_require__(48088),
-  compareIdentifiers: __webpack_require__(92463).compareIdentifiers,
-  rcompareIdentifiers: __webpack_require__(92463).rcompareIdentifiers,
-  parse: __webpack_require__(75925),
-  valid: __webpack_require__(19601),
-  clean: __webpack_require__(48848),
-  inc: __webpack_require__(30900),
-  diff: __webpack_require__(64297),
-  major: __webpack_require__(76688),
-  minor: __webpack_require__(38447),
-  patch: __webpack_require__(42866),
-  prerelease: __webpack_require__(24016),
-  compare: __webpack_require__(44309),
-  rcompare: __webpack_require__(76417),
-  compareLoose: __webpack_require__(62804),
-  compareBuild: __webpack_require__(92156),
-  sort: __webpack_require__(61426),
-  rsort: __webpack_require__(8701),
-  gt: __webpack_require__(84123),
-  lt: __webpack_require__(80194),
-  eq: __webpack_require__(91898),
-  neq: __webpack_require__(6017),
-  gte: __webpack_require__(15522),
-  lte: __webpack_require__(77520),
-  cmp: __webpack_require__(75098),
-  coerce: __webpack_require__(13466),
-  Comparator: __webpack_require__(91532),
-  Range: __webpack_require__(9828),
-  satisfies: __webpack_require__(6055),
-  toComparators: __webpack_require__(52706),
-  maxSatisfying: __webpack_require__(20579),
-  minSatisfying: __webpack_require__(10832),
-  minVersion: __webpack_require__(34179),
-  validRange: __webpack_require__(2098),
-  outside: __webpack_require__(60420),
-  gtr: __webpack_require__(9380),
-  ltr: __webpack_require__(33323),
-  intersects: __webpack_require__(27008),
-  simplifyRange: __webpack_require__(75297),
-  subset: __webpack_require__(7863),
+  SEMVER_SPEC_VERSION: __nccwpck_require__(42293).SEMVER_SPEC_VERSION,
+  SemVer: __nccwpck_require__(48088),
+  compareIdentifiers: __nccwpck_require__(92463).compareIdentifiers,
+  rcompareIdentifiers: __nccwpck_require__(92463).rcompareIdentifiers,
+  parse: __nccwpck_require__(75925),
+  valid: __nccwpck_require__(19601),
+  clean: __nccwpck_require__(48848),
+  inc: __nccwpck_require__(30900),
+  diff: __nccwpck_require__(64297),
+  major: __nccwpck_require__(76688),
+  minor: __nccwpck_require__(38447),
+  patch: __nccwpck_require__(42866),
+  prerelease: __nccwpck_require__(24016),
+  compare: __nccwpck_require__(44309),
+  rcompare: __nccwpck_require__(76417),
+  compareLoose: __nccwpck_require__(62804),
+  compareBuild: __nccwpck_require__(92156),
+  sort: __nccwpck_require__(61426),
+  rsort: __nccwpck_require__(8701),
+  gt: __nccwpck_require__(84123),
+  lt: __nccwpck_require__(80194),
+  eq: __nccwpck_require__(91898),
+  neq: __nccwpck_require__(6017),
+  gte: __nccwpck_require__(15522),
+  lte: __nccwpck_require__(77520),
+  cmp: __nccwpck_require__(75098),
+  coerce: __nccwpck_require__(13466),
+  Comparator: __nccwpck_require__(91532),
+  Range: __nccwpck_require__(9828),
+  satisfies: __nccwpck_require__(6055),
+  toComparators: __nccwpck_require__(52706),
+  maxSatisfying: __nccwpck_require__(20579),
+  minSatisfying: __nccwpck_require__(10832),
+  minVersion: __nccwpck_require__(34179),
+  validRange: __nccwpck_require__(2098),
+  outside: __nccwpck_require__(60420),
+  gtr: __nccwpck_require__(9380),
+  ltr: __nccwpck_require__(33323),
+  intersects: __nccwpck_require__(27008),
+  simplifyRange: __nccwpck_require__(75297),
+  subset: __nccwpck_require__(7863),
 }
 
 
@@ -66564,10 +66568,10 @@ module.exports = parseOptions
 /***/ }),
 
 /***/ 9523:
-/***/ ((module, exports, __webpack_require__) => {
+/***/ ((module, exports, __nccwpck_require__) => {
 
-const { MAX_SAFE_COMPONENT_LENGTH } = __webpack_require__(42293)
-const debug = __webpack_require__(50427)
+const { MAX_SAFE_COMPONENT_LENGTH } = __nccwpck_require__(42293)
+const debug = __nccwpck_require__(50427)
 exports = module.exports = {}
 
 // The actual regexps go on exports.re
@@ -66753,10 +66757,10 @@ createToken('GTE0PRE', '^\\s*>=\\s*0\.0\.0-0\\s*$')
 /***/ }),
 
 /***/ 9380:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 // Determine if version is greater than all the versions possible in the range.
-const outside = __webpack_require__(60420)
+const outside = __nccwpck_require__(60420)
 const gtr = (version, range, options) => outside(version, range, '>', options)
 module.exports = gtr
 
@@ -66764,9 +66768,9 @@ module.exports = gtr
 /***/ }),
 
 /***/ 27008:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const Range = __webpack_require__(9828)
+const Range = __nccwpck_require__(9828)
 const intersects = (r1, r2, options) => {
   r1 = new Range(r1, options)
   r2 = new Range(r2, options)
@@ -66778,9 +66782,9 @@ module.exports = intersects
 /***/ }),
 
 /***/ 33323:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const outside = __webpack_require__(60420)
+const outside = __nccwpck_require__(60420)
 // Determine if version is less than all the versions possible in the range
 const ltr = (version, range, options) => outside(version, range, '<', options)
 module.exports = ltr
@@ -66789,10 +66793,10 @@ module.exports = ltr
 /***/ }),
 
 /***/ 20579:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const SemVer = __webpack_require__(48088)
-const Range = __webpack_require__(9828)
+const SemVer = __nccwpck_require__(48088)
+const Range = __nccwpck_require__(9828)
 
 const maxSatisfying = (versions, range, options) => {
   let max = null
@@ -66821,10 +66825,10 @@ module.exports = maxSatisfying
 /***/ }),
 
 /***/ 10832:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const SemVer = __webpack_require__(48088)
-const Range = __webpack_require__(9828)
+const SemVer = __nccwpck_require__(48088)
+const Range = __nccwpck_require__(9828)
 const minSatisfying = (versions, range, options) => {
   let min = null
   let minSV = null
@@ -66852,11 +66856,11 @@ module.exports = minSatisfying
 /***/ }),
 
 /***/ 34179:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const SemVer = __webpack_require__(48088)
-const Range = __webpack_require__(9828)
-const gt = __webpack_require__(84123)
+const SemVer = __nccwpck_require__(48088)
+const Range = __nccwpck_require__(9828)
+const gt = __nccwpck_require__(84123)
 
 const minVersion = (range, loose) => {
   range = new Range(range, loose)
@@ -66919,17 +66923,17 @@ module.exports = minVersion
 /***/ }),
 
 /***/ 60420:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const SemVer = __webpack_require__(48088)
-const Comparator = __webpack_require__(91532)
+const SemVer = __nccwpck_require__(48088)
+const Comparator = __nccwpck_require__(91532)
 const {ANY} = Comparator
-const Range = __webpack_require__(9828)
-const satisfies = __webpack_require__(6055)
-const gt = __webpack_require__(84123)
-const lt = __webpack_require__(80194)
-const lte = __webpack_require__(77520)
-const gte = __webpack_require__(15522)
+const Range = __nccwpck_require__(9828)
+const satisfies = __nccwpck_require__(6055)
+const gt = __nccwpck_require__(84123)
+const lt = __nccwpck_require__(80194)
+const lte = __nccwpck_require__(77520)
+const gte = __nccwpck_require__(15522)
 
 const outside = (version, range, hilo, options) => {
   version = new SemVer(version, options)
@@ -67006,13 +67010,13 @@ module.exports = outside
 /***/ }),
 
 /***/ 75297:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 // given a set of versions and a range, create a "simplified" range
 // that includes the same versions that the original range does
 // If the original range is shorter than the simplified one, return that.
-const satisfies = __webpack_require__(6055)
-const compare = __webpack_require__(44309)
+const satisfies = __nccwpck_require__(6055)
+const compare = __nccwpck_require__(44309)
 module.exports = (versions, range, options) => {
   const set = []
   let min = null
@@ -67057,13 +67061,13 @@ module.exports = (versions, range, options) => {
 /***/ }),
 
 /***/ 7863:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const Range = __webpack_require__(9828)
-const Comparator = __webpack_require__(91532)
+const Range = __nccwpck_require__(9828)
+const Comparator = __nccwpck_require__(91532)
 const { ANY } = Comparator
-const satisfies = __webpack_require__(6055)
-const compare = __webpack_require__(44309)
+const satisfies = __nccwpck_require__(6055)
+const compare = __nccwpck_require__(44309)
 
 // Complex range `r1 || r2 || ...` is a subset of `R1 || R2 || ...` iff:
 // - Every simple range `r1, r2, ...` is a null set, OR
@@ -67286,9 +67290,9 @@ module.exports = subset
 /***/ }),
 
 /***/ 52706:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const Range = __webpack_require__(9828)
+const Range = __nccwpck_require__(9828)
 
 // Mostly just for testing and legacy API reasons
 const toComparators = (range, options) =>
@@ -67301,9 +67305,9 @@ module.exports = toComparators
 /***/ }),
 
 /***/ 2098:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const Range = __webpack_require__(9828)
+const Range = __nccwpck_require__(9828)
 const validRange = (range, options) => {
   try {
     // Return '*' instead of '' so that truthiness works.
@@ -67319,13 +67323,13 @@ module.exports = validRange
 /***/ }),
 
 /***/ 42577:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
-const stripAnsi = __webpack_require__(45591);
-const isFullwidthCodePoint = __webpack_require__(64882);
-const emojiRegex = __webpack_require__(18212);
+const stripAnsi = __nccwpck_require__(45591);
+const isFullwidthCodePoint = __nccwpck_require__(64882);
+const emojiRegex = __nccwpck_require__(18212);
 
 const stringWidth = string => {
 	if (typeof string !== 'string' || string.length === 0) {
@@ -67374,11 +67378,11 @@ module.exports.default = stringWidth;
 /***/ }),
 
 /***/ 45591:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
-const ansiRegex = __webpack_require__(65063);
+const ansiRegex = __nccwpck_require__(65063);
 
 module.exports = string => typeof string === 'string' ? string.replace(ansiRegex(), '') : string;
 
@@ -67386,12 +67390,12 @@ module.exports = string => typeof string === 'string' ? string.replace(ansiRegex
 /***/ }),
 
 /***/ 59318:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
-const os = __webpack_require__(12087);
-const hasFlag = __webpack_require__(31621);
+const os = __nccwpck_require__(12087);
+const hasFlag = __nccwpck_require__(31621);
 
 const env = process.env;
 
@@ -67525,12 +67529,12 @@ module.exports = {
 /***/ }),
 
 /***/ 18824:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
-const supportsColor = __webpack_require__(31507);
-const hasFlag = __webpack_require__(37362);
+const supportsColor = __nccwpck_require__(31507);
+const hasFlag = __nccwpck_require__(37362);
 
 function parseVersion(versionString) {
 	if (/^\d{3,4}$/.test(versionString)) {
@@ -67644,13 +67648,13 @@ module.exports = (flag, argv = process.argv) => {
 /***/ }),
 
 /***/ 31507:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
-const os = __webpack_require__(12087);
-const tty = __webpack_require__(33867);
-const hasFlag = __webpack_require__(37362);
+const os = __nccwpck_require__(12087);
+const tty = __nccwpck_require__(33867);
+const hasFlag = __nccwpck_require__(37362);
 
 const {env} = process;
 
@@ -67786,36 +67790,9 @@ module.exports = {
 
 /***/ }),
 
-/***/ 75636:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ 4351:
+/***/ ((module) => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "__extends": () => /* binding */ __extends,
-/* harmony export */   "__assign": () => /* binding */ __assign,
-/* harmony export */   "__rest": () => /* binding */ __rest,
-/* harmony export */   "__decorate": () => /* binding */ __decorate,
-/* harmony export */   "__param": () => /* binding */ __param,
-/* harmony export */   "__metadata": () => /* binding */ __metadata,
-/* harmony export */   "__awaiter": () => /* binding */ __awaiter,
-/* harmony export */   "__generator": () => /* binding */ __generator,
-/* harmony export */   "__createBinding": () => /* binding */ __createBinding,
-/* harmony export */   "__exportStar": () => /* binding */ __exportStar,
-/* harmony export */   "__values": () => /* binding */ __values,
-/* harmony export */   "__read": () => /* binding */ __read,
-/* harmony export */   "__spread": () => /* binding */ __spread,
-/* harmony export */   "__spreadArrays": () => /* binding */ __spreadArrays,
-/* harmony export */   "__await": () => /* binding */ __await,
-/* harmony export */   "__asyncGenerator": () => /* binding */ __asyncGenerator,
-/* harmony export */   "__asyncDelegator": () => /* binding */ __asyncDelegator,
-/* harmony export */   "__asyncValues": () => /* binding */ __asyncValues,
-/* harmony export */   "__makeTemplateObject": () => /* binding */ __makeTemplateObject,
-/* harmony export */   "__importStar": () => /* binding */ __importStar,
-/* harmony export */   "__importDefault": () => /* binding */ __importDefault,
-/* harmony export */   "__classPrivateFieldGet": () => /* binding */ __classPrivateFieldGet,
-/* harmony export */   "__classPrivateFieldSet": () => /* binding */ __classPrivateFieldSet
-/* harmony export */ });
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
 
@@ -67830,210 +67807,276 @@ LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
 OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 PERFORMANCE OF THIS SOFTWARE.
 ***************************************************************************** */
-/* global Reflect, Promise */
 
-var extendStatics = function(d, b) {
-    extendStatics = Object.setPrototypeOf ||
+/* global global, define, System, Reflect, Promise */
+var __extends;
+var __assign;
+var __rest;
+var __decorate;
+var __param;
+var __metadata;
+var __awaiter;
+var __generator;
+var __exportStar;
+var __values;
+var __read;
+var __spread;
+var __spreadArrays;
+var __await;
+var __asyncGenerator;
+var __asyncDelegator;
+var __asyncValues;
+var __makeTemplateObject;
+var __importStar;
+var __importDefault;
+var __classPrivateFieldGet;
+var __classPrivateFieldSet;
+var __createBinding;
+(function (factory) {
+    var root = typeof global === "object" ? global : typeof self === "object" ? self : typeof this === "object" ? this : {};
+    if (typeof define === "function" && define.amd) {
+        define("tslib", ["exports"], function (exports) { factory(createExporter(root, createExporter(exports))); });
+    }
+    else if ( true && typeof module.exports === "object") {
+        factory(createExporter(root, createExporter(module.exports)));
+    }
+    else {
+        factory(createExporter(root));
+    }
+    function createExporter(exports, previous) {
+        if (exports !== root) {
+            if (typeof Object.create === "function") {
+                Object.defineProperty(exports, "__esModule", { value: true });
+            }
+            else {
+                exports.__esModule = true;
+            }
+        }
+        return function (id, v) { return exports[id] = previous ? previous(id, v) : v; };
+    }
+})
+(function (exporter) {
+    var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
         function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return extendStatics(d, b);
-};
 
-function __extends(d, b) {
-    extendStatics(d, b);
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-}
+    __extends = function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
 
-var __assign = function() {
-    __assign = Object.assign || function __assign(t) {
+    __assign = Object.assign || function (t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
             s = arguments[i];
             for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
         }
         return t;
-    }
-    return __assign.apply(this, arguments);
-}
+    };
 
-function __rest(s, e) {
-    var t = {};
-    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-        t[p] = s[p];
-    if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-                t[p[i]] = s[p[i]];
-        }
-    return t;
-}
-
-function __decorate(decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-}
-
-function __param(paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-}
-
-function __metadata(metadataKey, metadataValue) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
-}
-
-function __awaiter(thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-}
-
-function __generator(thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
+    __rest = function (s, e) {
+        var t = {};
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+            t[p] = s[p];
+        if (s != null && typeof Object.getOwnPropertySymbols === "function")
+            for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+                if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                    t[p[i]] = s[p[i]];
             }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-}
+        return t;
+    };
 
-function __createBinding(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}
+    __decorate = function (decorators, target, key, desc) {
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+    };
 
-function __exportStar(m, exports) {
-    for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) exports[p] = m[p];
-}
+    __param = function (paramIndex, decorator) {
+        return function (target, key) { decorator(target, key, paramIndex); }
+    };
 
-function __values(o) {
-    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
-    if (m) return m.call(o);
-    if (o && typeof o.length === "number") return {
-        next: function () {
-            if (o && i >= o.length) o = void 0;
-            return { value: o && o[i++], done: !o };
+    __metadata = function (metadataKey, metadataValue) {
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
+    };
+
+    __awaiter = function (thisArg, _arguments, P, generator) {
+        function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+        return new (P || (P = Promise))(function (resolve, reject) {
+            function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+            function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+            function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+            step((generator = generator.apply(thisArg, _arguments || [])).next());
+        });
+    };
+
+    __generator = function (thisArg, body) {
+        var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+        return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+        function verb(n) { return function (v) { return step([n, v]); }; }
+        function step(op) {
+            if (f) throw new TypeError("Generator is already executing.");
+            while (_) try {
+                if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+                if (y = 0, t) op = [op[0] & 2, t.value];
+                switch (op[0]) {
+                    case 0: case 1: t = op; break;
+                    case 4: _.label++; return { value: op[1], done: false };
+                    case 5: _.label++; y = op[1]; op = [0]; continue;
+                    case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                    default:
+                        if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                        if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                        if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                        if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                        if (t[2]) _.ops.pop();
+                        _.trys.pop(); continue;
+                }
+                op = body.call(thisArg, _);
+            } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+            if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
         }
     };
-    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
-}
 
-function __read(o, n) {
-    var m = typeof Symbol === "function" && o[Symbol.iterator];
-    if (!m) return o;
-    var i = m.call(o), r, ar = [], e;
-    try {
-        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
-    }
-    catch (error) { e = { error: error }; }
-    finally {
+    __createBinding = function(o, m, k, k2) {
+        if (k2 === undefined) k2 = k;
+        o[k2] = m[k];
+    };
+
+    __exportStar = function (m, exports) {
+        for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) exports[p] = m[p];
+    };
+
+    __values = function (o) {
+        var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+        if (m) return m.call(o);
+        if (o && typeof o.length === "number") return {
+            next: function () {
+                if (o && i >= o.length) o = void 0;
+                return { value: o && o[i++], done: !o };
+            }
+        };
+        throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+    };
+
+    __read = function (o, n) {
+        var m = typeof Symbol === "function" && o[Symbol.iterator];
+        if (!m) return o;
+        var i = m.call(o), r, ar = [], e;
         try {
-            if (r && !r.done && (m = i["return"])) m.call(i);
+            while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
         }
-        finally { if (e) throw e.error; }
-    }
-    return ar;
-}
+        catch (error) { e = { error: error }; }
+        finally {
+            try {
+                if (r && !r.done && (m = i["return"])) m.call(i);
+            }
+            finally { if (e) throw e.error; }
+        }
+        return ar;
+    };
 
-function __spread() {
-    for (var ar = [], i = 0; i < arguments.length; i++)
-        ar = ar.concat(__read(arguments[i]));
-    return ar;
-}
+    __spread = function () {
+        for (var ar = [], i = 0; i < arguments.length; i++)
+            ar = ar.concat(__read(arguments[i]));
+        return ar;
+    };
 
-function __spreadArrays() {
-    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
-    for (var r = Array(s), k = 0, i = 0; i < il; i++)
-        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
-            r[k] = a[j];
-    return r;
-};
+    __spreadArrays = function () {
+        for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+        for (var r = Array(s), k = 0, i = 0; i < il; i++)
+            for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+                r[k] = a[j];
+        return r;
+    };
 
-function __await(v) {
-    return this instanceof __await ? (this.v = v, this) : new __await(v);
-}
+    __await = function (v) {
+        return this instanceof __await ? (this.v = v, this) : new __await(v);
+    };
 
-function __asyncGenerator(thisArg, _arguments, generator) {
-    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
-    var g = generator.apply(thisArg, _arguments || []), i, q = [];
-    return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
-    function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
-    function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
-    function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r); }
-    function fulfill(value) { resume("next", value); }
-    function reject(value) { resume("throw", value); }
-    function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
-}
+    __asyncGenerator = function (thisArg, _arguments, generator) {
+        if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+        var g = generator.apply(thisArg, _arguments || []), i, q = [];
+        return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
+        function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
+        function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
+        function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r);  }
+        function fulfill(value) { resume("next", value); }
+        function reject(value) { resume("throw", value); }
+        function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
+    };
 
-function __asyncDelegator(o) {
-    var i, p;
-    return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
-    function verb(n, f) { i[n] = o[n] ? function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; } : f; }
-}
+    __asyncDelegator = function (o) {
+        var i, p;
+        return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
+        function verb(n, f) { i[n] = o[n] ? function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; } : f; }
+    };
 
-function __asyncValues(o) {
-    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
-    var m = o[Symbol.asyncIterator], i;
-    return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
-    function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
-    function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
-}
+    __asyncValues = function (o) {
+        if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+        var m = o[Symbol.asyncIterator], i;
+        return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
+        function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
+        function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
+    };
 
-function __makeTemplateObject(cooked, raw) {
-    if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
-    return cooked;
-};
+    __makeTemplateObject = function (cooked, raw) {
+        if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+        return cooked;
+    };
 
-function __importStar(mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result.default = mod;
-    return result;
-}
+    __importStar = function (mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+        result["default"] = mod;
+        return result;
+    };
 
-function __importDefault(mod) {
-    return (mod && mod.__esModule) ? mod : { default: mod };
-}
+    __importDefault = function (mod) {
+        return (mod && mod.__esModule) ? mod : { "default": mod };
+    };
 
-function __classPrivateFieldGet(receiver, privateMap) {
-    if (!privateMap.has(receiver)) {
-        throw new TypeError("attempted to get private field on non-instance");
-    }
-    return privateMap.get(receiver);
-}
+    __classPrivateFieldGet = function (receiver, privateMap) {
+        if (!privateMap.has(receiver)) {
+            throw new TypeError("attempted to get private field on non-instance");
+        }
+        return privateMap.get(receiver);
+    };
 
-function __classPrivateFieldSet(receiver, privateMap, value) {
-    if (!privateMap.has(receiver)) {
-        throw new TypeError("attempted to set private field on non-instance");
-    }
-    privateMap.set(receiver, value);
-    return value;
-}
+    __classPrivateFieldSet = function (receiver, privateMap, value) {
+        if (!privateMap.has(receiver)) {
+            throw new TypeError("attempted to set private field on non-instance");
+        }
+        privateMap.set(receiver, value);
+        return value;
+    };
+
+    exporter("__extends", __extends);
+    exporter("__assign", __assign);
+    exporter("__rest", __rest);
+    exporter("__decorate", __decorate);
+    exporter("__param", __param);
+    exporter("__metadata", __metadata);
+    exporter("__awaiter", __awaiter);
+    exporter("__generator", __generator);
+    exporter("__exportStar", __exportStar);
+    exporter("__createBinding", __createBinding);
+    exporter("__values", __values);
+    exporter("__read", __read);
+    exporter("__spread", __spread);
+    exporter("__spreadArrays", __spreadArrays);
+    exporter("__await", __await);
+    exporter("__asyncGenerator", __asyncGenerator);
+    exporter("__asyncDelegator", __asyncDelegator);
+    exporter("__asyncValues", __asyncValues);
+    exporter("__makeTemplateObject", __makeTemplateObject);
+    exporter("__importStar", __importStar);
+    exporter("__importDefault", __importDefault);
+    exporter("__classPrivateFieldGet", __classPrivateFieldGet);
+    exporter("__classPrivateFieldSet", __classPrivateFieldSet);
+});
 
 
 /***/ }),
@@ -68072,11 +68115,11 @@ exports.p = function (fn) {
 /***/ }),
 
 /***/ 60866:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
-const stringWidth = __webpack_require__(42577);
+const stringWidth = __nccwpck_require__(42577);
 
 const widestLine = input => {
 	let max = 0;
@@ -68096,13 +68139,13 @@ module.exports.default = widestLine;
 /***/ }),
 
 /***/ 59824:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
-const stringWidth = __webpack_require__(42577);
-const stripAnsi = __webpack_require__(45591);
-const ansiStyles = __webpack_require__(8862);
+const stringWidth = __nccwpck_require__(42577);
+const stripAnsi = __nccwpck_require__(45591);
+const ansiStyles = __nccwpck_require__(8862);
 
 const ESCAPES = new Set([
 	'\u001B',
@@ -68320,10 +68363,10 @@ module.exports = (string, columns, options) => {
 /***/ }),
 
 /***/ 8862:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
-/* module decorator */ module = __webpack_require__.nmd(module);
+/* module decorator */ module = __nccwpck_require__.nmd(module);
 
 
 const wrapAnsi16 = (fn, offset) => (...args) => {
@@ -68366,7 +68409,7 @@ const setLazyProperty = (object, property, get) => {
 let colorConvert;
 const makeDynamicStyles = (wrap, targetSpace, identity, isBackground) => {
 	if (colorConvert === undefined) {
-		colorConvert = __webpack_require__(25996);
+		colorConvert = __nccwpck_require__(25996);
 	}
 
 	const offset = isBackground ? 10 : 0;
@@ -68492,11 +68535,11 @@ Object.defineProperty(module, 'exports', {
 /***/ }),
 
 /***/ 36784:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 /* MIT license */
 /* eslint-disable no-mixed-operators */
-const cssKeywords = __webpack_require__(40199);
+const cssKeywords = __nccwpck_require__(40199);
 
 // NOTE: conversions should only return primitive values (i.e. arrays, or
 //       values that give correct `typeof` results).
@@ -69338,10 +69381,10 @@ convert.rgb.gray = function (rgb) {
 /***/ }),
 
 /***/ 25996:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const conversions = __webpack_require__(36784);
-const route = __webpack_require__(67004);
+const conversions = __nccwpck_require__(36784);
+const route = __nccwpck_require__(67004);
 
 const convert = {};
 
@@ -69426,9 +69469,9 @@ module.exports = convert;
 /***/ }),
 
 /***/ 67004:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const conversions = __webpack_require__(36784);
+const conversions = __nccwpck_require__(36784);
 
 /*
 	This function routes a model to all other models.
@@ -69706,7 +69749,7 @@ module.exports = function (Yallist) {
 /***/ }),
 
 /***/ 40665:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
@@ -70133,7 +70176,7 @@ function Node (value, prev, next, list) {
 
 try {
   // add if support for Symbol.iterator is present
-  __webpack_require__(4091)(Yallist)
+  __nccwpck_require__(4091)(Yallist)
 } catch (er) {}
 
 
@@ -70151,7 +70194,7 @@ module.exports = eval("require")("fs-extra-debug");
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse("{\"name\":\"axios\",\"version\":\"0.21.1\",\"description\":\"Promise based HTTP client for the browser and node.js\",\"main\":\"index.js\",\"scripts\":{\"test\":\"grunt test && bundlesize\",\"start\":\"node ./sandbox/server.js\",\"build\":\"NODE_ENV=production grunt build\",\"preversion\":\"npm test\",\"version\":\"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json\",\"postversion\":\"git push && git push --tags\",\"examples\":\"node ./examples/server.js\",\"coveralls\":\"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js\",\"fix\":\"eslint --fix lib/**/*.js\"},\"repository\":{\"type\":\"git\",\"url\":\"https://github.com/axios/axios.git\"},\"keywords\":[\"xhr\",\"http\",\"ajax\",\"promise\",\"node\"],\"author\":\"Matt Zabriskie\",\"license\":\"MIT\",\"bugs\":{\"url\":\"https://github.com/axios/axios/issues\"},\"homepage\":\"https://github.com/axios/axios\",\"devDependencies\":{\"bundlesize\":\"^0.17.0\",\"coveralls\":\"^3.0.0\",\"es6-promise\":\"^4.2.4\",\"grunt\":\"^1.0.2\",\"grunt-banner\":\"^0.6.0\",\"grunt-cli\":\"^1.2.0\",\"grunt-contrib-clean\":\"^1.1.0\",\"grunt-contrib-watch\":\"^1.0.0\",\"grunt-eslint\":\"^20.1.0\",\"grunt-karma\":\"^2.0.0\",\"grunt-mocha-test\":\"^0.13.3\",\"grunt-ts\":\"^6.0.0-beta.19\",\"grunt-webpack\":\"^1.0.18\",\"istanbul-instrumenter-loader\":\"^1.0.0\",\"jasmine-core\":\"^2.4.1\",\"karma\":\"^1.3.0\",\"karma-chrome-launcher\":\"^2.2.0\",\"karma-coverage\":\"^1.1.1\",\"karma-firefox-launcher\":\"^1.1.0\",\"karma-jasmine\":\"^1.1.1\",\"karma-jasmine-ajax\":\"^0.1.13\",\"karma-opera-launcher\":\"^1.0.0\",\"karma-safari-launcher\":\"^1.0.0\",\"karma-sauce-launcher\":\"^1.2.0\",\"karma-sinon\":\"^1.0.5\",\"karma-sourcemap-loader\":\"^0.3.7\",\"karma-webpack\":\"^1.7.0\",\"load-grunt-tasks\":\"^3.5.2\",\"minimist\":\"^1.2.0\",\"mocha\":\"^5.2.0\",\"sinon\":\"^4.5.0\",\"typescript\":\"^2.8.1\",\"url-search-params\":\"^0.10.0\",\"webpack\":\"^1.13.1\",\"webpack-dev-server\":\"^1.14.1\"},\"browser\":{\"./lib/adapters/http.js\":\"./lib/adapters/xhr.js\"},\"jsdelivr\":\"dist/axios.min.js\",\"unpkg\":\"dist/axios.min.js\",\"typings\":\"./index.d.ts\",\"dependencies\":{\"follow-redirects\":\"^1.10.0\"},\"bundlesize\":[{\"path\":\"./dist/axios.min.js\",\"threshold\":\"5kB\"}]}");
+module.exports = JSON.parse('{"name":"axios","version":"0.21.1","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test && bundlesize","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://github.com/axios/axios","devDependencies":{"bundlesize":"^0.17.0","coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.0.2","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^20.1.0","grunt-karma":"^2.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^1.0.18","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^1.3.0","karma-chrome-launcher":"^2.2.0","karma-coverage":"^1.1.1","karma-firefox-launcher":"^1.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-opera-launcher":"^1.0.0","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^1.2.0","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.7","karma-webpack":"^1.7.0","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^5.2.0","sinon":"^4.5.0","typescript":"^2.8.1","url-search-params":"^0.10.0","webpack":"^1.13.1","webpack-dev-server":"^1.14.1"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.10.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
 
 /***/ }),
 
@@ -70159,7 +70202,7 @@ module.exports = JSON.parse("{\"name\":\"axios\",\"version\":\"0.21.1\",\"descri
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse("{\"name\":\"bump-cli\",\"description\":\"The Bump CLI is used to interact with your API documentation hosted on Bump by using the API of developers.bump.sh\",\"version\":\"2.0.1\",\"author\":\"Paul Bonaud <paulr@bump.sh>\",\"bin\":{\"bump\":\"./bin/run\"},\"bugs\":\"https://github.com/bump-sh/bump-node-cli/issues\",\"devDependencies\":{\"@oclif/dev-cli\":\"^1.26.0\",\"@oclif/test\":\"^1.2.8\",\"@types/debug\":\"^4.1.5\",\"@types/mocha\":\"^8.2.2\",\"@types/node\":\"^10.17.56\",\"@typescript-eslint/eslint-plugin\":\"^4.21.0\",\"@typescript-eslint/parser\":\"^4.21.0\",\"chai\":\"^4.3.4\",\"cross-spawn\":\"^6.0.5\",\"eslint\":\"^7.24.0\",\"eslint-config-prettier\":\"^8.1.0\",\"eslint-plugin-prettier\":\"^3.3.1\",\"globby\":\"^10.0.2\",\"mocha\":\"^8.3.2\",\"nock\":\"^13.0.11\",\"np\":\"^7.5.0\",\"nyc\":\"^15.1.0\",\"prettier\":\"^2.2.1\",\"sinon\":\"^10.0.0\",\"stdout-stderr\":\"^0.1.13\",\"ts-node\":\"^8.10.2\",\"typescript\":\"^3.9.9\"},\"engines\":{\"node\":\">=10.0.0\"},\"files\":[\"/bin\",\"/lib\",\"/npm-shrinkwrap.json\",\"/oclif.manifest.json\"],\"homepage\":\"https://bump.sh\",\"keywords\":[\"api\",\"documentation\",\"openapi\",\"asyncapi\",\"bump\",\"cli\"],\"license\":\"MIT\",\"main\":\"lib/index.js\",\"oclif\":{\"commands\":\"./lib/commands\",\"bin\":\"bump\",\"plugins\":[\"@oclif/plugin-help\"]},\"repository\":\"bump-sh/bump-node-cli\",\"scripts\":{\"build\":\"tsc -b\",\"clean\":\"rm -rf lib oclif.manifest.json\",\"lint\":\"eslint . --ext .ts --config .eslintrc\",\"fmt\":\"eslint . --ext .ts --config .eslintrc --fix\",\"pack\":\"oclif-dev pack\",\"postpack\":\"rm -f oclif.manifest.json\",\"prepack\":\"rm -rf lib && npm run build && oclif-dev manifest && oclif-dev readme\",\"pretest\":\"npm run clean && npm run build && npm run lint\",\"publish\":\"np --no-release-draft\",\"test\":\"mocha \\\"test/**/*.test.ts\\\"\",\"test-coverage\":\"nyc npm run test\",\"test-integration\":\"node ./test/integration.js\",\"version\":\"oclif-dev readme && git add README.md\"},\"types\":\"lib/index.d.ts\",\"dependencies\":{\"@apidevtools/json-schema-ref-parser\":\"^9.0.7\",\"@asyncapi/specs\":\"^2.7.7\",\"@oclif/command\":\"^1.8.0\",\"@oclif/config\":\"^1.17.0\",\"@oclif/plugin-help\":\"^3.2.2\",\"axios\":\"^0.21.1\",\"cli-ux\":\"^5.5.1\",\"debug\":\"^4.3.1\",\"oas-schemas\":\"git+https://git@github.com/OAI/OpenAPI-Specification.git#0f9d3ec7c033fef184ec54e1ffc201b2d61ce023\",\"tslib\":\"^1.14.1\"}}");
+module.exports = JSON.parse('{"name":"bump-cli","description":"The Bump CLI is used to interact with your API documentation hosted on Bump by using the API of developers.bump.sh","version":"2.0.1","author":"Paul Bonaud <paulr@bump.sh>","bin":{"bump":"./bin/run"},"bugs":"https://github.com/bump-sh/bump-node-cli/issues","devDependencies":{"@oclif/dev-cli":"^1.26.0","@oclif/test":"^1.2.8","@types/debug":"^4.1.5","@types/mocha":"^8.2.2","@types/node":"^10.17.56","@typescript-eslint/eslint-plugin":"^4.21.0","@typescript-eslint/parser":"^4.21.0","chai":"^4.3.4","cross-spawn":"^6.0.5","eslint":"^7.24.0","eslint-config-prettier":"^8.1.0","eslint-plugin-prettier":"^3.3.1","globby":"^10.0.2","mocha":"^8.3.2","nock":"^13.0.11","np":"^7.5.0","nyc":"^15.1.0","prettier":"^2.2.1","sinon":"^10.0.0","stdout-stderr":"^0.1.13","ts-node":"^8.10.2","typescript":"^3.9.9"},"engines":{"node":">=10.0.0"},"files":["/bin","/lib","/npm-shrinkwrap.json","/oclif.manifest.json"],"homepage":"https://bump.sh","keywords":["api","documentation","openapi","asyncapi","bump","cli"],"license":"MIT","main":"lib/index.js","oclif":{"commands":"./lib/commands","bin":"bump","plugins":["@oclif/plugin-help"]},"repository":"bump-sh/bump-node-cli","scripts":{"build":"tsc -b","clean":"rm -rf lib oclif.manifest.json","lint":"eslint . --ext .ts --config .eslintrc","fmt":"eslint . --ext .ts --config .eslintrc --fix","pack":"oclif-dev pack","postpack":"rm -f oclif.manifest.json","prepack":"rm -rf lib && npm run build && oclif-dev manifest && oclif-dev readme","pretest":"npm run clean && npm run build && npm run lint","publish":"np --no-release-draft","test":"mocha \\"test/**/*.test.ts\\"","test-coverage":"nyc npm run test","test-integration":"node ./test/integration.js","version":"oclif-dev readme && git add README.md"},"types":"lib/index.d.ts","dependencies":{"@apidevtools/json-schema-ref-parser":"^9.0.7","@asyncapi/specs":"^2.7.7","@oclif/command":"^1.8.0","@oclif/config":"^1.17.0","@oclif/plugin-help":"^3.2.2","axios":"^0.21.1","cli-ux":"^5.5.1","debug":"^4.3.1","oas-schemas":"git+https://git@github.com/OAI/OpenAPI-Specification.git#0f9d3ec7c033fef184ec54e1ffc201b2d61ce023","tslib":"^1.14.1"}}');
 
 /***/ }),
 
@@ -70175,7 +70218,7 @@ module.exports = {"i8":"5.5.1"};
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse("{\"title\":\"A JSON Schema for Swagger 2.0 API.\",\"id\":\"http://swagger.io/v2/schema.json#\",\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"required\":[\"swagger\",\"info\",\"paths\"],\"additionalProperties\":false,\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"properties\":{\"swagger\":{\"type\":\"string\",\"enum\":[\"2.0\"],\"description\":\"The Swagger version of this document.\"},\"info\":{\"$ref\":\"#/definitions/info\"},\"host\":{\"type\":\"string\",\"pattern\":\"^[^{}/ :\\\\\\\\]+(?::\\\\d+)?$\",\"description\":\"The host (name or ip) of the API. Example: 'swagger.io'\"},\"basePath\":{\"type\":\"string\",\"pattern\":\"^/\",\"description\":\"The base path to the API. Example: '/api'.\"},\"schemes\":{\"$ref\":\"#/definitions/schemesList\"},\"consumes\":{\"description\":\"A list of MIME types accepted by the API.\",\"allOf\":[{\"$ref\":\"#/definitions/mediaTypeList\"}]},\"produces\":{\"description\":\"A list of MIME types the API can produce.\",\"allOf\":[{\"$ref\":\"#/definitions/mediaTypeList\"}]},\"paths\":{\"$ref\":\"#/definitions/paths\"},\"definitions\":{\"$ref\":\"#/definitions/definitions\"},\"parameters\":{\"$ref\":\"#/definitions/parameterDefinitions\"},\"responses\":{\"$ref\":\"#/definitions/responseDefinitions\"},\"security\":{\"$ref\":\"#/definitions/security\"},\"securityDefinitions\":{\"$ref\":\"#/definitions/securityDefinitions\"},\"tags\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/tag\"},\"uniqueItems\":true},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"}},\"definitions\":{\"info\":{\"type\":\"object\",\"description\":\"General information about the API.\",\"required\":[\"version\",\"title\"],\"additionalProperties\":false,\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"properties\":{\"title\":{\"type\":\"string\",\"description\":\"A unique and precise title of the API.\"},\"version\":{\"type\":\"string\",\"description\":\"A semantic version number of the API.\"},\"description\":{\"type\":\"string\",\"description\":\"A longer description of the API. Should be different from the title.  GitHub Flavored Markdown is allowed.\"},\"termsOfService\":{\"type\":\"string\",\"description\":\"The terms of service for the API.\"},\"contact\":{\"$ref\":\"#/definitions/contact\"},\"license\":{\"$ref\":\"#/definitions/license\"}}},\"contact\":{\"type\":\"object\",\"description\":\"Contact information for the owners of the API.\",\"additionalProperties\":false,\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"The identifying name of the contact person/organization.\"},\"url\":{\"type\":\"string\",\"description\":\"The URL pointing to the contact information.\",\"format\":\"uri\"},\"email\":{\"type\":\"string\",\"description\":\"The email address of the contact person/organization.\",\"format\":\"email\"}},\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}}},\"license\":{\"type\":\"object\",\"required\":[\"name\"],\"additionalProperties\":false,\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"The name of the license type. It's encouraged to use an OSI compatible license.\"},\"url\":{\"type\":\"string\",\"description\":\"The URL pointing to the license.\",\"format\":\"uri\"}},\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}}},\"paths\":{\"type\":\"object\",\"description\":\"Relative paths to the individual endpoints. They must be relative to the 'basePath'.\",\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"},\"^/\":{\"$ref\":\"#/definitions/pathItem\"}},\"additionalProperties\":false},\"definitions\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/schema\"},\"description\":\"One or more JSON objects describing the schemas being consumed and produced by the API.\"},\"parameterDefinitions\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/parameter\"},\"description\":\"One or more JSON representations for parameters\"},\"responseDefinitions\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/response\"},\"description\":\"One or more JSON representations for responses\"},\"externalDocs\":{\"type\":\"object\",\"additionalProperties\":false,\"description\":\"information about external documentation\",\"required\":[\"url\"],\"properties\":{\"description\":{\"type\":\"string\"},\"url\":{\"type\":\"string\",\"format\":\"uri\"}},\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}}},\"examples\":{\"type\":\"object\",\"additionalProperties\":true},\"mimeType\":{\"type\":\"string\",\"description\":\"The MIME type of the HTTP message.\"},\"operation\":{\"type\":\"object\",\"required\":[\"responses\"],\"additionalProperties\":false,\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"properties\":{\"tags\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"uniqueItems\":true},\"summary\":{\"type\":\"string\",\"description\":\"A brief summary of the operation.\"},\"description\":{\"type\":\"string\",\"description\":\"A longer description of the operation, GitHub Flavored Markdown is allowed.\"},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"},\"operationId\":{\"type\":\"string\",\"description\":\"A unique identifier of the operation.\"},\"produces\":{\"description\":\"A list of MIME types the API can produce.\",\"allOf\":[{\"$ref\":\"#/definitions/mediaTypeList\"}]},\"consumes\":{\"description\":\"A list of MIME types the API can consume.\",\"allOf\":[{\"$ref\":\"#/definitions/mediaTypeList\"}]},\"parameters\":{\"$ref\":\"#/definitions/parametersList\"},\"responses\":{\"$ref\":\"#/definitions/responses\"},\"schemes\":{\"$ref\":\"#/definitions/schemesList\"},\"deprecated\":{\"type\":\"boolean\",\"default\":false},\"security\":{\"$ref\":\"#/definitions/security\"}}},\"pathItem\":{\"type\":\"object\",\"additionalProperties\":false,\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"properties\":{\"$ref\":{\"type\":\"string\"},\"get\":{\"$ref\":\"#/definitions/operation\"},\"put\":{\"$ref\":\"#/definitions/operation\"},\"post\":{\"$ref\":\"#/definitions/operation\"},\"delete\":{\"$ref\":\"#/definitions/operation\"},\"options\":{\"$ref\":\"#/definitions/operation\"},\"head\":{\"$ref\":\"#/definitions/operation\"},\"patch\":{\"$ref\":\"#/definitions/operation\"},\"parameters\":{\"$ref\":\"#/definitions/parametersList\"}}},\"responses\":{\"type\":\"object\",\"description\":\"Response objects names can either be any valid HTTP status code or 'default'.\",\"minProperties\":1,\"additionalProperties\":false,\"patternProperties\":{\"^([0-9]{3})$|^(default)$\":{\"$ref\":\"#/definitions/responseValue\"},\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"not\":{\"type\":\"object\",\"additionalProperties\":false,\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}}}},\"responseValue\":{\"oneOf\":[{\"$ref\":\"#/definitions/response\"},{\"$ref\":\"#/definitions/jsonReference\"}]},\"response\":{\"type\":\"object\",\"required\":[\"description\"],\"properties\":{\"description\":{\"type\":\"string\"},\"schema\":{\"oneOf\":[{\"$ref\":\"#/definitions/schema\"},{\"$ref\":\"#/definitions/fileSchema\"}]},\"headers\":{\"$ref\":\"#/definitions/headers\"},\"examples\":{\"$ref\":\"#/definitions/examples\"}},\"additionalProperties\":false,\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}}},\"headers\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/header\"}},\"header\":{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"type\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"string\",\"number\",\"integer\",\"boolean\",\"array\"]},\"format\":{\"type\":\"string\"},\"items\":{\"$ref\":\"#/definitions/primitivesItems\"},\"collectionFormat\":{\"$ref\":\"#/definitions/collectionFormat\"},\"default\":{\"$ref\":\"#/definitions/default\"},\"maximum\":{\"$ref\":\"#/definitions/maximum\"},\"exclusiveMaximum\":{\"$ref\":\"#/definitions/exclusiveMaximum\"},\"minimum\":{\"$ref\":\"#/definitions/minimum\"},\"exclusiveMinimum\":{\"$ref\":\"#/definitions/exclusiveMinimum\"},\"maxLength\":{\"$ref\":\"#/definitions/maxLength\"},\"minLength\":{\"$ref\":\"#/definitions/minLength\"},\"pattern\":{\"$ref\":\"#/definitions/pattern\"},\"maxItems\":{\"$ref\":\"#/definitions/maxItems\"},\"minItems\":{\"$ref\":\"#/definitions/minItems\"},\"uniqueItems\":{\"$ref\":\"#/definitions/uniqueItems\"},\"enum\":{\"$ref\":\"#/definitions/enum\"},\"multipleOf\":{\"$ref\":\"#/definitions/multipleOf\"},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}}},\"vendorExtension\":{\"description\":\"Any property starting with x- is valid.\",\"additionalProperties\":true,\"additionalItems\":true},\"bodyParameter\":{\"type\":\"object\",\"required\":[\"name\",\"in\",\"schema\"],\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"properties\":{\"description\":{\"type\":\"string\",\"description\":\"A brief description of the parameter. This could contain examples of use.  GitHub Flavored Markdown is allowed.\"},\"name\":{\"type\":\"string\",\"description\":\"The name of the parameter.\"},\"in\":{\"type\":\"string\",\"description\":\"Determines the location of the parameter.\",\"enum\":[\"body\"]},\"required\":{\"type\":\"boolean\",\"description\":\"Determines whether or not this parameter is required or optional.\",\"default\":false},\"schema\":{\"$ref\":\"#/definitions/schema\"}},\"additionalProperties\":false},\"headerParameterSubSchema\":{\"additionalProperties\":false,\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"properties\":{\"required\":{\"type\":\"boolean\",\"description\":\"Determines whether or not this parameter is required or optional.\",\"default\":false},\"in\":{\"type\":\"string\",\"description\":\"Determines the location of the parameter.\",\"enum\":[\"header\"]},\"description\":{\"type\":\"string\",\"description\":\"A brief description of the parameter. This could contain examples of use.  GitHub Flavored Markdown is allowed.\"},\"name\":{\"type\":\"string\",\"description\":\"The name of the parameter.\"},\"type\":{\"type\":\"string\",\"enum\":[\"string\",\"number\",\"boolean\",\"integer\",\"array\"]},\"format\":{\"type\":\"string\"},\"items\":{\"$ref\":\"#/definitions/primitivesItems\"},\"collectionFormat\":{\"$ref\":\"#/definitions/collectionFormat\"},\"default\":{\"$ref\":\"#/definitions/default\"},\"maximum\":{\"$ref\":\"#/definitions/maximum\"},\"exclusiveMaximum\":{\"$ref\":\"#/definitions/exclusiveMaximum\"},\"minimum\":{\"$ref\":\"#/definitions/minimum\"},\"exclusiveMinimum\":{\"$ref\":\"#/definitions/exclusiveMinimum\"},\"maxLength\":{\"$ref\":\"#/definitions/maxLength\"},\"minLength\":{\"$ref\":\"#/definitions/minLength\"},\"pattern\":{\"$ref\":\"#/definitions/pattern\"},\"maxItems\":{\"$ref\":\"#/definitions/maxItems\"},\"minItems\":{\"$ref\":\"#/definitions/minItems\"},\"uniqueItems\":{\"$ref\":\"#/definitions/uniqueItems\"},\"enum\":{\"$ref\":\"#/definitions/enum\"},\"multipleOf\":{\"$ref\":\"#/definitions/multipleOf\"}}},\"queryParameterSubSchema\":{\"additionalProperties\":false,\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"properties\":{\"required\":{\"type\":\"boolean\",\"description\":\"Determines whether or not this parameter is required or optional.\",\"default\":false},\"in\":{\"type\":\"string\",\"description\":\"Determines the location of the parameter.\",\"enum\":[\"query\"]},\"description\":{\"type\":\"string\",\"description\":\"A brief description of the parameter. This could contain examples of use.  GitHub Flavored Markdown is allowed.\"},\"name\":{\"type\":\"string\",\"description\":\"The name of the parameter.\"},\"allowEmptyValue\":{\"type\":\"boolean\",\"default\":false,\"description\":\"allows sending a parameter by name only or with an empty value.\"},\"type\":{\"type\":\"string\",\"enum\":[\"string\",\"number\",\"boolean\",\"integer\",\"array\"]},\"format\":{\"type\":\"string\"},\"items\":{\"$ref\":\"#/definitions/primitivesItems\"},\"collectionFormat\":{\"$ref\":\"#/definitions/collectionFormatWithMulti\"},\"default\":{\"$ref\":\"#/definitions/default\"},\"maximum\":{\"$ref\":\"#/definitions/maximum\"},\"exclusiveMaximum\":{\"$ref\":\"#/definitions/exclusiveMaximum\"},\"minimum\":{\"$ref\":\"#/definitions/minimum\"},\"exclusiveMinimum\":{\"$ref\":\"#/definitions/exclusiveMinimum\"},\"maxLength\":{\"$ref\":\"#/definitions/maxLength\"},\"minLength\":{\"$ref\":\"#/definitions/minLength\"},\"pattern\":{\"$ref\":\"#/definitions/pattern\"},\"maxItems\":{\"$ref\":\"#/definitions/maxItems\"},\"minItems\":{\"$ref\":\"#/definitions/minItems\"},\"uniqueItems\":{\"$ref\":\"#/definitions/uniqueItems\"},\"enum\":{\"$ref\":\"#/definitions/enum\"},\"multipleOf\":{\"$ref\":\"#/definitions/multipleOf\"}}},\"formDataParameterSubSchema\":{\"additionalProperties\":false,\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"properties\":{\"required\":{\"type\":\"boolean\",\"description\":\"Determines whether or not this parameter is required or optional.\",\"default\":false},\"in\":{\"type\":\"string\",\"description\":\"Determines the location of the parameter.\",\"enum\":[\"formData\"]},\"description\":{\"type\":\"string\",\"description\":\"A brief description of the parameter. This could contain examples of use.  GitHub Flavored Markdown is allowed.\"},\"name\":{\"type\":\"string\",\"description\":\"The name of the parameter.\"},\"allowEmptyValue\":{\"type\":\"boolean\",\"default\":false,\"description\":\"allows sending a parameter by name only or with an empty value.\"},\"type\":{\"type\":\"string\",\"enum\":[\"string\",\"number\",\"boolean\",\"integer\",\"array\",\"file\"]},\"format\":{\"type\":\"string\"},\"items\":{\"$ref\":\"#/definitions/primitivesItems\"},\"collectionFormat\":{\"$ref\":\"#/definitions/collectionFormatWithMulti\"},\"default\":{\"$ref\":\"#/definitions/default\"},\"maximum\":{\"$ref\":\"#/definitions/maximum\"},\"exclusiveMaximum\":{\"$ref\":\"#/definitions/exclusiveMaximum\"},\"minimum\":{\"$ref\":\"#/definitions/minimum\"},\"exclusiveMinimum\":{\"$ref\":\"#/definitions/exclusiveMinimum\"},\"maxLength\":{\"$ref\":\"#/definitions/maxLength\"},\"minLength\":{\"$ref\":\"#/definitions/minLength\"},\"pattern\":{\"$ref\":\"#/definitions/pattern\"},\"maxItems\":{\"$ref\":\"#/definitions/maxItems\"},\"minItems\":{\"$ref\":\"#/definitions/minItems\"},\"uniqueItems\":{\"$ref\":\"#/definitions/uniqueItems\"},\"enum\":{\"$ref\":\"#/definitions/enum\"},\"multipleOf\":{\"$ref\":\"#/definitions/multipleOf\"}}},\"pathParameterSubSchema\":{\"additionalProperties\":false,\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"required\":[\"required\"],\"properties\":{\"required\":{\"type\":\"boolean\",\"enum\":[true],\"description\":\"Determines whether or not this parameter is required or optional.\"},\"in\":{\"type\":\"string\",\"description\":\"Determines the location of the parameter.\",\"enum\":[\"path\"]},\"description\":{\"type\":\"string\",\"description\":\"A brief description of the parameter. This could contain examples of use.  GitHub Flavored Markdown is allowed.\"},\"name\":{\"type\":\"string\",\"description\":\"The name of the parameter.\"},\"type\":{\"type\":\"string\",\"enum\":[\"string\",\"number\",\"boolean\",\"integer\",\"array\"]},\"format\":{\"type\":\"string\"},\"items\":{\"$ref\":\"#/definitions/primitivesItems\"},\"collectionFormat\":{\"$ref\":\"#/definitions/collectionFormat\"},\"default\":{\"$ref\":\"#/definitions/default\"},\"maximum\":{\"$ref\":\"#/definitions/maximum\"},\"exclusiveMaximum\":{\"$ref\":\"#/definitions/exclusiveMaximum\"},\"minimum\":{\"$ref\":\"#/definitions/minimum\"},\"exclusiveMinimum\":{\"$ref\":\"#/definitions/exclusiveMinimum\"},\"maxLength\":{\"$ref\":\"#/definitions/maxLength\"},\"minLength\":{\"$ref\":\"#/definitions/minLength\"},\"pattern\":{\"$ref\":\"#/definitions/pattern\"},\"maxItems\":{\"$ref\":\"#/definitions/maxItems\"},\"minItems\":{\"$ref\":\"#/definitions/minItems\"},\"uniqueItems\":{\"$ref\":\"#/definitions/uniqueItems\"},\"enum\":{\"$ref\":\"#/definitions/enum\"},\"multipleOf\":{\"$ref\":\"#/definitions/multipleOf\"}}},\"nonBodyParameter\":{\"type\":\"object\",\"required\":[\"name\",\"in\",\"type\"],\"oneOf\":[{\"$ref\":\"#/definitions/headerParameterSubSchema\"},{\"$ref\":\"#/definitions/formDataParameterSubSchema\"},{\"$ref\":\"#/definitions/queryParameterSubSchema\"},{\"$ref\":\"#/definitions/pathParameterSubSchema\"}]},\"parameter\":{\"oneOf\":[{\"$ref\":\"#/definitions/bodyParameter\"},{\"$ref\":\"#/definitions/nonBodyParameter\"}]},\"schema\":{\"type\":\"object\",\"description\":\"A deterministic version of a JSON Schema object.\",\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"properties\":{\"$ref\":{\"type\":\"string\"},\"format\":{\"type\":\"string\"},\"title\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/title\"},\"description\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/description\"},\"default\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/default\"},\"multipleOf\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/multipleOf\"},\"maximum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/maximum\"},\"exclusiveMaximum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/exclusiveMaximum\"},\"minimum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/minimum\"},\"exclusiveMinimum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/exclusiveMinimum\"},\"maxLength\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveInteger\"},\"minLength\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0\"},\"pattern\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/pattern\"},\"maxItems\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveInteger\"},\"minItems\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0\"},\"uniqueItems\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/uniqueItems\"},\"maxProperties\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveInteger\"},\"minProperties\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0\"},\"required\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/stringArray\"},\"enum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/enum\"},\"additionalProperties\":{\"anyOf\":[{\"$ref\":\"#/definitions/schema\"},{\"type\":\"boolean\"}],\"default\":{}},\"type\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/type\"},\"items\":{\"anyOf\":[{\"$ref\":\"#/definitions/schema\"},{\"type\":\"array\",\"minItems\":1,\"items\":{\"$ref\":\"#/definitions/schema\"}}],\"default\":{}},\"allOf\":{\"type\":\"array\",\"minItems\":1,\"items\":{\"$ref\":\"#/definitions/schema\"}},\"properties\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/schema\"},\"default\":{}},\"discriminator\":{\"type\":\"string\"},\"readOnly\":{\"type\":\"boolean\",\"default\":false},\"xml\":{\"$ref\":\"#/definitions/xml\"},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"},\"example\":{}},\"additionalProperties\":false},\"fileSchema\":{\"type\":\"object\",\"description\":\"A deterministic version of a JSON Schema object.\",\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}},\"required\":[\"type\"],\"properties\":{\"format\":{\"type\":\"string\"},\"title\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/title\"},\"description\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/description\"},\"default\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/default\"},\"required\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/stringArray\"},\"type\":{\"type\":\"string\",\"enum\":[\"file\"]},\"readOnly\":{\"type\":\"boolean\",\"default\":false},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"},\"example\":{}},\"additionalProperties\":false},\"primitivesItems\":{\"type\":\"object\",\"additionalProperties\":false,\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"string\",\"number\",\"integer\",\"boolean\",\"array\"]},\"format\":{\"type\":\"string\"},\"items\":{\"$ref\":\"#/definitions/primitivesItems\"},\"collectionFormat\":{\"$ref\":\"#/definitions/collectionFormat\"},\"default\":{\"$ref\":\"#/definitions/default\"},\"maximum\":{\"$ref\":\"#/definitions/maximum\"},\"exclusiveMaximum\":{\"$ref\":\"#/definitions/exclusiveMaximum\"},\"minimum\":{\"$ref\":\"#/definitions/minimum\"},\"exclusiveMinimum\":{\"$ref\":\"#/definitions/exclusiveMinimum\"},\"maxLength\":{\"$ref\":\"#/definitions/maxLength\"},\"minLength\":{\"$ref\":\"#/definitions/minLength\"},\"pattern\":{\"$ref\":\"#/definitions/pattern\"},\"maxItems\":{\"$ref\":\"#/definitions/maxItems\"},\"minItems\":{\"$ref\":\"#/definitions/minItems\"},\"uniqueItems\":{\"$ref\":\"#/definitions/uniqueItems\"},\"enum\":{\"$ref\":\"#/definitions/enum\"},\"multipleOf\":{\"$ref\":\"#/definitions/multipleOf\"}},\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}}},\"security\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/securityRequirement\"},\"uniqueItems\":true},\"securityRequirement\":{\"type\":\"object\",\"additionalProperties\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"uniqueItems\":true}},\"xml\":{\"type\":\"object\",\"additionalProperties\":false,\"properties\":{\"name\":{\"type\":\"string\"},\"namespace\":{\"type\":\"string\"},\"prefix\":{\"type\":\"string\"},\"attribute\":{\"type\":\"boolean\",\"default\":false},\"wrapped\":{\"type\":\"boolean\",\"default\":false}},\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}}},\"tag\":{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"name\"],\"properties\":{\"name\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"externalDocs\":{\"$ref\":\"#/definitions/externalDocs\"}},\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}}},\"securityDefinitions\":{\"type\":\"object\",\"additionalProperties\":{\"oneOf\":[{\"$ref\":\"#/definitions/basicAuthenticationSecurity\"},{\"$ref\":\"#/definitions/apiKeySecurity\"},{\"$ref\":\"#/definitions/oauth2ImplicitSecurity\"},{\"$ref\":\"#/definitions/oauth2PasswordSecurity\"},{\"$ref\":\"#/definitions/oauth2ApplicationSecurity\"},{\"$ref\":\"#/definitions/oauth2AccessCodeSecurity\"}]}},\"basicAuthenticationSecurity\":{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"type\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"basic\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}}},\"apiKeySecurity\":{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"type\",\"name\",\"in\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"apiKey\"]},\"name\":{\"type\":\"string\"},\"in\":{\"type\":\"string\",\"enum\":[\"header\",\"query\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}}},\"oauth2ImplicitSecurity\":{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"type\",\"flow\",\"authorizationUrl\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"oauth2\"]},\"flow\":{\"type\":\"string\",\"enum\":[\"implicit\"]},\"scopes\":{\"$ref\":\"#/definitions/oauth2Scopes\"},\"authorizationUrl\":{\"type\":\"string\",\"format\":\"uri\"},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}}},\"oauth2PasswordSecurity\":{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"type\",\"flow\",\"tokenUrl\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"oauth2\"]},\"flow\":{\"type\":\"string\",\"enum\":[\"password\"]},\"scopes\":{\"$ref\":\"#/definitions/oauth2Scopes\"},\"tokenUrl\":{\"type\":\"string\",\"format\":\"uri\"},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}}},\"oauth2ApplicationSecurity\":{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"type\",\"flow\",\"tokenUrl\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"oauth2\"]},\"flow\":{\"type\":\"string\",\"enum\":[\"application\"]},\"scopes\":{\"$ref\":\"#/definitions/oauth2Scopes\"},\"tokenUrl\":{\"type\":\"string\",\"format\":\"uri\"},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}}},\"oauth2AccessCodeSecurity\":{\"type\":\"object\",\"additionalProperties\":false,\"required\":[\"type\",\"flow\",\"authorizationUrl\",\"tokenUrl\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"oauth2\"]},\"flow\":{\"type\":\"string\",\"enum\":[\"accessCode\"]},\"scopes\":{\"$ref\":\"#/definitions/oauth2Scopes\"},\"authorizationUrl\":{\"type\":\"string\",\"format\":\"uri\"},\"tokenUrl\":{\"type\":\"string\",\"format\":\"uri\"},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-\":{\"$ref\":\"#/definitions/vendorExtension\"}}},\"oauth2Scopes\":{\"type\":\"object\",\"additionalProperties\":{\"type\":\"string\"}},\"mediaTypeList\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/mimeType\"},\"uniqueItems\":true},\"parametersList\":{\"type\":\"array\",\"description\":\"The parameters needed to send a valid API call.\",\"additionalItems\":false,\"items\":{\"oneOf\":[{\"$ref\":\"#/definitions/parameter\"},{\"$ref\":\"#/definitions/jsonReference\"}]},\"uniqueItems\":true},\"schemesList\":{\"type\":\"array\",\"description\":\"The transfer protocol of the API.\",\"items\":{\"type\":\"string\",\"enum\":[\"http\",\"https\",\"ws\",\"wss\"]},\"uniqueItems\":true},\"collectionFormat\":{\"type\":\"string\",\"enum\":[\"csv\",\"ssv\",\"tsv\",\"pipes\"],\"default\":\"csv\"},\"collectionFormatWithMulti\":{\"type\":\"string\",\"enum\":[\"csv\",\"ssv\",\"tsv\",\"pipes\",\"multi\"],\"default\":\"csv\"},\"title\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/title\"},\"description\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/description\"},\"default\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/default\"},\"multipleOf\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/multipleOf\"},\"maximum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/maximum\"},\"exclusiveMaximum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/exclusiveMaximum\"},\"minimum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/minimum\"},\"exclusiveMinimum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/exclusiveMinimum\"},\"maxLength\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveInteger\"},\"minLength\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0\"},\"pattern\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/pattern\"},\"maxItems\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveInteger\"},\"minItems\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0\"},\"uniqueItems\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/uniqueItems\"},\"enum\":{\"$ref\":\"http://json-schema.org/draft-04/schema#/properties/enum\"},\"jsonReference\":{\"type\":\"object\",\"required\":[\"$ref\"],\"additionalProperties\":false,\"properties\":{\"$ref\":{\"type\":\"string\"}}}}}");
+module.exports = JSON.parse('{"title":"A JSON Schema for Swagger 2.0 API.","id":"http://swagger.io/v2/schema.json#","$schema":"http://json-schema.org/draft-04/schema#","type":"object","required":["swagger","info","paths"],"additionalProperties":false,"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"properties":{"swagger":{"type":"string","enum":["2.0"],"description":"The Swagger version of this document."},"info":{"$ref":"#/definitions/info"},"host":{"type":"string","pattern":"^[^{}/ :\\\\\\\\]+(?::\\\\d+)?$","description":"The host (name or ip) of the API. Example: \'swagger.io\'"},"basePath":{"type":"string","pattern":"^/","description":"The base path to the API. Example: \'/api\'."},"schemes":{"$ref":"#/definitions/schemesList"},"consumes":{"description":"A list of MIME types accepted by the API.","allOf":[{"$ref":"#/definitions/mediaTypeList"}]},"produces":{"description":"A list of MIME types the API can produce.","allOf":[{"$ref":"#/definitions/mediaTypeList"}]},"paths":{"$ref":"#/definitions/paths"},"definitions":{"$ref":"#/definitions/definitions"},"parameters":{"$ref":"#/definitions/parameterDefinitions"},"responses":{"$ref":"#/definitions/responseDefinitions"},"security":{"$ref":"#/definitions/security"},"securityDefinitions":{"$ref":"#/definitions/securityDefinitions"},"tags":{"type":"array","items":{"$ref":"#/definitions/tag"},"uniqueItems":true},"externalDocs":{"$ref":"#/definitions/externalDocs"}},"definitions":{"info":{"type":"object","description":"General information about the API.","required":["version","title"],"additionalProperties":false,"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"properties":{"title":{"type":"string","description":"A unique and precise title of the API."},"version":{"type":"string","description":"A semantic version number of the API."},"description":{"type":"string","description":"A longer description of the API. Should be different from the title.  GitHub Flavored Markdown is allowed."},"termsOfService":{"type":"string","description":"The terms of service for the API."},"contact":{"$ref":"#/definitions/contact"},"license":{"$ref":"#/definitions/license"}}},"contact":{"type":"object","description":"Contact information for the owners of the API.","additionalProperties":false,"properties":{"name":{"type":"string","description":"The identifying name of the contact person/organization."},"url":{"type":"string","description":"The URL pointing to the contact information.","format":"uri"},"email":{"type":"string","description":"The email address of the contact person/organization.","format":"email"}},"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}}},"license":{"type":"object","required":["name"],"additionalProperties":false,"properties":{"name":{"type":"string","description":"The name of the license type. It\'s encouraged to use an OSI compatible license."},"url":{"type":"string","description":"The URL pointing to the license.","format":"uri"}},"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}}},"paths":{"type":"object","description":"Relative paths to the individual endpoints. They must be relative to the \'basePath\'.","patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"},"^/":{"$ref":"#/definitions/pathItem"}},"additionalProperties":false},"definitions":{"type":"object","additionalProperties":{"$ref":"#/definitions/schema"},"description":"One or more JSON objects describing the schemas being consumed and produced by the API."},"parameterDefinitions":{"type":"object","additionalProperties":{"$ref":"#/definitions/parameter"},"description":"One or more JSON representations for parameters"},"responseDefinitions":{"type":"object","additionalProperties":{"$ref":"#/definitions/response"},"description":"One or more JSON representations for responses"},"externalDocs":{"type":"object","additionalProperties":false,"description":"information about external documentation","required":["url"],"properties":{"description":{"type":"string"},"url":{"type":"string","format":"uri"}},"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}}},"examples":{"type":"object","additionalProperties":true},"mimeType":{"type":"string","description":"The MIME type of the HTTP message."},"operation":{"type":"object","required":["responses"],"additionalProperties":false,"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"properties":{"tags":{"type":"array","items":{"type":"string"},"uniqueItems":true},"summary":{"type":"string","description":"A brief summary of the operation."},"description":{"type":"string","description":"A longer description of the operation, GitHub Flavored Markdown is allowed."},"externalDocs":{"$ref":"#/definitions/externalDocs"},"operationId":{"type":"string","description":"A unique identifier of the operation."},"produces":{"description":"A list of MIME types the API can produce.","allOf":[{"$ref":"#/definitions/mediaTypeList"}]},"consumes":{"description":"A list of MIME types the API can consume.","allOf":[{"$ref":"#/definitions/mediaTypeList"}]},"parameters":{"$ref":"#/definitions/parametersList"},"responses":{"$ref":"#/definitions/responses"},"schemes":{"$ref":"#/definitions/schemesList"},"deprecated":{"type":"boolean","default":false},"security":{"$ref":"#/definitions/security"}}},"pathItem":{"type":"object","additionalProperties":false,"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"properties":{"$ref":{"type":"string"},"get":{"$ref":"#/definitions/operation"},"put":{"$ref":"#/definitions/operation"},"post":{"$ref":"#/definitions/operation"},"delete":{"$ref":"#/definitions/operation"},"options":{"$ref":"#/definitions/operation"},"head":{"$ref":"#/definitions/operation"},"patch":{"$ref":"#/definitions/operation"},"parameters":{"$ref":"#/definitions/parametersList"}}},"responses":{"type":"object","description":"Response objects names can either be any valid HTTP status code or \'default\'.","minProperties":1,"additionalProperties":false,"patternProperties":{"^([0-9]{3})$|^(default)$":{"$ref":"#/definitions/responseValue"},"^x-":{"$ref":"#/definitions/vendorExtension"}},"not":{"type":"object","additionalProperties":false,"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}}}},"responseValue":{"oneOf":[{"$ref":"#/definitions/response"},{"$ref":"#/definitions/jsonReference"}]},"response":{"type":"object","required":["description"],"properties":{"description":{"type":"string"},"schema":{"oneOf":[{"$ref":"#/definitions/schema"},{"$ref":"#/definitions/fileSchema"}]},"headers":{"$ref":"#/definitions/headers"},"examples":{"$ref":"#/definitions/examples"}},"additionalProperties":false,"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}}},"headers":{"type":"object","additionalProperties":{"$ref":"#/definitions/header"}},"header":{"type":"object","additionalProperties":false,"required":["type"],"properties":{"type":{"type":"string","enum":["string","number","integer","boolean","array"]},"format":{"type":"string"},"items":{"$ref":"#/definitions/primitivesItems"},"collectionFormat":{"$ref":"#/definitions/collectionFormat"},"default":{"$ref":"#/definitions/default"},"maximum":{"$ref":"#/definitions/maximum"},"exclusiveMaximum":{"$ref":"#/definitions/exclusiveMaximum"},"minimum":{"$ref":"#/definitions/minimum"},"exclusiveMinimum":{"$ref":"#/definitions/exclusiveMinimum"},"maxLength":{"$ref":"#/definitions/maxLength"},"minLength":{"$ref":"#/definitions/minLength"},"pattern":{"$ref":"#/definitions/pattern"},"maxItems":{"$ref":"#/definitions/maxItems"},"minItems":{"$ref":"#/definitions/minItems"},"uniqueItems":{"$ref":"#/definitions/uniqueItems"},"enum":{"$ref":"#/definitions/enum"},"multipleOf":{"$ref":"#/definitions/multipleOf"},"description":{"type":"string"}},"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}}},"vendorExtension":{"description":"Any property starting with x- is valid.","additionalProperties":true,"additionalItems":true},"bodyParameter":{"type":"object","required":["name","in","schema"],"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"properties":{"description":{"type":"string","description":"A brief description of the parameter. This could contain examples of use.  GitHub Flavored Markdown is allowed."},"name":{"type":"string","description":"The name of the parameter."},"in":{"type":"string","description":"Determines the location of the parameter.","enum":["body"]},"required":{"type":"boolean","description":"Determines whether or not this parameter is required or optional.","default":false},"schema":{"$ref":"#/definitions/schema"}},"additionalProperties":false},"headerParameterSubSchema":{"additionalProperties":false,"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"properties":{"required":{"type":"boolean","description":"Determines whether or not this parameter is required or optional.","default":false},"in":{"type":"string","description":"Determines the location of the parameter.","enum":["header"]},"description":{"type":"string","description":"A brief description of the parameter. This could contain examples of use.  GitHub Flavored Markdown is allowed."},"name":{"type":"string","description":"The name of the parameter."},"type":{"type":"string","enum":["string","number","boolean","integer","array"]},"format":{"type":"string"},"items":{"$ref":"#/definitions/primitivesItems"},"collectionFormat":{"$ref":"#/definitions/collectionFormat"},"default":{"$ref":"#/definitions/default"},"maximum":{"$ref":"#/definitions/maximum"},"exclusiveMaximum":{"$ref":"#/definitions/exclusiveMaximum"},"minimum":{"$ref":"#/definitions/minimum"},"exclusiveMinimum":{"$ref":"#/definitions/exclusiveMinimum"},"maxLength":{"$ref":"#/definitions/maxLength"},"minLength":{"$ref":"#/definitions/minLength"},"pattern":{"$ref":"#/definitions/pattern"},"maxItems":{"$ref":"#/definitions/maxItems"},"minItems":{"$ref":"#/definitions/minItems"},"uniqueItems":{"$ref":"#/definitions/uniqueItems"},"enum":{"$ref":"#/definitions/enum"},"multipleOf":{"$ref":"#/definitions/multipleOf"}}},"queryParameterSubSchema":{"additionalProperties":false,"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"properties":{"required":{"type":"boolean","description":"Determines whether or not this parameter is required or optional.","default":false},"in":{"type":"string","description":"Determines the location of the parameter.","enum":["query"]},"description":{"type":"string","description":"A brief description of the parameter. This could contain examples of use.  GitHub Flavored Markdown is allowed."},"name":{"type":"string","description":"The name of the parameter."},"allowEmptyValue":{"type":"boolean","default":false,"description":"allows sending a parameter by name only or with an empty value."},"type":{"type":"string","enum":["string","number","boolean","integer","array"]},"format":{"type":"string"},"items":{"$ref":"#/definitions/primitivesItems"},"collectionFormat":{"$ref":"#/definitions/collectionFormatWithMulti"},"default":{"$ref":"#/definitions/default"},"maximum":{"$ref":"#/definitions/maximum"},"exclusiveMaximum":{"$ref":"#/definitions/exclusiveMaximum"},"minimum":{"$ref":"#/definitions/minimum"},"exclusiveMinimum":{"$ref":"#/definitions/exclusiveMinimum"},"maxLength":{"$ref":"#/definitions/maxLength"},"minLength":{"$ref":"#/definitions/minLength"},"pattern":{"$ref":"#/definitions/pattern"},"maxItems":{"$ref":"#/definitions/maxItems"},"minItems":{"$ref":"#/definitions/minItems"},"uniqueItems":{"$ref":"#/definitions/uniqueItems"},"enum":{"$ref":"#/definitions/enum"},"multipleOf":{"$ref":"#/definitions/multipleOf"}}},"formDataParameterSubSchema":{"additionalProperties":false,"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"properties":{"required":{"type":"boolean","description":"Determines whether or not this parameter is required or optional.","default":false},"in":{"type":"string","description":"Determines the location of the parameter.","enum":["formData"]},"description":{"type":"string","description":"A brief description of the parameter. This could contain examples of use.  GitHub Flavored Markdown is allowed."},"name":{"type":"string","description":"The name of the parameter."},"allowEmptyValue":{"type":"boolean","default":false,"description":"allows sending a parameter by name only or with an empty value."},"type":{"type":"string","enum":["string","number","boolean","integer","array","file"]},"format":{"type":"string"},"items":{"$ref":"#/definitions/primitivesItems"},"collectionFormat":{"$ref":"#/definitions/collectionFormatWithMulti"},"default":{"$ref":"#/definitions/default"},"maximum":{"$ref":"#/definitions/maximum"},"exclusiveMaximum":{"$ref":"#/definitions/exclusiveMaximum"},"minimum":{"$ref":"#/definitions/minimum"},"exclusiveMinimum":{"$ref":"#/definitions/exclusiveMinimum"},"maxLength":{"$ref":"#/definitions/maxLength"},"minLength":{"$ref":"#/definitions/minLength"},"pattern":{"$ref":"#/definitions/pattern"},"maxItems":{"$ref":"#/definitions/maxItems"},"minItems":{"$ref":"#/definitions/minItems"},"uniqueItems":{"$ref":"#/definitions/uniqueItems"},"enum":{"$ref":"#/definitions/enum"},"multipleOf":{"$ref":"#/definitions/multipleOf"}}},"pathParameterSubSchema":{"additionalProperties":false,"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"required":["required"],"properties":{"required":{"type":"boolean","enum":[true],"description":"Determines whether or not this parameter is required or optional."},"in":{"type":"string","description":"Determines the location of the parameter.","enum":["path"]},"description":{"type":"string","description":"A brief description of the parameter. This could contain examples of use.  GitHub Flavored Markdown is allowed."},"name":{"type":"string","description":"The name of the parameter."},"type":{"type":"string","enum":["string","number","boolean","integer","array"]},"format":{"type":"string"},"items":{"$ref":"#/definitions/primitivesItems"},"collectionFormat":{"$ref":"#/definitions/collectionFormat"},"default":{"$ref":"#/definitions/default"},"maximum":{"$ref":"#/definitions/maximum"},"exclusiveMaximum":{"$ref":"#/definitions/exclusiveMaximum"},"minimum":{"$ref":"#/definitions/minimum"},"exclusiveMinimum":{"$ref":"#/definitions/exclusiveMinimum"},"maxLength":{"$ref":"#/definitions/maxLength"},"minLength":{"$ref":"#/definitions/minLength"},"pattern":{"$ref":"#/definitions/pattern"},"maxItems":{"$ref":"#/definitions/maxItems"},"minItems":{"$ref":"#/definitions/minItems"},"uniqueItems":{"$ref":"#/definitions/uniqueItems"},"enum":{"$ref":"#/definitions/enum"},"multipleOf":{"$ref":"#/definitions/multipleOf"}}},"nonBodyParameter":{"type":"object","required":["name","in","type"],"oneOf":[{"$ref":"#/definitions/headerParameterSubSchema"},{"$ref":"#/definitions/formDataParameterSubSchema"},{"$ref":"#/definitions/queryParameterSubSchema"},{"$ref":"#/definitions/pathParameterSubSchema"}]},"parameter":{"oneOf":[{"$ref":"#/definitions/bodyParameter"},{"$ref":"#/definitions/nonBodyParameter"}]},"schema":{"type":"object","description":"A deterministic version of a JSON Schema object.","patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"properties":{"$ref":{"type":"string"},"format":{"type":"string"},"title":{"$ref":"http://json-schema.org/draft-04/schema#/properties/title"},"description":{"$ref":"http://json-schema.org/draft-04/schema#/properties/description"},"default":{"$ref":"http://json-schema.org/draft-04/schema#/properties/default"},"multipleOf":{"$ref":"http://json-schema.org/draft-04/schema#/properties/multipleOf"},"maximum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/maximum"},"exclusiveMaximum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/exclusiveMaximum"},"minimum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/minimum"},"exclusiveMinimum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/exclusiveMinimum"},"maxLength":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveInteger"},"minLength":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"},"pattern":{"$ref":"http://json-schema.org/draft-04/schema#/properties/pattern"},"maxItems":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveInteger"},"minItems":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"},"uniqueItems":{"$ref":"http://json-schema.org/draft-04/schema#/properties/uniqueItems"},"maxProperties":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveInteger"},"minProperties":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"},"required":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/stringArray"},"enum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/enum"},"additionalProperties":{"anyOf":[{"$ref":"#/definitions/schema"},{"type":"boolean"}],"default":{}},"type":{"$ref":"http://json-schema.org/draft-04/schema#/properties/type"},"items":{"anyOf":[{"$ref":"#/definitions/schema"},{"type":"array","minItems":1,"items":{"$ref":"#/definitions/schema"}}],"default":{}},"allOf":{"type":"array","minItems":1,"items":{"$ref":"#/definitions/schema"}},"properties":{"type":"object","additionalProperties":{"$ref":"#/definitions/schema"},"default":{}},"discriminator":{"type":"string"},"readOnly":{"type":"boolean","default":false},"xml":{"$ref":"#/definitions/xml"},"externalDocs":{"$ref":"#/definitions/externalDocs"},"example":{}},"additionalProperties":false},"fileSchema":{"type":"object","description":"A deterministic version of a JSON Schema object.","patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}},"required":["type"],"properties":{"format":{"type":"string"},"title":{"$ref":"http://json-schema.org/draft-04/schema#/properties/title"},"description":{"$ref":"http://json-schema.org/draft-04/schema#/properties/description"},"default":{"$ref":"http://json-schema.org/draft-04/schema#/properties/default"},"required":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/stringArray"},"type":{"type":"string","enum":["file"]},"readOnly":{"type":"boolean","default":false},"externalDocs":{"$ref":"#/definitions/externalDocs"},"example":{}},"additionalProperties":false},"primitivesItems":{"type":"object","additionalProperties":false,"properties":{"type":{"type":"string","enum":["string","number","integer","boolean","array"]},"format":{"type":"string"},"items":{"$ref":"#/definitions/primitivesItems"},"collectionFormat":{"$ref":"#/definitions/collectionFormat"},"default":{"$ref":"#/definitions/default"},"maximum":{"$ref":"#/definitions/maximum"},"exclusiveMaximum":{"$ref":"#/definitions/exclusiveMaximum"},"minimum":{"$ref":"#/definitions/minimum"},"exclusiveMinimum":{"$ref":"#/definitions/exclusiveMinimum"},"maxLength":{"$ref":"#/definitions/maxLength"},"minLength":{"$ref":"#/definitions/minLength"},"pattern":{"$ref":"#/definitions/pattern"},"maxItems":{"$ref":"#/definitions/maxItems"},"minItems":{"$ref":"#/definitions/minItems"},"uniqueItems":{"$ref":"#/definitions/uniqueItems"},"enum":{"$ref":"#/definitions/enum"},"multipleOf":{"$ref":"#/definitions/multipleOf"}},"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}}},"security":{"type":"array","items":{"$ref":"#/definitions/securityRequirement"},"uniqueItems":true},"securityRequirement":{"type":"object","additionalProperties":{"type":"array","items":{"type":"string"},"uniqueItems":true}},"xml":{"type":"object","additionalProperties":false,"properties":{"name":{"type":"string"},"namespace":{"type":"string"},"prefix":{"type":"string"},"attribute":{"type":"boolean","default":false},"wrapped":{"type":"boolean","default":false}},"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}}},"tag":{"type":"object","additionalProperties":false,"required":["name"],"properties":{"name":{"type":"string"},"description":{"type":"string"},"externalDocs":{"$ref":"#/definitions/externalDocs"}},"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}}},"securityDefinitions":{"type":"object","additionalProperties":{"oneOf":[{"$ref":"#/definitions/basicAuthenticationSecurity"},{"$ref":"#/definitions/apiKeySecurity"},{"$ref":"#/definitions/oauth2ImplicitSecurity"},{"$ref":"#/definitions/oauth2PasswordSecurity"},{"$ref":"#/definitions/oauth2ApplicationSecurity"},{"$ref":"#/definitions/oauth2AccessCodeSecurity"}]}},"basicAuthenticationSecurity":{"type":"object","additionalProperties":false,"required":["type"],"properties":{"type":{"type":"string","enum":["basic"]},"description":{"type":"string"}},"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}}},"apiKeySecurity":{"type":"object","additionalProperties":false,"required":["type","name","in"],"properties":{"type":{"type":"string","enum":["apiKey"]},"name":{"type":"string"},"in":{"type":"string","enum":["header","query"]},"description":{"type":"string"}},"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}}},"oauth2ImplicitSecurity":{"type":"object","additionalProperties":false,"required":["type","flow","authorizationUrl"],"properties":{"type":{"type":"string","enum":["oauth2"]},"flow":{"type":"string","enum":["implicit"]},"scopes":{"$ref":"#/definitions/oauth2Scopes"},"authorizationUrl":{"type":"string","format":"uri"},"description":{"type":"string"}},"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}}},"oauth2PasswordSecurity":{"type":"object","additionalProperties":false,"required":["type","flow","tokenUrl"],"properties":{"type":{"type":"string","enum":["oauth2"]},"flow":{"type":"string","enum":["password"]},"scopes":{"$ref":"#/definitions/oauth2Scopes"},"tokenUrl":{"type":"string","format":"uri"},"description":{"type":"string"}},"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}}},"oauth2ApplicationSecurity":{"type":"object","additionalProperties":false,"required":["type","flow","tokenUrl"],"properties":{"type":{"type":"string","enum":["oauth2"]},"flow":{"type":"string","enum":["application"]},"scopes":{"$ref":"#/definitions/oauth2Scopes"},"tokenUrl":{"type":"string","format":"uri"},"description":{"type":"string"}},"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}}},"oauth2AccessCodeSecurity":{"type":"object","additionalProperties":false,"required":["type","flow","authorizationUrl","tokenUrl"],"properties":{"type":{"type":"string","enum":["oauth2"]},"flow":{"type":"string","enum":["accessCode"]},"scopes":{"$ref":"#/definitions/oauth2Scopes"},"authorizationUrl":{"type":"string","format":"uri"},"tokenUrl":{"type":"string","format":"uri"},"description":{"type":"string"}},"patternProperties":{"^x-":{"$ref":"#/definitions/vendorExtension"}}},"oauth2Scopes":{"type":"object","additionalProperties":{"type":"string"}},"mediaTypeList":{"type":"array","items":{"$ref":"#/definitions/mimeType"},"uniqueItems":true},"parametersList":{"type":"array","description":"The parameters needed to send a valid API call.","additionalItems":false,"items":{"oneOf":[{"$ref":"#/definitions/parameter"},{"$ref":"#/definitions/jsonReference"}]},"uniqueItems":true},"schemesList":{"type":"array","description":"The transfer protocol of the API.","items":{"type":"string","enum":["http","https","ws","wss"]},"uniqueItems":true},"collectionFormat":{"type":"string","enum":["csv","ssv","tsv","pipes"],"default":"csv"},"collectionFormatWithMulti":{"type":"string","enum":["csv","ssv","tsv","pipes","multi"],"default":"csv"},"title":{"$ref":"http://json-schema.org/draft-04/schema#/properties/title"},"description":{"$ref":"http://json-schema.org/draft-04/schema#/properties/description"},"default":{"$ref":"http://json-schema.org/draft-04/schema#/properties/default"},"multipleOf":{"$ref":"http://json-schema.org/draft-04/schema#/properties/multipleOf"},"maximum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/maximum"},"exclusiveMaximum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/exclusiveMaximum"},"minimum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/minimum"},"exclusiveMinimum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/exclusiveMinimum"},"maxLength":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveInteger"},"minLength":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"},"pattern":{"$ref":"http://json-schema.org/draft-04/schema#/properties/pattern"},"maxItems":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveInteger"},"minItems":{"$ref":"http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"},"uniqueItems":{"$ref":"http://json-schema.org/draft-04/schema#/properties/uniqueItems"},"enum":{"$ref":"http://json-schema.org/draft-04/schema#/properties/enum"},"jsonReference":{"type":"object","required":["$ref"],"additionalProperties":false,"properties":{"$ref":{"type":"string"}}}}}');
 
 /***/ }),
 
@@ -70183,7 +70226,7 @@ module.exports = JSON.parse("{\"title\":\"A JSON Schema for Swagger 2.0 API.\",\
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse("{\"id\":\"https://spec.openapis.org/oas/3.0/schema/2019-04-02\",\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"description\":\"Validation schema for OpenAPI Specification 3.0.X.\",\"type\":\"object\",\"required\":[\"openapi\",\"info\",\"paths\"],\"properties\":{\"openapi\":{\"type\":\"string\",\"pattern\":\"^3\\\\.0\\\\.\\\\d(-.+)?$\"},\"info\":{\"$ref\":\"#/definitions/Info\"},\"externalDocs\":{\"$ref\":\"#/definitions/ExternalDocumentation\"},\"servers\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/Server\"}},\"security\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/SecurityRequirement\"}},\"tags\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/Tag\"},\"uniqueItems\":true},\"paths\":{\"$ref\":\"#/definitions/Paths\"},\"components\":{\"$ref\":\"#/definitions/Components\"}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false,\"definitions\":{\"Reference\":{\"type\":\"object\",\"required\":[\"$ref\"],\"patternProperties\":{\"^\\\\$ref$\":{\"type\":\"string\",\"format\":\"uri-reference\"}}},\"Info\":{\"type\":\"object\",\"required\":[\"title\",\"version\"],\"properties\":{\"title\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"termsOfService\":{\"type\":\"string\",\"format\":\"uri-reference\"},\"contact\":{\"$ref\":\"#/definitions/Contact\"},\"license\":{\"$ref\":\"#/definitions/License\"},\"version\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"Contact\":{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\"},\"url\":{\"type\":\"string\",\"format\":\"uri-reference\"},\"email\":{\"type\":\"string\",\"format\":\"email\"}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"License\":{\"type\":\"object\",\"required\":[\"name\"],\"properties\":{\"name\":{\"type\":\"string\"},\"url\":{\"type\":\"string\",\"format\":\"uri-reference\"}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"Server\":{\"type\":\"object\",\"required\":[\"url\"],\"properties\":{\"url\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"variables\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/ServerVariable\"}}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"ServerVariable\":{\"type\":\"object\",\"required\":[\"default\"],\"properties\":{\"enum\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}},\"default\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"Components\":{\"type\":\"object\",\"properties\":{\"schemas\":{\"type\":\"object\",\"patternProperties\":{\"^[a-zA-Z0-9\\\\.\\\\-_]+$\":{\"oneOf\":[{\"$ref\":\"#/definitions/Schema\"},{\"$ref\":\"#/definitions/Reference\"}]}}},\"responses\":{\"type\":\"object\",\"patternProperties\":{\"^[a-zA-Z0-9\\\\.\\\\-_]+$\":{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/Response\"}]}}},\"parameters\":{\"type\":\"object\",\"patternProperties\":{\"^[a-zA-Z0-9\\\\.\\\\-_]+$\":{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/Parameter\"}]}}},\"examples\":{\"type\":\"object\",\"patternProperties\":{\"^[a-zA-Z0-9\\\\.\\\\-_]+$\":{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/Example\"}]}}},\"requestBodies\":{\"type\":\"object\",\"patternProperties\":{\"^[a-zA-Z0-9\\\\.\\\\-_]+$\":{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/RequestBody\"}]}}},\"headers\":{\"type\":\"object\",\"patternProperties\":{\"^[a-zA-Z0-9\\\\.\\\\-_]+$\":{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/Header\"}]}}},\"securitySchemes\":{\"type\":\"object\",\"patternProperties\":{\"^[a-zA-Z0-9\\\\.\\\\-_]+$\":{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/SecurityScheme\"}]}}},\"links\":{\"type\":\"object\",\"patternProperties\":{\"^[a-zA-Z0-9\\\\.\\\\-_]+$\":{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/Link\"}]}}},\"callbacks\":{\"type\":\"object\",\"patternProperties\":{\"^[a-zA-Z0-9\\\\.\\\\-_]+$\":{\"oneOf\":[{\"$ref\":\"#/definitions/Reference\"},{\"$ref\":\"#/definitions/Callback\"}]}}}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"Schema\":{\"type\":\"object\",\"properties\":{\"title\":{\"type\":\"string\"},\"multipleOf\":{\"type\":\"number\",\"minimum\":0,\"exclusiveMinimum\":true},\"maximum\":{\"type\":\"number\"},\"exclusiveMaximum\":{\"type\":\"boolean\",\"default\":false},\"minimum\":{\"type\":\"number\"},\"exclusiveMinimum\":{\"type\":\"boolean\",\"default\":false},\"maxLength\":{\"type\":\"integer\",\"minimum\":0},\"minLength\":{\"type\":\"integer\",\"minimum\":0,\"default\":0},\"pattern\":{\"type\":\"string\",\"format\":\"regex\"},\"maxItems\":{\"type\":\"integer\",\"minimum\":0},\"minItems\":{\"type\":\"integer\",\"minimum\":0,\"default\":0},\"uniqueItems\":{\"type\":\"boolean\",\"default\":false},\"maxProperties\":{\"type\":\"integer\",\"minimum\":0},\"minProperties\":{\"type\":\"integer\",\"minimum\":0,\"default\":0},\"required\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"minItems\":1,\"uniqueItems\":true},\"enum\":{\"type\":\"array\",\"items\":{},\"minItems\":1,\"uniqueItems\":false},\"type\":{\"type\":\"string\",\"enum\":[\"array\",\"boolean\",\"integer\",\"number\",\"object\",\"string\"]},\"not\":{\"oneOf\":[{\"$ref\":\"#/definitions/Schema\"},{\"$ref\":\"#/definitions/Reference\"}]},\"allOf\":{\"type\":\"array\",\"items\":{\"oneOf\":[{\"$ref\":\"#/definitions/Schema\"},{\"$ref\":\"#/definitions/Reference\"}]}},\"oneOf\":{\"type\":\"array\",\"items\":{\"oneOf\":[{\"$ref\":\"#/definitions/Schema\"},{\"$ref\":\"#/definitions/Reference\"}]}},\"anyOf\":{\"type\":\"array\",\"items\":{\"oneOf\":[{\"$ref\":\"#/definitions/Schema\"},{\"$ref\":\"#/definitions/Reference\"}]}},\"items\":{\"oneOf\":[{\"$ref\":\"#/definitions/Schema\"},{\"$ref\":\"#/definitions/Reference\"}]},\"properties\":{\"type\":\"object\",\"additionalProperties\":{\"oneOf\":[{\"$ref\":\"#/definitions/Schema\"},{\"$ref\":\"#/definitions/Reference\"}]}},\"additionalProperties\":{\"oneOf\":[{\"$ref\":\"#/definitions/Schema\"},{\"$ref\":\"#/definitions/Reference\"},{\"type\":\"boolean\"}],\"default\":true},\"description\":{\"type\":\"string\"},\"format\":{\"type\":\"string\"},\"default\":{},\"nullable\":{\"type\":\"boolean\",\"default\":false},\"discriminator\":{\"$ref\":\"#/definitions/Discriminator\"},\"readOnly\":{\"type\":\"boolean\",\"default\":false},\"writeOnly\":{\"type\":\"boolean\",\"default\":false},\"example\":{},\"externalDocs\":{\"$ref\":\"#/definitions/ExternalDocumentation\"},\"deprecated\":{\"type\":\"boolean\",\"default\":false},\"xml\":{\"$ref\":\"#/definitions/XML\"}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"Discriminator\":{\"type\":\"object\",\"required\":[\"propertyName\"],\"properties\":{\"propertyName\":{\"type\":\"string\"},\"mapping\":{\"type\":\"object\",\"additionalProperties\":{\"type\":\"string\"}}}},\"XML\":{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\"},\"namespace\":{\"type\":\"string\",\"format\":\"uri\"},\"prefix\":{\"type\":\"string\"},\"attribute\":{\"type\":\"boolean\",\"default\":false},\"wrapped\":{\"type\":\"boolean\",\"default\":false}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"Response\":{\"type\":\"object\",\"required\":[\"description\"],\"properties\":{\"description\":{\"type\":\"string\"},\"headers\":{\"type\":\"object\",\"additionalProperties\":{\"oneOf\":[{\"$ref\":\"#/definitions/Header\"},{\"$ref\":\"#/definitions/Reference\"}]}},\"content\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/MediaType\"}},\"links\":{\"type\":\"object\",\"additionalProperties\":{\"oneOf\":[{\"$ref\":\"#/definitions/Link\"},{\"$ref\":\"#/definitions/Reference\"}]}}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"MediaType\":{\"type\":\"object\",\"properties\":{\"schema\":{\"oneOf\":[{\"$ref\":\"#/definitions/Schema\"},{\"$ref\":\"#/definitions/Reference\"}]},\"example\":{},\"examples\":{\"type\":\"object\",\"additionalProperties\":{\"oneOf\":[{\"$ref\":\"#/definitions/Example\"},{\"$ref\":\"#/definitions/Reference\"}]}},\"encoding\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/Encoding\"}}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false,\"allOf\":[{\"$ref\":\"#/definitions/ExampleXORExamples\"}]},\"Example\":{\"type\":\"object\",\"properties\":{\"summary\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"value\":{},\"externalValue\":{\"type\":\"string\",\"format\":\"uri-reference\"}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"Header\":{\"type\":\"object\",\"properties\":{\"description\":{\"type\":\"string\"},\"required\":{\"type\":\"boolean\",\"default\":false},\"deprecated\":{\"type\":\"boolean\",\"default\":false},\"allowEmptyValue\":{\"type\":\"boolean\",\"default\":false},\"style\":{\"type\":\"string\",\"enum\":[\"simple\"],\"default\":\"simple\"},\"explode\":{\"type\":\"boolean\"},\"allowReserved\":{\"type\":\"boolean\",\"default\":false},\"schema\":{\"oneOf\":[{\"$ref\":\"#/definitions/Schema\"},{\"$ref\":\"#/definitions/Reference\"}]},\"content\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/MediaType\"},\"minProperties\":1,\"maxProperties\":1},\"example\":{},\"examples\":{\"type\":\"object\",\"additionalProperties\":{\"oneOf\":[{\"$ref\":\"#/definitions/Example\"},{\"$ref\":\"#/definitions/Reference\"}]}}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false,\"allOf\":[{\"$ref\":\"#/definitions/ExampleXORExamples\"},{\"$ref\":\"#/definitions/SchemaXORContent\"}]},\"Paths\":{\"type\":\"object\",\"patternProperties\":{\"^\\\\/\":{\"$ref\":\"#/definitions/PathItem\"},\"^x-\":{}},\"additionalProperties\":false},\"PathItem\":{\"type\":\"object\",\"properties\":{\"$ref\":{\"type\":\"string\"},\"summary\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"servers\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/Server\"}},\"parameters\":{\"type\":\"array\",\"items\":{\"oneOf\":[{\"$ref\":\"#/definitions/Parameter\"},{\"$ref\":\"#/definitions/Reference\"}]},\"uniqueItems\":true}},\"patternProperties\":{\"^(get|put|post|delete|options|head|patch|trace)$\":{\"$ref\":\"#/definitions/Operation\"},\"^x-\":{}},\"additionalProperties\":false},\"Operation\":{\"type\":\"object\",\"required\":[\"responses\"],\"properties\":{\"tags\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}},\"summary\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"externalDocs\":{\"$ref\":\"#/definitions/ExternalDocumentation\"},\"operationId\":{\"type\":\"string\"},\"parameters\":{\"type\":\"array\",\"items\":{\"oneOf\":[{\"$ref\":\"#/definitions/Parameter\"},{\"$ref\":\"#/definitions/Reference\"}]},\"uniqueItems\":true},\"requestBody\":{\"oneOf\":[{\"$ref\":\"#/definitions/RequestBody\"},{\"$ref\":\"#/definitions/Reference\"}]},\"responses\":{\"$ref\":\"#/definitions/Responses\"},\"callbacks\":{\"type\":\"object\",\"additionalProperties\":{\"oneOf\":[{\"$ref\":\"#/definitions/Callback\"},{\"$ref\":\"#/definitions/Reference\"}]}},\"deprecated\":{\"type\":\"boolean\",\"default\":false},\"security\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/SecurityRequirement\"}},\"servers\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/Server\"}}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"Responses\":{\"type\":\"object\",\"properties\":{\"default\":{\"oneOf\":[{\"$ref\":\"#/definitions/Response\"},{\"$ref\":\"#/definitions/Reference\"}]}},\"patternProperties\":{\"^[1-5](?:\\\\d{2}|XX)$\":{\"oneOf\":[{\"$ref\":\"#/definitions/Response\"},{\"$ref\":\"#/definitions/Reference\"}]},\"^x-\":{}},\"minProperties\":1,\"additionalProperties\":false},\"SecurityRequirement\":{\"type\":\"object\",\"additionalProperties\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}}},\"Tag\":{\"type\":\"object\",\"required\":[\"name\"],\"properties\":{\"name\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"externalDocs\":{\"$ref\":\"#/definitions/ExternalDocumentation\"}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"ExternalDocumentation\":{\"type\":\"object\",\"required\":[\"url\"],\"properties\":{\"description\":{\"type\":\"string\"},\"url\":{\"type\":\"string\",\"format\":\"uri-reference\"}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"ExampleXORExamples\":{\"description\":\"Example and examples are mutually exclusive\",\"not\":{\"required\":[\"example\",\"examples\"]}},\"SchemaXORContent\":{\"description\":\"Schema and content are mutually exclusive, at least one is required\",\"not\":{\"required\":[\"schema\",\"content\"]},\"oneOf\":[{\"required\":[\"schema\"]},{\"required\":[\"content\"],\"description\":\"Some properties are not allowed if content is present\",\"allOf\":[{\"not\":{\"required\":[\"style\"]}},{\"not\":{\"required\":[\"explode\"]}},{\"not\":{\"required\":[\"allowReserved\"]}},{\"not\":{\"required\":[\"example\"]}},{\"not\":{\"required\":[\"examples\"]}}]}]},\"Parameter\":{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\"},\"in\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"required\":{\"type\":\"boolean\",\"default\":false},\"deprecated\":{\"type\":\"boolean\",\"default\":false},\"allowEmptyValue\":{\"type\":\"boolean\",\"default\":false},\"style\":{\"type\":\"string\"},\"explode\":{\"type\":\"boolean\"},\"allowReserved\":{\"type\":\"boolean\",\"default\":false},\"schema\":{\"oneOf\":[{\"$ref\":\"#/definitions/Schema\"},{\"$ref\":\"#/definitions/Reference\"}]},\"content\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/MediaType\"},\"minProperties\":1,\"maxProperties\":1},\"example\":{},\"examples\":{\"type\":\"object\",\"additionalProperties\":{\"oneOf\":[{\"$ref\":\"#/definitions/Example\"},{\"$ref\":\"#/definitions/Reference\"}]}}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false,\"required\":[\"name\",\"in\"],\"allOf\":[{\"$ref\":\"#/definitions/ExampleXORExamples\"},{\"$ref\":\"#/definitions/SchemaXORContent\"},{\"$ref\":\"#/definitions/ParameterLocation\"}]},\"ParameterLocation\":{\"description\":\"Parameter location\",\"oneOf\":[{\"description\":\"Parameter in path\",\"required\":[\"required\"],\"properties\":{\"in\":{\"enum\":[\"path\"]},\"style\":{\"enum\":[\"matrix\",\"label\",\"simple\"],\"default\":\"simple\"},\"required\":{\"enum\":[true]}}},{\"description\":\"Parameter in query\",\"properties\":{\"in\":{\"enum\":[\"query\"]},\"style\":{\"enum\":[\"form\",\"spaceDelimited\",\"pipeDelimited\",\"deepObject\"],\"default\":\"form\"}}},{\"description\":\"Parameter in header\",\"properties\":{\"in\":{\"enum\":[\"header\"]},\"style\":{\"enum\":[\"simple\"],\"default\":\"simple\"}}},{\"description\":\"Parameter in cookie\",\"properties\":{\"in\":{\"enum\":[\"cookie\"]},\"style\":{\"enum\":[\"form\"],\"default\":\"form\"}}}]},\"RequestBody\":{\"type\":\"object\",\"required\":[\"content\"],\"properties\":{\"description\":{\"type\":\"string\"},\"content\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/MediaType\"}},\"required\":{\"type\":\"boolean\",\"default\":false}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"SecurityScheme\":{\"oneOf\":[{\"$ref\":\"#/definitions/APIKeySecurityScheme\"},{\"$ref\":\"#/definitions/HTTPSecurityScheme\"},{\"$ref\":\"#/definitions/OAuth2SecurityScheme\"},{\"$ref\":\"#/definitions/OpenIdConnectSecurityScheme\"}]},\"APIKeySecurityScheme\":{\"type\":\"object\",\"required\":[\"type\",\"name\",\"in\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"apiKey\"]},\"name\":{\"type\":\"string\"},\"in\":{\"type\":\"string\",\"enum\":[\"header\",\"query\",\"cookie\"]},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"HTTPSecurityScheme\":{\"type\":\"object\",\"required\":[\"scheme\",\"type\"],\"properties\":{\"scheme\":{\"type\":\"string\"},\"bearerFormat\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"type\":{\"type\":\"string\",\"enum\":[\"http\"]}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false,\"oneOf\":[{\"description\":\"Bearer\",\"properties\":{\"scheme\":{\"enum\":[\"bearer\"]}}},{\"description\":\"Non Bearer\",\"not\":{\"required\":[\"bearerFormat\"]},\"properties\":{\"scheme\":{\"not\":{\"enum\":[\"bearer\"]}}}}]},\"OAuth2SecurityScheme\":{\"type\":\"object\",\"required\":[\"type\",\"flows\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"oauth2\"]},\"flows\":{\"$ref\":\"#/definitions/OAuthFlows\"},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"OpenIdConnectSecurityScheme\":{\"type\":\"object\",\"required\":[\"type\",\"openIdConnectUrl\"],\"properties\":{\"type\":{\"type\":\"string\",\"enum\":[\"openIdConnect\"]},\"openIdConnectUrl\":{\"type\":\"string\",\"format\":\"uri-reference\"},\"description\":{\"type\":\"string\"}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"OAuthFlows\":{\"type\":\"object\",\"properties\":{\"implicit\":{\"$ref\":\"#/definitions/ImplicitOAuthFlow\"},\"password\":{\"$ref\":\"#/definitions/PasswordOAuthFlow\"},\"clientCredentials\":{\"$ref\":\"#/definitions/ClientCredentialsFlow\"},\"authorizationCode\":{\"$ref\":\"#/definitions/AuthorizationCodeOAuthFlow\"}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"ImplicitOAuthFlow\":{\"type\":\"object\",\"required\":[\"authorizationUrl\",\"scopes\"],\"properties\":{\"authorizationUrl\":{\"type\":\"string\",\"format\":\"uri-reference\"},\"refreshUrl\":{\"type\":\"string\",\"format\":\"uri-reference\"},\"scopes\":{\"type\":\"object\",\"additionalProperties\":{\"type\":\"string\"}}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"PasswordOAuthFlow\":{\"type\":\"object\",\"required\":[\"tokenUrl\"],\"properties\":{\"tokenUrl\":{\"type\":\"string\",\"format\":\"uri-reference\"},\"refreshUrl\":{\"type\":\"string\",\"format\":\"uri-reference\"},\"scopes\":{\"type\":\"object\",\"additionalProperties\":{\"type\":\"string\"}}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"ClientCredentialsFlow\":{\"type\":\"object\",\"required\":[\"tokenUrl\"],\"properties\":{\"tokenUrl\":{\"type\":\"string\",\"format\":\"uri-reference\"},\"refreshUrl\":{\"type\":\"string\",\"format\":\"uri-reference\"},\"scopes\":{\"type\":\"object\",\"additionalProperties\":{\"type\":\"string\"}}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"AuthorizationCodeOAuthFlow\":{\"type\":\"object\",\"required\":[\"authorizationUrl\",\"tokenUrl\"],\"properties\":{\"authorizationUrl\":{\"type\":\"string\",\"format\":\"uri-reference\"},\"tokenUrl\":{\"type\":\"string\",\"format\":\"uri-reference\"},\"refreshUrl\":{\"type\":\"string\",\"format\":\"uri-reference\"},\"scopes\":{\"type\":\"object\",\"additionalProperties\":{\"type\":\"string\"}}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false},\"Link\":{\"type\":\"object\",\"properties\":{\"operationId\":{\"type\":\"string\"},\"operationRef\":{\"type\":\"string\",\"format\":\"uri-reference\"},\"parameters\":{\"type\":\"object\",\"additionalProperties\":{}},\"requestBody\":{},\"description\":{\"type\":\"string\"},\"server\":{\"$ref\":\"#/definitions/Server\"}},\"patternProperties\":{\"^x-\":{}},\"additionalProperties\":false,\"not\":{\"description\":\"Operation Id and Operation Ref are mutually exclusive\",\"required\":[\"operationId\",\"operationRef\"]}},\"Callback\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/PathItem\"},\"patternProperties\":{\"^x-\":{}}},\"Encoding\":{\"type\":\"object\",\"properties\":{\"contentType\":{\"type\":\"string\"},\"headers\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/definitions/Header\"}},\"style\":{\"type\":\"string\",\"enum\":[\"form\",\"spaceDelimited\",\"pipeDelimited\",\"deepObject\"]},\"explode\":{\"type\":\"boolean\"},\"allowReserved\":{\"type\":\"boolean\",\"default\":false}},\"additionalProperties\":false}}}");
+module.exports = JSON.parse('{"id":"https://spec.openapis.org/oas/3.0/schema/2019-04-02","$schema":"http://json-schema.org/draft-04/schema#","description":"Validation schema for OpenAPI Specification 3.0.X.","type":"object","required":["openapi","info","paths"],"properties":{"openapi":{"type":"string","pattern":"^3\\\\.0\\\\.\\\\d(-.+)?$"},"info":{"$ref":"#/definitions/Info"},"externalDocs":{"$ref":"#/definitions/ExternalDocumentation"},"servers":{"type":"array","items":{"$ref":"#/definitions/Server"}},"security":{"type":"array","items":{"$ref":"#/definitions/SecurityRequirement"}},"tags":{"type":"array","items":{"$ref":"#/definitions/Tag"},"uniqueItems":true},"paths":{"$ref":"#/definitions/Paths"},"components":{"$ref":"#/definitions/Components"}},"patternProperties":{"^x-":{}},"additionalProperties":false,"definitions":{"Reference":{"type":"object","required":["$ref"],"patternProperties":{"^\\\\$ref$":{"type":"string","format":"uri-reference"}}},"Info":{"type":"object","required":["title","version"],"properties":{"title":{"type":"string"},"description":{"type":"string"},"termsOfService":{"type":"string","format":"uri-reference"},"contact":{"$ref":"#/definitions/Contact"},"license":{"$ref":"#/definitions/License"},"version":{"type":"string"}},"patternProperties":{"^x-":{}},"additionalProperties":false},"Contact":{"type":"object","properties":{"name":{"type":"string"},"url":{"type":"string","format":"uri-reference"},"email":{"type":"string","format":"email"}},"patternProperties":{"^x-":{}},"additionalProperties":false},"License":{"type":"object","required":["name"],"properties":{"name":{"type":"string"},"url":{"type":"string","format":"uri-reference"}},"patternProperties":{"^x-":{}},"additionalProperties":false},"Server":{"type":"object","required":["url"],"properties":{"url":{"type":"string"},"description":{"type":"string"},"variables":{"type":"object","additionalProperties":{"$ref":"#/definitions/ServerVariable"}}},"patternProperties":{"^x-":{}},"additionalProperties":false},"ServerVariable":{"type":"object","required":["default"],"properties":{"enum":{"type":"array","items":{"type":"string"}},"default":{"type":"string"},"description":{"type":"string"}},"patternProperties":{"^x-":{}},"additionalProperties":false},"Components":{"type":"object","properties":{"schemas":{"type":"object","patternProperties":{"^[a-zA-Z0-9\\\\.\\\\-_]+$":{"oneOf":[{"$ref":"#/definitions/Schema"},{"$ref":"#/definitions/Reference"}]}}},"responses":{"type":"object","patternProperties":{"^[a-zA-Z0-9\\\\.\\\\-_]+$":{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/Response"}]}}},"parameters":{"type":"object","patternProperties":{"^[a-zA-Z0-9\\\\.\\\\-_]+$":{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/Parameter"}]}}},"examples":{"type":"object","patternProperties":{"^[a-zA-Z0-9\\\\.\\\\-_]+$":{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/Example"}]}}},"requestBodies":{"type":"object","patternProperties":{"^[a-zA-Z0-9\\\\.\\\\-_]+$":{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/RequestBody"}]}}},"headers":{"type":"object","patternProperties":{"^[a-zA-Z0-9\\\\.\\\\-_]+$":{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/Header"}]}}},"securitySchemes":{"type":"object","patternProperties":{"^[a-zA-Z0-9\\\\.\\\\-_]+$":{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/SecurityScheme"}]}}},"links":{"type":"object","patternProperties":{"^[a-zA-Z0-9\\\\.\\\\-_]+$":{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/Link"}]}}},"callbacks":{"type":"object","patternProperties":{"^[a-zA-Z0-9\\\\.\\\\-_]+$":{"oneOf":[{"$ref":"#/definitions/Reference"},{"$ref":"#/definitions/Callback"}]}}}},"patternProperties":{"^x-":{}},"additionalProperties":false},"Schema":{"type":"object","properties":{"title":{"type":"string"},"multipleOf":{"type":"number","minimum":0,"exclusiveMinimum":true},"maximum":{"type":"number"},"exclusiveMaximum":{"type":"boolean","default":false},"minimum":{"type":"number"},"exclusiveMinimum":{"type":"boolean","default":false},"maxLength":{"type":"integer","minimum":0},"minLength":{"type":"integer","minimum":0,"default":0},"pattern":{"type":"string","format":"regex"},"maxItems":{"type":"integer","minimum":0},"minItems":{"type":"integer","minimum":0,"default":0},"uniqueItems":{"type":"boolean","default":false},"maxProperties":{"type":"integer","minimum":0},"minProperties":{"type":"integer","minimum":0,"default":0},"required":{"type":"array","items":{"type":"string"},"minItems":1,"uniqueItems":true},"enum":{"type":"array","items":{},"minItems":1,"uniqueItems":false},"type":{"type":"string","enum":["array","boolean","integer","number","object","string"]},"not":{"oneOf":[{"$ref":"#/definitions/Schema"},{"$ref":"#/definitions/Reference"}]},"allOf":{"type":"array","items":{"oneOf":[{"$ref":"#/definitions/Schema"},{"$ref":"#/definitions/Reference"}]}},"oneOf":{"type":"array","items":{"oneOf":[{"$ref":"#/definitions/Schema"},{"$ref":"#/definitions/Reference"}]}},"anyOf":{"type":"array","items":{"oneOf":[{"$ref":"#/definitions/Schema"},{"$ref":"#/definitions/Reference"}]}},"items":{"oneOf":[{"$ref":"#/definitions/Schema"},{"$ref":"#/definitions/Reference"}]},"properties":{"type":"object","additionalProperties":{"oneOf":[{"$ref":"#/definitions/Schema"},{"$ref":"#/definitions/Reference"}]}},"additionalProperties":{"oneOf":[{"$ref":"#/definitions/Schema"},{"$ref":"#/definitions/Reference"},{"type":"boolean"}],"default":true},"description":{"type":"string"},"format":{"type":"string"},"default":{},"nullable":{"type":"boolean","default":false},"discriminator":{"$ref":"#/definitions/Discriminator"},"readOnly":{"type":"boolean","default":false},"writeOnly":{"type":"boolean","default":false},"example":{},"externalDocs":{"$ref":"#/definitions/ExternalDocumentation"},"deprecated":{"type":"boolean","default":false},"xml":{"$ref":"#/definitions/XML"}},"patternProperties":{"^x-":{}},"additionalProperties":false},"Discriminator":{"type":"object","required":["propertyName"],"properties":{"propertyName":{"type":"string"},"mapping":{"type":"object","additionalProperties":{"type":"string"}}}},"XML":{"type":"object","properties":{"name":{"type":"string"},"namespace":{"type":"string","format":"uri"},"prefix":{"type":"string"},"attribute":{"type":"boolean","default":false},"wrapped":{"type":"boolean","default":false}},"patternProperties":{"^x-":{}},"additionalProperties":false},"Response":{"type":"object","required":["description"],"properties":{"description":{"type":"string"},"headers":{"type":"object","additionalProperties":{"oneOf":[{"$ref":"#/definitions/Header"},{"$ref":"#/definitions/Reference"}]}},"content":{"type":"object","additionalProperties":{"$ref":"#/definitions/MediaType"}},"links":{"type":"object","additionalProperties":{"oneOf":[{"$ref":"#/definitions/Link"},{"$ref":"#/definitions/Reference"}]}}},"patternProperties":{"^x-":{}},"additionalProperties":false},"MediaType":{"type":"object","properties":{"schema":{"oneOf":[{"$ref":"#/definitions/Schema"},{"$ref":"#/definitions/Reference"}]},"example":{},"examples":{"type":"object","additionalProperties":{"oneOf":[{"$ref":"#/definitions/Example"},{"$ref":"#/definitions/Reference"}]}},"encoding":{"type":"object","additionalProperties":{"$ref":"#/definitions/Encoding"}}},"patternProperties":{"^x-":{}},"additionalProperties":false,"allOf":[{"$ref":"#/definitions/ExampleXORExamples"}]},"Example":{"type":"object","properties":{"summary":{"type":"string"},"description":{"type":"string"},"value":{},"externalValue":{"type":"string","format":"uri-reference"}},"patternProperties":{"^x-":{}},"additionalProperties":false},"Header":{"type":"object","properties":{"description":{"type":"string"},"required":{"type":"boolean","default":false},"deprecated":{"type":"boolean","default":false},"allowEmptyValue":{"type":"boolean","default":false},"style":{"type":"string","enum":["simple"],"default":"simple"},"explode":{"type":"boolean"},"allowReserved":{"type":"boolean","default":false},"schema":{"oneOf":[{"$ref":"#/definitions/Schema"},{"$ref":"#/definitions/Reference"}]},"content":{"type":"object","additionalProperties":{"$ref":"#/definitions/MediaType"},"minProperties":1,"maxProperties":1},"example":{},"examples":{"type":"object","additionalProperties":{"oneOf":[{"$ref":"#/definitions/Example"},{"$ref":"#/definitions/Reference"}]}}},"patternProperties":{"^x-":{}},"additionalProperties":false,"allOf":[{"$ref":"#/definitions/ExampleXORExamples"},{"$ref":"#/definitions/SchemaXORContent"}]},"Paths":{"type":"object","patternProperties":{"^\\\\/":{"$ref":"#/definitions/PathItem"},"^x-":{}},"additionalProperties":false},"PathItem":{"type":"object","properties":{"$ref":{"type":"string"},"summary":{"type":"string"},"description":{"type":"string"},"servers":{"type":"array","items":{"$ref":"#/definitions/Server"}},"parameters":{"type":"array","items":{"oneOf":[{"$ref":"#/definitions/Parameter"},{"$ref":"#/definitions/Reference"}]},"uniqueItems":true}},"patternProperties":{"^(get|put|post|delete|options|head|patch|trace)$":{"$ref":"#/definitions/Operation"},"^x-":{}},"additionalProperties":false},"Operation":{"type":"object","required":["responses"],"properties":{"tags":{"type":"array","items":{"type":"string"}},"summary":{"type":"string"},"description":{"type":"string"},"externalDocs":{"$ref":"#/definitions/ExternalDocumentation"},"operationId":{"type":"string"},"parameters":{"type":"array","items":{"oneOf":[{"$ref":"#/definitions/Parameter"},{"$ref":"#/definitions/Reference"}]},"uniqueItems":true},"requestBody":{"oneOf":[{"$ref":"#/definitions/RequestBody"},{"$ref":"#/definitions/Reference"}]},"responses":{"$ref":"#/definitions/Responses"},"callbacks":{"type":"object","additionalProperties":{"oneOf":[{"$ref":"#/definitions/Callback"},{"$ref":"#/definitions/Reference"}]}},"deprecated":{"type":"boolean","default":false},"security":{"type":"array","items":{"$ref":"#/definitions/SecurityRequirement"}},"servers":{"type":"array","items":{"$ref":"#/definitions/Server"}}},"patternProperties":{"^x-":{}},"additionalProperties":false},"Responses":{"type":"object","properties":{"default":{"oneOf":[{"$ref":"#/definitions/Response"},{"$ref":"#/definitions/Reference"}]}},"patternProperties":{"^[1-5](?:\\\\d{2}|XX)$":{"oneOf":[{"$ref":"#/definitions/Response"},{"$ref":"#/definitions/Reference"}]},"^x-":{}},"minProperties":1,"additionalProperties":false},"SecurityRequirement":{"type":"object","additionalProperties":{"type":"array","items":{"type":"string"}}},"Tag":{"type":"object","required":["name"],"properties":{"name":{"type":"string"},"description":{"type":"string"},"externalDocs":{"$ref":"#/definitions/ExternalDocumentation"}},"patternProperties":{"^x-":{}},"additionalProperties":false},"ExternalDocumentation":{"type":"object","required":["url"],"properties":{"description":{"type":"string"},"url":{"type":"string","format":"uri-reference"}},"patternProperties":{"^x-":{}},"additionalProperties":false},"ExampleXORExamples":{"description":"Example and examples are mutually exclusive","not":{"required":["example","examples"]}},"SchemaXORContent":{"description":"Schema and content are mutually exclusive, at least one is required","not":{"required":["schema","content"]},"oneOf":[{"required":["schema"]},{"required":["content"],"description":"Some properties are not allowed if content is present","allOf":[{"not":{"required":["style"]}},{"not":{"required":["explode"]}},{"not":{"required":["allowReserved"]}},{"not":{"required":["example"]}},{"not":{"required":["examples"]}}]}]},"Parameter":{"type":"object","properties":{"name":{"type":"string"},"in":{"type":"string"},"description":{"type":"string"},"required":{"type":"boolean","default":false},"deprecated":{"type":"boolean","default":false},"allowEmptyValue":{"type":"boolean","default":false},"style":{"type":"string"},"explode":{"type":"boolean"},"allowReserved":{"type":"boolean","default":false},"schema":{"oneOf":[{"$ref":"#/definitions/Schema"},{"$ref":"#/definitions/Reference"}]},"content":{"type":"object","additionalProperties":{"$ref":"#/definitions/MediaType"},"minProperties":1,"maxProperties":1},"example":{},"examples":{"type":"object","additionalProperties":{"oneOf":[{"$ref":"#/definitions/Example"},{"$ref":"#/definitions/Reference"}]}}},"patternProperties":{"^x-":{}},"additionalProperties":false,"required":["name","in"],"allOf":[{"$ref":"#/definitions/ExampleXORExamples"},{"$ref":"#/definitions/SchemaXORContent"},{"$ref":"#/definitions/ParameterLocation"}]},"ParameterLocation":{"description":"Parameter location","oneOf":[{"description":"Parameter in path","required":["required"],"properties":{"in":{"enum":["path"]},"style":{"enum":["matrix","label","simple"],"default":"simple"},"required":{"enum":[true]}}},{"description":"Parameter in query","properties":{"in":{"enum":["query"]},"style":{"enum":["form","spaceDelimited","pipeDelimited","deepObject"],"default":"form"}}},{"description":"Parameter in header","properties":{"in":{"enum":["header"]},"style":{"enum":["simple"],"default":"simple"}}},{"description":"Parameter in cookie","properties":{"in":{"enum":["cookie"]},"style":{"enum":["form"],"default":"form"}}}]},"RequestBody":{"type":"object","required":["content"],"properties":{"description":{"type":"string"},"content":{"type":"object","additionalProperties":{"$ref":"#/definitions/MediaType"}},"required":{"type":"boolean","default":false}},"patternProperties":{"^x-":{}},"additionalProperties":false},"SecurityScheme":{"oneOf":[{"$ref":"#/definitions/APIKeySecurityScheme"},{"$ref":"#/definitions/HTTPSecurityScheme"},{"$ref":"#/definitions/OAuth2SecurityScheme"},{"$ref":"#/definitions/OpenIdConnectSecurityScheme"}]},"APIKeySecurityScheme":{"type":"object","required":["type","name","in"],"properties":{"type":{"type":"string","enum":["apiKey"]},"name":{"type":"string"},"in":{"type":"string","enum":["header","query","cookie"]},"description":{"type":"string"}},"patternProperties":{"^x-":{}},"additionalProperties":false},"HTTPSecurityScheme":{"type":"object","required":["scheme","type"],"properties":{"scheme":{"type":"string"},"bearerFormat":{"type":"string"},"description":{"type":"string"},"type":{"type":"string","enum":["http"]}},"patternProperties":{"^x-":{}},"additionalProperties":false,"oneOf":[{"description":"Bearer","properties":{"scheme":{"enum":["bearer"]}}},{"description":"Non Bearer","not":{"required":["bearerFormat"]},"properties":{"scheme":{"not":{"enum":["bearer"]}}}}]},"OAuth2SecurityScheme":{"type":"object","required":["type","flows"],"properties":{"type":{"type":"string","enum":["oauth2"]},"flows":{"$ref":"#/definitions/OAuthFlows"},"description":{"type":"string"}},"patternProperties":{"^x-":{}},"additionalProperties":false},"OpenIdConnectSecurityScheme":{"type":"object","required":["type","openIdConnectUrl"],"properties":{"type":{"type":"string","enum":["openIdConnect"]},"openIdConnectUrl":{"type":"string","format":"uri-reference"},"description":{"type":"string"}},"patternProperties":{"^x-":{}},"additionalProperties":false},"OAuthFlows":{"type":"object","properties":{"implicit":{"$ref":"#/definitions/ImplicitOAuthFlow"},"password":{"$ref":"#/definitions/PasswordOAuthFlow"},"clientCredentials":{"$ref":"#/definitions/ClientCredentialsFlow"},"authorizationCode":{"$ref":"#/definitions/AuthorizationCodeOAuthFlow"}},"patternProperties":{"^x-":{}},"additionalProperties":false},"ImplicitOAuthFlow":{"type":"object","required":["authorizationUrl","scopes"],"properties":{"authorizationUrl":{"type":"string","format":"uri-reference"},"refreshUrl":{"type":"string","format":"uri-reference"},"scopes":{"type":"object","additionalProperties":{"type":"string"}}},"patternProperties":{"^x-":{}},"additionalProperties":false},"PasswordOAuthFlow":{"type":"object","required":["tokenUrl"],"properties":{"tokenUrl":{"type":"string","format":"uri-reference"},"refreshUrl":{"type":"string","format":"uri-reference"},"scopes":{"type":"object","additionalProperties":{"type":"string"}}},"patternProperties":{"^x-":{}},"additionalProperties":false},"ClientCredentialsFlow":{"type":"object","required":["tokenUrl"],"properties":{"tokenUrl":{"type":"string","format":"uri-reference"},"refreshUrl":{"type":"string","format":"uri-reference"},"scopes":{"type":"object","additionalProperties":{"type":"string"}}},"patternProperties":{"^x-":{}},"additionalProperties":false},"AuthorizationCodeOAuthFlow":{"type":"object","required":["authorizationUrl","tokenUrl"],"properties":{"authorizationUrl":{"type":"string","format":"uri-reference"},"tokenUrl":{"type":"string","format":"uri-reference"},"refreshUrl":{"type":"string","format":"uri-reference"},"scopes":{"type":"object","additionalProperties":{"type":"string"}}},"patternProperties":{"^x-":{}},"additionalProperties":false},"Link":{"type":"object","properties":{"operationId":{"type":"string"},"operationRef":{"type":"string","format":"uri-reference"},"parameters":{"type":"object","additionalProperties":{}},"requestBody":{},"description":{"type":"string"},"server":{"$ref":"#/definitions/Server"}},"patternProperties":{"^x-":{}},"additionalProperties":false,"not":{"description":"Operation Id and Operation Ref are mutually exclusive","required":["operationId","operationRef"]}},"Callback":{"type":"object","additionalProperties":{"$ref":"#/definitions/PathItem"},"patternProperties":{"^x-":{}}},"Encoding":{"type":"object","properties":{"contentType":{"type":"string"},"headers":{"type":"object","additionalProperties":{"$ref":"#/definitions/Header"}},"style":{"type":"string","enum":["form","spaceDelimited","pipeDelimited","deepObject"]},"explode":{"type":"boolean"},"allowReserved":{"type":"boolean","default":false}},"additionalProperties":false}}}');
 
 /***/ }),
 
@@ -70191,7 +70234,7 @@ module.exports = JSON.parse("{\"id\":\"https://spec.openapis.org/oas/3.0/schema/
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse("{\"$id\":\"https://spec.openapis.org/oas/3.1/schema/2021-03-02\",\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"type\":\"object\",\"properties\":{\"openapi\":{\"type\":\"string\",\"pattern\":\"^3\\\\.1\\\\.\\\\d+(-.+)?$\"},\"info\":{\"$ref\":\"#/$defs/info\"},\"jsonSchemaDialect\":{\"$ref\":\"#/$defs/uri\",\"default\":\"https://spec.openapis.org/oas/3.1/dialect/base\"},\"servers\":{\"$ref\":\"#/$defs/server\"},\"paths\":{\"$ref\":\"#/$defs/paths\"},\"webhooks\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/$defs/path-item-or-reference\"}},\"components\":{\"$ref\":\"#/$defs/components\"},\"security\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/$defs/security-requirement\"}},\"tags\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/$defs/tag\"}},\"externalDocs\":{\"$ref\":\"#/$defs/external-documentation\"}},\"required\":[\"openapi\",\"info\"],\"anyOf\":[{\"required\":[\"paths\"]},{\"required\":[\"components\"]},{\"required\":[\"webhooks\"]}],\"$ref\":\"#/$defs/specification-extensions\",\"unevaluatedProperties\":false,\"$defs\":{\"info\":{\"type\":\"object\",\"properties\":{\"title\":{\"type\":\"string\"},\"summary\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"termsOfService\":{\"type\":\"string\"},\"contact\":{\"$ref\":\"#/$defs/contact\"},\"license\":{\"$ref\":\"#/$defs/license\"},\"version\":{\"type\":\"string\"}},\"required\":[\"title\",\"version\"],\"$ref\":\"#/$defs/specification-extensions\",\"unevaluatedProperties\":false},\"contact\":{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\"},\"url\":{\"type\":\"string\"},\"email\":{\"type\":\"string\"}},\"$ref\":\"#/$defs/specification-extensions\",\"unevaluatedProperties\":false},\"license\":{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\"},\"identifier\":{\"type\":\"string\"},\"url\":{\"$ref\":\"#/$defs/uri\"}},\"required\":[\"name\"],\"oneOf\":[{\"required\":[\"identifier\"]},{\"required\":[\"url\"]}],\"$ref\":\"#/$defs/specification-extensions\",\"unevaluatedProperties\":false},\"server\":{\"type\":\"object\",\"properties\":{\"url\":{\"$ref\":\"#/$defs/uri\"},\"description\":{\"type\":\"string\"},\"variables\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/$defs/server-variable\"}}},\"required\":[\"url\"],\"$ref\":\"#/$defs/specification-extensions\",\"unevaluatedProperties\":false},\"server-variable\":{\"type\":\"object\",\"properties\":{\"enum\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"minItems\":1},\"default\":{\"type\":\"string\"},\"descriptions\":{\"type\":\"string\"}},\"required\":[\"default\"],\"$ref\":\"#/$defs/specification-extensions\",\"unevaluatedProperties\":false},\"components\":{\"type\":\"object\",\"properties\":{\"schemas\":{\"type\":\"object\",\"additionalProperties\":{\"$dynamicRef\":\"#meta\"}},\"responses\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/$defs/response-or-reference\"}},\"parameters\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/$defs/parameter-or-reference\"}},\"examples\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/$defs/example-or-reference\"}},\"requestBodies\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/$defs/request-body-or-reference\"}},\"headers\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/$defs/header-or-reference\"}},\"securitySchemes\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/$defs/security-scheme-or-reference\"}},\"links\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/$defs/link-or-reference\"}},\"callbacks\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/$defs/callbacks-or-reference\"}},\"pathItems\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/$defs/path-item-or-reference\"}}},\"patternProperties\":{\"^(schemas|responses|parameters|examples|requestBodies|headers|securitySchemes|links|callbacks|pathItems)$\":{\"$comment\":\"Enumerating all of the property names in the regex above is necessary for unevaluatedProperties to work as expected\",\"propertyNames\":{\"pattern\":\"^[a-zA-Z0-9._-]+$\"}}},\"$ref\":\"#/$defs/specification-extensions\",\"unevaluatedProperties\":false},\"paths\":{\"type\":\"object\",\"patternProperties\":{\"^/\":{\"$ref\":\"#/$defs/path-item\"}},\"$ref\":\"#/$defs/specification-extensions\",\"unevaluatedProperties\":false},\"path-item\":{\"type\":\"object\",\"properties\":{\"summary\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"servers\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/$defs/server\"}},\"parameters\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/$defs/parameter-or-reference\"}}},\"patternProperties\":{\"^(get|post|delete|options|head|patch|trace)$\":{\"$ref\":\"#/$defs/operation\"}},\"$ref\":\"#/$defs/specification-extensions\",\"unevaluatedProperties\":false},\"path-item-or-reference\":{\"if\":{\"required\":[\"$ref\"]},\"then\":{\"$ref\":\"#/$defs/reference\"},\"else\":{\"$ref\":\"#/$defs/path-item\"}},\"operation\":{\"type\":\"object\",\"properties\":{\"tags\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}},\"summary\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"externalDocs\":{\"$ref\":\"#/$defs/external-documentation\"},\"operationId\":{\"type\":\"string\"},\"parameters\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/$defs/parameter-or-reference\"}},\"requestBody\":{\"$ref\":\"#/$defs/request-body-or-reference\"},\"responses\":{\"$ref\":\"#/$defs/responses\"},\"callbacks\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/$defs/callbacks-or-reference\"}},\"deprecated\":{\"default\":false,\"type\":\"boolean\"},\"security\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/$defs/security-requirement\"}},\"servers\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/$defs/server\"}}},\"$ref\":\"#/$defs/specification-extensions\",\"unevaluatedProperties\":false},\"external-documentation\":{\"type\":\"object\",\"properties\":{\"description\":{\"type\":\"string\"},\"url\":{\"$ref\":\"#/$defs/uri\"}},\"required\":[\"url\"],\"$ref\":\"#/$defs/specification-extensions\",\"unevaluatedProperties\":false},\"parameter\":{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\"},\"in\":{\"enum\":[\"query\",\"header\",\"path\",\"cookie\"]},\"description\":{\"type\":\"string\"},\"required\":{\"default\":false,\"type\":\"boolean\"},\"deprecated\":{\"default\":false,\"type\":\"boolean\"},\"allowEmptyValue\":{\"default\":false,\"type\":\"boolean\"},\"schema\":{\"$dynamicRef\":\"#meta\"},\"content\":{\"$ref\":\"#/$defs/content\"}},\"required\":[\"in\"],\"oneOf\":[{\"required\":[\"schema\"]},{\"required\":[\"content\"]}],\"dependentSchemas\":{\"schema\":{\"properties\":{\"style\":{\"type\":\"string\"},\"explode\":{\"type\":\"boolean\"},\"allowReserved\":{\"default\":false,\"type\":\"boolean\"}},\"allOf\":[{\"$ref\":\"#/$defs/examples\"},{\"$ref\":\"#/$defs/parameter/dependentSchemas/schema/$defs/styles-for-path\"},{\"$ref\":\"#/$defs/parameter/dependentSchemas/schema/$defs/styles-for-header\"},{\"$ref\":\"#/$defs/parameter/dependentSchemas/schema/$defs/styles-for-query\"},{\"$ref\":\"#/$defs/parameter/dependentSchemas/schema/$defs/styles-for-cookie\"},{\"$ref\":\"#/$defs/parameter/dependentSchemas/schema/$defs/styles-for-form\"}],\"$defs\":{\"styles-for-path\":{\"if\":{\"properties\":{\"in\":{\"const\":\"path\"}},\"required\":[\"in\"]},\"then\":{\"properties\":{\"style\":{\"default\":\"simple\",\"enum\":[\"matrix\",\"label\",\"simple\"]},\"required\":{\"const\":true}},\"required\":[\"required\"]}},\"styles-for-header\":{\"if\":{\"properties\":{\"in\":{\"const\":\"header\"}},\"required\":[\"in\"]},\"then\":{\"properties\":{\"style\":{\"default\":\"simple\",\"enum\":[\"simple\"]}}}},\"styles-for-query\":{\"if\":{\"properties\":{\"in\":{\"const\":\"query\"}},\"required\":[\"in\"]},\"then\":{\"properties\":{\"style\":{\"default\":\"form\",\"enum\":[\"form\",\"spaceDelimited\",\"pipeDelimited\",\"deepObject\"]}}}},\"styles-for-cookie\":{\"if\":{\"properties\":{\"in\":{\"const\":\"cookie\"}},\"required\":[\"in\"]},\"then\":{\"properties\":{\"style\":{\"default\":\"form\",\"enum\":[\"form\"]}}}},\"styles-for-form\":{\"if\":{\"properties\":{\"style\":{\"const\":\"form\"}},\"required\":[\"style\"]},\"then\":{\"properties\":{\"explode\":{\"default\":true}}},\"else\":{\"properties\":{\"explode\":{\"default\":false}}}}}}},\"$ref\":\"#/$defs/specification-extensions\",\"unevaluatedProperties\":false},\"parameter-or-reference\":{\"if\":{\"required\":[\"$ref\"]},\"then\":{\"$ref\":\"#/$defs/reference\"},\"else\":{\"$ref\":\"#/$defs/parameter\"}},\"request-body\":{\"type\":\"object\",\"properties\":{\"description\":{\"type\":\"string\"},\"content\":{\"$ref\":\"#/$defs/content\"},\"required\":{\"default\":false,\"type\":\"boolean\"}},\"required\":[\"content\"],\"$ref\":\"#/$defs/specification-extensions\",\"unevaluatedProperties\":false},\"request-body-or-reference\":{\"if\":{\"required\":[\"$ref\"]},\"then\":{\"$ref\":\"#/$defs/reference\"},\"else\":{\"$ref\":\"#/$defs/request-body\"}},\"content\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/$defs/media-type\"},\"propertyNames\":{\"format\":\"media-range\"}},\"media-type\":{\"type\":\"object\",\"properties\":{\"schema\":{\"$dynamicRef\":\"#meta\"},\"encoding\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/$defs/encoding\"}}},\"allOf\":[{\"$ref\":\"#/$defs/specification-extensions\"},{\"$ref\":\"#/$defs/examples\"}],\"unevaluatedProperties\":false},\"encoding\":{\"type\":\"object\",\"properties\":{\"contentType\":{\"type\":\"string\",\"format\":\"media-range\"},\"headers\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/$defs/header-or-reference\"}},\"style\":{\"default\":\"form\",\"enum\":[\"form\",\"spaceDelimited\",\"pipeDelimited\",\"deepObject\"]},\"explode\":{\"type\":\"boolean\"},\"allowReserved\":{\"default\":false,\"type\":\"boolean\"}},\"allOf\":[{\"$ref\":\"#/$defs/specification-extensions\"},{\"$ref\":\"#/$defs/encoding/$defs/explode-default\"}],\"unevaluatedProperties\":false,\"$defs\":{\"explode-default\":{\"if\":{\"properties\":{\"style\":{\"const\":\"form\"}},\"required\":[\"style\"]},\"then\":{\"properties\":{\"explode\":{\"default\":true}}},\"else\":{\"properties\":{\"explode\":{\"default\":false}}}}}},\"responses\":{\"type\":\"object\",\"properties\":{\"default\":{\"$ref\":\"#/$defs/response-or-reference\"}},\"patternProperties\":{\"^[1-5][0-9X]{2}$\":{\"$ref\":\"#/$defs/response-or-reference\"}},\"$ref\":\"#/$defs/specification-extensions\",\"unevaluatedProperties\":false},\"response\":{\"type\":\"object\",\"properties\":{\"description\":{\"type\":\"string\"},\"headers\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/$defs/header-or-reference\"}},\"content\":{\"$ref\":\"#/$defs/content\"},\"links\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/$defs/link-or-reference\"}}},\"required\":[\"description\"],\"$ref\":\"#/$defs/specification-extensions\",\"unevaluatedProperties\":false},\"response-or-reference\":{\"if\":{\"required\":[\"$ref\"]},\"then\":{\"$ref\":\"#/$defs/reference\"},\"else\":{\"$ref\":\"#/$defs/response\"}},\"callbacks\":{\"type\":\"object\",\"$ref\":\"#/$defs/specification-extensions\",\"additionalProperties\":{\"$ref\":\"#/$defs/path-item-or-reference\"}},\"callbacks-or-reference\":{\"if\":{\"required\":[\"$ref\"]},\"then\":{\"$ref\":\"#/$defs/reference\"},\"else\":{\"$ref\":\"#/$defs/callbacks\"}},\"example\":{\"type\":\"object\",\"properties\":{\"summary\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"value\":true,\"externalValue\":{\"$ref\":\"#/$defs/uri\"}},\"$ref\":\"#/$defs/specification-extensions\",\"unevaluatedProperties\":false},\"example-or-reference\":{\"if\":{\"required\":[\"$ref\"]},\"then\":{\"$ref\":\"#/$defs/reference\"},\"else\":{\"$ref\":\"#/$defs/example\"}},\"link\":{\"type\":\"object\",\"properties\":{\"operationRef\":{\"$ref\":\"#/$defs/uri\"},\"operationId\":true,\"parameters\":{\"$ref\":\"#/$defs/map-of-strings\"},\"requestBody\":true,\"description\":{\"type\":\"string\"},\"body\":{\"$ref\":\"#/$defs/server\"}},\"oneOf\":[{\"required\":[\"operationRef\"]},{\"required\":[\"operationId\"]}],\"$ref\":\"#/$defs/specification-extensions\",\"unevaluatedProperties\":false},\"link-or-reference\":{\"if\":{\"required\":[\"$ref\"]},\"then\":{\"$ref\":\"#/$defs/reference\"},\"else\":{\"$ref\":\"#/$defs/link\"}},\"header\":{\"type\":\"object\",\"properties\":{\"description\":{\"type\":\"string\"},\"required\":{\"default\":false,\"type\":\"boolean\"},\"deprecated\":{\"default\":false,\"type\":\"boolean\"},\"allowEmptyValue\":{\"default\":false,\"type\":\"boolean\"}},\"dependentSchemas\":{\"schema\":{\"properties\":{\"style\":{\"default\":\"simple\",\"enum\":[\"simple\"]},\"explode\":{\"default\":false,\"type\":\"boolean\"},\"allowReserved\":{\"default\":false,\"type\":\"boolean\"},\"schema\":{\"$dynamicRef\":\"#meta\"}},\"$ref\":\"#/$defs/examples\"},\"content\":{\"properties\":{\"content\":{\"$ref\":\"#/$defs/content\"}}}},\"$ref\":\"#/$defs/specification-extensions\",\"unevaluatedProperties\":false},\"header-or-reference\":{\"if\":{\"required\":[\"$ref\"]},\"then\":{\"$ref\":\"#/$defs/reference\"},\"else\":{\"$ref\":\"#/$defs/header\"}},\"tag\":{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"externalDocs\":{\"$ref\":\"#/$defs/external-documentation\"}},\"required\":[\"name\"],\"$ref\":\"#/$defs/specification-extensions\",\"unevaluatedProperties\":false},\"reference\":{\"type\":\"object\",\"properties\":{\"$ref\":{\"$ref\":\"#/$defs/uri\"},\"summary\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"}},\"unevaluatedProperties\":false},\"schema\":{\"$dynamicAnchor\":\"meta\",\"type\":[\"object\",\"boolean\"]},\"security-scheme\":{\"type\":\"object\",\"properties\":{\"type\":{\"enum\":[\"apiKey\",\"http\",\"mutualTLS\",\"oauth2\",\"openIdConnect\"]},\"description\":{\"type\":\"string\"}},\"required\":[\"type\"],\"allOf\":[{\"$ref\":\"#/$defs/specification-extensions\"},{\"$ref\":\"#/$defs/security-scheme/$defs/type-apikey\"},{\"$ref\":\"#/$defs/security-scheme/$defs/type-http\"},{\"$ref\":\"#/$defs/security-scheme/$defs/type-http-bearer\"},{\"$ref\":\"#/$defs/security-scheme/$defs/type-oauth2\"},{\"$ref\":\"#/$defs/security-scheme/$defs/type-oidc\"}],\"unevaluatedProperties\":false,\"$defs\":{\"type-apikey\":{\"if\":{\"properties\":{\"type\":{\"const\":\"apiKey\"}},\"required\":[\"type\"]},\"then\":{\"properties\":{\"name\":{\"type\":\"string\"},\"in\":{\"enum\":[\"query\",\"header\",\"cookie\"]}},\"required\":[\"name\",\"in\"]}},\"type-http\":{\"if\":{\"properties\":{\"type\":{\"const\":\"http\"}},\"required\":[\"type\"]},\"then\":{\"properties\":{\"scheme\":{\"type\":\"string\"}},\"required\":[\"scheme\"]}},\"type-http-bearer\":{\"if\":{\"properties\":{\"type\":{\"const\":\"http\"},\"scheme\":{\"const\":\"bearer\"}},\"required\":[\"type\",\"scheme\"]},\"then\":{\"properties\":{\"bearerFormat\":{\"type\":\"string\"}},\"required\":[\"scheme\"]}},\"type-oauth2\":{\"if\":{\"properties\":{\"type\":{\"const\":\"oauth2\"}},\"required\":[\"type\"]},\"then\":{\"properties\":{\"flows\":{\"$ref\":\"#/$defs/oauth-flows\"}},\"required\":[\"flows\"]}},\"type-oidc\":{\"if\":{\"properties\":{\"type\":{\"const\":\"openIdConnect\"}},\"required\":[\"type\"]},\"then\":{\"properties\":{\"openIdConnectUrl\":{\"$ref\":\"#/$defs/uri\"}},\"required\":[\"openIdConnectUrl\"]}}}},\"security-scheme-or-reference\":{\"if\":{\"required\":[\"$ref\"]},\"then\":{\"$ref\":\"#/$defs/reference\"},\"else\":{\"$ref\":\"#/$defs/security-scheme\"}},\"oauth-flows\":{\"type\":\"object\",\"properties\":{\"implicit\":{\"$ref\":\"#/$defs/oauth-flows/$defs/implicit\"},\"password\":{\"$ref\":\"#/$defs/oauth-flows/$defs/password\"},\"clientCredentials\":{\"$ref\":\"#/$defs/oauth-flows/$defs/client-credentials\"},\"authorizationCode\":{\"$ref\":\"#/$defs/oauth-flows/$defs/authorization-code\"}},\"$ref\":\"#/$defs/specification-extensions\",\"unevaluatedProperties\":false,\"$defs\":{\"implicit\":{\"type\":\"object\",\"properties\":{\"authorizationUrl\":{\"type\":\"string\"},\"refreshUrl\":{\"type\":\"string\"},\"scopes\":{\"$ref\":\"#/$defs/map-of-strings\"}},\"required\":[\"authorizationUrl\",\"scopes\"],\"$ref\":\"#/$defs/specification-extensions\",\"unevaluatedProperties\":false},\"password\":{\"type\":\"object\",\"properties\":{\"tokenUrl\":{\"type\":\"string\"},\"refreshUrl\":{\"type\":\"string\"},\"scopes\":{\"$ref\":\"#/$defs/map-of-strings\"}},\"required\":[\"tokenUrl\",\"scopes\"],\"$ref\":\"#/$defs/specification-extensions\",\"unevaluatedProperties\":false},\"client-credentials\":{\"type\":\"object\",\"properties\":{\"tokenUrl\":{\"type\":\"string\"},\"refreshUrl\":{\"type\":\"string\"},\"scopes\":{\"$ref\":\"#/$defs/map-of-strings\"}},\"required\":[\"tokenUrl\",\"scopes\"],\"$ref\":\"#/$defs/specification-extensions\",\"unevaluatedProperties\":false},\"authorization-code\":{\"type\":\"object\",\"properties\":{\"authorizationUrl\":{\"type\":\"string\"},\"tokenUrl\":{\"type\":\"string\"},\"refreshUrl\":{\"type\":\"string\"},\"scopes\":{\"$ref\":\"#/$defs/map-of-strings\"}},\"required\":[\"authorizationUrl\",\"tokenUrl\",\"scopes\"],\"$ref\":\"#/$defs/specification-extensions\",\"unevaluatedProperties\":false}}},\"security-requirement\":{\"type\":\"object\",\"additionalProperties\":{\"type\":\"array\",\"items\":{\"type\":\"string\"}}},\"specification-extensions\":{\"patternProperties\":{\"^x-\":true}},\"examples\":{\"properties\":{\"example\":true,\"examples\":{\"type\":\"object\",\"additionalProperties\":{\"$ref\":\"#/$defs/example-or-reference\"}}}},\"uri\":{\"type\":\"string\",\"format\":\"uri\"},\"map-of-strings\":{\"type\":\"object\",\"additionalProperties\":{\"type\":\"string\"}}}}");
+module.exports = JSON.parse('{"$id":"https://spec.openapis.org/oas/3.1/schema/2021-03-02","$schema":"https://json-schema.org/draft/2020-12/schema","type":"object","properties":{"openapi":{"type":"string","pattern":"^3\\\\.1\\\\.\\\\d+(-.+)?$"},"info":{"$ref":"#/$defs/info"},"jsonSchemaDialect":{"$ref":"#/$defs/uri","default":"https://spec.openapis.org/oas/3.1/dialect/base"},"servers":{"$ref":"#/$defs/server"},"paths":{"$ref":"#/$defs/paths"},"webhooks":{"type":"object","additionalProperties":{"$ref":"#/$defs/path-item-or-reference"}},"components":{"$ref":"#/$defs/components"},"security":{"type":"array","items":{"$ref":"#/$defs/security-requirement"}},"tags":{"type":"array","items":{"$ref":"#/$defs/tag"}},"externalDocs":{"$ref":"#/$defs/external-documentation"}},"required":["openapi","info"],"anyOf":[{"required":["paths"]},{"required":["components"]},{"required":["webhooks"]}],"$ref":"#/$defs/specification-extensions","unevaluatedProperties":false,"$defs":{"info":{"type":"object","properties":{"title":{"type":"string"},"summary":{"type":"string"},"description":{"type":"string"},"termsOfService":{"type":"string"},"contact":{"$ref":"#/$defs/contact"},"license":{"$ref":"#/$defs/license"},"version":{"type":"string"}},"required":["title","version"],"$ref":"#/$defs/specification-extensions","unevaluatedProperties":false},"contact":{"type":"object","properties":{"name":{"type":"string"},"url":{"type":"string"},"email":{"type":"string"}},"$ref":"#/$defs/specification-extensions","unevaluatedProperties":false},"license":{"type":"object","properties":{"name":{"type":"string"},"identifier":{"type":"string"},"url":{"$ref":"#/$defs/uri"}},"required":["name"],"oneOf":[{"required":["identifier"]},{"required":["url"]}],"$ref":"#/$defs/specification-extensions","unevaluatedProperties":false},"server":{"type":"object","properties":{"url":{"$ref":"#/$defs/uri"},"description":{"type":"string"},"variables":{"type":"object","additionalProperties":{"$ref":"#/$defs/server-variable"}}},"required":["url"],"$ref":"#/$defs/specification-extensions","unevaluatedProperties":false},"server-variable":{"type":"object","properties":{"enum":{"type":"array","items":{"type":"string"},"minItems":1},"default":{"type":"string"},"descriptions":{"type":"string"}},"required":["default"],"$ref":"#/$defs/specification-extensions","unevaluatedProperties":false},"components":{"type":"object","properties":{"schemas":{"type":"object","additionalProperties":{"$dynamicRef":"#meta"}},"responses":{"type":"object","additionalProperties":{"$ref":"#/$defs/response-or-reference"}},"parameters":{"type":"object","additionalProperties":{"$ref":"#/$defs/parameter-or-reference"}},"examples":{"type":"object","additionalProperties":{"$ref":"#/$defs/example-or-reference"}},"requestBodies":{"type":"object","additionalProperties":{"$ref":"#/$defs/request-body-or-reference"}},"headers":{"type":"object","additionalProperties":{"$ref":"#/$defs/header-or-reference"}},"securitySchemes":{"type":"object","additionalProperties":{"$ref":"#/$defs/security-scheme-or-reference"}},"links":{"type":"object","additionalProperties":{"$ref":"#/$defs/link-or-reference"}},"callbacks":{"type":"object","additionalProperties":{"$ref":"#/$defs/callbacks-or-reference"}},"pathItems":{"type":"object","additionalProperties":{"$ref":"#/$defs/path-item-or-reference"}}},"patternProperties":{"^(schemas|responses|parameters|examples|requestBodies|headers|securitySchemes|links|callbacks|pathItems)$":{"$comment":"Enumerating all of the property names in the regex above is necessary for unevaluatedProperties to work as expected","propertyNames":{"pattern":"^[a-zA-Z0-9._-]+$"}}},"$ref":"#/$defs/specification-extensions","unevaluatedProperties":false},"paths":{"type":"object","patternProperties":{"^/":{"$ref":"#/$defs/path-item"}},"$ref":"#/$defs/specification-extensions","unevaluatedProperties":false},"path-item":{"type":"object","properties":{"summary":{"type":"string"},"description":{"type":"string"},"servers":{"type":"array","items":{"$ref":"#/$defs/server"}},"parameters":{"type":"array","items":{"$ref":"#/$defs/parameter-or-reference"}}},"patternProperties":{"^(get|post|delete|options|head|patch|trace)$":{"$ref":"#/$defs/operation"}},"$ref":"#/$defs/specification-extensions","unevaluatedProperties":false},"path-item-or-reference":{"if":{"required":["$ref"]},"then":{"$ref":"#/$defs/reference"},"else":{"$ref":"#/$defs/path-item"}},"operation":{"type":"object","properties":{"tags":{"type":"array","items":{"type":"string"}},"summary":{"type":"string"},"description":{"type":"string"},"externalDocs":{"$ref":"#/$defs/external-documentation"},"operationId":{"type":"string"},"parameters":{"type":"array","items":{"$ref":"#/$defs/parameter-or-reference"}},"requestBody":{"$ref":"#/$defs/request-body-or-reference"},"responses":{"$ref":"#/$defs/responses"},"callbacks":{"type":"object","additionalProperties":{"$ref":"#/$defs/callbacks-or-reference"}},"deprecated":{"default":false,"type":"boolean"},"security":{"type":"array","items":{"$ref":"#/$defs/security-requirement"}},"servers":{"type":"array","items":{"$ref":"#/$defs/server"}}},"$ref":"#/$defs/specification-extensions","unevaluatedProperties":false},"external-documentation":{"type":"object","properties":{"description":{"type":"string"},"url":{"$ref":"#/$defs/uri"}},"required":["url"],"$ref":"#/$defs/specification-extensions","unevaluatedProperties":false},"parameter":{"type":"object","properties":{"name":{"type":"string"},"in":{"enum":["query","header","path","cookie"]},"description":{"type":"string"},"required":{"default":false,"type":"boolean"},"deprecated":{"default":false,"type":"boolean"},"allowEmptyValue":{"default":false,"type":"boolean"},"schema":{"$dynamicRef":"#meta"},"content":{"$ref":"#/$defs/content"}},"required":["in"],"oneOf":[{"required":["schema"]},{"required":["content"]}],"dependentSchemas":{"schema":{"properties":{"style":{"type":"string"},"explode":{"type":"boolean"},"allowReserved":{"default":false,"type":"boolean"}},"allOf":[{"$ref":"#/$defs/examples"},{"$ref":"#/$defs/parameter/dependentSchemas/schema/$defs/styles-for-path"},{"$ref":"#/$defs/parameter/dependentSchemas/schema/$defs/styles-for-header"},{"$ref":"#/$defs/parameter/dependentSchemas/schema/$defs/styles-for-query"},{"$ref":"#/$defs/parameter/dependentSchemas/schema/$defs/styles-for-cookie"},{"$ref":"#/$defs/parameter/dependentSchemas/schema/$defs/styles-for-form"}],"$defs":{"styles-for-path":{"if":{"properties":{"in":{"const":"path"}},"required":["in"]},"then":{"properties":{"style":{"default":"simple","enum":["matrix","label","simple"]},"required":{"const":true}},"required":["required"]}},"styles-for-header":{"if":{"properties":{"in":{"const":"header"}},"required":["in"]},"then":{"properties":{"style":{"default":"simple","enum":["simple"]}}}},"styles-for-query":{"if":{"properties":{"in":{"const":"query"}},"required":["in"]},"then":{"properties":{"style":{"default":"form","enum":["form","spaceDelimited","pipeDelimited","deepObject"]}}}},"styles-for-cookie":{"if":{"properties":{"in":{"const":"cookie"}},"required":["in"]},"then":{"properties":{"style":{"default":"form","enum":["form"]}}}},"styles-for-form":{"if":{"properties":{"style":{"const":"form"}},"required":["style"]},"then":{"properties":{"explode":{"default":true}}},"else":{"properties":{"explode":{"default":false}}}}}}},"$ref":"#/$defs/specification-extensions","unevaluatedProperties":false},"parameter-or-reference":{"if":{"required":["$ref"]},"then":{"$ref":"#/$defs/reference"},"else":{"$ref":"#/$defs/parameter"}},"request-body":{"type":"object","properties":{"description":{"type":"string"},"content":{"$ref":"#/$defs/content"},"required":{"default":false,"type":"boolean"}},"required":["content"],"$ref":"#/$defs/specification-extensions","unevaluatedProperties":false},"request-body-or-reference":{"if":{"required":["$ref"]},"then":{"$ref":"#/$defs/reference"},"else":{"$ref":"#/$defs/request-body"}},"content":{"type":"object","additionalProperties":{"$ref":"#/$defs/media-type"},"propertyNames":{"format":"media-range"}},"media-type":{"type":"object","properties":{"schema":{"$dynamicRef":"#meta"},"encoding":{"type":"object","additionalProperties":{"$ref":"#/$defs/encoding"}}},"allOf":[{"$ref":"#/$defs/specification-extensions"},{"$ref":"#/$defs/examples"}],"unevaluatedProperties":false},"encoding":{"type":"object","properties":{"contentType":{"type":"string","format":"media-range"},"headers":{"type":"object","additionalProperties":{"$ref":"#/$defs/header-or-reference"}},"style":{"default":"form","enum":["form","spaceDelimited","pipeDelimited","deepObject"]},"explode":{"type":"boolean"},"allowReserved":{"default":false,"type":"boolean"}},"allOf":[{"$ref":"#/$defs/specification-extensions"},{"$ref":"#/$defs/encoding/$defs/explode-default"}],"unevaluatedProperties":false,"$defs":{"explode-default":{"if":{"properties":{"style":{"const":"form"}},"required":["style"]},"then":{"properties":{"explode":{"default":true}}},"else":{"properties":{"explode":{"default":false}}}}}},"responses":{"type":"object","properties":{"default":{"$ref":"#/$defs/response-or-reference"}},"patternProperties":{"^[1-5][0-9X]{2}$":{"$ref":"#/$defs/response-or-reference"}},"$ref":"#/$defs/specification-extensions","unevaluatedProperties":false},"response":{"type":"object","properties":{"description":{"type":"string"},"headers":{"type":"object","additionalProperties":{"$ref":"#/$defs/header-or-reference"}},"content":{"$ref":"#/$defs/content"},"links":{"type":"object","additionalProperties":{"$ref":"#/$defs/link-or-reference"}}},"required":["description"],"$ref":"#/$defs/specification-extensions","unevaluatedProperties":false},"response-or-reference":{"if":{"required":["$ref"]},"then":{"$ref":"#/$defs/reference"},"else":{"$ref":"#/$defs/response"}},"callbacks":{"type":"object","$ref":"#/$defs/specification-extensions","additionalProperties":{"$ref":"#/$defs/path-item-or-reference"}},"callbacks-or-reference":{"if":{"required":["$ref"]},"then":{"$ref":"#/$defs/reference"},"else":{"$ref":"#/$defs/callbacks"}},"example":{"type":"object","properties":{"summary":{"type":"string"},"description":{"type":"string"},"value":true,"externalValue":{"$ref":"#/$defs/uri"}},"$ref":"#/$defs/specification-extensions","unevaluatedProperties":false},"example-or-reference":{"if":{"required":["$ref"]},"then":{"$ref":"#/$defs/reference"},"else":{"$ref":"#/$defs/example"}},"link":{"type":"object","properties":{"operationRef":{"$ref":"#/$defs/uri"},"operationId":true,"parameters":{"$ref":"#/$defs/map-of-strings"},"requestBody":true,"description":{"type":"string"},"body":{"$ref":"#/$defs/server"}},"oneOf":[{"required":["operationRef"]},{"required":["operationId"]}],"$ref":"#/$defs/specification-extensions","unevaluatedProperties":false},"link-or-reference":{"if":{"required":["$ref"]},"then":{"$ref":"#/$defs/reference"},"else":{"$ref":"#/$defs/link"}},"header":{"type":"object","properties":{"description":{"type":"string"},"required":{"default":false,"type":"boolean"},"deprecated":{"default":false,"type":"boolean"},"allowEmptyValue":{"default":false,"type":"boolean"}},"dependentSchemas":{"schema":{"properties":{"style":{"default":"simple","enum":["simple"]},"explode":{"default":false,"type":"boolean"},"allowReserved":{"default":false,"type":"boolean"},"schema":{"$dynamicRef":"#meta"}},"$ref":"#/$defs/examples"},"content":{"properties":{"content":{"$ref":"#/$defs/content"}}}},"$ref":"#/$defs/specification-extensions","unevaluatedProperties":false},"header-or-reference":{"if":{"required":["$ref"]},"then":{"$ref":"#/$defs/reference"},"else":{"$ref":"#/$defs/header"}},"tag":{"type":"object","properties":{"name":{"type":"string"},"description":{"type":"string"},"externalDocs":{"$ref":"#/$defs/external-documentation"}},"required":["name"],"$ref":"#/$defs/specification-extensions","unevaluatedProperties":false},"reference":{"type":"object","properties":{"$ref":{"$ref":"#/$defs/uri"},"summary":{"type":"string"},"description":{"type":"string"}},"unevaluatedProperties":false},"schema":{"$dynamicAnchor":"meta","type":["object","boolean"]},"security-scheme":{"type":"object","properties":{"type":{"enum":["apiKey","http","mutualTLS","oauth2","openIdConnect"]},"description":{"type":"string"}},"required":["type"],"allOf":[{"$ref":"#/$defs/specification-extensions"},{"$ref":"#/$defs/security-scheme/$defs/type-apikey"},{"$ref":"#/$defs/security-scheme/$defs/type-http"},{"$ref":"#/$defs/security-scheme/$defs/type-http-bearer"},{"$ref":"#/$defs/security-scheme/$defs/type-oauth2"},{"$ref":"#/$defs/security-scheme/$defs/type-oidc"}],"unevaluatedProperties":false,"$defs":{"type-apikey":{"if":{"properties":{"type":{"const":"apiKey"}},"required":["type"]},"then":{"properties":{"name":{"type":"string"},"in":{"enum":["query","header","cookie"]}},"required":["name","in"]}},"type-http":{"if":{"properties":{"type":{"const":"http"}},"required":["type"]},"then":{"properties":{"scheme":{"type":"string"}},"required":["scheme"]}},"type-http-bearer":{"if":{"properties":{"type":{"const":"http"},"scheme":{"const":"bearer"}},"required":["type","scheme"]},"then":{"properties":{"bearerFormat":{"type":"string"}},"required":["scheme"]}},"type-oauth2":{"if":{"properties":{"type":{"const":"oauth2"}},"required":["type"]},"then":{"properties":{"flows":{"$ref":"#/$defs/oauth-flows"}},"required":["flows"]}},"type-oidc":{"if":{"properties":{"type":{"const":"openIdConnect"}},"required":["type"]},"then":{"properties":{"openIdConnectUrl":{"$ref":"#/$defs/uri"}},"required":["openIdConnectUrl"]}}}},"security-scheme-or-reference":{"if":{"required":["$ref"]},"then":{"$ref":"#/$defs/reference"},"else":{"$ref":"#/$defs/security-scheme"}},"oauth-flows":{"type":"object","properties":{"implicit":{"$ref":"#/$defs/oauth-flows/$defs/implicit"},"password":{"$ref":"#/$defs/oauth-flows/$defs/password"},"clientCredentials":{"$ref":"#/$defs/oauth-flows/$defs/client-credentials"},"authorizationCode":{"$ref":"#/$defs/oauth-flows/$defs/authorization-code"}},"$ref":"#/$defs/specification-extensions","unevaluatedProperties":false,"$defs":{"implicit":{"type":"object","properties":{"authorizationUrl":{"type":"string"},"refreshUrl":{"type":"string"},"scopes":{"$ref":"#/$defs/map-of-strings"}},"required":["authorizationUrl","scopes"],"$ref":"#/$defs/specification-extensions","unevaluatedProperties":false},"password":{"type":"object","properties":{"tokenUrl":{"type":"string"},"refreshUrl":{"type":"string"},"scopes":{"$ref":"#/$defs/map-of-strings"}},"required":["tokenUrl","scopes"],"$ref":"#/$defs/specification-extensions","unevaluatedProperties":false},"client-credentials":{"type":"object","properties":{"tokenUrl":{"type":"string"},"refreshUrl":{"type":"string"},"scopes":{"$ref":"#/$defs/map-of-strings"}},"required":["tokenUrl","scopes"],"$ref":"#/$defs/specification-extensions","unevaluatedProperties":false},"authorization-code":{"type":"object","properties":{"authorizationUrl":{"type":"string"},"tokenUrl":{"type":"string"},"refreshUrl":{"type":"string"},"scopes":{"$ref":"#/$defs/map-of-strings"}},"required":["authorizationUrl","tokenUrl","scopes"],"$ref":"#/$defs/specification-extensions","unevaluatedProperties":false}}},"security-requirement":{"type":"object","additionalProperties":{"type":"array","items":{"type":"string"}}},"specification-extensions":{"patternProperties":{"^x-":true}},"examples":{"properties":{"example":true,"examples":{"type":"object","additionalProperties":{"$ref":"#/$defs/example-or-reference"}}}},"uri":{"type":"string","format":"uri"},"map-of-strings":{"type":"object","additionalProperties":{"type":"string"}}}}');
 
 /***/ }),
 
@@ -70329,10 +70372,11 @@ module.exports = require("zlib");;
 /******/ 	var __webpack_module_cache__ = {};
 /******/ 	
 /******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
+/******/ 	function __nccwpck_require__(moduleId) {
 /******/ 		// Check if module is in cache
-/******/ 		if(__webpack_module_cache__[moduleId]) {
-/******/ 			return __webpack_module_cache__[moduleId].exports;
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
 /******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = __webpack_module_cache__[moduleId] = {
@@ -70344,7 +70388,7 @@ module.exports = require("zlib");;
 /******/ 		// Execute the module function
 /******/ 		var threw = true;
 /******/ 		try {
-/******/ 			__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/ 			__webpack_modules__[moduleId].call(module.exports, module, module.exports, __nccwpck_require__);
 /******/ 			threw = false;
 /******/ 		} finally {
 /******/ 			if(threw) delete __webpack_module_cache__[moduleId];
@@ -70358,37 +70402,9 @@ module.exports = require("zlib");;
 /******/ 	}
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop)
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/node module decorator */
 /******/ 	(() => {
-/******/ 		__webpack_require__.nmd = (module) => {
+/******/ 		__nccwpck_require__.nmd = (module) => {
 /******/ 			module.paths = [];
 /******/ 			if (!module.children) module.children = [];
 /******/ 			return module;
@@ -70397,11 +70413,57 @@ module.exports = require("zlib");;
 /******/ 	
 /******/ 	/* webpack/runtime/compat */
 /******/ 	
-/******/ 	__webpack_require__.ab = __dirname + "/";/************************************************************************/
-/******/ 	// module exports must be returned from runtime so entry inlining is disabled
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(3109);
+/******/ 	if (typeof __nccwpck_require__ !== 'undefined') __nccwpck_require__.ab = __dirname + "/";/************************************************************************/
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+(() => {
+"use strict";
+var exports = __webpack_exports__;
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+const tslib_1 = __nccwpck_require__(4351);
+const core = tslib_1.__importStar(__nccwpck_require__(42186));
+const preview_1 = tslib_1.__importDefault(__nccwpck_require__(5363));
+const deploy_1 = tslib_1.__importDefault(__nccwpck_require__(77402));
+async function run() {
+    try {
+        const file = core.getInput('file');
+        const doc = core.getInput('doc');
+        const hub = core.getInput('hub');
+        const token = core.getInput('token');
+        const command = core.getInput('command') || 'deploy';
+        const cliParams = [file];
+        let deployCliParams = ['--doc', doc, '--token', token];
+        if (hub) {
+            deployCliParams = deployCliParams.concat(['--hub', hub]);
+        }
+        // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
+        core.debug(`Waiting for bump ${command} ...`);
+        core.debug(new Date().toTimeString());
+        switch (command) {
+            case 'preview':
+                await preview_1.default.run(cliParams);
+                break;
+            case 'dry-run':
+            case 'validate':
+                await deploy_1.default.run(cliParams.concat(deployCliParams).concat(['--dry-run']));
+                break;
+            case 'deploy':
+                await deploy_1.default.run(cliParams.concat(deployCliParams));
+                break;
+        }
+        core.debug(new Date().toTimeString());
+    }
+    catch (error) {
+        core.setFailed(error.message);
+    }
+}
+exports.default = run;
+run();
+
+})();
+
+module.exports = __webpack_exports__;
 /******/ })()
 ;
 //# sourceMappingURL=index.js.map
