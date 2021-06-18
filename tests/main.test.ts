@@ -5,6 +5,11 @@ stdout.start();
 // Load main file (which will try a first executiong of the Action code)
 import main from '../src/main';
 
+// Mock internal diff code
+import * as diff from '../src/diff';
+jest.mock('../src/diff');
+const mockedInternalDiff = diff as jest.Mocked<typeof diff>;
+
 // Mock the Bump CLI commands
 import * as bump from 'bump-cli';
 jest.mock('bump-cli');
@@ -66,7 +71,9 @@ test('test action run dry-run correctly', async () => {
 });
 
 test('test action run diff correctly', async () => {
+  mockedDiff.run.mockResolvedValue('cli-changes');
   expect(mockedDiff.run).not.toHaveBeenCalled();
+  expect(mockedInternalDiff.run).not.toHaveBeenCalled();
 
   process.env.INPUT_FILE = 'my-file-to-diff.yml';
   process.env.INPUT_COMMAND = 'diff';
@@ -79,4 +86,44 @@ test('test action run diff correctly', async () => {
     '--token',
     'SECRET',
   ]);
+  expect(mockedInternalDiff.run).toHaveBeenCalledWith('cli-changes');
+});
+
+test('test action run diff correctly', async () => {
+  mockedDiff.run.mockResolvedValue('cli-changes');
+  expect(mockedDiff.run).not.toHaveBeenCalled();
+  expect(mockedInternalDiff.run).not.toHaveBeenCalled();
+
+  process.env.INPUT_FILE = 'my-file-to-diff.yml';
+  process.env.INPUT_COMMAND = 'diff';
+  await main();
+
+  expect(mockedDiff.run).toHaveBeenCalledWith([
+    'my-file-to-diff.yml',
+    '--doc',
+    'my-doc',
+    '--token',
+    'SECRET',
+  ]);
+  expect(mockedInternalDiff.run).toHaveBeenCalledWith('cli-changes');
+});
+
+test('test action run diff with internal exception', async () => {
+  mockedDiff.run.mockResolvedValue('cli-changes');
+  expect(mockedDiff.run).not.toHaveBeenCalled();
+  mockedInternalDiff.run.mockRejectedValue(new Error('Boom'));
+  expect(mockedInternalDiff.run).not.toHaveBeenCalled();
+
+  process.env.INPUT_FILE = 'my-file-to-diff.yml';
+  process.env.INPUT_COMMAND = 'diff';
+  await main();
+
+  expect(mockedDiff.run).toHaveBeenCalledWith([
+    'my-file-to-diff.yml',
+    '--doc',
+    'my-doc',
+    '--token',
+    'SECRET',
+  ]);
+  expect(mockedInternalDiff.run).toHaveBeenCalledWith('cli-changes');
 });

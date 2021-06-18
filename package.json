@@ -37,7 +37,9 @@
   ],
   "dependencies": {
     "@actions/core": "^1.4.0",
-    "bump-cli": "^2.0.0"
+    "@actions/github": "^5.0.0",
+    "@octokit/types": "^6.16.4",
+    "bump-cli": "^2.1.0"
   },
   "devDependencies": {
     "@types/jest": "^26.0.15",

@@ -1,5 +1,7 @@
 import * as core from '@actions/core';
+import { RequestError as GitHubHttpError } from '@octokit/request-error';
 import * as bump from 'bump-cli';
+import * as diff from './diff';
 
 async function run(): Promise<void> {
   try {
@@ -31,17 +33,35 @@ async function run(): Promise<void> {
         await bump.Deploy.run(cliParams.concat(docCliParams));
         break;
       case 'diff':
-        const changes: bump.ChangesResponse = await bump.Diff.run(
-          cliParams.concat(docCliParams),
+        await bump.Diff.run(cliParams.concat(docCliParams)).then(
+          (version: bump.VersionResponse | undefined) => {
+            if (version) {
+              diff.run(version).catch(handleErrors);
+            }
+          },
         );
-
         break;
     }
 
     core.debug(new Date().toTimeString());
   } catch (error) {
-    core.setFailed(error.message);
+    handleErrors(error);
   }
+}
+
+function handleErrors(error: Error): void {
+  let msg = error.message;
+
+  if (error instanceof GitHubHttpError) {
+    msg = [
+      `[GitHub HttpError ${error.status}] ${error.message}`,
+      '',
+      'Please check your GitHub Action workflow file or Actions repository settings.',
+      'Especially if running the action on a fork PR: https://github.blog/2020-08-03-github-actions-improvements-for-fork-and-pull-request-workflows/',
+    ].join('\n');
+  }
+
+  core.setFailed(msg);
 }
 
 export default run;
