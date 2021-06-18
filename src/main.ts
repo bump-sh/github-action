@@ -1,6 +1,5 @@
 import * as core from '@actions/core';
-import BumpPreview from 'bump-cli/lib/commands/preview';
-import BumpDeploy from 'bump-cli/lib/commands/deploy';
+import * as bump from 'bump-cli';
 
 async function run(): Promise<void> {
   try {
@@ -10,10 +9,10 @@ async function run(): Promise<void> {
     const token: string = core.getInput('token');
     const command: string = core.getInput('command') || 'deploy';
     const cliParams = [file];
-    let deployCliParams = ['--doc', doc, '--token', token];
+    let docCliParams = ['--doc', doc, '--token', token];
 
     if (hub) {
-      deployCliParams = deployCliParams.concat(['--hub', hub]);
+      docCliParams = docCliParams.concat(['--hub', hub]);
     }
 
     // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
@@ -22,14 +21,20 @@ async function run(): Promise<void> {
 
     switch (command) {
       case 'preview':
-        await BumpPreview.run(cliParams);
+        await bump.Preview.run(cliParams);
         break;
       case 'dry-run':
-      case 'validate':
-        await BumpDeploy.run(cliParams.concat(deployCliParams).concat(['--dry-run']));
+      case 'validate': // DEPRECATED, kept for backward compatibility with old gem
+        await bump.Deploy.run(cliParams.concat(docCliParams).concat(['--dry-run']));
         break;
       case 'deploy':
-        await BumpDeploy.run(cliParams.concat(deployCliParams));
+        await bump.Deploy.run(cliParams.concat(docCliParams));
+        break;
+      case 'diff':
+        const changes: bump.ChangesResponse = await bump.Diff.run(
+          cliParams.concat(docCliParams),
+        );
+
         break;
     }
 

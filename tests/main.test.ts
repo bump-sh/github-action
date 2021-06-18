@@ -6,13 +6,11 @@ stdout.start();
 import main from '../src/main';
 
 // Mock the Bump CLI commands
-jest.mock('bump-cli/lib/commands/deploy');
-jest.mock('bump-cli/lib/commands/preview');
-
-import BumpDeploy from 'bump-cli/lib/commands/deploy';
-import BumpPreview from 'bump-cli/lib/commands/preview';
-const mockedDeploy = BumpDeploy as jest.Mocked<typeof BumpDeploy>;
-const mockedPreview = BumpPreview as jest.Mocked<typeof BumpPreview>;
+import * as bump from 'bump-cli';
+jest.mock('bump-cli');
+const mockedDeploy = bump.Deploy as jest.Mocked<typeof bump.Deploy>;
+const mockedDiff = bump.Diff as jest.Mocked<typeof bump.Diff>;
+const mockedPreview = bump.Preview as jest.Mocked<typeof bump.Preview>;
 
 beforeEach(() => {
   stdout.stop();
@@ -45,4 +43,40 @@ test('test action run preview correctly', async () => {
   await main();
 
   expect(mockedPreview.run).toHaveBeenCalledWith(['my-file-to-preview.yml']);
+});
+
+test('test action run dry-run correctly', async () => {
+  expect(mockedDeploy.run).not.toHaveBeenCalled();
+
+  process.env.INPUT_FILE = 'my-file.yml';
+  process.env.INPUT_DOC = 'my-doc';
+  process.env.INPUT_TOKEN = 'SECRET';
+  process.env.INPUT_COMMAND = 'dry-run';
+
+  await main();
+
+  expect(mockedDeploy.run).toHaveBeenCalledWith([
+    'my-file.yml',
+    '--doc',
+    'my-doc',
+    '--token',
+    'SECRET',
+    '--dry-run',
+  ]);
+});
+
+test('test action run diff correctly', async () => {
+  expect(mockedDiff.run).not.toHaveBeenCalled();
+
+  process.env.INPUT_FILE = 'my-file-to-diff.yml';
+  process.env.INPUT_COMMAND = 'diff';
+  await main();
+
+  expect(mockedDiff.run).toHaveBeenCalledWith([
+    'my-file-to-diff.yml',
+    '--doc',
+    'my-doc',
+    '--token',
+    'SECRET',
+  ]);
 });
