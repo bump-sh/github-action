@@ -2,6 +2,7 @@ import * as core from '@actions/core';
 import { RequestError as GitHubHttpError } from '@octokit/request-error';
 import * as bump from 'bump-cli';
 import * as diff from './diff';
+import { setUserAgent } from './common';
 
 async function run(): Promise<void> {
   try {
@@ -17,6 +18,7 @@ async function run(): Promise<void> {
       docCliParams = docCliParams.concat(['--hub', hub]);
     }
 
+    setUserAgent();
     // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
     core.debug(`Waiting for bump ${command} ...`);
     core.debug(new Date().toTimeString());
