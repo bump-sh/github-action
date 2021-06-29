@@ -37,7 +37,7 @@
   ],
   "dependencies": {
     "@actions/core": "^1.4.0",
-    "bump-cli": "^2.0.0"
+    "bump-cli": "^2.1.0"
   },
   "devDependencies": {
     "@types/jest": "^26.0.15",
