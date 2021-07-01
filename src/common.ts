@@ -6,7 +6,10 @@ function bumpDiffComment(versionId: string, digest: string): string {
   return `<!-- Bump.sh version_id=${versionId} digest=${digest} -->`;
 }
 // Set User-Agent for github-action
-const setUserAgent = () => (process.env.BUMP_USER_AGENT = 'bump-github-action');
+const setUserAgent = (): void => {
+  process.env.BUMP_USER_AGENT = 'bump-github-action';
+  return;
+};
 
 function extractBumpComment(body: string): string[] | null {
   return body.match(bumpDiffRegexp);
