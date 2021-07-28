@@ -15,8 +15,12 @@ function extractBumpComment(body: string): string[] | null {
   return body.match(bumpDiffRegexp);
 }
 
-function shaDigest(text: string): string {
-  return crypto.createHash('sha1').update(text, 'utf8').digest('hex');
+function shaDigest(texts: string[]): string {
+  const hash = crypto.createHash('sha1');
+
+  texts.forEach((text) => hash.update(text, 'utf8'));
+
+  return hash.digest('hex');
 }
 
 export { bumpDiffComment, extractBumpComment, setUserAgent, shaDigest };

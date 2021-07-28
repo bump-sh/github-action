@@ -19,7 +19,7 @@ export async function run(version: VersionResponse): Promise<void> {
   }
 
   const repo = new Repo();
-  const digest = shaDigest(version.diff_summary);
+  const digest = shaDigest([version.diff_summary, version.diff_public_url]);
   const body = buildCommentBody(version, digest);
 
   return repo.createOrUpdateComment(body, digest);

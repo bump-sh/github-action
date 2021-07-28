@@ -14,7 +14,7 @@ two
 three`,
     diff_public_url: 'https://bump.sh/doc/my-doc/changes/654',
   };
-  const digest = '710a99159c77e7c08094e89c1211136d2b123612';
+  const digest = 'b62da49eb54ba0cc86e0899e3435b8ae8014dea9';
 
   expect(mockedInternalRepo).not.toHaveBeenCalled();
 
