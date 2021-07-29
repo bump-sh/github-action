@@ -89,8 +89,10 @@ function extractBumpComment(body) {
     return body.match(bumpDiffRegexp);
 }
 exports.extractBumpComment = extractBumpComment;
-function shaDigest(text) {
-    return crypto_1.default.createHash('sha1').update(text, 'utf8').digest('hex');
+function shaDigest(texts) {
+    const hash = crypto_1.default.createHash('sha1');
+    texts.forEach((text) => hash.update(text, 'utf8'));
+    return hash.digest('hex');
 }
 exports.shaDigest = shaDigest;
 
@@ -117,7 +119,7 @@ async function run(version) {
         return;
     }
     const repo = new github_1.Repo();
-    const digest = common_1.shaDigest(version.diff_summary);
+    const digest = common_1.shaDigest([version.diff_summary, version.diff_public_url]);
     const body = buildCommentBody(version, digest);
     return repo.createOrUpdateComment(body, digest);
 }
