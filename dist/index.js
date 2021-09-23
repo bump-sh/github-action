@@ -53,7 +53,7 @@ module.exports = JSON.parse('{"title":"AsyncAPI 2.0.0 schema.","$schema":"http:/
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"name":"@oclif/command","description":"oclif base command","version":"1.8.0","author":"Jeff Dickey @jdxcode","bugs":"https://github.com/oclif/command/issues","dependencies":{"@oclif/config":"^1.15.1","@oclif/errors":"^1.3.3","@oclif/parser":"^3.8.3","@oclif/plugin-help":"^3","debug":"^4.1.1","semver":"^7.3.2"},"devDependencies":{"@oclif/plugin-plugins":"^1.7.7","@types/chai":"^4.1.7","@types/mocha":"^8.0.0","@types/node":"^14.0.14","@types/semver":"^7.3.1","chai":"^4.2.0","cli-ux":"^5.1.0","conventional-changelog-cli":"^2.0.12","eslint":"^7.3.1","eslint-config-oclif":"^3.1.0","eslint-config-oclif-typescript":"^0.2.0","fancy-test":"^1.4.3","globby":"^11.0.1","mocha":"^6.0.2","sinon":"^9.0.1","ts-node":"^8.8.2","typescript":"3.8.3"},"peerDependencies":{"@oclif/config":"^1"},"engines":{"node":">=8.0.0"},"files":["/flush.js","/flush.d.ts","/lib"],"homepage":"https://github.com/oclif/command","keywords":["oclif"],"license":"MIT","main":"lib/index.js","oclif":{"devPlugins":["@oclif/plugin-help","@oclif/plugin-plugins"]},"repository":"oclif/command","scripts":{"build":"rm -rf lib && tsc","lint":"eslint . --ext .ts --config .eslintrc","posttest":"yarn lint","prepublishOnly":"yarn run build","test":"mocha --forbid-only \\"test/**/*.test.ts\\"","version":"conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md","pretest":"yarn build --noEmit && tsc -p test --noEmit"},"types":"lib/index.d.ts"}');
+module.exports = JSON.parse('{"_args":[["@oclif/command@1.8.0","/home/paul/devel/bump-sh/github-action"]],"_from":"@oclif/command@1.8.0","_id":"@oclif/command@1.8.0","_inBundle":false,"_integrity":"sha512-5vwpq6kbvwkQwKqAoOU3L72GZ3Ta8RRrewKj9OJRolx28KLJJ8Dg9Rf7obRwt5jQA9bkYd8gqzMTrI7H3xLfaw==","_location":"/@oclif/command","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"@oclif/command@1.8.0","name":"@oclif/command","escapedName":"@oclif%2fcommand","scope":"@oclif","rawSpec":"1.8.0","saveSpec":null,"fetchSpec":"1.8.0"},"_requiredBy":["/@oclif/plugin-help","/bump-cli","/cli-ux"],"_resolved":"https://registry.npmjs.org/@oclif/command/-/command-1.8.0.tgz","_spec":"1.8.0","_where":"/home/paul/devel/bump-sh/github-action","author":{"name":"Jeff Dickey @jdxcode"},"bugs":{"url":"https://github.com/oclif/command/issues"},"dependencies":{"@oclif/config":"^1.15.1","@oclif/errors":"^1.3.3","@oclif/parser":"^3.8.3","@oclif/plugin-help":"^3","debug":"^4.1.1","semver":"^7.3.2"},"description":"oclif base command","devDependencies":{"@oclif/plugin-plugins":"^1.7.7","@types/chai":"^4.1.7","@types/mocha":"^8.0.0","@types/node":"^14.0.14","@types/semver":"^7.3.1","chai":"^4.2.0","cli-ux":"^5.1.0","conventional-changelog-cli":"^2.0.12","eslint":"^7.3.1","eslint-config-oclif":"^3.1.0","eslint-config-oclif-typescript":"^0.2.0","fancy-test":"^1.4.3","globby":"^11.0.1","mocha":"^6.0.2","sinon":"^9.0.1","ts-node":"^8.8.2","typescript":"3.8.3"},"engines":{"node":">=8.0.0"},"files":["/flush.js","/flush.d.ts","/lib"],"homepage":"https://github.com/oclif/command","keywords":["oclif"],"license":"MIT","main":"lib/index.js","name":"@oclif/command","oclif":{"devPlugins":["@oclif/plugin-help","@oclif/plugin-plugins"]},"peerDependencies":{"@oclif/config":"^1"},"repository":{"type":"git","url":"git+https://github.com/oclif/command.git"},"scripts":{"build":"rm -rf lib && tsc","lint":"eslint . --ext .ts --config .eslintrc","posttest":"yarn lint","prepublishOnly":"yarn run build","pretest":"yarn build --noEmit && tsc -p test --noEmit","test":"mocha --forbid-only \\"test/**/*.test.ts\\"","version":"conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md"},"types":"lib/index.d.ts","version":"1.8.0"}');
 
 /***/ }),
 
@@ -61,7 +61,7 @@ module.exports = JSON.parse('{"name":"@oclif/command","description":"oclif base 
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"name":"@oclif/config","description":"base config object and standard interfaces for oclif components","version":"1.17.0","author":"Jeff Dickey @jdxcode","bugs":"https://github.com/oclif/config/issues","dependencies":{"@oclif/errors":"^1.3.3","@oclif/parser":"^3.8.0","debug":"^4.1.1","globby":"^11.0.1","is-wsl":"^2.1.1","tslib":"^2.0.0"},"devDependencies":{"@types/chai":"^4.1.7","@types/indent-string":"^4.0.1","@types/lodash":"^4.14.123","@types/mocha":"^8.0.0","@types/node":"^14.0.14","@types/proxyquire":"^1.3.28","@types/wrap-ansi":"^3.0.0","chai":"^4.2.0","conventional-changelog-cli":"^2.0.21","eslint":"^7.3.1","eslint-config-oclif":"^3.1.0","eslint-config-oclif-typescript":"^0.2.0","fancy-test":"^1.4.3","lodash":"^4.17.11","mocha":"^6.1.4","proxyquire":"^2.1.0","ts-node":"^8.1.0","typescript":"3.8.3"},"engines":{"node":">=8.0.0"},"files":["/lib"],"homepage":"https://github.com/oclif/config","keywords":["oclif"],"license":"MIT","main":"lib/index.js","repository":"oclif/config","scripts":{"build":"rm -rf lib && tsc","lint":"eslint . --ext .ts --config .eslintrc","posttest":"yarn lint","prepack":"yarn run build","test":"mocha --forbid-only \\"test/**/*.test.ts\\"","version":"conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md","pretest":"yarn build --noEmit && tsc -p test --noEmit"},"types":"lib/index.d.ts"}');
+module.exports = JSON.parse('{"_args":[["@oclif/config@1.17.0","/home/paul/devel/bump-sh/github-action"]],"_from":"@oclif/config@1.17.0","_id":"@oclif/config@1.17.0","_inBundle":false,"_integrity":"sha512-Lmfuf6ubjQ4ifC/9bz1fSCHc6F6E653oyaRXxg+lgT4+bYf9bk+nqrUpAbrXyABkCqgIBiFr3J4zR/kiFdE1PA==","_location":"/@oclif/config","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"@oclif/config@1.17.0","name":"@oclif/config","escapedName":"@oclif%2fconfig","scope":"@oclif","rawSpec":"1.17.0","saveSpec":null,"fetchSpec":"1.17.0"},"_requiredBy":["/@oclif/command","/@oclif/plugin-help","/bump-cli"],"_resolved":"https://registry.npmjs.org/@oclif/config/-/config-1.17.0.tgz","_spec":"1.17.0","_where":"/home/paul/devel/bump-sh/github-action","author":{"name":"Jeff Dickey @jdxcode"},"bugs":{"url":"https://github.com/oclif/config/issues"},"dependencies":{"@oclif/errors":"^1.3.3","@oclif/parser":"^3.8.0","debug":"^4.1.1","globby":"^11.0.1","is-wsl":"^2.1.1","tslib":"^2.0.0"},"description":"base config object and standard interfaces for oclif components","devDependencies":{"@types/chai":"^4.1.7","@types/indent-string":"^4.0.1","@types/lodash":"^4.14.123","@types/mocha":"^8.0.0","@types/node":"^14.0.14","@types/proxyquire":"^1.3.28","@types/wrap-ansi":"^3.0.0","chai":"^4.2.0","conventional-changelog-cli":"^2.0.21","eslint":"^7.3.1","eslint-config-oclif":"^3.1.0","eslint-config-oclif-typescript":"^0.2.0","fancy-test":"^1.4.3","lodash":"^4.17.11","mocha":"^6.1.4","proxyquire":"^2.1.0","ts-node":"^8.1.0","typescript":"3.8.3"},"engines":{"node":">=8.0.0"},"files":["/lib"],"homepage":"https://github.com/oclif/config","keywords":["oclif"],"license":"MIT","main":"lib/index.js","name":"@oclif/config","repository":{"type":"git","url":"git+https://github.com/oclif/config.git"},"scripts":{"build":"rm -rf lib && tsc","lint":"eslint . --ext .ts --config .eslintrc","posttest":"yarn lint","prepack":"yarn run build","pretest":"yarn build --noEmit && tsc -p test --noEmit","test":"mocha --forbid-only \\"test/**/*.test.ts\\"","version":"conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md"},"types":"lib/index.d.ts","version":"1.17.0"}');
 
 /***/ }),
 
@@ -110,9 +110,6 @@ const tslib_1 = __nccwpck_require__(4351);
 const core = tslib_1.__importStar(__nccwpck_require__(42186));
 const github_1 = __nccwpck_require__(85928);
 const common_1 = __nccwpck_require__(86979);
-const commentTitle = '🤖 API change detected:';
-const codeBlock = '```';
-const poweredByBump = '> _Powered by [Bump](https://bump.sh)_';
 async function run(version) {
     if (!isVersionWithDiff(version)) {
         core.info('No diff found, nothing more to do.');
@@ -128,10 +125,17 @@ function isVersionWithDiff(version) {
     return version.diff_summary !== undefined;
 }
 function buildCommentBody(version, digest) {
-    return [commentTitle]
+    const codeBlock = '```';
+    const poweredByBump = '> _Powered by [Bump](https://bump.sh)_';
+    return [title(version)]
         .concat([codeBlock, version.diff_summary, codeBlock])
         .concat([viewDiffLink(version), poweredByBump, common_1.bumpDiffComment(version.id, digest)])
         .join('\n');
+}
+function title(version) {
+    const commentTitle = '🤖 API change detected:';
+    const breakingTitle = '🚨 Breaking API change detected:';
+    return version.diff_breaking ? breakingTitle : commentTitle;
 }
 function viewDiffLink(version) {
     return `
@@ -351,7 +355,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.getState = exports.saveState = exports.group = exports.endGroup = exports.startGroup = exports.info = exports.warning = exports.error = exports.debug = exports.isDebug = exports.setFailed = exports.setCommandEcho = exports.setOutput = exports.getBooleanInput = exports.getMultilineInput = exports.getInput = exports.addPath = exports.setSecret = exports.exportVariable = exports.ExitCode = void 0;
+exports.getState = exports.saveState = exports.group = exports.endGroup = exports.startGroup = exports.info = exports.notice = exports.warning = exports.error = exports.debug = exports.isDebug = exports.setFailed = exports.setCommandEcho = exports.setOutput = exports.getBooleanInput = exports.getMultilineInput = exports.getInput = exports.addPath = exports.setSecret = exports.exportVariable = exports.ExitCode = void 0;
 const command_1 = __nccwpck_require__(87351);
 const file_command_1 = __nccwpck_require__(717);
 const utils_1 = __nccwpck_require__(5278);
@@ -529,19 +533,30 @@ exports.debug = debug;
 /**
  * Adds an error issue
  * @param message error issue message. Errors will be converted to string via toString()
+ * @param properties optional properties to add to the annotation.
  */
-function error(message) {
-    command_1.issue('error', message instanceof Error ? message.toString() : message);
+function error(message, properties = {}) {
+    command_1.issueCommand('error', utils_1.toCommandProperties(properties), message instanceof Error ? message.toString() : message);
 }
 exports.error = error;
 /**
- * Adds an warning issue
+ * Adds a warning issue
  * @param message warning issue message. Errors will be converted to string via toString()
+ * @param properties optional properties to add to the annotation.
  */
-function warning(message) {
-    command_1.issue('warning', message instanceof Error ? message.toString() : message);
+function warning(message, properties = {}) {
+    command_1.issueCommand('warning', utils_1.toCommandProperties(properties), message instanceof Error ? message.toString() : message);
 }
 exports.warning = warning;
+/**
+ * Adds a notice issue
+ * @param message notice issue message. Errors will be converted to string via toString()
+ * @param properties optional properties to add to the annotation.
+ */
+function notice(message, properties = {}) {
+    command_1.issueCommand('notice', utils_1.toCommandProperties(properties), message instanceof Error ? message.toString() : message);
+}
+exports.notice = notice;
 /**
  * Writes info to log with console.log.
  * @param message info message
@@ -675,7 +690,7 @@ exports.issueCommand = issueCommand;
 // We use any as a valid input type
 /* eslint-disable @typescript-eslint/no-explicit-any */
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.toCommandValue = void 0;
+exports.toCommandProperties = exports.toCommandValue = void 0;
 /**
  * Sanitizes an input into a string so it can be passed into issueCommand safely
  * @param input input to sanitize into a string
@@ -690,6 +705,25 @@ function toCommandValue(input) {
     return JSON.stringify(input);
 }
 exports.toCommandValue = toCommandValue;
+/**
+ *
+ * @param annotationProperties
+ * @returns The command properties to send with the actual annotation command
+ * See IssueCommandProperties: https://github.com/actions/runner/blob/main/src/Runner.Worker/ActionCommandManager.cs#L646
+ */
+function toCommandProperties(annotationProperties) {
+    if (!Object.keys(annotationProperties).length) {
+        return {};
+    }
+    return {
+        title: annotationProperties.title,
+        line: annotationProperties.startLine,
+        endLine: annotationProperties.endLine,
+        col: annotationProperties.startColumn,
+        endColumn: annotationProperties.endColumn
+    };
+}
+exports.toCommandProperties = toCommandProperties;
 //# sourceMappingURL=utils.js.map
 
 /***/ }),
@@ -14249,6 +14283,630 @@ colors.close   =  close;
 
 /***/ }),
 
+/***/ 64855:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+var tslib_1 = __nccwpck_require__(51880);
+var Semaphore_1 = __nccwpck_require__(96006);
+var Mutex = /** @class */ (function () {
+    function Mutex(cancelError) {
+        this._semaphore = new Semaphore_1.default(1, cancelError);
+    }
+    Mutex.prototype.acquire = function () {
+        return (0, tslib_1.__awaiter)(this, void 0, void 0, function () {
+            var _a, releaser;
+            return (0, tslib_1.__generator)(this, function (_b) {
+                switch (_b.label) {
+                    case 0: return [4 /*yield*/, this._semaphore.acquire()];
+                    case 1:
+                        _a = _b.sent(), releaser = _a[1];
+                        return [2 /*return*/, releaser];
+                }
+            });
+        });
+    };
+    Mutex.prototype.runExclusive = function (callback) {
+        return this._semaphore.runExclusive(function () { return callback(); });
+    };
+    Mutex.prototype.isLocked = function () {
+        return this._semaphore.isLocked();
+    };
+    Mutex.prototype.waitForUnlock = function () {
+        return this._semaphore.waitForUnlock();
+    };
+    /** @deprecated Deprecated in 0.3.0, will be removed in 0.4.0. Use runExclusive instead. */
+    Mutex.prototype.release = function () {
+        this._semaphore.release();
+    };
+    Mutex.prototype.cancel = function () {
+        return this._semaphore.cancel();
+    };
+    return Mutex;
+}());
+exports.default = Mutex;
+
+
+/***/ }),
+
+/***/ 96006:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+var tslib_1 = __nccwpck_require__(51880);
+var errors_1 = __nccwpck_require__(26984);
+var Semaphore = /** @class */ (function () {
+    function Semaphore(_maxConcurrency, _cancelError) {
+        if (_cancelError === void 0) { _cancelError = errors_1.E_CANCELED; }
+        this._maxConcurrency = _maxConcurrency;
+        this._cancelError = _cancelError;
+        this._queue = [];
+        this._waiters = [];
+        if (_maxConcurrency <= 0) {
+            throw new Error('semaphore must be initialized to a positive value');
+        }
+        this._value = _maxConcurrency;
+    }
+    Semaphore.prototype.acquire = function () {
+        var _this = this;
+        var locked = this.isLocked();
+        var ticketPromise = new Promise(function (resolve, reject) {
+            return _this._queue.push({ resolve: resolve, reject: reject });
+        });
+        if (!locked)
+            this._dispatch();
+        return ticketPromise;
+    };
+    Semaphore.prototype.runExclusive = function (callback) {
+        return (0, tslib_1.__awaiter)(this, void 0, void 0, function () {
+            var _a, value, release;
+            return (0, tslib_1.__generator)(this, function (_b) {
+                switch (_b.label) {
+                    case 0: return [4 /*yield*/, this.acquire()];
+                    case 1:
+                        _a = _b.sent(), value = _a[0], release = _a[1];
+                        _b.label = 2;
+                    case 2:
+                        _b.trys.push([2, , 4, 5]);
+                        return [4 /*yield*/, callback(value)];
+                    case 3: return [2 /*return*/, _b.sent()];
+                    case 4:
+                        release();
+                        return [7 /*endfinally*/];
+                    case 5: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    Semaphore.prototype.waitForUnlock = function () {
+        return (0, tslib_1.__awaiter)(this, void 0, void 0, function () {
+            var waitPromise;
+            var _this = this;
+            return (0, tslib_1.__generator)(this, function (_a) {
+                if (!this.isLocked()) {
+                    return [2 /*return*/, Promise.resolve()];
+                }
+                waitPromise = new Promise(function (resolve) { return _this._waiters.push({ resolve: resolve }); });
+                return [2 /*return*/, waitPromise];
+            });
+        });
+    };
+    Semaphore.prototype.isLocked = function () {
+        return this._value <= 0;
+    };
+    /** @deprecated Deprecated in 0.3.0, will be removed in 0.4.0. Use runExclusive instead. */
+    Semaphore.prototype.release = function () {
+        if (this._maxConcurrency > 1) {
+            throw new Error('this method is unavailable on semaphores with concurrency > 1; use the scoped release returned by acquire instead');
+        }
+        if (this._currentReleaser) {
+            var releaser = this._currentReleaser;
+            this._currentReleaser = undefined;
+            releaser();
+        }
+    };
+    Semaphore.prototype.cancel = function () {
+        var _this = this;
+        this._queue.forEach(function (ticket) { return ticket.reject(_this._cancelError); });
+        this._queue = [];
+    };
+    Semaphore.prototype._dispatch = function () {
+        var _this = this;
+        var nextTicket = this._queue.shift();
+        if (!nextTicket)
+            return;
+        var released = false;
+        this._currentReleaser = function () {
+            if (released)
+                return;
+            released = true;
+            _this._value++;
+            _this._resolveWaiters();
+            _this._dispatch();
+        };
+        nextTicket.resolve([this._value--, this._currentReleaser]);
+    };
+    Semaphore.prototype._resolveWaiters = function () {
+        this._waiters.forEach(function (waiter) { return waiter.resolve(); });
+        this._waiters = [];
+    };
+    return Semaphore;
+}());
+exports.default = Semaphore;
+
+
+/***/ }),
+
+/***/ 26984:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.E_CANCELED = exports.E_ALREADY_LOCKED = exports.E_TIMEOUT = void 0;
+exports.E_TIMEOUT = new Error('timeout while waiting for mutex to become available');
+exports.E_ALREADY_LOCKED = new Error('mutex already locked');
+exports.E_CANCELED = new Error('request for lock canceled');
+
+
+/***/ }),
+
+/***/ 64038:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.tryAcquire = exports.withTimeout = exports.Semaphore = exports.Mutex = void 0;
+var tslib_1 = __nccwpck_require__(51880);
+var Mutex_1 = __nccwpck_require__(64855);
+Object.defineProperty(exports, "Mutex", ({ enumerable: true, get: function () { return Mutex_1.default; } }));
+var Semaphore_1 = __nccwpck_require__(96006);
+Object.defineProperty(exports, "Semaphore", ({ enumerable: true, get: function () { return Semaphore_1.default; } }));
+var withTimeout_1 = __nccwpck_require__(55124);
+Object.defineProperty(exports, "withTimeout", ({ enumerable: true, get: function () { return withTimeout_1.withTimeout; } }));
+var tryAcquire_1 = __nccwpck_require__(22621);
+Object.defineProperty(exports, "tryAcquire", ({ enumerable: true, get: function () { return tryAcquire_1.tryAcquire; } }));
+(0, tslib_1.__exportStar)(__nccwpck_require__(26984), exports);
+
+
+/***/ }),
+
+/***/ 22621:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.tryAcquire = void 0;
+var errors_1 = __nccwpck_require__(26984);
+var withTimeout_1 = __nccwpck_require__(55124);
+// eslint-disable-next-lisne @typescript-eslint/explicit-module-boundary-types
+function tryAcquire(sync, alreadyAcquiredError) {
+    if (alreadyAcquiredError === void 0) { alreadyAcquiredError = errors_1.E_ALREADY_LOCKED; }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return (0, withTimeout_1.withTimeout)(sync, 0, alreadyAcquiredError);
+}
+exports.tryAcquire = tryAcquire;
+
+
+/***/ }),
+
+/***/ 55124:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.withTimeout = void 0;
+var tslib_1 = __nccwpck_require__(51880);
+var errors_1 = __nccwpck_require__(26984);
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+function withTimeout(sync, timeout, timeoutError) {
+    var _this = this;
+    if (timeoutError === void 0) { timeoutError = errors_1.E_TIMEOUT; }
+    return {
+        acquire: function () {
+            return new Promise(function (resolve, reject) { return (0, tslib_1.__awaiter)(_this, void 0, void 0, function () {
+                var isTimeout, handle, ticket, release, e_1;
+                return (0, tslib_1.__generator)(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            isTimeout = false;
+                            handle = setTimeout(function () {
+                                isTimeout = true;
+                                reject(timeoutError);
+                            }, timeout);
+                            _a.label = 1;
+                        case 1:
+                            _a.trys.push([1, 3, , 4]);
+                            return [4 /*yield*/, sync.acquire()];
+                        case 2:
+                            ticket = _a.sent();
+                            if (isTimeout) {
+                                release = Array.isArray(ticket) ? ticket[1] : ticket;
+                                release();
+                            }
+                            else {
+                                clearTimeout(handle);
+                                resolve(ticket);
+                            }
+                            return [3 /*break*/, 4];
+                        case 3:
+                            e_1 = _a.sent();
+                            if (!isTimeout) {
+                                clearTimeout(handle);
+                                reject(e_1);
+                            }
+                            return [3 /*break*/, 4];
+                        case 4: return [2 /*return*/];
+                    }
+                });
+            }); });
+        },
+        runExclusive: function (callback) {
+            return (0, tslib_1.__awaiter)(this, void 0, void 0, function () {
+                var release, ticket;
+                return (0, tslib_1.__generator)(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            release = function () { return undefined; };
+                            _a.label = 1;
+                        case 1:
+                            _a.trys.push([1, , 7, 8]);
+                            return [4 /*yield*/, this.acquire()];
+                        case 2:
+                            ticket = _a.sent();
+                            if (!Array.isArray(ticket)) return [3 /*break*/, 4];
+                            release = ticket[1];
+                            return [4 /*yield*/, callback(ticket[0])];
+                        case 3: return [2 /*return*/, _a.sent()];
+                        case 4:
+                            release = ticket;
+                            return [4 /*yield*/, callback()];
+                        case 5: return [2 /*return*/, _a.sent()];
+                        case 6: return [3 /*break*/, 8];
+                        case 7:
+                            release();
+                            return [7 /*endfinally*/];
+                        case 8: return [2 /*return*/];
+                    }
+                });
+            });
+        },
+        /** @deprecated Deprecated in 0.3.0, will be removed in 0.4.0. Use runExclusive instead. */
+        release: function () {
+            sync.release();
+        },
+        cancel: function () {
+            return sync.cancel();
+        },
+        waitForUnlock: function () { return sync.waitForUnlock(); },
+        isLocked: function () { return sync.isLocked(); },
+    };
+}
+exports.withTimeout = withTimeout;
+
+
+/***/ }),
+
+/***/ 51880:
+/***/ ((module) => {
+
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+/* global global, define, System, Reflect, Promise */
+var __extends;
+var __assign;
+var __rest;
+var __decorate;
+var __param;
+var __metadata;
+var __awaiter;
+var __generator;
+var __exportStar;
+var __values;
+var __read;
+var __spread;
+var __spreadArrays;
+var __spreadArray;
+var __await;
+var __asyncGenerator;
+var __asyncDelegator;
+var __asyncValues;
+var __makeTemplateObject;
+var __importStar;
+var __importDefault;
+var __classPrivateFieldGet;
+var __classPrivateFieldSet;
+var __createBinding;
+(function (factory) {
+    var root = typeof global === "object" ? global : typeof self === "object" ? self : typeof this === "object" ? this : {};
+    if (typeof define === "function" && define.amd) {
+        define("tslib", ["exports"], function (exports) { factory(createExporter(root, createExporter(exports))); });
+    }
+    else if ( true && typeof module.exports === "object") {
+        factory(createExporter(root, createExporter(module.exports)));
+    }
+    else {
+        factory(createExporter(root));
+    }
+    function createExporter(exports, previous) {
+        if (exports !== root) {
+            if (typeof Object.create === "function") {
+                Object.defineProperty(exports, "__esModule", { value: true });
+            }
+            else {
+                exports.__esModule = true;
+            }
+        }
+        return function (id, v) { return exports[id] = previous ? previous(id, v) : v; };
+    }
+})
+(function (exporter) {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+
+    __extends = function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+
+    __assign = Object.assign || function (t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+
+    __rest = function (s, e) {
+        var t = {};
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+            t[p] = s[p];
+        if (s != null && typeof Object.getOwnPropertySymbols === "function")
+            for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+                if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                    t[p[i]] = s[p[i]];
+            }
+        return t;
+    };
+
+    __decorate = function (decorators, target, key, desc) {
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+    };
+
+    __param = function (paramIndex, decorator) {
+        return function (target, key) { decorator(target, key, paramIndex); }
+    };
+
+    __metadata = function (metadataKey, metadataValue) {
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
+    };
+
+    __awaiter = function (thisArg, _arguments, P, generator) {
+        function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+        return new (P || (P = Promise))(function (resolve, reject) {
+            function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+            function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+            function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+            step((generator = generator.apply(thisArg, _arguments || [])).next());
+        });
+    };
+
+    __generator = function (thisArg, body) {
+        var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+        return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+        function verb(n) { return function (v) { return step([n, v]); }; }
+        function step(op) {
+            if (f) throw new TypeError("Generator is already executing.");
+            while (_) try {
+                if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+                if (y = 0, t) op = [op[0] & 2, t.value];
+                switch (op[0]) {
+                    case 0: case 1: t = op; break;
+                    case 4: _.label++; return { value: op[1], done: false };
+                    case 5: _.label++; y = op[1]; op = [0]; continue;
+                    case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                    default:
+                        if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                        if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                        if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                        if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                        if (t[2]) _.ops.pop();
+                        _.trys.pop(); continue;
+                }
+                op = body.call(thisArg, _);
+            } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+            if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+        }
+    };
+
+    __exportStar = function(m, o) {
+        for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(o, p)) __createBinding(o, m, p);
+    };
+
+    __createBinding = Object.create ? (function(o, m, k, k2) {
+        if (k2 === undefined) k2 = k;
+        Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+    }) : (function(o, m, k, k2) {
+        if (k2 === undefined) k2 = k;
+        o[k2] = m[k];
+    });
+
+    __values = function (o) {
+        var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+        if (m) return m.call(o);
+        if (o && typeof o.length === "number") return {
+            next: function () {
+                if (o && i >= o.length) o = void 0;
+                return { value: o && o[i++], done: !o };
+            }
+        };
+        throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+    };
+
+    __read = function (o, n) {
+        var m = typeof Symbol === "function" && o[Symbol.iterator];
+        if (!m) return o;
+        var i = m.call(o), r, ar = [], e;
+        try {
+            while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
+        }
+        catch (error) { e = { error: error }; }
+        finally {
+            try {
+                if (r && !r.done && (m = i["return"])) m.call(i);
+            }
+            finally { if (e) throw e.error; }
+        }
+        return ar;
+    };
+
+    /** @deprecated */
+    __spread = function () {
+        for (var ar = [], i = 0; i < arguments.length; i++)
+            ar = ar.concat(__read(arguments[i]));
+        return ar;
+    };
+
+    /** @deprecated */
+    __spreadArrays = function () {
+        for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+        for (var r = Array(s), k = 0, i = 0; i < il; i++)
+            for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+                r[k] = a[j];
+        return r;
+    };
+
+    __spreadArray = function (to, from, pack) {
+        if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+            if (ar || !(i in from)) {
+                if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+                ar[i] = from[i];
+            }
+        }
+        return to.concat(ar || Array.prototype.slice.call(from));
+    };
+
+    __await = function (v) {
+        return this instanceof __await ? (this.v = v, this) : new __await(v);
+    };
+
+    __asyncGenerator = function (thisArg, _arguments, generator) {
+        if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+        var g = generator.apply(thisArg, _arguments || []), i, q = [];
+        return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
+        function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
+        function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
+        function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r);  }
+        function fulfill(value) { resume("next", value); }
+        function reject(value) { resume("throw", value); }
+        function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
+    };
+
+    __asyncDelegator = function (o) {
+        var i, p;
+        return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
+        function verb(n, f) { i[n] = o[n] ? function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; } : f; }
+    };
+
+    __asyncValues = function (o) {
+        if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+        var m = o[Symbol.asyncIterator], i;
+        return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
+        function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
+        function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
+    };
+
+    __makeTemplateObject = function (cooked, raw) {
+        if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
+        return cooked;
+    };
+
+    var __setModuleDefault = Object.create ? (function(o, v) {
+        Object.defineProperty(o, "default", { enumerable: true, value: v });
+    }) : function(o, v) {
+        o["default"] = v;
+    };
+
+    __importStar = function (mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+        __setModuleDefault(result, mod);
+        return result;
+    };
+
+    __importDefault = function (mod) {
+        return (mod && mod.__esModule) ? mod : { "default": mod };
+    };
+
+    __classPrivateFieldGet = function (receiver, state, kind, f) {
+        if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+        if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+        return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+    };
+
+    __classPrivateFieldSet = function (receiver, state, value, kind, f) {
+        if (kind === "m") throw new TypeError("Private method is not writable");
+        if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
+        if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
+        return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
+    };
+
+    exporter("__extends", __extends);
+    exporter("__assign", __assign);
+    exporter("__rest", __rest);
+    exporter("__decorate", __decorate);
+    exporter("__param", __param);
+    exporter("__metadata", __metadata);
+    exporter("__awaiter", __awaiter);
+    exporter("__generator", __generator);
+    exporter("__exportStar", __exportStar);
+    exporter("__createBinding", __createBinding);
+    exporter("__values", __values);
+    exporter("__read", __read);
+    exporter("__spread", __spread);
+    exporter("__spreadArrays", __spreadArrays);
+    exporter("__spreadArray", __spreadArray);
+    exporter("__await", __await);
+    exporter("__asyncGenerator", __asyncGenerator);
+    exporter("__asyncDelegator", __asyncDelegator);
+    exporter("__asyncValues", __asyncValues);
+    exporter("__makeTemplateObject", __makeTemplateObject);
+    exporter("__importStar", __importStar);
+    exporter("__importDefault", __importDefault);
+    exporter("__classPrivateFieldGet", __classPrivateFieldGet);
+    exporter("__classPrivateFieldSet", __classPrivateFieldSet);
+});
+
+
+/***/ }),
+
 /***/ 96545:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
@@ -16619,6 +17277,9 @@ class BumpApi {
         this.postPreview = (body) => {
             return this.client.post('/previews', body);
         };
+        this.putPreview = (versionId, body) => {
+            return this.client.put(`/previews/${versionId}`, body);
+        };
         this.postVersion = (body, token) => {
             return this.client.post('/versions', body, {
                 headers: this.authorizationHeader(token),
@@ -17035,22 +17696,63 @@ const command_1 = tslib_1.__importDefault(__nccwpck_require__(268));
 const flags = tslib_1.__importStar(__nccwpck_require__(63594));
 const args_1 = __nccwpck_require__(12364);
 const cli_1 = __nccwpck_require__(70740);
+const fs_1 = __nccwpck_require__(35747);
+const async_mutex_1 = __nccwpck_require__(64038);
 class Preview extends command_1.default {
     async run() {
         const { args, flags } = this.parse(Preview);
-        const [definition, references] = await this.prepareDefinition(args.FILE);
-        cli_1.cli.action.start("* Let's render a preview on Bump");
+        if (flags.live) {
+            await this.waitForChanges(args.FILE, flags.open);
+        }
+        else {
+            await this.preview(args.FILE, flags.open);
+        }
+        return;
+    }
+    async preview(file, open = false, currentPreview = undefined) {
+        const [definition, references] = await this.prepareDefinition(file);
+        if (!currentPreview) {
+            cli_1.cli.action.start("* Let's render a preview on Bump");
+        }
         const request = {
             definition,
             references,
         };
-        const response = await this.bump.postPreview(request);
-        cli_1.cli.action.stop();
-        cli_1.cli.styledSuccess(`Your preview is visible at: ${response.data.public_url} (Expires at ${response.data.expires_at})`);
-        if (flags.open && response.data.public_url) {
+        const response = currentPreview
+            ? await this.bump.putPreview(currentPreview.id, request)
+            : await this.bump.postPreview(request);
+        if (!currentPreview) {
+            cli_1.cli.action.stop();
+            cli_1.cli.styledSuccess(`Your preview is visible at: ${response.data.public_url} (Expires at ${response.data.expires_at})`);
+        }
+        if (open && response.data.public_url) {
             await cli_1.cli.open(response.data.public_url);
         }
-        return;
+        return response.data;
+    }
+    async waitForChanges(file, open) {
+        const mutex = new async_mutex_1.Mutex();
+        let currentPreview = undefined;
+        cli_1.cli.action.start(`Waiting for changes on file ${file}...`);
+        fs_1.watch(file, async () => {
+            if (!mutex.isLocked()) {
+                const release = await mutex.acquire();
+                const firstOpen = !currentPreview && open;
+                this.preview(file, firstOpen, currentPreview)
+                    .then((preview) => {
+                    currentPreview = currentPreview || preview;
+                    cli_1.cli.action.start(`Waiting for changes on file ${file}`);
+                })
+                    .catch((err) => {
+                    this.warn(err);
+                })
+                    .finally(() => {
+                    setTimeout(() => {
+                        release();
+                    }, 1000); // Prevent previewing faster than once per second
+                });
+            }
+        });
     }
 }
 exports.default = Preview;
@@ -17062,6 +17764,9 @@ Preview.examples = [
 ];
 Preview.flags = {
     help: flags.help({ char: 'h' }),
+    live: flags.live({
+        description: 'Generate a preview each time you save the given file',
+    }),
     open: flags.open({ description: 'Open the generated preview URL in your browser' }),
 };
 Preview.args = [args_1.fileArg];
@@ -17205,12 +17910,13 @@ class API {
     static async loadAPI(path) {
         const JSONParser = options_1.defaults.parse.json;
         const YAMLParser = options_1.defaults.parse.yaml;
+        const TextParser = options_1.defaults.parse.text;
         // We override the default parsers from $RefParser to be able
         // to keep the raw content of the files parsed
         const withRawTextParser = (parser) => {
             return Object.assign(Object.assign({}, parser), { parse: async (file) => {
                     const parsed = (await parser.parse(file));
-                    return { parsed, raw: options_1.defaults.parse.text.parse(file) };
+                    return { parsed, raw: TextParser.parse(file) };
                 } });
         };
         return json_schema_ref_parser_1.default
@@ -17218,6 +17924,10 @@ class API {
             parse: {
                 json: withRawTextParser(JSONParser),
                 yaml: withRawTextParser(YAMLParser),
+                text: Object.assign(Object.assign({}, TextParser), { parse: async (file) => {
+                        const parsed = await TextParser.parse(file);
+                        return { parsed, raw: parsed };
+                    }, canParse: ['.md', '.markdown'], encoding: 'utf8' }),
             },
             dereference: { circular: false },
         })
@@ -17240,7 +17950,7 @@ exports.API = API;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.open = exports.dryRun = exports.autoCreate = exports.token = exports.hub = exports.docName = exports.doc = void 0;
+exports.live = exports.open = exports.dryRun = exports.autoCreate = exports.token = exports.hub = exports.docName = exports.doc = void 0;
 const tslib_1 = __nccwpck_require__(17584);
 const command_1 = __nccwpck_require__(82708);
 // Re-export oclif flags https://oclif.io/docs/flags
@@ -17298,6 +18008,10 @@ const open = (options = {}) => {
     return command_1.flags.boolean(Object.assign({ char: 'o', default: false }, options));
 };
 exports.open = open;
+const live = (options = {}) => {
+    return command_1.flags.boolean(Object.assign({ char: 'l', default: false }, options));
+};
+exports.live = live;
 
 
 /***/ }),
@@ -76481,7 +77195,7 @@ module.exports = eval("require")("fs-extra-debug");
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"name":"axios","version":"0.21.1","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test && bundlesize","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://github.com/axios/axios","devDependencies":{"bundlesize":"^0.17.0","coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.0.2","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^20.1.0","grunt-karma":"^2.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^1.0.18","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^1.3.0","karma-chrome-launcher":"^2.2.0","karma-coverage":"^1.1.1","karma-firefox-launcher":"^1.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-opera-launcher":"^1.0.0","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^1.2.0","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.7","karma-webpack":"^1.7.0","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^5.2.0","sinon":"^4.5.0","typescript":"^2.8.1","url-search-params":"^0.10.0","webpack":"^1.13.1","webpack-dev-server":"^1.14.1"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.10.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
+module.exports = JSON.parse('{"_args":[["axios@0.21.1","/home/paul/devel/bump-sh/github-action"]],"_from":"axios@0.21.1","_id":"axios@0.21.1","_inBundle":false,"_integrity":"sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.1","name":"axios","escapedName":"axios","rawSpec":"0.21.1","saveSpec":null,"fetchSpec":"0.21.1"},"_requiredBy":["/bump-cli"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.1.tgz","_spec":"0.21.1","_where":"/home/paul/devel/bump-sh/github-action","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.10.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"bundlesize":"^0.17.0","coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.0.2","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^20.1.0","grunt-karma":"^2.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^1.0.18","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^1.3.0","karma-chrome-launcher":"^2.2.0","karma-coverage":"^1.1.1","karma-firefox-launcher":"^1.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-opera-launcher":"^1.0.0","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^1.2.0","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.7","karma-webpack":"^1.7.0","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^5.2.0","sinon":"^4.5.0","typescript":"^2.8.1","url-search-params":"^0.10.0","webpack":"^1.13.1","webpack-dev-server":"^1.14.1"},"homepage":"https://github.com/axios/axios","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test && bundlesize","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.1"}');
 
 /***/ }),
 
@@ -76489,7 +77203,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.1","description":"P
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"name":"bump-cli","description":"The Bump CLI is used to interact with your API documentation hosted on Bump by using the API of developers.bump.sh","version":"2.1.0","author":"Paul Bonaud <paulr@bump.sh>","bin":{"bump":"./bin/run"},"bugs":"https://github.com/bump-sh/cli/issues","devDependencies":{"@oclif/dev-cli":"^1.26.0","@oclif/test":"^1.2.8","@types/debug":"^4.1.5","@types/mocha":"^8.2.2","@types/node":"^15.9.0","@typescript-eslint/eslint-plugin":"^4.21.0","@typescript-eslint/parser":"^4.21.0","chai":"^4.3.4","cross-spawn":"^7.0.3","eslint":"^7.24.0","eslint-config-prettier":"^8.1.0","eslint-plugin-prettier":"^3.3.1","globby":"^11.0.3","mocha":"^8.3.2","nock":"^13.0.11","np":"^7.5.0","nyc":"^15.1.0","prettier":"^2.2.1","sinon":"^11.1.1","stdout-stderr":"^0.1.13","ts-node":"^10.0.0","typescript":"^4.3.3"},"engines":{"node":">=10.0.0"},"files":["/bin","/lib","/npm-shrinkwrap.json","/oclif.manifest.json"],"homepage":"https://bump.sh","keywords":["api","documentation","openapi","asyncapi","bump","cli"],"license":"MIT","main":"lib/index.js","oclif":{"commands":"./lib/commands","bin":"bump","plugins":["@oclif/plugin-help"]},"repository":"bump-sh/cli","scripts":{"build":"tsc -b","clean":"rm -rf lib oclif.manifest.json","lint":"eslint . --ext .ts --config .eslintrc","fmt":"eslint . --ext .ts --config .eslintrc --fix","pack":"oclif-dev pack","postpack":"rm -f oclif.manifest.json","prepack":"rm -rf lib && npm run build && oclif-dev manifest && oclif-dev readme","pretest":"npm run clean && npm run build && npm run lint","publish":"np --no-release-draft","test":"mocha \\"test/**/*.test.ts\\"","test-coverage":"nyc npm run test","test-integration":"node ./test/integration.js","version":"oclif-dev readme && git add README.md"},"types":"lib/index.d.ts","dependencies":{"@apidevtools/json-schema-ref-parser":"^9.0.7","@asyncapi/specs":"^2.7.7","@oclif/command":"^1.8.0","@oclif/config":"^1.17.0","@oclif/plugin-help":"^3.2.2","axios":"^0.21.1","cli-ux":"^5.5.1","debug":"^4.3.1","oas-schemas":"git+https://git@github.com/OAI/OpenAPI-Specification.git#0f9d3ec7c033fef184ec54e1ffc201b2d61ce023","tslib":"^2.3.0"}}');
+module.exports = JSON.parse('{"name":"bump-cli","description":"The Bump CLI is used to interact with your API documentation hosted on Bump by using the API of developers.bump.sh","version":"2.2.1","author":"Paul Bonaud <paulr@bump.sh>","bin":{"bump":"./bin/run"},"bugs":"https://github.com/bump-sh/cli/issues","devDependencies":{"@oclif/dev-cli":"^1.26.0","@oclif/test":"^1.2.8","@types/debug":"^4.1.5","@types/mocha":"^9.0.0","@types/node":"^15.9.0","@typescript-eslint/eslint-plugin":"^4.21.0","@typescript-eslint/parser":"^4.21.0","chai":"^4.3.4","cross-spawn":"^7.0.3","eslint":"^7.24.0","eslint-config-prettier":"^8.1.0","eslint-plugin-prettier":"^4.0.0","globby":"^11.0.3","mocha":"^9.0.3","nock":"^13.0.11","np":"^7.5.0","nyc":"^15.1.0","prettier":"^2.2.1","sinon":"^11.1.1","stdout-stderr":"^0.1.13","ts-node":"^10.0.0","typescript":"^4.3.3"},"engines":{"node":">=12.0.0"},"files":["/bin","/lib","/npm-shrinkwrap.json","/oclif.manifest.json"],"homepage":"https://bump.sh","keywords":["api","documentation","openapi","asyncapi","bump","cli"],"license":"MIT","main":"lib/index.js","oclif":{"commands":"./lib/commands","bin":"bump","plugins":["@oclif/plugin-help"]},"repository":"bump-sh/cli","scripts":{"build":"tsc -b","clean":"rm -rf lib oclif.manifest.json","lint":"eslint . --ext .ts --config .eslintrc","fmt":"eslint . --ext .ts --config .eslintrc --fix","pack":"oclif-dev pack","postpack":"rm -f oclif.manifest.json","prepack":"rm -rf lib && npm run build && oclif-dev manifest && oclif-dev readme","pretest":"npm run clean && npm run build && npm run lint","publish":"np --no-release-draft","test":"mocha \\"test/**/*.test.ts\\"","test-coverage":"nyc npm run test","test-integration":"node ./test/integration.js","version":"oclif-dev readme && git add README.md"},"types":"lib/index.d.ts","dependencies":{"@apidevtools/json-schema-ref-parser":"^9.0.7","@asyncapi/specs":"^2.7.7","@oclif/command":"^1.8.0","@oclif/config":"^1.17.0","@oclif/plugin-help":"^3.2.2","async-mutex":"^0.3.2","axios":"^0.21.1","cli-ux":"^5.5.1","debug":"^4.3.1","oas-schemas":"git+https://git@github.com/OAI/OpenAPI-Specification.git#0f9d3ec7c033fef184ec54e1ffc201b2d61ce023","tslib":"^2.3.0"}}');
 
 /***/ }),
 
@@ -76529,7 +77243,7 @@ module.exports = JSON.parse('{"$id":"https://spec.openapis.org/oas/3.1/schema/20
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("assert");;
+module.exports = require("assert");
 
 /***/ }),
 
@@ -76537,7 +77251,7 @@ module.exports = require("assert");;
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("child_process");;
+module.exports = require("child_process");
 
 /***/ }),
 
@@ -76545,7 +77259,7 @@ module.exports = require("child_process");;
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("constants");;
+module.exports = require("constants");
 
 /***/ }),
 
@@ -76553,7 +77267,7 @@ module.exports = require("constants");;
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("crypto");;
+module.exports = require("crypto");
 
 /***/ }),
 
@@ -76561,7 +77275,7 @@ module.exports = require("crypto");;
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("events");;
+module.exports = require("events");
 
 /***/ }),
 
@@ -76569,7 +77283,7 @@ module.exports = require("events");;
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("fs");;
+module.exports = require("fs");
 
 /***/ }),
 
@@ -76577,7 +77291,7 @@ module.exports = require("fs");;
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("http");;
+module.exports = require("http");
 
 /***/ }),
 
@@ -76585,7 +77299,7 @@ module.exports = require("http");;
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("https");;
+module.exports = require("https");
 
 /***/ }),
 
@@ -76593,7 +77307,7 @@ module.exports = require("https");;
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("net");;
+module.exports = require("net");
 
 /***/ }),
 
@@ -76601,7 +77315,7 @@ module.exports = require("net");;
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("os");;
+module.exports = require("os");
 
 /***/ }),
 
@@ -76609,7 +77323,7 @@ module.exports = require("os");;
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("path");;
+module.exports = require("path");
 
 /***/ }),
 
@@ -76617,7 +77331,7 @@ module.exports = require("path");;
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("readline");;
+module.exports = require("readline");
 
 /***/ }),
 
@@ -76625,7 +77339,7 @@ module.exports = require("readline");;
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("stream");;
+module.exports = require("stream");
 
 /***/ }),
 
@@ -76633,7 +77347,7 @@ module.exports = require("stream");;
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("tls");;
+module.exports = require("tls");
 
 /***/ }),
 
@@ -76641,7 +77355,7 @@ module.exports = require("tls");;
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("tty");;
+module.exports = require("tty");
 
 /***/ }),
 
@@ -76649,7 +77363,7 @@ module.exports = require("tty");;
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("typescript");;
+module.exports = require("typescript");
 
 /***/ }),
 
@@ -76657,7 +77371,7 @@ module.exports = require("typescript");;
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("url");;
+module.exports = require("url");
 
 /***/ }),
 
@@ -76665,7 +77379,7 @@ module.exports = require("url");;
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("util");;
+module.exports = require("util");
 
 /***/ }),
 
@@ -76673,7 +77387,7 @@ module.exports = require("util");;
 /***/ ((module) => {
 
 "use strict";
-module.exports = require("zlib");;
+module.exports = require("zlib");
 
 /***/ })
 
@@ -76724,7 +77438,9 @@ module.exports = require("zlib");;
 /******/ 	
 /******/ 	/* webpack/runtime/compat */
 /******/ 	
-/******/ 	if (typeof __nccwpck_require__ !== 'undefined') __nccwpck_require__.ab = __dirname + "/";/************************************************************************/
+/******/ 	if (typeof __nccwpck_require__ !== 'undefined') __nccwpck_require__.ab = __dirname + "/";
+/******/ 	
+/************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
