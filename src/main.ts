@@ -2,6 +2,7 @@ import * as core from '@actions/core';
 import { RequestError as GitHubHttpError } from '@octokit/request-error';
 import * as bump from 'bump-cli';
 import * as diff from './diff';
+import { Repo } from './github';
 import { setUserAgent } from './common';
 
 async function run(): Promise<void> {
@@ -35,6 +36,12 @@ async function run(): Promise<void> {
         await bump.Deploy.run(cliParams.concat(docCliParams));
         break;
       case 'diff':
+        const baseFile = await new Repo().getBaseFile(file);
+
+        if (baseFile) {
+          cliParams.unshift(baseFile);
+        }
+
         await bump.Diff.run(cliParams.concat(docCliParams)).then(
           (version: bump.VersionResponse | undefined) => {
             if (version) {

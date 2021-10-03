@@ -1,5 +1,6 @@
 import { stdout } from 'stdout-stderr';
 import * as process from 'process';
+import { mocked } from 'ts-jest/utils';
 stdout.start();
 
 // Load main file (which will try a first executiong of the Action code)
@@ -9,6 +10,9 @@ import main from '../src/main';
 import * as diff from '../src/diff';
 jest.mock('../src/diff');
 const mockedInternalDiff = diff as jest.Mocked<typeof diff>;
+import { Repo } from '../src/github';
+jest.mock('../src/github');
+const mockedInternalRepo = mocked(Repo, true);
 
 // Mock the Bump CLI commands
 import * as bump from 'bump-cli';
@@ -20,6 +24,7 @@ const mockedPreview = bump.Preview as jest.Mocked<typeof bump.Preview>;
 beforeEach(() => {
   stdout.stop();
   stdout.start();
+  mockedInternalRepo.prototype.getBaseFile.mockReset();
 });
 afterEach(() => stdout.stop());
 
@@ -74,10 +79,15 @@ test('test action run diff correctly', async () => {
   mockedDiff.run.mockResolvedValue('cli-changes');
   expect(mockedDiff.run).not.toHaveBeenCalled();
   expect(mockedInternalDiff.run).not.toHaveBeenCalled();
+  expect(mockedInternalRepo).not.toHaveBeenCalled();
 
   process.env.INPUT_FILE = 'my-file-to-diff.yml';
   process.env.INPUT_COMMAND = 'diff';
   await main();
+
+  expect(mockedInternalRepo.prototype.getBaseFile).toHaveBeenCalledWith(
+    process.env.INPUT_FILE,
+  );
 
   expect(mockedDiff.run).toHaveBeenCalledWith([
     'my-file-to-diff.yml',
@@ -89,16 +99,18 @@ test('test action run diff correctly', async () => {
   expect(mockedInternalDiff.run).toHaveBeenCalledWith('cli-changes');
 });
 
-test('test action run diff correctly', async () => {
+test('test action run diff on PR correctly', async () => {
   mockedDiff.run.mockResolvedValue('cli-changes');
   expect(mockedDiff.run).not.toHaveBeenCalled();
   expect(mockedInternalDiff.run).not.toHaveBeenCalled();
+  mockedInternalRepo.prototype.getBaseFile.mockResolvedValue('my-base-file-to-diff.yml');
 
   process.env.INPUT_FILE = 'my-file-to-diff.yml';
   process.env.INPUT_COMMAND = 'diff';
   await main();
 
   expect(mockedDiff.run).toHaveBeenCalledWith([
+    'my-base-file-to-diff.yml',
     'my-file-to-diff.yml',
     '--doc',
     'my-doc',

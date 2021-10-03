@@ -1,5 +1,7 @@
 import * as core from '@actions/core';
+import * as exec from '@actions/exec';
 import * as github from '@actions/github';
+import * as io from '@actions/io';
 import { GetResponseDataTypeFromEndpointMethod } from '@octokit/types';
 import { GitHub } from '@actions/github/lib/utils';
 import { extractBumpComment } from './common';
@@ -17,22 +19,21 @@ export class Repo {
   readonly owner: string;
   readonly name: string;
   readonly prNumber?: number;
+  readonly baseSha?: string;
 
   constructor() {
     // Fetch GitHub Action context
     // from GITHUB_REPOSITORY & GITHUB_EVENT_PATH
-    const { owner, repo, number: prNumber } = github.context.issue;
-    // const { sha, ref } = github.context;
+    const { owner, repo } = github.context.repo;
+    const { pull_request } = github.context.payload;
 
     this.owner = owner;
     this.name = repo;
-    this.prNumber = prNumber;
-
+    if (pull_request) {
+      this.prNumber = pull_request.number;
+      this.baseSha = pull_request.base.sha;
+    }
     this.octokit = this.getOctokit();
-  }
-
-  isPr(): boolean {
-    return !!this.prNumber;
   }
 
   getOctokit(): Octokit {
@@ -47,14 +48,35 @@ export class Repo {
     return github.getOctokit(ghToken);
   }
 
-  async createOrUpdateComment(body: string, digest: string): Promise<void> {
-    const { owner, name: repo, prNumber: issue_number, octokit } = this;
+  async getBaseFile(file: string): Promise<string | undefined> {
+    const tmpDir = 'tmp/';
 
-    if (!issue_number) {
+    if (this.baseSha) {
+      // Fetch base branch (default actions/checkout only fetches HEAD)
+      await exec.exec('git', ['fetch', 'origin', this.baseSha]);
+
+      // Restore base branch definition file in a tmp directory
+      await io.mkdirP(tmpDir);
+      await exec.exec('git', [
+        '--work-tree',
+        tmpDir,
+        'restore',
+        '-s',
+        this.baseSha,
+        file,
+      ]);
+
+      return `${tmpDir}${file}`;
+    }
+  }
+
+  async createOrUpdateComment(body: string, digest: string): Promise<void> {
+    if (!this.prNumber) {
       core.info('Not a pull request, nothing more to do.');
       return;
     }
 
+    const { owner, name: repo, prNumber: issue_number, octokit } = this;
     const existingComment = await this.findExistingComment(issue_number);
 
     if (existingComment) {
