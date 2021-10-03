@@ -58,8 +58,8 @@ async function run(): Promise<void> {
   }
 }
 
-function handleErrors(error: Error): void {
-  let msg = error.message;
+function handleErrors(error: unknown): void {
+  let msg = 'Unknown error';
 
   if (error instanceof GitHubHttpError) {
     msg = [
@@ -68,6 +68,8 @@ function handleErrors(error: Error): void {
       'Please check your GitHub Action workflow file or Actions repository settings.',
       'Especially if running the action on a fork PR: https://github.blog/2020-08-03-github-actions-improvements-for-fork-and-pull-request-workflows/',
     ].join('\n');
+  } else if (error instanceof Error) {
+    msg = error.message;
   }
 
   core.setFailed(msg);
