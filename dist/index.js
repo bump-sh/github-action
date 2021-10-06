@@ -73,7 +73,7 @@ module.exports = JSON.parse('{"name":"@oclif/config","description":"base config 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.shaDigest = exports.setUserAgent = exports.extractBumpComment = exports.bumpDiffComment = void 0;
 const tslib_1 = __nccwpck_require__(4351);
-const crypto_1 = tslib_1.__importDefault(__nccwpck_require__(33373));
+const crypto_1 = (0, tslib_1.__importDefault)(__nccwpck_require__(33373));
 const bumpDiffRegexp = /<!-- Bump.sh version_id=(.*) digest=(.*) -->/;
 function bumpDiffComment(versionId, digest) {
     return `<!-- Bump.sh version_id=${versionId} digest=${digest} -->`;
@@ -107,7 +107,7 @@ exports.shaDigest = shaDigest;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.run = void 0;
 const tslib_1 = __nccwpck_require__(4351);
-const core = tslib_1.__importStar(__nccwpck_require__(42186));
+const core = (0, tslib_1.__importStar)(__nccwpck_require__(42186));
 const github_1 = __nccwpck_require__(85928);
 const common_1 = __nccwpck_require__(86979);
 async function run(version) {
@@ -116,7 +116,7 @@ async function run(version) {
         return;
     }
     const repo = new github_1.Repo();
-    const digest = common_1.shaDigest([version.diff_summary, version.diff_public_url]);
+    const digest = (0, common_1.shaDigest)([version.diff_summary, version.diff_public_url]);
     const body = buildCommentBody(version, digest);
     return repo.createOrUpdateComment(body, digest);
 }
@@ -129,7 +129,7 @@ function buildCommentBody(version, digest) {
     const poweredByBump = '> _Powered by [Bump](https://bump.sh)_';
     return [title(version)]
         .concat([codeBlock, version.diff_summary, codeBlock])
-        .concat([viewDiffLink(version), poweredByBump, common_1.bumpDiffComment(version.id, digest)])
+        .concat([viewDiffLink(version), poweredByBump, (0, common_1.bumpDiffComment)(version.id, digest)])
         .join('\n');
 }
 function title(version) {
@@ -154,10 +154,10 @@ function viewDiffLink(version) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.Repo = void 0;
 const tslib_1 = __nccwpck_require__(4351);
-const core = tslib_1.__importStar(__nccwpck_require__(42186));
-const exec = tslib_1.__importStar(__nccwpck_require__(71514));
-const github = tslib_1.__importStar(__nccwpck_require__(95438));
-const io = tslib_1.__importStar(__nccwpck_require__(47351));
+const core = (0, tslib_1.__importStar)(__nccwpck_require__(42186));
+const exec = (0, tslib_1.__importStar)(__nccwpck_require__(71514));
+const github = (0, tslib_1.__importStar)(__nccwpck_require__(95438));
+const io = (0, tslib_1.__importStar)(__nccwpck_require__(47351));
 const common_1 = __nccwpck_require__(86979);
 const anyOctokit = github.getOctokit('any');
 class Repo {
@@ -209,7 +209,7 @@ class Repo {
         if (existingComment) {
             // We force types because of findExistingComment call which ensures
             // body & digest exists if the comment exists but the TS compiler can't guess.
-            const [, , existingDigest] = common_1.extractBumpComment(existingComment.body);
+            const [, , existingDigest] = (0, common_1.extractBumpComment)(existingComment.body);
             if (digest !== existingDigest) {
                 await octokit.rest.issues.updateComment({
                     owner,
@@ -234,7 +234,7 @@ class Repo {
             repo: this.name,
             issue_number,
         });
-        return comments.data.find((comment) => common_1.extractBumpComment(comment.body || ''));
+        return comments.data.find((comment) => (0, common_1.extractBumpComment)(comment.body || ''));
     }
 }
 exports.Repo = Repo;
@@ -18887,16 +18887,13 @@ class Diff extends command_1.default {
             cli_1.cli.action.start("* Let's compare the given definition file with the currently deployed one");
         }
         const version = await this.createVersion(args.FILE, documentation, token, hub);
-        if (version) {
-            this.d(`Unpublished version created with ID ${version.id}`);
-            let version2 = undefined;
-            if (args.FILE2) {
-                version2 = await this.createVersion(args.FILE2, documentation, token, hub, version.id);
-                if (version2) {
-                    this.d(`Unpublished version created with ID ${version2.id}`);
-                }
-            }
-            await this.displayCompareResult((version2 || version).id, token, flags.open);
+        let diffVersion = undefined;
+        if (args.FILE2) {
+            diffVersion = await this.createVersion(args.FILE2, documentation, token, hub, version && version.id);
+        }
+        diffVersion = diffVersion || version;
+        if (diffVersion) {
+            await this.displayCompareResult(diffVersion.id, token, flags.open);
         }
         cli_1.cli.action.stop();
         return;
@@ -18914,6 +18911,7 @@ class Diff extends command_1.default {
         const response = await this.bump.postVersion(request, token);
         switch (response.status) {
             case 201:
+                this.d(`Unpublished version created with ID ${response.data.id}`);
                 return response.data;
                 break;
             case 204:
@@ -78524,7 +78522,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.1","description":"P
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"name":"bump-cli","description":"The Bump CLI is used to interact with your API documentation hosted on Bump by using the API of developers.bump.sh","version":"2.2.2","author":"Paul Bonaud <paulr@bump.sh>","bin":{"bump":"./bin/run"},"bugs":"https://github.com/bump-sh/cli/issues","devDependencies":{"@oclif/dev-cli":"^1.26.0","@oclif/test":"^1.2.8","@types/debug":"^4.1.5","@types/mocha":"^9.0.0","@types/node":"^15.9.0","@typescript-eslint/eslint-plugin":"^4.21.0","@typescript-eslint/parser":"^4.21.0","chai":"^4.3.4","cross-spawn":"^7.0.3","eslint":"^7.24.0","eslint-config-prettier":"^8.1.0","eslint-plugin-prettier":"^4.0.0","globby":"^11.0.3","mocha":"^9.0.3","nock":"^13.0.11","np":"^7.5.0","nyc":"^15.1.0","prettier":"^2.2.1","sinon":"^11.1.1","stdout-stderr":"^0.1.13","ts-node":"^10.0.0","typescript":"^4.3.3"},"engines":{"node":">=12.0.0"},"files":["/bin","/lib","/npm-shrinkwrap.json","/oclif.manifest.json"],"homepage":"https://bump.sh","keywords":["api","documentation","openapi","asyncapi","bump","cli"],"license":"MIT","main":"lib/index.js","oclif":{"commands":"./lib/commands","bin":"bump","plugins":["@oclif/plugin-help"]},"repository":"bump-sh/cli","scripts":{"build":"tsc -b","clean":"rm -rf lib oclif.manifest.json","lint":"eslint . --ext .ts --config .eslintrc","fmt":"eslint . --ext .ts --config .eslintrc --fix","pack":"oclif-dev pack","postpack":"rm -f oclif.manifest.json","prepack":"rm -rf lib && npm run build && oclif-dev manifest && oclif-dev readme","pretest":"npm run clean && npm run build && npm run lint","publish":"np --no-release-draft","test":"mocha \\"test/**/*.test.ts\\"","test-coverage":"nyc npm run test","test-integration":"node ./test/integration.js","version":"oclif-dev readme && git add README.md"},"types":"lib/index.d.ts","dependencies":{"@apidevtools/json-schema-ref-parser":"^9.0.7","@asyncapi/specs":"^2.7.7","@oclif/command":"^1.8.0","@oclif/config":"^1.17.0","@oclif/plugin-help":"^3.2.2","async-mutex":"^0.3.2","axios":"^0.21.1","cli-ux":"^5.5.1","debug":"^4.3.1","oas-schemas":"git+https://git@github.com/OAI/OpenAPI-Specification.git#0f9d3ec7c033fef184ec54e1ffc201b2d61ce023","tslib":"^2.3.0"}}');
+module.exports = JSON.parse('{"name":"bump-cli","description":"The Bump CLI is used to interact with your API documentation hosted on Bump by using the API of developers.bump.sh","version":"2.2.3","author":"Paul Bonaud <paulr@bump.sh>","bin":{"bump":"./bin/run"},"bugs":"https://github.com/bump-sh/cli/issues","devDependencies":{"@oclif/dev-cli":"^1.26.0","@oclif/test":"^1.2.8","@types/debug":"^4.1.5","@types/mocha":"^9.0.0","@types/node":"^15.9.0","@typescript-eslint/eslint-plugin":"^4.21.0","@typescript-eslint/parser":"^4.21.0","chai":"^4.3.4","cross-spawn":"^7.0.3","eslint":"^7.24.0","eslint-config-prettier":"^8.1.0","eslint-plugin-prettier":"^4.0.0","globby":"^11.0.3","mocha":"^9.0.3","nock":"^13.0.11","np":"^7.5.0","nyc":"^15.1.0","prettier":"^2.2.1","sinon":"^11.1.1","stdout-stderr":"^0.1.13","ts-node":"^10.0.0","typescript":"^4.3.3"},"engines":{"node":">=12.0.0"},"files":["/bin","/lib","/npm-shrinkwrap.json","/oclif.manifest.json"],"homepage":"https://bump.sh","keywords":["api","documentation","openapi","asyncapi","bump","cli"],"license":"MIT","main":"lib/index.js","oclif":{"commands":"./lib/commands","bin":"bump","plugins":["@oclif/plugin-help"]},"repository":"bump-sh/cli","scripts":{"build":"tsc -b","clean":"rm -rf lib oclif.manifest.json","lint":"eslint . --ext .ts --config .eslintrc","fmt":"eslint . --ext .ts --config .eslintrc --fix","pack":"oclif-dev pack","postpack":"rm -f oclif.manifest.json","prepack":"rm -rf lib && npm run build && oclif-dev manifest && oclif-dev readme","pretest":"npm run clean && npm run build && npm run lint","publish":"np --no-release-draft","test":"mocha \\"test/**/*.test.ts\\"","test-coverage":"nyc npm run test","test-integration":"node ./test/integration.js","version":"oclif-dev readme && git add README.md"},"types":"lib/index.d.ts","dependencies":{"@apidevtools/json-schema-ref-parser":"^9.0.7","@asyncapi/specs":"^2.7.7","@oclif/command":"^1.8.0","@oclif/config":"^1.17.0","@oclif/plugin-help":"^3.2.2","async-mutex":"^0.3.2","axios":"^0.21.1","cli-ux":"^5.5.1","debug":"^4.3.1","oas-schemas":"git+https://git@github.com/OAI/OpenAPI-Specification.git#0f9d3ec7c033fef184ec54e1ffc201b2d61ce023","tslib":"^2.3.0"}}');
 
 /***/ }),
 
@@ -78786,10 +78784,10 @@ var exports = __webpack_exports__;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const tslib_1 = __nccwpck_require__(4351);
-const core = tslib_1.__importStar(__nccwpck_require__(42186));
+const core = (0, tslib_1.__importStar)(__nccwpck_require__(42186));
 const request_error_1 = __nccwpck_require__(10537);
-const bump = tslib_1.__importStar(__nccwpck_require__(55130));
-const diff = tslib_1.__importStar(__nccwpck_require__(32484));
+const bump = (0, tslib_1.__importStar)(__nccwpck_require__(55130));
+const diff = (0, tslib_1.__importStar)(__nccwpck_require__(32484));
 const github_1 = __nccwpck_require__(85928);
 const common_1 = __nccwpck_require__(86979);
 async function run() {
@@ -78804,7 +78802,7 @@ async function run() {
         if (hub) {
             docCliParams = docCliParams.concat(['--hub', hub]);
         }
-        common_1.setUserAgent();
+        (0, common_1.setUserAgent)();
         // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
         core.debug(`Waiting for bump ${command} ...`);
         core.debug(new Date().toTimeString());
@@ -78838,7 +78836,7 @@ async function run() {
     }
 }
 function handleErrors(error) {
-    let msg = error.message;
+    let msg = 'Unknown error';
     if (error instanceof request_error_1.RequestError) {
         msg = [
             `[GitHub HttpError ${error.status}] ${error.message}`,
@@ -78846,6 +78844,9 @@ function handleErrors(error) {
             'Please check your GitHub Action workflow file or Actions repository settings.',
             'Especially if running the action on a fork PR: https://github.blog/2020-08-03-github-actions-improvements-for-fork-and-pull-request-workflows/',
         ].join('\n');
+    }
+    else if (error instanceof Error) {
+        msg = error.message;
     }
     core.setFailed(msg);
 }
