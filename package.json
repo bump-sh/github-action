@@ -40,7 +40,7 @@
     "@actions/exec": "^1.1.0",
     "@actions/github": "^5.0.0",
     "@actions/io": "^1.1.1",
-    "@octokit/types": "^6.27.0",
+    "@octokit/types": "^6.31.3",
     "bump-cli": "^2.2.3"
   },
   "devDependencies": {
