@@ -36,7 +36,7 @@
     "/src"
   ],
   "dependencies": {
-    "@actions/core": "^1.5.0",
+    "@actions/core": "^1.6.0",
     "@actions/exec": "^1.1.0",
     "@actions/github": "^5.0.0",
     "@actions/io": "^1.1.1",
@@ -46,9 +46,9 @@
   "devDependencies": {
     "@types/jest": "^27.0.1",
     "@types/node": "^15.14.9",
-    "@typescript-eslint/eslint-plugin": "^4.31.1",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.31.1",
-    "@vercel/ncc": "^0.30.0",
+    "@vercel/ncc": "^0.31.1",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-jest": "^24.4.0",
