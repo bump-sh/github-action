@@ -44,9 +44,9 @@
     "bump-cli": "^2.2.3"
   },
   "devDependencies": {
-    "@types/jest": "^27.0.1",
+    "@types/jest": "^27.0.2",
     "@types/node": "^15.14.9",
-    "@typescript-eslint/eslint-plugin": "^4.31.1",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.31.1",
     "@vercel/ncc": "^0.31.1",
     "eslint": "^7.32.0",
