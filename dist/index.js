@@ -375,12 +375,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.getState = exports.saveState = exports.group = exports.endGroup = exports.startGroup = exports.info = exports.notice = exports.warning = exports.error = exports.debug = exports.isDebug = exports.setFailed = exports.setCommandEcho = exports.setOutput = exports.getBooleanInput = exports.getMultilineInput = exports.getInput = exports.addPath = exports.setSecret = exports.exportVariable = exports.ExitCode = void 0;
+exports.getIDToken = exports.getState = exports.saveState = exports.group = exports.endGroup = exports.startGroup = exports.info = exports.notice = exports.warning = exports.error = exports.debug = exports.isDebug = exports.setFailed = exports.setCommandEcho = exports.setOutput = exports.getBooleanInput = exports.getMultilineInput = exports.getInput = exports.addPath = exports.setSecret = exports.exportVariable = exports.ExitCode = void 0;
 const command_1 = __nccwpck_require__(87351);
 const file_command_1 = __nccwpck_require__(717);
 const utils_1 = __nccwpck_require__(5278);
 const os = __importStar(__nccwpck_require__(12087));
 const path = __importStar(__nccwpck_require__(85622));
+const oidc_utils_1 = __nccwpck_require__(98041);
 /**
  * The code to exit an action
  */
@@ -649,6 +650,12 @@ function getState(name) {
     return process.env[`STATE_${name}`] || '';
 }
 exports.getState = getState;
+function getIDToken(aud) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return yield oidc_utils_1.OidcClient.getIDToken(aud);
+    });
+}
+exports.getIDToken = getIDToken;
 //# sourceMappingURL=core.js.map
 
 /***/ }),
@@ -702,6 +709,90 @@ exports.issueCommand = issueCommand;
 
 /***/ }),
 
+/***/ 98041:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.OidcClient = void 0;
+const http_client_1 = __nccwpck_require__(39925);
+const auth_1 = __nccwpck_require__(23702);
+const core_1 = __nccwpck_require__(42186);
+class OidcClient {
+    static createHttpClient(allowRetry = true, maxRetry = 10) {
+        const requestOptions = {
+            allowRetries: allowRetry,
+            maxRetries: maxRetry
+        };
+        return new http_client_1.HttpClient('actions/oidc-client', [new auth_1.BearerCredentialHandler(OidcClient.getRequestToken())], requestOptions);
+    }
+    static getRequestToken() {
+        const token = process.env['ACTIONS_ID_TOKEN_REQUEST_TOKEN'];
+        if (!token) {
+            throw new Error('Unable to get ACTIONS_ID_TOKEN_REQUEST_TOKEN env variable');
+        }
+        return token;
+    }
+    static getIDTokenUrl() {
+        const runtimeUrl = process.env['ACTIONS_ID_TOKEN_REQUEST_URL'];
+        if (!runtimeUrl) {
+            throw new Error('Unable to get ACTIONS_ID_TOKEN_REQUEST_URL env variable');
+        }
+        return runtimeUrl;
+    }
+    static getCall(id_token_url) {
+        var _a;
+        return __awaiter(this, void 0, void 0, function* () {
+            const httpclient = OidcClient.createHttpClient();
+            const res = yield httpclient
+                .getJson(id_token_url)
+                .catch(error => {
+                throw new Error(`Failed to get ID Token. \n 
+        Error Code : ${error.statusCode}\n 
+        Error Message: ${error.result.message}`);
+            });
+            const id_token = (_a = res.result) === null || _a === void 0 ? void 0 : _a.value;
+            if (!id_token) {
+                throw new Error('Response json body do not have ID Token field');
+            }
+            return id_token;
+        });
+    }
+    static getIDToken(audience) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                // New ID Token is requested from action service
+                let id_token_url = OidcClient.getIDTokenUrl();
+                if (audience) {
+                    const encodedAudience = encodeURIComponent(audience);
+                    id_token_url = `${id_token_url}&audience=${encodedAudience}`;
+                }
+                core_1.debug(`ID token url is ${id_token_url}`);
+                const id_token = yield OidcClient.getCall(id_token_url);
+                core_1.setSecret(id_token);
+                return id_token;
+            }
+            catch (error) {
+                throw new Error(`Error message: ${error.message}`);
+            }
+        });
+    }
+}
+exports.OidcClient = OidcClient;
+//# sourceMappingURL=oidc-utils.js.map
+
+/***/ }),
+
 /***/ 5278:
 /***/ ((__unused_webpack_module, exports) => {
 
@@ -737,6 +828,7 @@ function toCommandProperties(annotationProperties) {
     }
     return {
         title: annotationProperties.title,
+        file: annotationProperties.file,
         line: annotationProperties.startLine,
         endLine: annotationProperties.endLine,
         col: annotationProperties.startColumn,
@@ -1698,13 +1790,79 @@ exports.getOctokitOptions = getOctokitOptions;
 
 /***/ }),
 
+/***/ 23702:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+class BasicCredentialHandler {
+    constructor(username, password) {
+        this.username = username;
+        this.password = password;
+    }
+    prepareRequest(options) {
+        options.headers['Authorization'] =
+            'Basic ' +
+                Buffer.from(this.username + ':' + this.password).toString('base64');
+    }
+    // This handler cannot handle 401
+    canHandleAuthentication(response) {
+        return false;
+    }
+    handleAuthentication(httpClient, requestInfo, objs) {
+        return null;
+    }
+}
+exports.BasicCredentialHandler = BasicCredentialHandler;
+class BearerCredentialHandler {
+    constructor(token) {
+        this.token = token;
+    }
+    // currently implements pre-authorization
+    // TODO: support preAuth = false where it hooks on 401
+    prepareRequest(options) {
+        options.headers['Authorization'] = 'Bearer ' + this.token;
+    }
+    // This handler cannot handle 401
+    canHandleAuthentication(response) {
+        return false;
+    }
+    handleAuthentication(httpClient, requestInfo, objs) {
+        return null;
+    }
+}
+exports.BearerCredentialHandler = BearerCredentialHandler;
+class PersonalAccessTokenCredentialHandler {
+    constructor(token) {
+        this.token = token;
+    }
+    // currently implements pre-authorization
+    // TODO: support preAuth = false where it hooks on 401
+    prepareRequest(options) {
+        options.headers['Authorization'] =
+            'Basic ' + Buffer.from('PAT:' + this.token).toString('base64');
+    }
+    // This handler cannot handle 401
+    canHandleAuthentication(response) {
+        return false;
+    }
+    handleAuthentication(httpClient, requestInfo, objs) {
+        return null;
+    }
+}
+exports.PersonalAccessTokenCredentialHandler = PersonalAccessTokenCredentialHandler;
+
+
+/***/ }),
+
 /***/ 39925:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const http = __nccwpck_require__(15876);
+const http = __nccwpck_require__(98605);
 const https = __nccwpck_require__(57211);
 const pm = __nccwpck_require__(16443);
 let tunnel;
@@ -5253,7 +5411,7 @@ module.exports = {
 "use strict";
 
 
-const http = __nccwpck_require__(15876);
+const http = __nccwpck_require__(98605);
 const https = __nccwpck_require__(57211);
 const { ono } = __nccwpck_require__(33436);
 const url = __nccwpck_require__(81279);
@@ -15313,7 +15471,7 @@ ansiEscapes.iTerm = {
 
 module.exports = ({onlyFirst = false} = {}) => {
 	const pattern = [
-		'[\\u001B\\u009B][[\\]()#;?]*(?:(?:(?:[a-zA-Z\\d]*(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]*)*)?\\u0007)',
+		'[\\u001B\\u009B][[\\]()#;?]*(?:(?:(?:(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]+)*|[a-zA-Z\\d]+(?:;[-a-zA-Z\\d\\/#&.:=?%@~_]*)*)?\\u0007)',
 		'(?:(?:\\d{1,4}(?:;\\d{0,4})*)?[\\dA-PR-TZcf-ntqry=><~]))'
 	].join('|');
 
@@ -16211,7 +16369,7 @@ var utils = __nccwpck_require__(20328);
 var settle = __nccwpck_require__(13211);
 var buildFullPath = __nccwpck_require__(41934);
 var buildURL = __nccwpck_require__(30646);
-var http = __nccwpck_require__(15876);
+var http = __nccwpck_require__(98605);
 var https = __nccwpck_require__(57211);
 var httpFollow = __nccwpck_require__(67707).http;
 var httpsFollow = __nccwpck_require__(67707).https;
@@ -18893,10 +19051,13 @@ class Diff extends command_1.default {
         }
         diffVersion = diffVersion || version;
         if (diffVersion) {
-            await this.displayCompareResult(diffVersion.id, token, flags.open);
+            diffVersion = await this.waitChangesResult(diffVersion.id, token, {
+                timeout: 30,
+            });
+            await this.displayCompareResult(diffVersion, token, flags.open);
         }
         cli_1.cli.action.stop();
-        return;
+        return diffVersion;
     }
     async createVersion(file, documentation, token, hub, previous_version_id = undefined) {
         const [definition, references] = await this.prepareDefinition(file);
@@ -18920,11 +19081,7 @@ class Diff extends command_1.default {
         }
         return;
     }
-    async displayCompareResult(versionId, token, open) {
-        const result = await this.waitChangesResult(versionId, token, {
-            timeout: 30,
-        });
-        cli_1.cli.action.stop();
+    async displayCompareResult(result, token, open) {
         if (result && result.diff_summary) {
             await cli_1.cli.log(result.diff_summary);
             if (open && result.diff_public_url) {
@@ -18934,7 +19091,6 @@ class Diff extends command_1.default {
         else {
             this.warn('There were no structural changes in your new definition');
         }
-        return;
     }
     async waitChangesResult(versionId, token, opts) {
         const diffResponse = await this.bump.getVersion(versionId, token);
@@ -35595,7 +35751,7 @@ module.exports = function () {
 
 var url = __nccwpck_require__(78835);
 var URL = url.URL;
-var http = __nccwpck_require__(15876);
+var http = __nccwpck_require__(98605);
 var https = __nccwpck_require__(57211);
 var Writable = __nccwpck_require__(92413).Writable;
 var assert = __nccwpck_require__(42357);
@@ -36136,7 +36292,7 @@ module.exports.wrap = wrap;
 
 const fs = __nccwpck_require__(77758)
 const path = __nccwpck_require__(85622)
-const mkdirpSync = __nccwpck_require__(98605).mkdirsSync
+const mkdirpSync = __nccwpck_require__(12915).mkdirsSync
 const utimesSync = __nccwpck_require__(52548).utimesMillisSync
 const stat = __nccwpck_require__(73901)
 
@@ -36321,7 +36477,7 @@ module.exports = {
 
 const fs = __nccwpck_require__(77758)
 const path = __nccwpck_require__(85622)
-const mkdirp = __nccwpck_require__(98605).mkdirs
+const mkdirp = __nccwpck_require__(12915).mkdirs
 const pathExists = __nccwpck_require__(43835).pathExists
 const utimes = __nccwpck_require__(52548).utimesMillis
 const stat = __nccwpck_require__(73901)
@@ -36556,7 +36712,7 @@ module.exports = {
 const u = __nccwpck_require__(9046)/* .fromCallback */ .E
 const fs = __nccwpck_require__(77758)
 const path = __nccwpck_require__(85622)
-const mkdir = __nccwpck_require__(98605)
+const mkdir = __nccwpck_require__(12915)
 const remove = __nccwpck_require__(47357)
 
 const emptyDir = u(function emptyDir (dir, callback) {
@@ -36612,7 +36768,7 @@ module.exports = {
 const u = __nccwpck_require__(9046)/* .fromCallback */ .E
 const path = __nccwpck_require__(85622)
 const fs = __nccwpck_require__(77758)
-const mkdir = __nccwpck_require__(98605)
+const mkdir = __nccwpck_require__(12915)
 const pathExists = __nccwpck_require__(43835).pathExists
 
 function createFile (file, callback) {
@@ -36700,7 +36856,7 @@ module.exports = {
 const u = __nccwpck_require__(9046)/* .fromCallback */ .E
 const path = __nccwpck_require__(85622)
 const fs = __nccwpck_require__(77758)
-const mkdir = __nccwpck_require__(98605)
+const mkdir = __nccwpck_require__(12915)
 const pathExists = __nccwpck_require__(43835).pathExists
 
 function createLink (srcpath, dstpath, callback) {
@@ -36915,7 +37071,7 @@ module.exports = {
 const u = __nccwpck_require__(9046)/* .fromCallback */ .E
 const path = __nccwpck_require__(85622)
 const fs = __nccwpck_require__(77758)
-const _mkdirs = __nccwpck_require__(98605)
+const _mkdirs = __nccwpck_require__(12915)
 const mkdirs = _mkdirs.mkdirs
 const mkdirsSync = _mkdirs.mkdirsSync
 
@@ -37110,7 +37266,7 @@ module.exports = Object.assign(
   __nccwpck_require__(96970),
   __nccwpck_require__(40055),
   __nccwpck_require__(40213),
-  __nccwpck_require__(98605),
+  __nccwpck_require__(12915),
   __nccwpck_require__(69665),
   __nccwpck_require__(41497),
   __nccwpck_require__(16570),
@@ -37182,7 +37338,7 @@ module.exports = {
 
 const fs = __nccwpck_require__(77758)
 const path = __nccwpck_require__(85622)
-const mkdir = __nccwpck_require__(98605)
+const mkdir = __nccwpck_require__(12915)
 const jsonFile = __nccwpck_require__(18970)
 
 function outputJsonSync (file, data, options) {
@@ -37207,7 +37363,7 @@ module.exports = outputJsonSync
 
 
 const path = __nccwpck_require__(85622)
-const mkdir = __nccwpck_require__(98605)
+const mkdir = __nccwpck_require__(12915)
 const pathExists = __nccwpck_require__(43835).pathExists
 const jsonFile = __nccwpck_require__(18970)
 
@@ -37235,7 +37391,7 @@ module.exports = outputJson
 
 /***/ }),
 
-/***/ 98605:
+/***/ 12915:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -37446,7 +37602,7 @@ const fs = __nccwpck_require__(77758)
 const path = __nccwpck_require__(85622)
 const copySync = __nccwpck_require__(11135).copySync
 const removeSync = __nccwpck_require__(47357).removeSync
-const mkdirpSync = __nccwpck_require__(98605).mkdirpSync
+const mkdirpSync = __nccwpck_require__(12915).mkdirpSync
 const stat = __nccwpck_require__(73901)
 
 function moveSync (src, dest, opts) {
@@ -37515,7 +37671,7 @@ const fs = __nccwpck_require__(77758)
 const path = __nccwpck_require__(85622)
 const copy = __nccwpck_require__(61335).copy
 const remove = __nccwpck_require__(47357).remove
-const mkdirp = __nccwpck_require__(98605).mkdirp
+const mkdirp = __nccwpck_require__(12915).mkdirp
 const pathExists = __nccwpck_require__(43835).pathExists
 const stat = __nccwpck_require__(73901)
 
@@ -37587,7 +37743,7 @@ module.exports = move
 const u = __nccwpck_require__(9046)/* .fromCallback */ .E
 const fs = __nccwpck_require__(77758)
 const path = __nccwpck_require__(85622)
-const mkdir = __nccwpck_require__(98605)
+const mkdir = __nccwpck_require__(12915)
 const pathExists = __nccwpck_require__(43835).pathExists
 
 function outputFile (file, data, encoding, callback) {
@@ -68602,7 +68758,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
 var Stream = _interopDefault(__nccwpck_require__(92413));
-var http = _interopDefault(__nccwpck_require__(15876));
+var http = _interopDefault(__nccwpck_require__(98605));
 var Url = _interopDefault(__nccwpck_require__(78835));
 var https = _interopDefault(__nccwpck_require__(57211));
 var zlib = _interopDefault(__nccwpck_require__(78761));
@@ -76063,7 +76219,7 @@ module.exports = __nccwpck_require__(54219);
 
 var net = __nccwpck_require__(11631);
 var tls = __nccwpck_require__(4016);
-var http = __nccwpck_require__(15876);
+var http = __nccwpck_require__(98605);
 var https = __nccwpck_require__(57211);
 var events = __nccwpck_require__(28614);
 var assert = __nccwpck_require__(42357);
@@ -78522,7 +78678,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.1","description":"P
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"name":"bump-cli","description":"The Bump CLI is used to interact with your API documentation hosted on Bump by using the API of developers.bump.sh","version":"2.2.3","author":"Paul Bonaud <paulr@bump.sh>","bin":{"bump":"./bin/run"},"bugs":"https://github.com/bump-sh/cli/issues","devDependencies":{"@oclif/dev-cli":"^1.26.0","@oclif/test":"^1.2.8","@types/debug":"^4.1.5","@types/mocha":"^9.0.0","@types/node":"^15.9.0","@typescript-eslint/eslint-plugin":"^4.21.0","@typescript-eslint/parser":"^4.21.0","chai":"^4.3.4","cross-spawn":"^7.0.3","eslint":"^7.24.0","eslint-config-prettier":"^8.1.0","eslint-plugin-prettier":"^4.0.0","globby":"^11.0.3","mocha":"^9.0.3","nock":"^13.0.11","np":"^7.5.0","nyc":"^15.1.0","prettier":"^2.2.1","sinon":"^11.1.1","stdout-stderr":"^0.1.13","ts-node":"^10.0.0","typescript":"^4.3.3"},"engines":{"node":">=12.0.0"},"files":["/bin","/lib","/npm-shrinkwrap.json","/oclif.manifest.json"],"homepage":"https://bump.sh","keywords":["api","documentation","openapi","asyncapi","bump","cli"],"license":"MIT","main":"lib/index.js","oclif":{"commands":"./lib/commands","bin":"bump","plugins":["@oclif/plugin-help"]},"repository":"bump-sh/cli","scripts":{"build":"tsc -b","clean":"rm -rf lib oclif.manifest.json","lint":"eslint . --ext .ts --config .eslintrc","fmt":"eslint . --ext .ts --config .eslintrc --fix","pack":"oclif-dev pack","postpack":"rm -f oclif.manifest.json","prepack":"rm -rf lib && npm run build && oclif-dev manifest && oclif-dev readme","pretest":"npm run clean && npm run build && npm run lint","publish":"np --no-release-draft","test":"mocha \\"test/**/*.test.ts\\"","test-coverage":"nyc npm run test","test-integration":"node ./test/integration.js","version":"oclif-dev readme && git add README.md"},"types":"lib/index.d.ts","dependencies":{"@apidevtools/json-schema-ref-parser":"^9.0.7","@asyncapi/specs":"^2.7.7","@oclif/command":"^1.8.0","@oclif/config":"^1.17.0","@oclif/plugin-help":"^3.2.2","async-mutex":"^0.3.2","axios":"^0.21.1","cli-ux":"^5.5.1","debug":"^4.3.1","oas-schemas":"git+https://git@github.com/OAI/OpenAPI-Specification.git#0f9d3ec7c033fef184ec54e1ffc201b2d61ce023","tslib":"^2.3.0"}}');
+module.exports = JSON.parse('{"name":"bump-cli","description":"The Bump CLI is used to interact with your API documentation hosted on Bump by using the API of developers.bump.sh","version":"2.2.4","author":"Paul Bonaud <paulr@bump.sh>","bin":{"bump":"./bin/run"},"bugs":"https://github.com/bump-sh/cli/issues","devDependencies":{"@oclif/dev-cli":"^1.26.0","@oclif/test":"^1.2.8","@types/debug":"^4.1.5","@types/mocha":"^9.0.0","@types/node":"^15.9.0","@typescript-eslint/eslint-plugin":"^4.21.0","@typescript-eslint/parser":"^4.21.0","chai":"^4.3.4","cross-spawn":"^7.0.3","eslint":"^7.24.0","eslint-config-prettier":"^8.1.0","eslint-plugin-prettier":"^4.0.0","globby":"^11.0.3","mocha":"^9.0.3","nock":"^13.0.11","np":"^7.5.0","nyc":"^15.1.0","prettier":"^2.2.1","sinon":"^11.1.1","stdout-stderr":"^0.1.13","ts-node":"^10.0.0","typescript":"^4.3.3"},"engines":{"node":">=12.0.0"},"files":["/bin","/lib","/npm-shrinkwrap.json","/oclif.manifest.json"],"homepage":"https://bump.sh","keywords":["api","documentation","openapi","asyncapi","bump","cli"],"license":"MIT","main":"lib/index.js","oclif":{"commands":"./lib/commands","bin":"bump","plugins":["@oclif/plugin-help"]},"repository":"bump-sh/cli","scripts":{"build":"tsc -b","clean":"rm -rf lib oclif.manifest.json","lint":"eslint . --ext .ts --config .eslintrc","fmt":"eslint . --ext .ts --config .eslintrc --fix","pack":"oclif-dev pack","postpack":"rm -f oclif.manifest.json","prepack":"rm -rf lib && npm run build && oclif-dev manifest && oclif-dev readme","pretest":"npm run clean && npm run build && npm run lint","publish":"np --no-release-draft","test":"mocha \\"test/**/*.test.ts\\"","test-coverage":"nyc npm run test","test-integration":"node ./test/integration.js","version":"oclif-dev readme && git add README.md"},"types":"lib/index.d.ts","dependencies":{"@apidevtools/json-schema-ref-parser":"^9.0.7","@asyncapi/specs":"^2.7.7","@oclif/command":"^1.8.0","@oclif/config":"^1.17.0","@oclif/plugin-help":"^3.2.2","async-mutex":"^0.3.2","axios":"^0.21.1","cli-ux":"^5.5.1","debug":"^4.3.1","oas-schemas":"git+https://git@github.com/OAI/OpenAPI-Specification.git#0f9d3ec7c033fef184ec54e1ffc201b2d61ce023","tslib":"^2.3.0"}}');
 
 /***/ }),
 
@@ -78606,7 +78762,7 @@ module.exports = require("fs");
 
 /***/ }),
 
-/***/ 15876:
+/***/ 98605:
 /***/ ((module) => {
 
 "use strict";
