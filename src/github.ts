@@ -20,6 +20,7 @@ export class Repo {
   readonly name: string;
   readonly prNumber?: number;
   readonly baseSha?: string;
+  readonly headSha?: string;
 
   constructor() {
     // Fetch GitHub Action context
@@ -32,6 +33,7 @@ export class Repo {
     if (pull_request) {
       this.prNumber = pull_request.number;
       this.baseSha = pull_request.base.sha;
+      this.headSha = pull_request.head.sha;
     }
     this.octokit = this.getOctokit();
   }
@@ -51,9 +53,18 @@ export class Repo {
   async getBaseFile(file: string): Promise<string | undefined> {
     const tmpDir = 'tmp/';
 
-    if (this.baseSha) {
-      // Fetch base branch (default actions/checkout only fetches HEAD)
-      await exec.exec('git', ['fetch', 'origin', this.baseSha]);
+    if (this.baseSha && this.headSha) {
+      // Fetch base & head branch (default actions/checkout only fetches HEAD)
+      await exec.exec('git', ['fetch', 'origin', this.baseSha, this.headSha]);
+      // Get common ancestor commit from PR HEAD and base branch
+      let commonAncestorSha = '';
+      await exec.exec('git', ['merge-base', this.baseSha, this.headSha], {
+        listeners: {
+          stdout: (data: Buffer) => {
+            commonAncestorSha += data.toString().trim();
+          },
+        },
+      });
 
       // Restore base branch definition file in a tmp directory
       await io.mkdirP(tmpDir);
@@ -62,9 +73,12 @@ export class Repo {
         tmpDir,
         'restore',
         '-s',
-        this.baseSha,
+        commonAncestorSha,
         file,
       ]);
+
+      // & restore head branch definition in current directory
+      await exec.exec('git', ['restore', '-s', this.headSha, file]);
 
       return `${tmpDir}${file}`;
     }
