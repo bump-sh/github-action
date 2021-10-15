@@ -187,6 +187,7 @@ class Repo {
         if (pull_request) {
             this.prNumber = pull_request.number;
             this.baseSha = pull_request.base.sha;
+            this.headSha = pull_request.head.sha;
         }
         this.octokit = this.getOctokit();
     }
@@ -199,9 +200,18 @@ class Repo {
     }
     async getBaseFile(file) {
         const tmpDir = 'tmp/';
-        if (this.baseSha) {
-            // Fetch base branch (default actions/checkout only fetches HEAD)
-            await exec.exec('git', ['fetch', 'origin', this.baseSha]);
+        if (this.baseSha && this.headSha) {
+            // Fetch base & head branch (default actions/checkout only fetches HEAD)
+            await exec.exec('git', ['fetch', 'origin', this.baseSha, this.headSha]);
+            // Get common ancestor commit from PR HEAD and base branch
+            let commonAncestorSha = '';
+            await exec.exec('git', ['merge-base', this.baseSha, this.headSha], {
+                listeners: {
+                    stdout: (data) => {
+                        commonAncestorSha += data.toString().trim();
+                    },
+                },
+            });
             // Restore base branch definition file in a tmp directory
             await io.mkdirP(tmpDir);
             await exec.exec('git', [
@@ -209,9 +219,11 @@ class Repo {
                 tmpDir,
                 'restore',
                 '-s',
-                this.baseSha,
+                commonAncestorSha,
                 file,
             ]);
+            // & restore head branch definition in current directory
+            await exec.exec('git', ['restore', '-s', this.headSha, file]);
             return `${tmpDir}${file}`;
         }
     }
