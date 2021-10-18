@@ -36,7 +36,8 @@ async function run(): Promise<void> {
         await bump.Deploy.run(cliParams.concat(docCliParams));
         break;
       case 'diff':
-        const baseFile = await new Repo().getBaseFile(file);
+        const repo = new Repo();
+        const baseFile = await repo.getBaseFile(file);
 
         if (baseFile) {
           cliParams.unshift(baseFile);
@@ -44,8 +45,11 @@ async function run(): Promise<void> {
 
         await bump.Diff.run(cliParams.concat(docCliParams)).then(
           (version: bump.VersionResponse | undefined) => {
-            if (version) {
+            if (version && isVersionWithDiff(version)) {
               diff.run(version).catch(handleErrors);
+            } else {
+              core.info('No diff found, nothing more to do.');
+              repo.deleteExistingComment();
             }
           },
         );
@@ -56,6 +60,12 @@ async function run(): Promise<void> {
   } catch (error) {
     handleErrors(error);
   }
+}
+
+function isVersionWithDiff(
+  version: bump.VersionResponse,
+): version is diff.VersionWithDiff {
+  return version.diff_summary !== undefined;
 }
 
 function handleErrors(error: unknown): void {

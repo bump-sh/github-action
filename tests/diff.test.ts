@@ -1,4 +1,3 @@
-import { VersionResponse } from 'bump-cli';
 import * as diff from '../src/diff';
 
 // Mock internal github code
@@ -7,12 +6,13 @@ jest.mock('../src/github');
 const mockedInternalRepo = Repo as jest.Mocked<typeof Repo>;
 
 test('test github diff run process', async () => {
-  const version: VersionResponse = {
+  const version: diff.VersionWithDiff = {
     id: 'hello-123',
     diff_summary: `one
 two
 three`,
     diff_public_url: 'https://bump.sh/doc/my-doc/changes/654',
+    diff_breaking: false,
   };
   const digest = 'b62da49eb54ba0cc86e0899e3435b8ae8014dea9';
 
@@ -37,7 +37,7 @@ three
 });
 
 test('test github diff with breaking changes', async () => {
-  const version: VersionResponse = {
+  const version: diff.VersionWithDiff = {
     id: 'hello-123',
     diff_summary: `one
 two
