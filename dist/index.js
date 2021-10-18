@@ -127,11 +127,11 @@ const core = (0, tslib_1.__importStar)(__nccwpck_require__(42186));
 const github_1 = __nccwpck_require__(85928);
 const common_1 = __nccwpck_require__(86979);
 async function run(version) {
+    const repo = new github_1.Repo();
     if (!isVersionWithDiff(version)) {
         core.info('No diff found, nothing more to do.');
-        return;
+        return repo.deleteExistingComment();
     }
-    const repo = new github_1.Repo();
     const digest = (0, common_1.shaDigest)([version.diff_summary, version.diff_public_url]);
     const body = buildCommentBody(version, digest);
     return repo.createOrUpdateComment(body, digest);
@@ -263,6 +263,21 @@ class Repo {
             issue_number,
         });
         return comments.data.find((comment) => (0, common_1.extractBumpComment)(comment.body || ''));
+    }
+    async deleteExistingComment() {
+        if (!this.prNumber) {
+            core.info('Not a pull request, nothing more to do.');
+            return;
+        }
+        const { owner, name: repo, prNumber: issue_number, octokit } = this;
+        const existingComment = await this.findExistingComment(issue_number);
+        if (existingComment) {
+            await octokit.rest.issues.deleteComment({
+                owner,
+                repo,
+                comment_id: existingComment.id,
+            });
+        }
     }
 }
 exports.Repo = Repo;
@@ -19079,7 +19094,9 @@ class Diff extends command_1.default {
         if (args.FILE2) {
             diffVersion = await this.createVersion(args.FILE2, documentation, token, hub, version && version.id);
         }
-        diffVersion = diffVersion || version;
+        else {
+            diffVersion = version;
+        }
         if (diffVersion) {
             diffVersion = await this.waitChangesResult(diffVersion.id, token, {
                 timeout: 30,
@@ -78710,7 +78727,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.1","description":"P
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"name":"bump-cli","description":"The Bump CLI is used to interact with your API documentation hosted on Bump by using the API of developers.bump.sh","version":"2.2.5","author":"Paul Bonaud <paulr@bump.sh>","bin":{"bump":"./bin/run"},"bugs":"https://github.com/bump-sh/cli/issues","devDependencies":{"@oclif/dev-cli":"^1.26.0","@oclif/test":"^1.2.8","@types/debug":"^4.1.5","@types/mocha":"^9.0.0","@types/node":"^15.9.0","@typescript-eslint/eslint-plugin":"^4.21.0","@typescript-eslint/parser":"^4.21.0","chai":"^4.3.4","cross-spawn":"^7.0.3","eslint":"^7.24.0","eslint-config-prettier":"^8.1.0","eslint-plugin-prettier":"^4.0.0","globby":"^11.0.3","mocha":"^9.0.3","nock":"^13.0.11","np":"^7.5.0","nyc":"^15.1.0","prettier":"^2.2.1","sinon":"^11.1.1","stdout-stderr":"^0.1.13","ts-node":"^10.0.0","typescript":"^4.3.3"},"engines":{"node":">=12.0.0"},"files":["/bin","/lib","/npm-shrinkwrap.json","/oclif.manifest.json"],"homepage":"https://bump.sh","keywords":["api","documentation","openapi","asyncapi","bump","cli"],"license":"MIT","main":"lib/index.js","oclif":{"commands":"./lib/commands","bin":"bump","plugins":["@oclif/plugin-help"]},"repository":"bump-sh/cli","scripts":{"build":"tsc -b","clean":"rm -rf lib oclif.manifest.json","lint":"eslint . --ext .ts --config .eslintrc","fmt":"eslint . --ext .ts --config .eslintrc --fix","pack":"oclif-dev pack","postpack":"rm -f oclif.manifest.json","prepack":"rm -rf lib && npm run build && oclif-dev manifest && oclif-dev readme","pretest":"npm run clean && npm run build && npm run lint","publish":"np --no-release-draft","test":"mocha \\"test/**/*.test.ts\\"","test-coverage":"nyc npm run test","test-integration":"node ./test/integration.js","version":"oclif-dev readme && git add README.md"},"types":"lib/index.d.ts","dependencies":{"@apidevtools/json-schema-ref-parser":"^9.0.7","@asyncapi/specs":"^2.9.0","@oclif/command":"^1.8.0","@oclif/config":"^1.17.0","@oclif/plugin-help":"^3.2.2","async-mutex":"^0.3.2","axios":"^0.21.1","cli-ux":"^5.5.1","debug":"^4.3.1","oas-schemas":"git+https://git@github.com/OAI/OpenAPI-Specification.git#0f9d3ec7c033fef184ec54e1ffc201b2d61ce023","tslib":"^2.3.0"}}');
+module.exports = JSON.parse('{"name":"bump-cli","description":"The Bump CLI is used to interact with your API documentation hosted on Bump by using the API of developers.bump.sh","version":"2.2.6","author":"Paul Bonaud <paulr@bump.sh>","bin":{"bump":"./bin/run"},"bugs":"https://github.com/bump-sh/cli/issues","devDependencies":{"@oclif/dev-cli":"^1.26.0","@oclif/test":"^1.2.8","@types/debug":"^4.1.5","@types/mocha":"^9.0.0","@types/node":"^15.9.0","@typescript-eslint/eslint-plugin":"^4.21.0","@typescript-eslint/parser":"^4.21.0","chai":"^4.3.4","cross-spawn":"^7.0.3","eslint":"^7.24.0","eslint-config-prettier":"^8.1.0","eslint-plugin-prettier":"^4.0.0","globby":"^11.0.3","mocha":"^9.0.3","nock":"^13.0.11","np":"^7.5.0","nyc":"^15.1.0","prettier":"^2.2.1","sinon":"^11.1.1","stdout-stderr":"^0.1.13","ts-node":"^10.0.0","typescript":"^4.3.3"},"engines":{"node":">=12.0.0"},"files":["/bin","/lib","/npm-shrinkwrap.json","/oclif.manifest.json"],"homepage":"https://bump.sh","keywords":["api","documentation","openapi","asyncapi","bump","cli"],"license":"MIT","main":"lib/index.js","oclif":{"commands":"./lib/commands","bin":"bump","plugins":["@oclif/plugin-help"]},"repository":"bump-sh/cli","scripts":{"build":"tsc -b","clean":"rm -rf lib oclif.manifest.json","lint":"eslint . --ext .ts --config .eslintrc","fmt":"eslint . --ext .ts --config .eslintrc --fix","pack":"oclif-dev pack","postpack":"rm -f oclif.manifest.json","prepack":"rm -rf lib && npm run build && oclif-dev manifest && oclif-dev readme","pretest":"npm run clean && npm run build && npm run lint","publish":"np --no-release-draft","test":"mocha \\"test/**/*.test.ts\\"","test-coverage":"nyc npm run test","test-integration":"node ./test/integration.js","version":"oclif-dev readme && git add README.md"},"types":"lib/index.d.ts","dependencies":{"@apidevtools/json-schema-ref-parser":"^9.0.7","@asyncapi/specs":"^2.9.0","@oclif/command":"^1.8.0","@oclif/config":"^1.17.0","@oclif/plugin-help":"^3.2.2","async-mutex":"^0.3.2","axios":"^0.21.1","cli-ux":"^5.5.1","debug":"^4.3.1","oas-schemas":"git+https://git@github.com/OAI/OpenAPI-Specification.git#0f9d3ec7c033fef184ec54e1ffc201b2d61ce023","tslib":"^2.3.0"}}');
 
 /***/ }),
 
