@@ -122,24 +122,15 @@ exports.shaDigest = shaDigest;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.run = void 0;
-const tslib_1 = __nccwpck_require__(4351);
-const core = (0, tslib_1.__importStar)(__nccwpck_require__(42186));
 const github_1 = __nccwpck_require__(85928);
 const common_1 = __nccwpck_require__(86979);
 async function run(version) {
     const repo = new github_1.Repo();
-    if (!isVersionWithDiff(version)) {
-        core.info('No diff found, nothing more to do.');
-        return repo.deleteExistingComment();
-    }
     const digest = (0, common_1.shaDigest)([version.diff_summary, version.diff_public_url]);
     const body = buildCommentBody(version, digest);
     return repo.createOrUpdateComment(body, digest);
 }
 exports.run = run;
-function isVersionWithDiff(version) {
-    return version.diff_summary !== undefined;
-}
 function buildCommentBody(version, digest) {
     const codeBlock = '```';
     const poweredByBump = '> _Powered by [Bump](https://bump.sh)_';
@@ -79023,13 +79014,18 @@ async function run() {
                 await bump.Deploy.run(cliParams.concat(docCliParams));
                 break;
             case 'diff':
-                const baseFile = await new github_1.Repo().getBaseFile(file);
+                const repo = new github_1.Repo();
+                const baseFile = await repo.getBaseFile(file);
                 if (baseFile) {
                     cliParams.unshift(baseFile);
                 }
                 await bump.Diff.run(cliParams.concat(docCliParams)).then((version) => {
-                    if (version) {
+                    if (version && isVersionWithDiff(version)) {
                         diff.run(version).catch(handleErrors);
+                    }
+                    else {
+                        core.info('No diff found, nothing more to do.');
+                        repo.deleteExistingComment();
                     }
                 });
                 break;
@@ -79039,6 +79035,9 @@ async function run() {
     catch (error) {
         handleErrors(error);
     }
+}
+function isVersionWithDiff(version) {
+    return version.diff_summary !== undefined;
 }
 function handleErrors(error) {
     let msg = 'Unknown error';
