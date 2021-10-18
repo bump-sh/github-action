@@ -143,7 +143,7 @@ export class Repo {
       await octokit.rest.issues.deleteComment({
         owner,
         repo,
-        comment_id: existingComment.id
+        comment_id: existingComment.id,
       });
     }
   }
