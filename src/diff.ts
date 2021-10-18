@@ -1,30 +1,20 @@
-import * as core from '@actions/core';
 import { Repo } from './github';
 import { VersionResponse } from 'bump-cli';
 import { bumpDiffComment, shaDigest } from './common';
 
-interface VersionWithDiff extends VersionResponse {
+export interface VersionWithDiff extends VersionResponse {
   diff_summary: string;
   diff_public_url: string;
   diff_breaking: boolean;
 }
 
-export async function run(version: VersionResponse): Promise<void> {
+export async function run(version: VersionWithDiff): Promise<void> {
   const repo = new Repo();
-
-  if (!isVersionWithDiff(version)) {
-    core.info('No diff found, nothing more to do.');
-    return repo.deleteExistingComment();
-  }
 
   const digest = shaDigest([version.diff_summary, version.diff_public_url]);
   const body = buildCommentBody(version, digest);
 
   return repo.createOrUpdateComment(body, digest);
-}
-
-function isVersionWithDiff(version: VersionResponse): version is VersionWithDiff {
-  return version.diff_summary !== undefined;
 }
 
 function buildCommentBody(version: VersionWithDiff, digest: string) {
