@@ -129,4 +129,22 @@ export class Repo {
       extractBumpComment(comment.body || ''),
     );
   }
+
+  async deleteExistingComment(): Promise<void> {
+    if (!this.prNumber) {
+      core.info('Not a pull request, nothing more to do.');
+      return;
+    }
+
+    const { owner, name: repo, prNumber: issue_number, octokit } = this;
+    const existingComment = await this.findExistingComment(issue_number);
+
+    if (existingComment) {
+      await octokit.rest.issues.deleteComment({
+        owner,
+        repo,
+        comment_id: existingComment.id
+      });
+    }
+  }
 }

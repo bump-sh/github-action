@@ -10,12 +10,13 @@ interface VersionWithDiff extends VersionResponse {
 }
 
 export async function run(version: VersionResponse): Promise<void> {
+  const repo = new Repo();
+
   if (!isVersionWithDiff(version)) {
     core.info('No diff found, nothing more to do.');
-    return;
+    return repo.deleteExistingComment();
   }
 
-  const repo = new Repo();
   const digest = shaDigest([version.diff_summary, version.diff_public_url]);
   const body = buildCommentBody(version, digest);
 
