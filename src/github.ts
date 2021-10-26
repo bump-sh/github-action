@@ -4,7 +4,7 @@ import * as github from '@actions/github';
 import * as io from '@actions/io';
 import { GetResponseDataTypeFromEndpointMethod } from '@octokit/types';
 import { GitHub } from '@actions/github/lib/utils';
-import { extractBumpComment } from './common';
+import { extractBumpComment, fsExists } from './common';
 
 // These are types which are not exposed directly by Github libs
 // which we need to define
@@ -52,6 +52,7 @@ export class Repo {
 
   async getBaseFile(file: string): Promise<string | undefined> {
     const tmpDir = 'tmp/';
+    const tmpFile = `${tmpDir}${file}`;
 
     if (this.baseSha && this.headSha) {
       // Fetch base & head branch (default actions/checkout only fetches HEAD)
@@ -80,7 +81,9 @@ export class Repo {
       // & restore head branch definition in current directory
       await exec.exec('git', ['restore', '-s', this.headSha, file]);
 
-      return `${tmpDir}${file}`;
+      if (await fsExists(tmpFile)) {
+        return tmpFile;
+      }
     }
   }
 

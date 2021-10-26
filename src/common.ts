@@ -1,3 +1,4 @@
+import * as fs from 'fs';
 import crypto from 'crypto';
 
 const bumpDiffRegexp = /<!-- Bump.sh version_id=(.*) digest=(.*) -->/;
@@ -23,4 +24,18 @@ function shaDigest(texts: string[]): string {
   return hash.digest('hex');
 }
 
-export { bumpDiffComment, extractBumpComment, setUserAgent, shaDigest };
+async function fsExists(fsPath: string): Promise<boolean> {
+  try {
+    await fs.promises.stat(fsPath);
+  } catch (err) {
+    if (err && (err as NodeJS.ErrnoException).code === 'ENOENT') {
+      return false;
+    }
+
+    throw err;
+  }
+
+  return true;
+}
+
+export { bumpDiffComment, extractBumpComment, fsExists, setUserAgent, shaDigest };
