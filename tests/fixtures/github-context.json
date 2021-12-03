@@ -1,0 +1,17 @@
+{
+  "repo": {
+    "owner": "bump-sh",
+    "repo": "github-action"
+  },
+  "payload": {
+    "pull_request": {
+      "number": 123,
+      "base": {
+        "sha": "6525131407398efa97db07ff60ba932c0542f0424ab"
+      },
+      "head": {
+        "sha": "4b901faf08afb49de42252a5f69dc0de694e1cfd"
+      }
+    }
+  }
+}
