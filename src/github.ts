@@ -67,7 +67,7 @@ export class Repo {
         },
       });
 
-      // Restore base branch definition file in a tmp directory
+      // Restore base branch version of the repository
       await io.mkdirP(tmpDir);
       await exec.exec('git', [
         '--work-tree',
@@ -75,11 +75,11 @@ export class Repo {
         'restore',
         '-s',
         commonAncestorSha,
-        file,
+        '.',
       ]);
 
-      // & restore head branch definition in current directory
-      await exec.exec('git', ['restore', '-s', this.headSha, file]);
+      // & restore head branch version in current directory
+      await exec.exec('git', ['restore', '-s', this.headSha, '.']);
 
       if (await fsExists(tmpFile)) {
         return tmpFile;
