@@ -1,3 +1,4 @@
+import * as bump from 'bump-cli';
 import * as diff from '../src/diff';
 
 // Mock internal github code
@@ -6,63 +7,63 @@ jest.mock('../src/github');
 const mockedInternalRepo = Repo as jest.Mocked<typeof Repo>;
 
 test('test github diff run process', async () => {
-  const version: diff.VersionWithDiff = {
-    id: 'hello-123',
-    diff_summary: `one
-two
-three`,
+  const result: bump.WithDiff = {
+    diff_markdown: `* one
+* two
+* three
+`,
     diff_public_url: 'https://bump.sh/doc/my-doc/changes/654',
     diff_breaking: false,
   };
-  const digest = 'b62da49eb54ba0cc86e0899e3435b8ae8014dea9';
+  const digest = '4b81e612cafa6580f8ad3bfe9e970b2d961f58c2';
 
   expect(mockedInternalRepo).not.toHaveBeenCalled();
 
-  await diff.run(version);
+  await diff.run(result);
 
   expect(mockedInternalRepo.prototype.createOrUpdateComment).toHaveBeenCalledWith(
     `🤖 API change detected:
-\`\`\`
-one
-two
-three
-\`\`\`
+
+* one
+* two
+* three
+
 
 [View documentation diff](https://bump.sh/doc/my-doc/changes/654)
 
 > _Powered by [Bump](https://bump.sh)_
-<!-- Bump.sh version_id=hello-123 digest=${digest} -->`,
+<!-- Bump.sh digest=${digest} -->`,
     digest,
   );
 });
 
 test('test github diff with breaking changes', async () => {
-  const version: diff.VersionWithDiff = {
-    id: 'hello-123',
-    diff_summary: `one
-two
-three`,
+  const result: bump.WithDiff = {
+    diff_markdown: `* one
+* two
+* three
+`,
     diff_public_url: 'https://bump.sh/doc/my-doc/changes/654',
     diff_breaking: true,
   };
-  const digest = 'b62da49eb54ba0cc86e0899e3435b8ae8014dea9';
+  const digest = '4b81e612cafa6580f8ad3bfe9e970b2d961f58c2';
 
   expect(mockedInternalRepo).not.toHaveBeenCalled();
 
-  await diff.run(version);
+  await diff.run(result);
 
   expect(mockedInternalRepo.prototype.createOrUpdateComment).toHaveBeenCalledWith(
     `🚨 Breaking API change detected:
-\`\`\`
-one
-two
-three
-\`\`\`
+
+* one
+* two
+* three
+
 
 [View documentation diff](https://bump.sh/doc/my-doc/changes/654)
 
 > _Powered by [Bump](https://bump.sh)_
-<!-- Bump.sh version_id=hello-123 digest=${digest} -->`,
+<!-- Bump.sh digest=${digest} -->`,
     digest,
   );
 });

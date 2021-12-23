@@ -1,10 +1,10 @@
 import * as fs from 'fs';
 import crypto from 'crypto';
 
-const bumpDiffRegexp = /<!-- Bump.sh version_id=(.*) digest=(.*) -->/;
+const bumpDiffRegexp = /<!-- Bump.sh.*digest=(.*) -->/;
 
-function bumpDiffComment(versionId: string, digest: string): string {
-  return `<!-- Bump.sh version_id=${versionId} digest=${digest} -->`;
+function bumpDiffComment(digest: string): string {
+  return `<!-- Bump.sh digest=${digest} -->`;
 }
 // Set User-Agent for github-action
 const setUserAgent = (): void => {
@@ -12,8 +12,8 @@ const setUserAgent = (): void => {
   return;
 };
 
-function extractBumpComment(body: string): string[] | null {
-  return body.match(bumpDiffRegexp);
+function extractBumpDigest(body: string): string | undefined {
+  return (body.match(bumpDiffRegexp) || []).pop();
 }
 
 function shaDigest(texts: string[]): string {
@@ -38,4 +38,4 @@ async function fsExists(fsPath: string): Promise<boolean> {
   return true;
 }
 
-export { bumpDiffComment, extractBumpComment, fsExists, setUserAgent, shaDigest };
+export { bumpDiffComment, extractBumpDigest, fsExists, setUserAgent, shaDigest };
