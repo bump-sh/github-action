@@ -1,41 +1,35 @@
 import { Repo } from './github';
-import { VersionResponse } from 'bump-cli';
+import { WithDiff } from 'bump-cli';
 import { bumpDiffComment, shaDigest } from './common';
 
-export interface VersionWithDiff extends VersionResponse {
-  diff_summary: string;
-  diff_public_url: string;
-  diff_breaking: boolean;
-}
-
-export async function run(version: VersionWithDiff): Promise<void> {
+export async function run(diff: WithDiff): Promise<void> {
   const repo = new Repo();
 
-  const digest = shaDigest([version.diff_summary, version.diff_public_url]);
-  const body = buildCommentBody(version, digest);
+  const digest = shaDigest([diff.diff_markdown!, diff.diff_public_url!]);
+  const body = buildCommentBody(diff, digest);
 
   return repo.createOrUpdateComment(body, digest);
 }
 
-function buildCommentBody(version: VersionWithDiff, digest: string) {
-  const codeBlock = '```';
+function buildCommentBody(diff: WithDiff, digest: string) {
+  const emptySpace = '';
   const poweredByBump = '> _Powered by [Bump](https://bump.sh)_';
 
-  return [title(version)]
-    .concat([codeBlock, version.diff_summary, codeBlock])
-    .concat([viewDiffLink(version), poweredByBump, bumpDiffComment(version.id, digest)])
+  return [title(diff)]
+    .concat([emptySpace, diff.diff_markdown!])
+    .concat([viewDiffLink(diff), poweredByBump, bumpDiffComment(digest)])
     .join('\n');
 }
 
-function title(version: VersionWithDiff): string {
+function title(diff: WithDiff): string {
   const commentTitle = '🤖 API change detected:';
   const breakingTitle = '🚨 Breaking API change detected:';
 
-  return version.diff_breaking ? breakingTitle : commentTitle;
+  return diff.diff_breaking ? breakingTitle : commentTitle;
 }
 
-function viewDiffLink(version: VersionWithDiff): string {
+function viewDiffLink(diff: WithDiff): string {
   return `
-[View documentation diff](${version.diff_public_url})
+[View documentation diff](${diff.diff_public_url!})
 `;
 }

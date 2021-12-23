@@ -1,6 +1,5 @@
 import { stdout } from 'stdout-stderr';
 import * as process from 'process';
-import { mocked } from 'ts-jest/utils';
 stdout.start();
 
 // Load main file (which will try a first executiong of the Action code)
@@ -12,17 +11,17 @@ jest.mock('../src/diff');
 const mockedInternalDiff = diff as jest.Mocked<typeof diff>;
 import { Repo } from '../src/github';
 jest.mock('../src/github');
-const mockedInternalRepo = mocked(Repo, true);
+const mockedInternalRepo = jest.mocked(Repo, true);
 
 // Mock the Bump CLI commands
 import * as bump from 'bump-cli';
 jest.mock('bump-cli');
 const mockedDeploy = bump.Deploy as jest.Mocked<typeof bump.Deploy>;
-const mockedDiff = bump.Diff as jest.Mocked<typeof bump.Diff>;
+const mockedDiff = jest.mocked(bump.Diff, true);
 const mockedPreview = bump.Preview as jest.Mocked<typeof bump.Preview>;
 const versionWithDiffExample = {
   id: 'hello-123',
-  diff_summary: 'one',
+  diff_markdown: 'one',
   diff_public_url: 'https://bump.sh/doc/my-doc/changes/654',
   diff_breaking: true,
 };
@@ -82,8 +81,8 @@ test('test action run dry-run correctly', async () => {
 });
 
 test('test action run diff correctly', async () => {
-  mockedDiff.run.mockResolvedValue(versionWithDiffExample);
-  expect(mockedDiff.run).not.toHaveBeenCalled();
+  mockedDiff.prototype.run.mockResolvedValue(versionWithDiffExample);
+  expect(mockedDiff.prototype.run).not.toHaveBeenCalled();
   expect(mockedInternalDiff.run).not.toHaveBeenCalled();
   expect(mockedInternalRepo).not.toHaveBeenCalled();
 
@@ -95,19 +94,19 @@ test('test action run diff correctly', async () => {
     process.env.INPUT_FILE,
   );
 
-  expect(mockedDiff.run).toHaveBeenCalledWith([
+  expect(mockedDiff.prototype.run).toHaveBeenCalledWith(
     'my-file-to-diff.yml',
-    '--doc',
+    undefined,
     'my-doc',
-    '--token',
+    '',
     'SECRET',
-  ]);
+  );
   expect(mockedInternalDiff.run).toHaveBeenCalledWith(versionWithDiffExample);
 });
 
 test('test action run diff on PR correctly', async () => {
-  mockedDiff.run.mockResolvedValue(versionWithDiffExample);
-  expect(mockedDiff.run).not.toHaveBeenCalled();
+  mockedDiff.prototype.run.mockResolvedValue(versionWithDiffExample);
+  expect(mockedDiff.prototype.run).not.toHaveBeenCalled();
   expect(mockedInternalDiff.run).not.toHaveBeenCalled();
   mockedInternalRepo.prototype.getBaseFile.mockResolvedValue('my-base-file-to-diff.yml');
 
@@ -115,20 +114,19 @@ test('test action run diff on PR correctly', async () => {
   process.env.INPUT_COMMAND = 'diff';
   await main();
 
-  expect(mockedDiff.run).toHaveBeenCalledWith([
+  expect(mockedDiff.prototype.run).toHaveBeenCalledWith(
     'my-base-file-to-diff.yml',
     'my-file-to-diff.yml',
-    '--doc',
     'my-doc',
-    '--token',
+    '',
     'SECRET',
-  ]);
+  );
   expect(mockedInternalDiff.run).toHaveBeenCalledWith(versionWithDiffExample);
 });
 
 test('test action run diff with internal exception', async () => {
-  mockedDiff.run.mockResolvedValue(versionWithDiffExample);
-  expect(mockedDiff.run).not.toHaveBeenCalled();
+  mockedDiff.prototype.run.mockResolvedValue(versionWithDiffExample);
+  expect(mockedDiff.prototype.run).not.toHaveBeenCalled();
   mockedInternalDiff.run.mockRejectedValue(new Error('Boom'));
   expect(mockedInternalDiff.run).not.toHaveBeenCalled();
 
@@ -136,12 +134,12 @@ test('test action run diff with internal exception', async () => {
   process.env.INPUT_COMMAND = 'diff';
   await main();
 
-  expect(mockedDiff.run).toHaveBeenCalledWith([
+  expect(mockedDiff.prototype.run).toHaveBeenCalledWith(
     'my-file-to-diff.yml',
-    '--doc',
+    undefined,
     'my-doc',
-    '--token',
+    '',
     'SECRET',
-  ]);
+  );
   expect(mockedInternalDiff.run).toHaveBeenCalledWith(versionWithDiffExample);
 });

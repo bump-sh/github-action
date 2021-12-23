@@ -1,6 +1,9 @@
 import * as core from '@actions/core';
+import { Config } from '@oclif/config';
 import { RequestError as GitHubHttpError } from '@octokit/request-error';
+import path from 'path';
 import * as bump from 'bump-cli';
+
 import * as diff from './diff';
 import { Repo } from './github';
 import { setUserAgent } from './common';
@@ -13,12 +16,14 @@ async function run(): Promise<void> {
     const token: string = core.getInput('token');
     const command: string = core.getInput('command') || 'deploy';
     const cliParams = [file];
+    const config = new Config({ root: path.resolve(__dirname, '../') });
     let docCliParams = ['--doc', doc, '--token', token];
 
     if (hub) {
       docCliParams = docCliParams.concat(['--hub', hub]);
     }
 
+    await config.load();
     setUserAgent();
     // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
     core.debug(`Waiting for bump ${command} ...`);
@@ -37,22 +42,25 @@ async function run(): Promise<void> {
         break;
       case 'diff':
         const repo = new Repo();
-        const baseFile = await repo.getBaseFile(file);
+        let file1 = await repo.getBaseFile(file);
+        let file2: string | undefined;
 
-        if (baseFile) {
-          cliParams.unshift(baseFile);
+        if (file1) {
+          file2 = file;
+        } else {
+          file1 = file;
         }
 
-        await bump.Diff.run(cliParams.concat(docCliParams)).then(
-          (version: bump.VersionResponse | undefined) => {
-            if (version && isVersionWithDiff(version)) {
-              diff.run(version).catch(handleErrors);
+        await new bump.Diff(config)
+          .run(file1, file2, doc, hub, token)
+          .then((result: bump.WithDiff | undefined) => {
+            if (result && 'diff_markdown' in result) {
+              diff.run(result).catch(handleErrors);
             } else {
               core.info('No diff found, nothing more to do.');
               repo.deleteExistingComment();
             }
-          },
-        );
+          });
         break;
     }
 
@@ -60,12 +68,6 @@ async function run(): Promise<void> {
   } catch (error) {
     handleErrors(error);
   }
-}
-
-function isVersionWithDiff(
-  version: bump.VersionResponse,
-): version is diff.VersionWithDiff {
-  return version.diff_summary !== undefined;
 }
 
 function handleErrors(error: unknown): void {

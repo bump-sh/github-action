@@ -1,9 +1,7 @@
-import { mocked } from 'ts-jest/utils';
-
 import * as github from '@actions/github';
 import * as exec from '@actions/exec';
 jest.mock('@actions/exec');
-const mockedExec = mocked(exec, true);
+const mockedExec = jest.mocked(exec, true);
 
 // Shallow clone original @actions/github context
 const originalContext = { ...github.context };

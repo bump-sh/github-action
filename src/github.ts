@@ -4,7 +4,7 @@ import * as github from '@actions/github';
 import * as io from '@actions/io';
 import { GetResponseDataTypeFromEndpointMethod } from '@octokit/types';
 import { GitHub } from '@actions/github/lib/utils';
-import { extractBumpComment, fsExists } from './common';
+import { extractBumpDigest, fsExists } from './common';
 
 // These are types which are not exposed directly by Github libs
 // which we need to define
@@ -99,9 +99,7 @@ export class Repo {
     if (existingComment) {
       // We force types because of findExistingComment call which ensures
       // body & digest exists if the comment exists but the TS compiler can't guess.
-      const [, , existingDigest] = extractBumpComment(
-        existingComment.body as string,
-      ) as string[];
+      const existingDigest = extractBumpDigest(existingComment.body as string);
 
       if (digest !== existingDigest) {
         await octokit.rest.issues.updateComment({
@@ -129,7 +127,7 @@ export class Repo {
     });
 
     return comments.data.find((comment: GitHubComment) =>
-      extractBumpComment(comment.body || ''),
+      extractBumpDigest(comment.body || ''),
     );
   }
 
