@@ -7,10 +7,8 @@ inputs:
     default: api-contract.yml
   doc:
     description: 'Documentation id. Can be found in the documentation settings on https://bump.sh'
-    required: true
   token:
     description: 'Documentation token. Can be found in the documentation settings on https://bump.sh'
-    required: true
   command:
     description: 'Bump command: deploy/dry-run/preview'
     default: deploy

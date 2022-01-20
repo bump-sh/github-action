@@ -7,13 +7,14 @@ jest.mock('../src/github');
 const mockedInternalRepo = Repo as jest.Mocked<typeof Repo>;
 
 test('test github diff run process', async () => {
-  const result: bump.WithDiff = {
-    diff_markdown: `* one
+  const result: bump.DiffResponse = {
+    id: '123abc',
+    markdown: `* one
 * two
 * three
 `,
-    diff_public_url: 'https://bump.sh/doc/my-doc/changes/654',
-    diff_breaking: false,
+    public_url: 'https://bump.sh/doc/my-doc/changes/654',
+    breaking: false,
   };
   const digest = '4b81e612cafa6580f8ad3bfe9e970b2d961f58c2';
 
@@ -38,13 +39,14 @@ test('test github diff run process', async () => {
 });
 
 test('test github diff with breaking changes', async () => {
-  const result: bump.WithDiff = {
-    diff_markdown: `* one
+  const result: bump.DiffResponse = {
+    id: '123abc',
+    markdown: `* one
 * two
 * three
 `,
-    diff_public_url: 'https://bump.sh/doc/my-doc/changes/654',
-    diff_breaking: true,
+    public_url: 'https://bump.sh/doc/my-doc/changes/654',
+    breaking: true,
   };
   const digest = '4b81e612cafa6580f8ad3bfe9e970b2d961f58c2';
 

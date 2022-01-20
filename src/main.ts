@@ -53,8 +53,8 @@ async function run(): Promise<void> {
 
         await new bump.Diff(config)
           .run(file1, file2, doc, hub, token)
-          .then((result: bump.WithDiff | undefined) => {
-            if (result && 'diff_markdown' in result) {
+          .then((result: bump.DiffResponse | undefined) => {
+            if (result && 'markdown' in result) {
               diff.run(result).catch(handleErrors);
             } else {
               core.info('No diff found, nothing more to do.');
