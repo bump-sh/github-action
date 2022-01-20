@@ -101,7 +101,7 @@ test('test action run diff correctly', async () => {
     '',
     'SECRET',
   );
-  expect(mockedInternalDiff.run).toHaveBeenCalledWith(diffExample);
+  expect(mockedInternalDiff.run).toHaveBeenCalledWith(diffExample, expect.any(Repo));
 });
 
 test('test action run diff on PR correctly', async () => {
@@ -121,7 +121,7 @@ test('test action run diff on PR correctly', async () => {
     '',
     'SECRET',
   );
-  expect(mockedInternalDiff.run).toHaveBeenCalledWith(diffExample);
+  expect(mockedInternalDiff.run).toHaveBeenCalledWith(diffExample, expect.any(Repo));
 });
 
 test('test action run diff with internal exception', async () => {
@@ -141,5 +141,5 @@ test('test action run diff with internal exception', async () => {
     '',
     'SECRET',
   );
-  expect(mockedInternalDiff.run).toHaveBeenCalledWith(diffExample);
+  expect(mockedInternalDiff.run).toHaveBeenCalledWith(diffExample, expect.any(Repo));
 });

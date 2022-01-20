@@ -20,7 +20,8 @@ test('test github diff run process', async () => {
 
   expect(mockedInternalRepo).not.toHaveBeenCalled();
 
-  await diff.run(result);
+  const repo = new Repo();
+  await diff.run(result, repo);
 
   expect(mockedInternalRepo.prototype.createOrUpdateComment).toHaveBeenCalledWith(
     `🤖 API change detected:
@@ -52,7 +53,8 @@ test('test github diff with breaking changes', async () => {
 
   expect(mockedInternalRepo).not.toHaveBeenCalled();
 
-  await diff.run(result);
+  const repo = new Repo();
+  await diff.run(result, repo);
 
   expect(mockedInternalRepo.prototype.createOrUpdateComment).toHaveBeenCalledWith(
     `🚨 Breaking API change detected:
