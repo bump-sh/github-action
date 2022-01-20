@@ -55,7 +55,7 @@ async function run(): Promise<void> {
           .run(file1, file2, doc, hub, token)
           .then((result: bump.DiffResponse | undefined) => {
             if (result && 'markdown' in result) {
-              diff.run(result).catch(handleErrors);
+              diff.run(result, repo).catch(handleErrors);
             } else {
               core.info('No diff found, nothing more to do.');
               repo.deleteExistingComment();

@@ -2,9 +2,7 @@ import { Repo } from './github';
 import { DiffResponse } from 'bump-cli';
 import { bumpDiffComment, shaDigest } from './common';
 
-export async function run(diff: DiffResponse): Promise<void> {
-  const repo = new Repo();
-
+export async function run(diff: DiffResponse, repo: Repo): Promise<void> {
   const digest = shaDigest([diff.markdown!, diff.public_url!]);
   const body = buildCommentBody(diff, digest);
 
