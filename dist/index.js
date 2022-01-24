@@ -56,11 +56,9 @@ exports.fsExists = fsExists;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.run = void 0;
-const github_1 = __nccwpck_require__(85928);
 const common_1 = __nccwpck_require__(86979);
-async function run(diff) {
-    const repo = new github_1.Repo();
-    const digest = (0, common_1.shaDigest)([diff.diff_markdown, diff.diff_public_url]);
+async function run(diff, repo) {
+    const digest = (0, common_1.shaDigest)([diff.markdown, diff.public_url]);
     const body = buildCommentBody(diff, digest);
     return repo.createOrUpdateComment(body, digest);
 }
@@ -69,18 +67,18 @@ function buildCommentBody(diff, digest) {
     const emptySpace = '';
     const poweredByBump = '> _Powered by [Bump](https://bump.sh)_';
     return [title(diff)]
-        .concat([emptySpace, diff.diff_markdown])
+        .concat([emptySpace, diff.markdown])
         .concat([viewDiffLink(diff), poweredByBump, (0, common_1.bumpDiffComment)(digest)])
         .join('\n');
 }
 function title(diff) {
     const commentTitle = '🤖 API change detected:';
     const breakingTitle = '🚨 Breaking API change detected:';
-    return diff.diff_breaking ? breakingTitle : commentTitle;
+    return diff.breaking ? breakingTitle : commentTitle;
 }
 function viewDiffLink(diff) {
     return `
-[View documentation diff](${diff.diff_public_url})
+[View documentation diff](${diff.public_url})
 `;
 }
 
@@ -24032,8 +24030,10 @@ module.exports = function httpAdapter(config) {
       done();
       resolvePromise(value);
     };
+    var rejected = false;
     var reject = function reject(value) {
       done();
+      rejected = true;
       rejectPromise(value);
     };
     var data = config.data;
@@ -24069,6 +24069,10 @@ module.exports = function httpAdapter(config) {
           'Data after transformation must be a string, an ArrayBuffer, a Buffer, or a Stream',
           config
         ));
+      }
+
+      if (config.maxBodyLength > -1 && data.length > config.maxBodyLength) {
+        return reject(createError('Request body larger than maxBodyLength limit', config));
       }
 
       // Add Content-Length header if data exists
@@ -24241,10 +24245,20 @@ module.exports = function httpAdapter(config) {
 
           // make sure the content length is not over the maxContentLength if specified
           if (config.maxContentLength > -1 && totalResponseBytes > config.maxContentLength) {
+            // stream.destoy() emit aborted event before calling reject() on Node.js v16
+            rejected = true;
             stream.destroy();
             reject(createError('maxContentLength size of ' + config.maxContentLength + ' exceeded',
               config, null, lastRequest));
           }
+        });
+
+        stream.on('aborted', function handlerStreamAborted() {
+          if (rejected) {
+            return;
+          }
+          stream.destroy();
+          reject(createError('error request aborted', config, 'ERR_REQUEST_ABORTED', lastRequest));
         });
 
         stream.on('error', function handleStreamError(err) {
@@ -24253,15 +24267,18 @@ module.exports = function httpAdapter(config) {
         });
 
         stream.on('end', function handleStreamEnd() {
-          var responseData = Buffer.concat(responseBuffer);
-          if (config.responseType !== 'arraybuffer') {
-            responseData = responseData.toString(config.responseEncoding);
-            if (!config.responseEncoding || config.responseEncoding === 'utf8') {
-              responseData = utils.stripBOM(responseData);
+          try {
+            var responseData = responseBuffer.length === 1 ? responseBuffer[0] : Buffer.concat(responseBuffer);
+            if (config.responseType !== 'arraybuffer') {
+              responseData = responseData.toString(config.responseEncoding);
+              if (!config.responseEncoding || config.responseEncoding === 'utf8') {
+                responseData = utils.stripBOM(responseData);
+              }
             }
+            response.data = responseData;
+          } catch (err) {
+            reject(enhanceError(err, config, err.code, response.request, response));
           }
-
-          response.data = responseData;
           settle(resolve, reject, response);
         });
       }
@@ -24271,6 +24288,12 @@ module.exports = function httpAdapter(config) {
     req.on('error', function handleRequestError(err) {
       if (req.aborted && err.code !== 'ERR_FR_TOO_MANY_REDIRECTS') return;
       reject(enhanceError(err, config, null, req));
+    });
+
+    // set tcp keep alive to prevent drop connection by peer
+    req.on('socket', function handleRequestSocket(socket) {
+      // default interval of sending ack packet is 1 minute
+      socket.setKeepAlive(true, 1000 * 60);
     });
 
     // Handle request timeout
@@ -24821,14 +24844,18 @@ function Axios(instanceConfig) {
  *
  * @param {Object} config The config specific for this request (merged with this.defaults)
  */
-Axios.prototype.request = function request(config) {
+Axios.prototype.request = function request(configOrUrl, config) {
   /*eslint no-param-reassign:0*/
   // Allow for axios('example/url'[, config]) a la fetch API
-  if (typeof config === 'string') {
-    config = arguments[1] || {};
-    config.url = arguments[0];
-  } else {
+  if (typeof configOrUrl === 'string') {
     config = config || {};
+    config.url = configOrUrl;
+  } else {
+    config = configOrUrl || {};
+  }
+
+  if (!config.url) {
+    throw new Error('Provided config url is not valid');
   }
 
   config = mergeConfig(this.defaults, config);
@@ -24913,6 +24940,9 @@ Axios.prototype.request = function request(config) {
 };
 
 Axios.prototype.getUri = function getUri(config) {
+  if (!config.url) {
+    throw new Error('Provided config url is not valid');
+  }
   config = mergeConfig(this.defaults, config);
   return buildURL(config.url, config.params, config.paramsSerializer).replace(/^\?/, '');
 };
@@ -25523,7 +25553,7 @@ module.exports = defaults;
 /***/ ((module) => {
 
 module.exports = {
-  "version": "0.24.0"
+  "version": "0.25.0"
 };
 
 /***/ }),
@@ -25724,17 +25754,19 @@ module.exports = function isAbsoluteURL(url) {
   // A URL is considered absolute if it begins with "<scheme>://" or "//" (protocol-relative URL).
   // RFC 3986 defines scheme name as a sequence of characters beginning with a letter and followed
   // by any combination of letters, digits, plus, period, or hyphen.
-  return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url);
+  return /^([a-z][a-z\d+\-.]*:)?\/\//i.test(url);
 };
 
 
 /***/ }),
 
 /***/ 60650:
-/***/ ((module) => {
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
+
+var utils = __nccwpck_require__(20328);
 
 /**
  * Determines whether the payload is an error thrown by Axios
@@ -25743,7 +25775,7 @@ module.exports = function isAbsoluteURL(url) {
  * @returns {boolean} True if the payload is an error thrown by Axios, otherwise false
  */
 module.exports = function isAxiosError(payload) {
-  return (typeof payload === 'object') && (payload.isAxiosError === true);
+  return utils.isObject(payload) && (payload.isAxiosError === true);
 };
 
 
@@ -26050,7 +26082,7 @@ var toString = Object.prototype.toString;
  * @returns {boolean} True if value is an Array, otherwise false
  */
 function isArray(val) {
-  return toString.call(val) === '[object Array]';
+  return Array.isArray(val);
 }
 
 /**
@@ -26091,7 +26123,7 @@ function isArrayBuffer(val) {
  * @returns {boolean} True if value is an FormData, otherwise false
  */
 function isFormData(val) {
-  return (typeof FormData !== 'undefined') && (val instanceof FormData);
+  return toString.call(val) === '[object FormData]';
 }
 
 /**
@@ -26105,7 +26137,7 @@ function isArrayBufferView(val) {
   if ((typeof ArrayBuffer !== 'undefined') && (ArrayBuffer.isView)) {
     result = ArrayBuffer.isView(val);
   } else {
-    result = (val) && (val.buffer) && (val.buffer instanceof ArrayBuffer);
+    result = (val) && (val.buffer) && (isArrayBuffer(val.buffer));
   }
   return result;
 }
@@ -26212,7 +26244,7 @@ function isStream(val) {
  * @returns {boolean} True if value is a URLSearchParams object, otherwise false
  */
 function isURLSearchParams(val) {
-  return typeof URLSearchParams !== 'undefined' && val instanceof URLSearchParams;
+  return toString.call(val) === '[object URLSearchParams]';
 }
 
 /**
@@ -26704,6 +26736,12 @@ class BumpApi {
                 headers: this.authorizationHeader(token),
             });
         };
+        this.postDiff = (body) => {
+            return this.client.post('/diffs', body);
+        };
+        this.getDiff = (diffId) => {
+            return this.client.get(`/diffs/${diffId}`);
+        };
         this.postValidation = (body, token) => {
             return this.client.post('/validations', body, {
                 headers: this.authorizationHeader(token),
@@ -27078,13 +27116,18 @@ class Diff {
         this._config = config;
     }
     async run(file1, file2, documentation, hub, token) {
-        const version = await this.createVersion(file1, documentation, token, hub);
         let diffVersion = undefined;
-        if (file2) {
-            diffVersion = await this.createVersion(file2, documentation, token, hub, version && version.id);
+        if (file2 && (!documentation || !token)) {
+            diffVersion = await this.createDiff(file1, file2);
         }
         else {
-            diffVersion = version;
+            if (!documentation || !token) {
+                throw new Error('Please login to bump (with documentation & token) when using a single file argument');
+            }
+            diffVersion = await this.createVersion(file1, documentation, token, hub);
+            if (file2) {
+                diffVersion = await this.createVersion(file2, documentation, token, hub, diffVersion && diffVersion.id);
+            }
         }
         if (diffVersion) {
             return await this.waitResult(diffVersion, token, {
@@ -27102,6 +27145,29 @@ class Diff {
     }
     get pollingPeriod() {
         return 1000;
+    }
+    async createDiff(file1, file2) {
+        const api = await definition_1.API.load(file1);
+        const [previous_definition, previous_references] = api.extractDefinition();
+        const api2 = await definition_1.API.load(file2);
+        const [definition, references] = api2.extractDefinition();
+        const request = {
+            previous_definition,
+            previous_references,
+            definition,
+            references,
+        };
+        const response = await this.bumpClient.postDiff(request);
+        switch (response.status) {
+            case 201:
+                this.d(`Diff created with ID ${response.data.id}`);
+                this.d(response.data);
+                return response.data;
+                break;
+            case 204:
+                break;
+        }
+        return;
     }
     async createVersion(file, documentation, token, hub, previous_version_id = undefined) {
         const api = await definition_1.API.load(file);
@@ -27126,13 +27192,22 @@ class Diff {
         return;
     }
     async waitResult(result, token, opts) {
-        const diffResponse = await this.bumpClient.getVersion(result.id, token);
+        let pollingResponse = undefined;
+        if (this.isVersion(result) && token) {
+            pollingResponse = await this.bumpClient.getVersion(result.id, token);
+        }
+        else {
+            pollingResponse = await this.bumpClient.getDiff(result.id);
+        }
         if (opts.timeout <= 0) {
             throw new errors_1.CLIError('We were unable to compute your documentation diff. Sorry about that. Please try again later');
         }
-        switch (diffResponse.status) {
+        switch (pollingResponse.status) {
             case 200:
-                const diff = diffResponse.data;
+                let diff = pollingResponse.data;
+                if (this.isVersionWithDiff(diff)) {
+                    diff = this.extractDiff(diff);
+                }
                 this.d('Received diff:');
                 this.d(diff);
                 return diff;
@@ -27158,6 +27233,23 @@ class Diff {
     /* eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any */
     d(formatter, ...args) {
         return (0, debug_1.default)(`bump-cli:core:diff`)(formatter, ...args);
+    }
+    isVersion(result) {
+        return result.doc_public_url !== undefined;
+    }
+    isVersionWithDiff(result) {
+        return result.diff_summary !== undefined;
+    }
+    extractDiff(versionWithDiff) {
+        // TODO: return a real diff_id in the GET /version API
+        return {
+            id: versionWithDiff.id,
+            public_url: versionWithDiff.diff_public_url,
+            text: versionWithDiff.diff_summary,
+            markdown: versionWithDiff.diff_markdown,
+            details: versionWithDiff.diff_details,
+            breaking: versionWithDiff.diff_breaking,
+        };
     }
 }
 exports.Diff = Diff;
@@ -43382,9 +43474,9 @@ RedirectableRequest.prototype._processResponse = function (response) {
     var redirectUrlParts = url.parse(redirectUrl);
     Object.assign(this._options, redirectUrlParts);
 
-    // Drop the Authorization header if redirecting to another domain
+    // Drop the confidential headers when redirecting to another domain
     if (!(redirectUrlParts.host === currentHost || isSubdomainOf(redirectUrlParts.host, currentHost))) {
-      removeMatchingHeaders(/^authorization$/i, this._options.headers);
+      removeMatchingHeaders(/^(?:authorization|cookie)$/i, this._options.headers);
     }
 
     // Evaluate the beforeRedirect callback
@@ -84123,7 +84215,7 @@ module.exports = JSON.parse('{"name":"@oclif/config","description":"base config 
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"name":"bump-cli","description":"The Bump CLI is used to interact with your API documentation hosted on Bump by using the API of developers.bump.sh","version":"2.3.1","author":"Paul Bonaud <paulr@bump.sh>","bin":{"bump":"./bin/run"},"bugs":"https://github.com/bump-sh/cli/issues","devDependencies":{"@oclif/dev-cli":"^1.26.0","@oclif/test":"^2.0.3","@types/debug":"^4.1.5","@types/mocha":"^9.0.0","@types/node":"^17.0.4","@typescript-eslint/eslint-plugin":"^4.21.0","@typescript-eslint/parser":"^4.21.0","chai":"^4.3.4","cross-spawn":"^7.0.3","eslint":"^7.24.0","eslint-config-prettier":"^8.1.0","eslint-plugin-prettier":"^4.0.0","globby":"^11.0.3","mocha":"^9.0.3","nock":"^13.0.11","np":"^7.5.0","nyc":"^15.1.0","prettier":"^2.2.1","sinon":"^12.0.1","stdout-stderr":"^0.1.13","ts-node":"^10.0.0","typescript":"^4.3.3"},"engines":{"node":">=12.0.0"},"files":["/bin","/lib","/npm-shrinkwrap.json","/oclif.manifest.json"],"homepage":"https://bump.sh","keywords":["api","documentation","openapi","asyncapi","bump","cli"],"license":"MIT","main":"lib/index.js","oclif":{"commands":"./lib/commands","bin":"bump","plugins":["@oclif/plugin-help"]},"repository":"bump-sh/cli","scripts":{"build":"tsc -b","clean":"rm -rf lib oclif.manifest.json","lint":"eslint . --ext .ts --config .eslintrc","fmt":"eslint . --ext .ts --config .eslintrc --fix","pack":"oclif-dev pack","postpack":"rm -f oclif.manifest.json","prepack":"rm -rf lib && npm run build && oclif-dev manifest && oclif-dev readme","pretest":"npm run clean && npm run build && npm run lint","publish":"np --no-release-draft","test":"mocha \\"test/**/*.test.ts\\"","test-coverage":"nyc npm run test","test-integration":"node ./test/integration.js","version":"oclif-dev readme && git add README.md"},"types":"lib/index.d.ts","dependencies":{"@apidevtools/json-schema-ref-parser":"^9.0.7","@asyncapi/specs":"^2.9.0","@oclif/command":"^1.8.0","@oclif/config":"^1.17.0","@oclif/plugin-help":"^5.1.10","async-mutex":"^0.3.2","axios":"^0.24.0","cli-ux":"^6.0.7","debug":"^4.3.1","oas-schemas":"git+https://git@github.com/OAI/OpenAPI-Specification.git#0f9d3ec7c033fef184ec54e1ffc201b2d61ce023","tslib":"^2.3.0"}}');
+module.exports = JSON.parse('{"name":"bump-cli","description":"The Bump CLI is used to interact with your API documentation hosted on Bump by using the API of developers.bump.sh","version":"2.3.2","author":"Paul Bonaud <paulr@bump.sh>","bin":{"bump":"./bin/run"},"bugs":"https://github.com/bump-sh/cli/issues","devDependencies":{"@oclif/dev-cli":"^1.26.0","@oclif/test":"^2.0.3","@types/debug":"^4.1.5","@types/mocha":"^9.0.0","@types/node":"^17.0.4","@typescript-eslint/eslint-plugin":"^4.21.0","@typescript-eslint/parser":"^4.21.0","chai":"^4.3.4","cross-spawn":"^7.0.3","eslint":"^7.24.0","eslint-config-prettier":"^8.1.0","eslint-plugin-prettier":"^4.0.0","globby":"^11.0.3","mocha":"^9.0.3","nock":"^13.0.11","np":"^7.5.0","nyc":"^15.1.0","prettier":"^2.2.1","sinon":"^12.0.1","stdout-stderr":"^0.1.13","ts-node":"^10.0.0","typescript":"^4.3.3"},"engines":{"node":">=12.0.0"},"files":["/bin","/lib","/npm-shrinkwrap.json","/oclif.manifest.json"],"homepage":"https://bump.sh","keywords":["api","documentation","openapi","asyncapi","bump","cli"],"license":"MIT","main":"lib/index.js","oclif":{"commands":"./lib/commands","bin":"bump","plugins":["@oclif/plugin-help"]},"repository":"bump-sh/cli","scripts":{"build":"tsc -b","clean":"rm -rf lib oclif.manifest.json","lint":"eslint . --ext .ts --config .eslintrc","fmt":"eslint . --ext .ts --config .eslintrc --fix","pack":"oclif-dev pack","postpack":"rm -f oclif.manifest.json","prepack":"rm -rf lib && npm run build && oclif-dev manifest && oclif-dev readme","pretest":"npm run clean && npm run build && npm run lint","publish":"np --no-release-draft","test":"mocha \\"test/**/*.test.ts\\"","test-coverage":"nyc npm run test","test-integration":"node ./test/integration.js","version":"oclif-dev readme && git add README.md"},"types":"lib/index.d.ts","dependencies":{"@apidevtools/json-schema-ref-parser":"^9.0.7","@asyncapi/specs":"^2.9.0","@oclif/command":"^1.8.0","@oclif/config":"^1.17.0","@oclif/plugin-help":"^5.1.10","async-mutex":"^0.3.2","axios":"^0.25.0","cli-ux":"^6.0.7","debug":"^4.3.1","oas-schemas":"git+https://git@github.com/OAI/OpenAPI-Specification.git#0f9d3ec7c033fef184ec54e1ffc201b2d61ce023","tslib":"^2.3.0"}}');
 
 /***/ }),
 
@@ -84267,8 +84359,8 @@ async function run() {
                 await new bump.Diff(config)
                     .run(file1, file2, doc, hub, token)
                     .then((result) => {
-                    if (result && 'diff_markdown' in result) {
-                        diff.run(result).catch(handleErrors);
+                    if (result && 'markdown' in result) {
+                        diff.run(result, repo).catch(handleErrors);
                     }
                     else {
                         core.info('No diff found, nothing more to do.');
