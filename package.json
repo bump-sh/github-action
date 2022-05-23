@@ -40,7 +40,7 @@
     "@actions/exec": "^1.1.1",
     "@actions/github": "^5.0.0",
     "@actions/io": "^1.1.2",
-    "@oclif/core": "^1.0.11",
+    "@oclif/core": "^1.9.0",
     "@octokit/types": "^6.34.0",
     "bump-cli": "^2.3.3"
   },
@@ -57,7 +57,7 @@
     "jest": "^27.4.7",
     "jest-circus": "^27.5.1",
     "js-yaml": "^3.14.0",
-    "prettier": "^2.6.1",
+    "prettier": "^2.6.2",
     "stdout-stderr": "^0.1.13",
     "ts-jest": "^27.1.4",
     "typescript": "^4.4.4"
