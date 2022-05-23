@@ -36,10 +36,15 @@ afterEach(() => stdout.stop());
 test('test action run deploy correctly', async () => {
   expect(mockedDeploy.run).not.toHaveBeenCalled();
 
-  process.env.INPUT_FILE = 'my-file.yml';
-  process.env.INPUT_DOC = 'my-doc';
-  process.env.INPUT_TOKEN = 'SECRET';
+  const restore = mockEnv({
+    INPUT_FILE: 'my-file.yml',
+    INPUT_DOC: 'my-doc',
+    INPUT_TOKEN: 'SECRET',
+  });
+
   await main();
+
+  restore();
 
   expect(mockedDeploy.run).toHaveBeenCalledWith([
     'my-file.yml',
@@ -50,12 +55,42 @@ test('test action run deploy correctly', async () => {
   ]);
 });
 
+test('test action run deploy with branch name correctly', async () => {
+  expect(mockedDeploy.run).not.toHaveBeenCalled();
+
+  const restore = mockEnv({
+    INPUT_FILE: 'my-file.yml',
+    INPUT_DOC: 'my-doc',
+    INPUT_TOKEN: 'SECRET',
+    INPUT_BRANCH: 'latest',
+  });
+
+  await main();
+
+  restore();
+
+  expect(mockedDeploy.run).toHaveBeenCalledWith([
+    'my-file.yml',
+    '--doc',
+    'my-doc',
+    '--token',
+    'SECRET',
+    '--branch',
+    'latest',
+  ]);
+});
+
 test('test action run preview correctly', async () => {
   expect(mockedPreview.run).not.toHaveBeenCalled();
 
-  process.env.INPUT_FILE = 'my-file-to-preview.yml';
-  process.env.INPUT_COMMAND = 'preview';
+  const restore = mockEnv({
+    INPUT_FILE: 'my-file-to-preview.yml',
+    INPUT_COMMAND: 'preview',
+  });
+
   await main();
+
+  restore();
 
   expect(mockedPreview.run).toHaveBeenCalledWith(['my-file-to-preview.yml']);
 });
@@ -63,12 +98,16 @@ test('test action run preview correctly', async () => {
 test('test action run dry-run correctly', async () => {
   expect(mockedDeploy.run).not.toHaveBeenCalled();
 
-  process.env.INPUT_FILE = 'my-file.yml';
-  process.env.INPUT_DOC = 'my-doc';
-  process.env.INPUT_TOKEN = 'SECRET';
-  process.env.INPUT_COMMAND = 'dry-run';
+  const restore = mockEnv({
+    INPUT_FILE: 'my-file.yml',
+    INPUT_DOC: 'my-doc',
+    INPUT_TOKEN: 'SECRET',
+    INPUT_COMMAND: 'dry-run',
+  });
 
   await main();
+
+  restore();
 
   expect(mockedDeploy.run).toHaveBeenCalledWith([
     'my-file.yml',
@@ -86,20 +125,59 @@ test('test action run diff correctly', async () => {
   expect(mockedInternalDiff.run).not.toHaveBeenCalled();
   expect(mockedInternalRepo).not.toHaveBeenCalled();
 
-  process.env.INPUT_FILE = 'my-file-to-diff.yml';
-  process.env.INPUT_COMMAND = 'diff';
+  const restore = mockEnv({
+    INPUT_FILE: 'my-file-to-diff.yml',
+    INPUT_COMMAND: 'diff',
+  });
+
   await main();
 
   expect(mockedInternalRepo.prototype.getBaseFile).toHaveBeenCalledWith(
     process.env.INPUT_FILE,
   );
 
+  restore();
+
   expect(mockedDiff.prototype.run).toHaveBeenCalledWith(
     'my-file-to-diff.yml',
     undefined,
-    'my-doc',
     '',
-    'SECRET',
+    '',
+    '',
+    '',
+    'markdown',
+  );
+  expect(mockedInternalDiff.run).toHaveBeenCalledWith(diffExample, expect.any(Repo));
+});
+
+test('test action run diff with Branch correctly', async () => {
+  mockedDiff.prototype.run.mockResolvedValue(diffExample);
+  expect(mockedDiff.prototype.run).not.toHaveBeenCalled();
+  expect(mockedInternalDiff.run).not.toHaveBeenCalled();
+  expect(mockedInternalRepo).not.toHaveBeenCalled();
+
+  const restore = mockEnv({
+    INPUT_FILE: 'my-file-to-diff.yml',
+    INPUT_COMMAND: 'diff',
+    INPUT_BRANCH: 'latest',
+  });
+
+  await main();
+
+  expect(mockedInternalRepo.prototype.getBaseFile).toHaveBeenCalledWith(
+    process.env.INPUT_FILE,
+  );
+
+  restore();
+
+  expect(mockedDiff.prototype.run).toHaveBeenCalledWith(
+    'my-file-to-diff.yml',
+    undefined,
+    '',
+    '',
+    'latest',
+    '',
+    'markdown',
   );
   expect(mockedInternalDiff.run).toHaveBeenCalledWith(diffExample, expect.any(Repo));
 });
@@ -110,16 +188,23 @@ test('test action run diff on PR correctly', async () => {
   expect(mockedInternalDiff.run).not.toHaveBeenCalled();
   mockedInternalRepo.prototype.getBaseFile.mockResolvedValue('my-base-file-to-diff.yml');
 
-  process.env.INPUT_FILE = 'my-file-to-diff.yml';
-  process.env.INPUT_COMMAND = 'diff';
+  const restore = mockEnv({
+    INPUT_FILE: 'my-file-to-diff.yml',
+    INPUT_COMMAND: 'diff',
+  });
+
   await main();
+
+  restore();
 
   expect(mockedDiff.prototype.run).toHaveBeenCalledWith(
     'my-base-file-to-diff.yml',
     'my-file-to-diff.yml',
-    'my-doc',
     '',
-    'SECRET',
+    '',
+    '',
+    '',
+    'markdown',
   );
   expect(mockedInternalDiff.run).toHaveBeenCalledWith(diffExample, expect.any(Repo));
 });
@@ -130,16 +215,23 @@ test('test action run diff with internal exception', async () => {
   mockedInternalDiff.run.mockRejectedValue(new Error('Boom'));
   expect(mockedInternalDiff.run).not.toHaveBeenCalled();
 
-  process.env.INPUT_FILE = 'my-file-to-diff.yml';
-  process.env.INPUT_COMMAND = 'diff';
+  const restore = mockEnv({
+    INPUT_FILE: 'my-file-to-diff.yml',
+    INPUT_COMMAND: 'diff',
+  });
+
   await main();
+
+  restore();
 
   expect(mockedDiff.prototype.run).toHaveBeenCalledWith(
     'my-file-to-diff.yml',
     undefined,
-    'my-doc',
     '',
-    'SECRET',
+    '',
+    '',
+    '',
+    'markdown',
   );
   expect(mockedInternalDiff.run).toHaveBeenCalledWith(diffExample, expect.any(Repo));
 });

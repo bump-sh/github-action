@@ -13,6 +13,7 @@ async function run(): Promise<void> {
     const file: string = core.getInput('file');
     const doc: string = core.getInput('doc');
     const hub: string = core.getInput('hub');
+    const branch: string = core.getInput('branch');
     const token: string = core.getInput('token');
     const command: string = core.getInput('command') || 'deploy';
     const cliParams = [file];
@@ -21,6 +22,10 @@ async function run(): Promise<void> {
 
     if (hub) {
       docCliParams = docCliParams.concat(['--hub', hub]);
+    }
+
+    if (branch) {
+      docCliParams = docCliParams.concat(['--branch', branch]);
     }
 
     await config.load();
@@ -52,7 +57,7 @@ async function run(): Promise<void> {
         }
 
         await new bump.Diff(config)
-          .run(file1, file2, doc, hub, token)
+          .run(file1, file2, doc, hub, branch, token, 'markdown')
           .then((result: bump.DiffResponse | undefined) => {
             if (result && 'markdown' in result) {
               diff.run(result, repo).catch(handleErrors);

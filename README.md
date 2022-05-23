@@ -157,6 +157,8 @@ _Important: make sure to change your main destination branch name (`main` in the
 
 * `hub` (optional): Hub slug or id. Needed when deploying to a documentation attached to a Hub. Can be found in the hub settings on https://bump.sh
 
+* `branch` (optional): Branch name used during `deploy` or `diff` commands. This can be useful to maintain multiple API reference history and make it available in your API documentation.
+
 * `command`: Bump command to execute. _Default: `deploy`_
 
   * `deploy`: deploy a new version of the documentation
