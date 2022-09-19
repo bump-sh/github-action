@@ -9,6 +9,10 @@ inputs:
     description: 'Documentation id. Can be found in the documentation settings on https://bump.sh'
   token:
     description: 'Documentation token. Can be found in the documentation settings on https://bump.sh'
+  hub:
+    description: 'Hub slug or id. Needed when deploying to a documentation attached to a Hub. Can be found in the hub settings on https://bump.sh'
+  branch:
+    description: 'Branch name used during `deploy` or `diff` commands. This can be useful to maintain multiple API reference history and make it available in your API documentation.'
   command:
     description: 'Bump command: deploy/dry-run/preview'
     default: deploy
