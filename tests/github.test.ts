@@ -39,13 +39,14 @@ test('getBasefile function', async () => {
   // As we don't do any git operations in tests, we mock the resulting file
   mockedCommon.fsExists.mockResolvedValue(true);
 
-  const repo = new Repo();
+  const repo = new Repo('hello');
   const headFile = 'openapi.yml';
   const baseFile = await repo.getBaseFile('openapi.yml');
   const baseSha = fixtureGithubContext.payload.pull_request.base.sha;
   const headSha = fixtureGithubContext.payload.pull_request.head.sha;
   const baseBranch = '';
 
+  expect(repo.docDigest).toEqual('hello');
   // Expect git executions
   expect(mockedExec.exec.mock.calls).toEqual([
     ['git', ['fetch', 'origin', baseSha, headSha]],
