@@ -1,7 +1,9 @@
 import * as fs from 'fs';
 import crypto from 'crypto';
 
-const bumpDiffRegexp = /<!-- Bump.sh.*digest=(.*) -->/;
+function bumpDiffRegexp(docDigest: string): RegExp {
+  return new RegExp(`<!-- Bump.sh.*digest=([^\\s]+)(?: doc=${docDigest})? -->`);
+}
 
 function bumpDiffComment(digest: string): string {
   return `<!-- Bump.sh digest=${digest} -->`;
@@ -12,8 +14,8 @@ const setUserAgent = (): void => {
   return;
 };
 
-function extractBumpDigest(body: string): string | undefined {
-  return (body.match(bumpDiffRegexp) || []).pop();
+function extractBumpDigest(docDigest: string, body: string): string | undefined {
+  return (body.match(bumpDiffRegexp(docDigest)) || []).pop();
 }
 
 function shaDigest(texts: string[]): string {

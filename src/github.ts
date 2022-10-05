@@ -21,8 +21,9 @@ export class Repo {
   readonly prNumber?: number;
   readonly baseSha?: string;
   readonly headSha?: string;
+  private _docDigest: string;
 
-  constructor() {
+  constructor(docDigest: string) {
     // Fetch GitHub Action context
     // from GITHUB_REPOSITORY & GITHUB_EVENT_PATH
     const { owner, repo } = github.context.repo;
@@ -36,6 +37,11 @@ export class Repo {
       this.headSha = pull_request.head.sha;
     }
     this.octokit = this.getOctokit();
+    this._docDigest = docDigest;
+  }
+
+  public get docDigest() {
+    return this._docDigest;
   }
 
   getOctokit(): Octokit {
@@ -93,13 +99,16 @@ export class Repo {
       return;
     }
 
-    const { owner, name: repo, prNumber: issue_number, octokit } = this;
+    const { owner, name: repo, prNumber: issue_number, octokit, _docDigest } = this;
     const existingComment = await this.findExistingComment(issue_number);
 
     if (existingComment) {
       // We force types because of findExistingComment call which ensures
       // body & digest exists if the comment exists but the TS compiler can't guess.
-      const existingDigest = extractBumpDigest(existingComment.body as string);
+      const existingDigest = extractBumpDigest(
+        _docDigest,
+        existingComment.body as string,
+      );
 
       if (digest !== existingDigest) {
         await octokit.rest.issues.updateComment({
@@ -127,7 +136,7 @@ export class Repo {
     });
 
     return comments.data.find((comment: GitHubComment) =>
-      extractBumpDigest(comment.body || ''),
+      extractBumpDigest(this._docDigest, comment.body || ''),
     );
   }
 

@@ -6,7 +6,7 @@ import * as bump from 'bump-cli';
 
 import * as diff from './diff';
 import { Repo } from './github';
-import { setUserAgent } from './common';
+import { setUserAgent, shaDigest } from './common';
 
 async function run(): Promise<void> {
   try {
@@ -46,7 +46,8 @@ async function run(): Promise<void> {
         await bump.Deploy.run(cliParams.concat(docCliParams));
         break;
       case 'diff':
-        const repo = new Repo();
+        const docDigest = shaDigest([doc, hub]);
+        const repo = new Repo(docDigest);
         let file1 = await repo.getBaseFile(file);
         let file2: string | undefined;
 

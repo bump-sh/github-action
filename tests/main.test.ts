@@ -129,9 +129,11 @@ test('test action run diff correctly', async () => {
     INPUT_FILE: 'my-file-to-diff.yml',
     INPUT_COMMAND: 'diff',
   });
+  const emptyDocDigest = 'da39a3ee5e6b4b0d3255bfef95601890afd80709';
 
   await main();
 
+  expect(mockedInternalRepo).toHaveBeenCalledWith(emptyDocDigest);
   expect(mockedInternalRepo.prototype.getBaseFile).toHaveBeenCalledWith(
     process.env.INPUT_FILE,
   );
@@ -142,6 +144,40 @@ test('test action run diff correctly', async () => {
     'my-file-to-diff.yml',
     undefined,
     '',
+    '',
+    '',
+    '',
+    'markdown',
+  );
+  expect(mockedInternalDiff.run).toHaveBeenCalledWith(diffExample, expect.any(Repo));
+});
+
+test('test action run diff on existing documentation correctly', async () => {
+  mockedDiff.prototype.run.mockResolvedValue(diffExample);
+  expect(mockedDiff.prototype.run).not.toHaveBeenCalled();
+  expect(mockedInternalDiff.run).not.toHaveBeenCalled();
+  expect(mockedInternalRepo).not.toHaveBeenCalled();
+
+  const restore = mockEnv({
+    INPUT_FILE: 'my-file-to-diff.yml',
+    INPUT_DOC: 'my-doc',
+    INPUT_COMMAND: 'diff',
+  });
+  const docDigest = '398b995591d7e5f6676e44f06be071abe850b38e';
+
+  await main();
+
+  expect(mockedInternalRepo).toHaveBeenCalledWith(docDigest);
+  expect(mockedInternalRepo.prototype.getBaseFile).toHaveBeenCalledWith(
+    process.env.INPUT_FILE,
+  );
+
+  restore();
+
+  expect(mockedDiff.prototype.run).toHaveBeenCalledWith(
+    'my-file-to-diff.yml',
+    undefined,
+    'my-doc',
     '',
     '',
     '',
