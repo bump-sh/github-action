@@ -40,7 +40,7 @@
     "@actions/exec": "^1.1.1",
     "@actions/github": "^5.0.3",
     "@actions/io": "^1.1.2",
-    "@oclif/core": "^1.9.0",
+    "@oclif/core": "^1.16.4",
     "@octokit/types": "^6.34.0",
     "bump-cli": "^2.4.0"
   },
