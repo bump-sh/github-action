@@ -4,18 +4,18 @@ import { bumpDiffComment, shaDigest } from './common';
 
 export async function run(diff: DiffResponse, repo: Repo): Promise<void> {
   const digest = shaDigest([diff.markdown!, diff.public_url!]);
-  const body = buildCommentBody(diff, digest);
+  const body = buildCommentBody(repo.docDigest, diff, digest);
 
   return repo.createOrUpdateComment(body, digest);
 }
 
-function buildCommentBody(diff: DiffResponse, digest: string) {
+function buildCommentBody(docDigest: string, diff: DiffResponse, digest: string) {
   const emptySpace = '';
   const poweredByBump = '> _Powered by [Bump](https://bump.sh)_';
 
   return [title(diff)]
     .concat([emptySpace, diff.markdown!])
-    .concat([viewDiffLink(diff), poweredByBump, bumpDiffComment(digest)])
+    .concat([viewDiffLink(diff), poweredByBump, bumpDiffComment(docDigest, digest)])
     .join('\n');
 }
 

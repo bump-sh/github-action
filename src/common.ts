@@ -5,9 +5,10 @@ function bumpDiffRegexp(docDigest: string): RegExp {
   return new RegExp(`<!-- Bump.sh.*digest=([^\\s]+)(?: doc=${docDigest})? -->`);
 }
 
-function bumpDiffComment(digest: string): string {
-  return `<!-- Bump.sh digest=${digest} -->`;
+function bumpDiffComment(docDigest: string, digest: string): string {
+  return `<!-- Bump.sh digest=${digest} doc=${docDigest} -->`;
 }
+
 // Set User-Agent for github-action
 const setUserAgent = (): void => {
   process.env.BUMP_USER_AGENT = 'bump-github-action';

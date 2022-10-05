@@ -1,8 +1,10 @@
 import * as bump from 'bump-cli';
 import * as diff from '../src/diff';
 
-// Mock internal github code
+// Mock internal Repo class
 import { Repo } from '../src/github';
+// Repo class is completely mocked (by jest.mock(...)) meaning all
+// method calls return 'undefined' (including attribute getters).
 jest.mock('../src/github');
 const mockedInternalRepo = Repo as jest.Mocked<typeof Repo>;
 
@@ -20,7 +22,7 @@ test('test github diff run process', async () => {
 
   expect(mockedInternalRepo).not.toHaveBeenCalled();
 
-  const repo = new Repo();
+  const repo = new Repo('');
   await diff.run(result, repo);
 
   expect(mockedInternalRepo.prototype.createOrUpdateComment).toHaveBeenCalledWith(
@@ -34,7 +36,7 @@ test('test github diff run process', async () => {
 [View documentation diff](https://bump.sh/doc/my-doc/changes/654)
 
 > _Powered by [Bump](https://bump.sh)_
-<!-- Bump.sh digest=${digest} -->`,
+<!-- Bump.sh digest=${digest} doc=undefined -->`,
     digest,
   );
 });
@@ -53,7 +55,7 @@ test('test github diff with breaking changes', async () => {
 
   expect(mockedInternalRepo).not.toHaveBeenCalled();
 
-  const repo = new Repo();
+  const repo = new Repo('');
   await diff.run(result, repo);
 
   expect(mockedInternalRepo.prototype.createOrUpdateComment).toHaveBeenCalledWith(
@@ -67,7 +69,7 @@ test('test github diff with breaking changes', async () => {
 [View documentation diff](https://bump.sh/doc/my-doc/changes/654)
 
 > _Powered by [Bump](https://bump.sh)_
-<!-- Bump.sh digest=${digest} -->`,
+<!-- Bump.sh digest=${digest} doc=undefined -->`,
     digest,
   );
 });
