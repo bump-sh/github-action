@@ -102,12 +102,18 @@ export class Repo {
     const { owner, name: repo, prNumber: issue_number, octokit, _docDigest } = this;
     const existingComment = await this.findExistingComment(issue_number);
 
+    core.debug(`[createOrUpdatecomment] Launching for doc ${_docDigest} ...`);
+
     if (existingComment) {
       // We force types because of findExistingComment call which ensures
       // body & digest exists if the comment exists but the TS compiler can't guess.
       const existingDigest = extractBumpDigest(
         _docDigest,
         existingComment.body as string,
+      );
+
+      core.debug(
+        `[Repo#createOrUpdatecomment] Update comment (digest=${existingDigest}) for doc ${_docDigest}`,
       );
 
       if (digest !== existingDigest) {
@@ -119,6 +125,8 @@ export class Repo {
         });
       }
     } else {
+      core.debug(`[Repo#createOrUpdatecomment] Create comment for doc ${_docDigest}`);
+
       await octokit.rest.issues.createComment({
         owner,
         repo,
