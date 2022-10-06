@@ -11,9 +11,11 @@ exports.shaDigest = exports.setUserAgent = exports.fsExists = exports.extractBum
 const tslib_1 = __nccwpck_require__(4351);
 const fs = (0, tslib_1.__importStar)(__nccwpck_require__(57147));
 const crypto_1 = (0, tslib_1.__importDefault)(__nccwpck_require__(6113));
-const bumpDiffRegexp = /<!-- Bump.sh.*digest=(.*) -->/;
-function bumpDiffComment(digest) {
-    return `<!-- Bump.sh digest=${digest} -->`;
+function bumpDiffRegexp(docDigest) {
+    return new RegExp(`<!-- Bump.sh.*digest=([^\\s]+)(?: doc=${docDigest})? -->`);
+}
+function bumpDiffComment(docDigest, digest) {
+    return `<!-- Bump.sh digest=${digest} doc=${docDigest} -->`;
 }
 exports.bumpDiffComment = bumpDiffComment;
 // Set User-Agent for github-action
@@ -22,8 +24,8 @@ const setUserAgent = () => {
     return;
 };
 exports.setUserAgent = setUserAgent;
-function extractBumpDigest(body) {
-    return (body.match(bumpDiffRegexp) || []).pop();
+function extractBumpDigest(docDigest, body) {
+    return (body.match(bumpDiffRegexp(docDigest)) || []).pop();
 }
 exports.extractBumpDigest = extractBumpDigest;
 function shaDigest(texts) {
@@ -59,16 +61,16 @@ exports.run = void 0;
 const common_1 = __nccwpck_require__(86979);
 async function run(diff, repo) {
     const digest = (0, common_1.shaDigest)([diff.markdown, diff.public_url]);
-    const body = buildCommentBody(diff, digest);
+    const body = buildCommentBody(repo.docDigest, diff, digest);
     return repo.createOrUpdateComment(body, digest);
 }
 exports.run = run;
-function buildCommentBody(diff, digest) {
+function buildCommentBody(docDigest, diff, digest) {
     const emptySpace = '';
     const poweredByBump = '> _Powered by [Bump](https://bump.sh)_';
     return [title(diff)]
         .concat([emptySpace, diff.markdown])
-        .concat([viewDiffLink(diff), poweredByBump, (0, common_1.bumpDiffComment)(digest)])
+        .concat([viewDiffLink(diff), poweredByBump, (0, common_1.bumpDiffComment)(docDigest, digest)])
         .join('\n');
 }
 function title(diff) {
@@ -100,7 +102,7 @@ const io = (0, tslib_1.__importStar)(__nccwpck_require__(47351));
 const common_1 = __nccwpck_require__(86979);
 const anyOctokit = github.getOctokit('any');
 class Repo {
-    constructor() {
+    constructor(docDigest) {
         // Fetch GitHub Action context
         // from GITHUB_REPOSITORY & GITHUB_EVENT_PATH
         const { owner, repo } = github.context.repo;
@@ -113,6 +115,10 @@ class Repo {
             this.headSha = pull_request.head.sha;
         }
         this.octokit = this.getOctokit();
+        this._docDigest = docDigest;
+    }
+    get docDigest() {
+        return this._docDigest;
     }
     getOctokit() {
         const ghToken = core.getInput('github-token') || process.env['GITHUB_TOKEN'];
@@ -158,12 +164,14 @@ class Repo {
             core.info('Not a pull request, nothing more to do.');
             return;
         }
-        const { owner, name: repo, prNumber: issue_number, octokit } = this;
+        const { owner, name: repo, prNumber: issue_number, octokit, _docDigest } = this;
         const existingComment = await this.findExistingComment(issue_number);
+        core.debug(`[createOrUpdatecomment] Launching for doc ${_docDigest} ...`);
         if (existingComment) {
             // We force types because of findExistingComment call which ensures
             // body & digest exists if the comment exists but the TS compiler can't guess.
-            const existingDigest = (0, common_1.extractBumpDigest)(existingComment.body);
+            const existingDigest = (0, common_1.extractBumpDigest)(_docDigest, existingComment.body);
+            core.debug(`[Repo#createOrUpdatecomment] Update comment (digest=${existingDigest}) for doc ${_docDigest}`);
             if (digest !== existingDigest) {
                 await octokit.rest.issues.updateComment({
                     owner,
@@ -174,6 +182,7 @@ class Repo {
             }
         }
         else {
+            core.debug(`[Repo#createOrUpdatecomment] Create comment for doc ${_docDigest}`);
             await octokit.rest.issues.createComment({
                 owner,
                 repo,
@@ -188,7 +197,7 @@ class Repo {
             repo: this.name,
             issue_number,
         });
-        return comments.data.find((comment) => (0, common_1.extractBumpDigest)(comment.body || ''));
+        return comments.data.find((comment) => (0, common_1.extractBumpDigest)(this._docDigest, comment.body || ''));
     }
     async deleteExistingComment() {
         if (!this.prNumber) {
@@ -86601,7 +86610,8 @@ async function run() {
                 await bump.Deploy.run(cliParams.concat(docCliParams));
                 break;
             case 'diff':
-                const repo = new github_1.Repo();
+                const docDigest = (0, common_1.shaDigest)([doc, hub]);
+                const repo = new github_1.Repo(docDigest);
                 let file1 = await repo.getBaseFile(file);
                 let file2;
                 if (file1) {
