@@ -6,7 +6,7 @@
   "bugs": "https://github.com/bump-sh/github-action/issues",
   "homepage": "https://bump.sh",
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=16.0.0"
   },
   "scripts": {
     "build": "tsc -b",
