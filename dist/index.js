@@ -388,13 +388,9 @@ function exportVariable(name, val) {
     process.env[name] = convertedVal;
     const filePath = process.env['GITHUB_ENV'] || '';
     if (filePath) {
-        const delimiter = '_GitHubActionsFileCommandDelimeter_';
-        const commandValue = `${name}<<${delimiter}${os.EOL}${convertedVal}${os.EOL}${delimiter}`;
-        file_command_1.issueCommand('ENV', commandValue);
+        return file_command_1.issueFileCommand('ENV', file_command_1.prepareKeyValueMessage(name, val));
     }
-    else {
-        command_1.issueCommand('set-env', { name }, convertedVal);
-    }
+    command_1.issueCommand('set-env', { name }, convertedVal);
 }
 exports.exportVariable = exportVariable;
 /**
@@ -412,7 +408,7 @@ exports.setSecret = setSecret;
 function addPath(inputPath) {
     const filePath = process.env['GITHUB_PATH'] || '';
     if (filePath) {
-        file_command_1.issueCommand('PATH', inputPath);
+        file_command_1.issueFileCommand('PATH', inputPath);
     }
     else {
         command_1.issueCommand('add-path', {}, inputPath);
@@ -452,7 +448,10 @@ function getMultilineInput(name, options) {
     const inputs = getInput(name, options)
         .split('\n')
         .filter(x => x !== '');
-    return inputs;
+    if (options && options.trimWhitespace === false) {
+        return inputs;
+    }
+    return inputs.map(input => input.trim());
 }
 exports.getMultilineInput = getMultilineInput;
 /**
@@ -485,8 +484,12 @@ exports.getBooleanInput = getBooleanInput;
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function setOutput(name, value) {
+    const filePath = process.env['GITHUB_OUTPUT'] || '';
+    if (filePath) {
+        return file_command_1.issueFileCommand('OUTPUT', file_command_1.prepareKeyValueMessage(name, value));
+    }
     process.stdout.write(os.EOL);
-    command_1.issueCommand('set-output', { name }, value);
+    command_1.issueCommand('set-output', { name }, utils_1.toCommandValue(value));
 }
 exports.setOutput = setOutput;
 /**
@@ -615,7 +618,11 @@ exports.group = group;
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function saveState(name, value) {
-    command_1.issueCommand('save-state', { name }, value);
+    const filePath = process.env['GITHUB_STATE'] || '';
+    if (filePath) {
+        return file_command_1.issueFileCommand('STATE', file_command_1.prepareKeyValueMessage(name, value));
+    }
+    command_1.issueCommand('save-state', { name }, utils_1.toCommandValue(value));
 }
 exports.saveState = saveState;
 /**
@@ -644,6 +651,13 @@ Object.defineProperty(exports, "summary", ({ enumerable: true, get: function () 
  */
 var summary_2 = __nccwpck_require__(81327);
 Object.defineProperty(exports, "markdownSummary", ({ enumerable: true, get: function () { return summary_2.markdownSummary; } }));
+/**
+ * Path exports
+ */
+var path_utils_1 = __nccwpck_require__(2981);
+Object.defineProperty(exports, "toPosixPath", ({ enumerable: true, get: function () { return path_utils_1.toPosixPath; } }));
+Object.defineProperty(exports, "toWin32Path", ({ enumerable: true, get: function () { return path_utils_1.toWin32Path; } }));
+Object.defineProperty(exports, "toPlatformPath", ({ enumerable: true, get: function () { return path_utils_1.toPlatformPath; } }));
 //# sourceMappingURL=core.js.map
 
 /***/ }),
@@ -674,13 +688,14 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.issueCommand = void 0;
+exports.prepareKeyValueMessage = exports.issueFileCommand = void 0;
 // We use any as a valid input type
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const fs = __importStar(__nccwpck_require__(57147));
 const os = __importStar(__nccwpck_require__(22037));
+const uuid_1 = __nccwpck_require__(75840);
 const utils_1 = __nccwpck_require__(5278);
-function issueCommand(command, message) {
+function issueFileCommand(command, message) {
     const filePath = process.env[`GITHUB_${command}`];
     if (!filePath) {
         throw new Error(`Unable to find environment variable for file command ${command}`);
@@ -692,7 +707,22 @@ function issueCommand(command, message) {
         encoding: 'utf8'
     });
 }
-exports.issueCommand = issueCommand;
+exports.issueFileCommand = issueFileCommand;
+function prepareKeyValueMessage(key, value) {
+    const delimiter = `ghadelimiter_${uuid_1.v4()}`;
+    const convertedValue = utils_1.toCommandValue(value);
+    // These should realistically never happen, but just in case someone finds a
+    // way to exploit uuid generation let's not allow keys or values that contain
+    // the delimiter.
+    if (key.includes(delimiter)) {
+        throw new Error(`Unexpected input: name should not contain the delimiter "${delimiter}"`);
+    }
+    if (convertedValue.includes(delimiter)) {
+        throw new Error(`Unexpected input: value should not contain the delimiter "${delimiter}"`);
+    }
+    return `${key}<<${delimiter}${os.EOL}${convertedValue}${os.EOL}${delimiter}`;
+}
+exports.prepareKeyValueMessage = prepareKeyValueMessage;
 //# sourceMappingURL=file-command.js.map
 
 /***/ }),
@@ -778,6 +808,71 @@ class OidcClient {
 }
 exports.OidcClient = OidcClient;
 //# sourceMappingURL=oidc-utils.js.map
+
+/***/ }),
+
+/***/ 2981:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.toPlatformPath = exports.toWin32Path = exports.toPosixPath = void 0;
+const path = __importStar(__nccwpck_require__(71017));
+/**
+ * toPosixPath converts the given path to the posix form. On Windows, \\ will be
+ * replaced with /.
+ *
+ * @param pth. Path to transform.
+ * @return string Posix path.
+ */
+function toPosixPath(pth) {
+    return pth.replace(/[\\]/g, '/');
+}
+exports.toPosixPath = toPosixPath;
+/**
+ * toWin32Path converts the given path to the win32 form. On Linux, / will be
+ * replaced with \\.
+ *
+ * @param pth. Path to transform.
+ * @return string Win32 path.
+ */
+function toWin32Path(pth) {
+    return pth.replace(/[/]/g, '\\');
+}
+exports.toWin32Path = toWin32Path;
+/**
+ * toPlatformPath converts the given path to a platform-specific path. It does
+ * this by replacing instances of / and \ with the platform-specific path
+ * separator.
+ *
+ * @param pth The path to platformize.
+ * @return string The platform-specific path.
+ */
+function toPlatformPath(pth) {
+    return pth.replace(/[/\\]/g, path.sep);
+}
+exports.toPlatformPath = toPlatformPath;
+//# sourceMappingURL=path-utils.js.map
 
 /***/ }),
 
@@ -1949,8 +2044,9 @@ exports.context = new Context.Context();
  * @param     token    the repo PAT or GITHUB_TOKEN
  * @param     options  other options to set
  */
-function getOctokit(token, options) {
-    return new utils_1.GitHub(utils_1.getOctokitOptions(token, options));
+function getOctokit(token, options, ...additionalPlugins) {
+    const GitHubWithPlugins = utils_1.GitHub.plugin(...additionalPlugins);
+    return new GitHubWithPlugins(utils_1.getOctokitOptions(token, options));
 }
 exports.getOctokit = getOctokit;
 //# sourceMappingURL=github.js.map
@@ -2032,7 +2128,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.getOctokitOptions = exports.GitHub = exports.context = void 0;
+exports.getOctokitOptions = exports.GitHub = exports.defaults = exports.context = void 0;
 const Context = __importStar(__nccwpck_require__(74087));
 const Utils = __importStar(__nccwpck_require__(47914));
 // octokit + plugins
@@ -2041,13 +2137,13 @@ const plugin_rest_endpoint_methods_1 = __nccwpck_require__(83044);
 const plugin_paginate_rest_1 = __nccwpck_require__(64193);
 exports.context = new Context.Context();
 const baseUrl = Utils.getApiBaseUrl();
-const defaults = {
+exports.defaults = {
     baseUrl,
     request: {
         agent: Utils.getProxyAgent(baseUrl)
     }
 };
-exports.GitHub = core_1.Octokit.plugin(plugin_rest_endpoint_methods_1.restEndpointMethods, plugin_paginate_rest_1.paginateRest).defaults(defaults);
+exports.GitHub = core_1.Octokit.plugin(plugin_rest_endpoint_methods_1.restEndpointMethods, plugin_paginate_rest_1.paginateRest).defaults(exports.defaults);
 /**
  * Convience function to correctly format Octokit Options to pass into the constructor.
  *
@@ -8393,19 +8489,6 @@ exports.uniq = uniq;
 
 /***/ }),
 
-/***/ 40877:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-module.exports = async () => {
-  try {
-    const {ux} = __nccwpck_require__(90841)
-    await ux.flush()
-  } catch (error) { }
-}
-
-
-/***/ }),
-
 /***/ 38174:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
@@ -9312,7 +9395,10 @@ async function flush() {
     const p = new Promise(resolve => {
         process.stdout.once('drain', () => resolve(null));
     });
-    process.stdout.write('');
+    const flushed = process.stdout.write('');
+    if (flushed) {
+        return Promise.resolve();
+    }
     return p;
 }
 exports.ux = {
@@ -9401,8 +9487,8 @@ exports.ux = {
             this.log(text);
         }
     },
-    async flush() {
-        await timeout(flush(), 10000);
+    async flush(ms = 10000) {
+        await timeout(flush(), ms);
     },
 };
 const cliuxProcessExitHandler = async () => {
@@ -9555,11 +9641,10 @@ function getPrompt(name, type, defaultValue) {
     return prompt;
 }
 async function single(options) {
-    var _a;
     const raw = process.stdin.isRaw;
     if (process.stdin.setRawMode)
         process.stdin.setRawMode(true);
-    options.required = (_a = options.required) !== null && _a !== void 0 ? _a : false;
+    options.required = options.required ?? false;
     const response = await normal(options);
     if (process.stdin.setRawMode)
         process.stdin.setRawMode(Boolean(raw));
@@ -9795,10 +9880,11 @@ class Table {
         // assign columns
         this.columns = Object.keys(columns).map((key) => {
             const col = columns[key];
-            const extended = col.extended || false;
-            const get = col.get || ((row) => row[key]);
+            const extended = col.extended ?? false;
+            // turn null and undefined into empty strings by default
+            const get = col.get ?? ((row) => row[key] ?? '');
             const header = typeof col.header === 'string' ? col.header : (0, util_1.capitalize)(key.replace(/_/g, ' '));
-            const minWidth = Math.max(col.minWidth || 0, sw(header) + 1);
+            const minWidth = Math.max(col.minWidth ?? 0, sw(header) + 1);
             return {
                 extended,
                 get,
@@ -9814,9 +9900,9 @@ class Table {
             output: csv ? 'csv' : output,
             extended,
             filter,
-            'no-header': options['no-header'] || false,
-            'no-truncate': options['no-truncate'] || false,
-            printLine: printLine || ((s) => process.stdout.write(s + '\n')),
+            'no-header': options['no-header'] ?? false,
+            'no-truncate': options['no-truncate'] ?? false,
+            printLine: printLine ?? ((s) => process.stdout.write(s + '\n')),
             rowStart: ' ',
             sort,
             title,
@@ -9912,7 +9998,7 @@ class Table {
             return columns.reduce((obj, col) => {
                 return {
                     ...obj,
-                    [col.key]: d[col.key] || '',
+                    [col.key]: d[col.key] ?? '',
                 };
             }, {});
         });
@@ -9936,25 +10022,18 @@ class Table {
     }
     outputTable() {
         // tslint:disable-next-line:no-this-assignment
-        const { data, columns, options } = this;
+        const { data, options } = this;
         // column truncation
         //
         // find max width for each column
-        for (const col of columns) {
-            // convert multi-line cell to single longest line
-            // for width calculations
-            const widthData = data.map((row) => {
-                const d = row[col.key];
-                const manyLines = d.split('\n');
-                if (manyLines.length > 1) {
-                    return '*'.repeat(Math.max(...manyLines.map((r) => sw(r))));
-                }
-                return d;
-            });
-            const widths = ['.'.padEnd(col.minWidth - 1), col.header, ...widthData.map((row) => row)].map(r => sw(r));
-            col.maxWidth = Math.max(...widths) + 1;
-            col.width = col.maxWidth;
-        }
+        const columns = this.columns.map(c => {
+            const maxWidth = Math.max(sw('.'.padEnd(c.minWidth - 1)), sw(c.header), getWidestColumnWith(data, c.key)) + 1;
+            return {
+                ...c,
+                maxWidth,
+                width: maxWidth,
+            };
+        });
         // terminal width
         const maxWidth = screen_1.stdtermwidth - 2;
         // truncation logic
@@ -10090,6 +10169,15 @@ exports.table = table;
     }
     table.flags = flags;
 })(table = exports.table || (exports.table = {}));
+const getWidestColumnWith = (data, columnKey) => {
+    return data.reduce((previous, current) => {
+        const d = current[columnKey];
+        // convert multi-line cell to single longest line
+        // for width calculations
+        const manyLines = d.split('\n');
+        return Math.max(previous, manyLines.length > 1 ? Math.max(...manyLines.map((r) => sw(r))) : sw(d));
+    }, 0);
+};
 
 
 /***/ }),
@@ -10206,20 +10294,32 @@ class Command {
             this.debug = () => { };
         }
     }
+    static get enableJsonFlag() {
+        return this._enableJsonFlag;
+    }
+    static set enableJsonFlag(value) {
+        this._enableJsonFlag = value;
+        if (value === true) {
+            this.globalFlags = jsonFlag;
+        }
+        else {
+            delete this.globalFlags?.json;
+            this.flags = {}; // force the flags setter to run
+            delete this.flags?.json;
+        }
+    }
     static get globalFlags() {
         return this._globalFlags;
     }
     static set globalFlags(flags) {
-        this._globalFlags = this.enableJsonFlag ?
-            Object.assign({}, jsonFlag, this.globalFlags, flags) :
-            Object.assign({}, this.globalFlags, flags);
+        this._globalFlags = Object.assign({}, this.globalFlags, flags);
+        this.flags = {}; // force the flags setter to run
     }
     static get flags() {
         return this._flags;
     }
     static set flags(flags) {
-        this.globalFlags = {};
-        this._flags = Object.assign({}, this.globalFlags, flags);
+        this._flags = Object.assign({}, this._flags ?? {}, this.globalFlags, flags);
     }
     get ctor() {
         return this.constructor;
@@ -10258,9 +10358,14 @@ class Command {
     }
     log(message = '', ...args) {
         if (!this.jsonEnabled()) {
-            // tslint:disable-next-line strict-type-predicates
             message = typeof message === 'string' ? message : (0, util_1.inspect)(message);
             process.stdout.write((0, util_1.format)(message, ...args) + '\n');
+        }
+    }
+    logToStderr(message = '', ...args) {
+        if (!this.jsonEnabled()) {
+            message = typeof message === 'string' ? message : (0, util_1.inspect)(message);
+            process.stderr.write((0, util_1.format)(message, ...args) + '\n');
         }
     }
     jsonEnabled() {
@@ -10285,12 +10390,11 @@ class Command {
             options = this.constructor;
         const opts = { context: this, ...options };
         // the spread operator doesn't work with getters so we have to manually add it here
-        opts.flags = options === null || options === void 0 ? void 0 : options.flags;
+        opts.flags = options?.flags;
         return Parser.parse(argv, opts);
     }
     async catch(err) {
-        var _a, _b;
-        process.exitCode = (_b = (_a = process.exitCode) !== null && _a !== void 0 ? _a : err.exitCode) !== null && _b !== void 0 ? _b : 1;
+        process.exitCode = process.exitCode ?? err.exitCode ?? 1;
         if (this.jsonEnabled()) {
             index_1.CliUx.ux.styledJSON(this.toErrorJson(err));
         }
@@ -10331,7 +10435,7 @@ Command.aliases = [];
 Command.strict = true;
 Command.parse = true;
 Command.parserOptions = {};
-Command.enableJsonFlag = false;
+Command._enableJsonFlag = false;
 // eslint-disable-next-line valid-jsdoc
 /**
  * instantiate and run the command
@@ -10402,8 +10506,7 @@ class Permutations extends Map {
         }
     }
     get(key) {
-        var _a;
-        return (_a = super.get(key)) !== null && _a !== void 0 ? _a : new Set();
+        return super.get(key) ?? new Set();
     }
     getValid(key) {
         return this.validPermutations.get(key);
@@ -10513,16 +10616,18 @@ class Config {
         }
     }
     async loadDevPlugins() {
-        // do not load oclif.devPlugins in production
-        if (this.isProd)
-            return;
-        try {
-            const devPlugins = this.pjson.oclif.devPlugins;
-            if (devPlugins)
-                await this.loadPlugins(this.root, 'dev', devPlugins);
-        }
-        catch (error) {
-            process.emitWarning(error);
+        if (this.options.devPlugins !== false) {
+            // do not load oclif.devPlugins in production
+            if (this.isProd)
+                return;
+            try {
+                const devPlugins = this.pjson.oclif.devPlugins;
+                if (devPlugins)
+                    await this.loadPlugins(this.root, 'dev', devPlugins);
+            }
+            catch (error) {
+                process.emitWarning(error);
+            }
         }
     }
     async loadUserPlugins() {
@@ -10623,6 +10728,9 @@ class Config {
                 const cmdResult = hookResult.successes[0].result;
                 return cmdResult;
             }
+            if (hookResult.failures[0]) {
+                throw hookResult.failures[0].error;
+            }
             throw new errors_1.CLIError(`command ${id} not found`);
         }
         const command = await c.load();
@@ -10719,12 +10827,11 @@ class Config {
         return [...this._topics.values()];
     }
     s3Key(type, ext, options = {}) {
-        var _a;
         if (typeof ext === 'object')
             options = ext;
         else if (ext)
             options.ext = ext;
-        const template = (_a = this.pjson.oclif.update.s3.templates[options.platform ? 'target' : 'vanilla'][type]) !== null && _a !== void 0 ? _a : '';
+        const template = this.pjson.oclif.update.s3.templates[options.platform ? 'target' : 'vanilla'][type] ?? '';
         return ejs.render(template, { ...this, ...options });
     }
     s3Url(key) {
@@ -10863,7 +10970,6 @@ class Config {
         return id;
     }
     loadCommands(plugin) {
-        var _a;
         for (const command of plugin.commands) {
             if (this._commands.has(command.id)) {
                 const prioritizedCommand = this.determinePriority([this._commands.get(command.id), command]);
@@ -10876,7 +10982,7 @@ class Config {
             for (const permutation of permutations) {
                 this.commandPermutations.add(permutation, command.id);
             }
-            for (const alias of (_a = command.aliases) !== null && _a !== void 0 ? _a : []) {
+            for (const alias of command.aliases ?? []) {
                 if (this._commands.has(alias)) {
                     const prioritizedCommand = this.determinePriority([this._commands.get(alias), command]);
                     this._commands.set(prioritizedCommand.id, { ...prioritizedCommand, id: alias });
@@ -10938,12 +11044,10 @@ class Config {
      * @returns command instance {Command.Loadable} or undefined
      */
     determinePriority(commands) {
-        var _a, _b;
-        const oclifPlugins = (_b = (_a = this.pjson.oclif) === null || _a === void 0 ? void 0 : _a.plugins) !== null && _b !== void 0 ? _b : [];
+        const oclifPlugins = this.pjson.oclif?.plugins ?? [];
         const commandPlugins = commands.sort((a, b) => {
-            var _a, _b;
-            const pluginAliasA = (_a = a.pluginAlias) !== null && _a !== void 0 ? _a : 'A-Cannot-Find-This';
-            const pluginAliasB = (_b = b.pluginAlias) !== null && _b !== void 0 ? _b : 'B-Cannot-Find-This';
+            const pluginAliasA = a.pluginAlias ?? 'A-Cannot-Find-This';
+            const pluginAliasB = b.pluginAlias ?? 'B-Cannot-Find-This';
             const aIndex = oclifPlugins.indexOf(pluginAliasA);
             const bIndex = oclifPlugins.indexOf(pluginAliasB);
             // When both plugin types are 'core' plugins sort based on index
@@ -11022,6 +11126,7 @@ async function toCached(c, plugin) {
                 multiple: flag.multiple,
                 options: flag.options,
                 dependsOn: flag.dependsOn,
+                relationships: flag.relationships,
                 exclusive: flag.exclusive,
                 default: await defaultToCached(flag),
             };
@@ -11199,7 +11304,6 @@ class Plugin {
         this.warned = false;
     }
     async load() {
-        var _a;
         this.type = this.options.type || 'core';
         this.tag = this.options.tag;
         const root = await findRoot(this.options.name, this.options.root);
@@ -11209,7 +11313,7 @@ class Plugin {
         this._debug('reading %s plugin %s', this.type, root);
         this.pjson = await (0, util_3.loadJSON)(path.join(root, 'package.json'));
         this.name = this.pjson.name;
-        this.alias = (_a = this.options.name) !== null && _a !== void 0 ? _a : this.pjson.name;
+        this.alias = this.options.name ?? this.pjson.name;
         const pjsonPath = path.join(root, 'package.json');
         if (!this.name)
             throw new Error(`no name in ${pjsonPath}`);
@@ -11259,7 +11363,8 @@ class Plugin {
             const p = path.parse(file);
             const topics = p.dir.split('/');
             const command = p.name !== 'index' && p.name;
-            return [...topics, command].filter(f => f).join(':');
+            const id = [...topics, command].filter(f => f).join(':');
+            return id === '' ? '.' : id;
         });
         this._debug('found commands', ids);
         return ids;
@@ -11646,7 +11751,7 @@ function addOclifExitCode(error, options) {
     if (!('oclif' in error)) {
         error.oclif = {};
     }
-    error.oclif.exit = (options === null || options === void 0 ? void 0 : options.exit) === undefined ? 2 : options.exit;
+    error.oclif.exit = options?.exit === undefined ? 2 : options.exit;
     return error;
 }
 exports.addOclifExitCode = addOclifExitCode;
@@ -11815,7 +11920,6 @@ const _1 = __nccwpck_require__(34630);
 const clean = __nccwpck_require__(27972);
 const cli_1 = __nccwpck_require__(68463);
 const handle = (err) => {
-    var _a, _b, _c;
     try {
         if (!err)
             err = new cli_1.CLIError('no error?');
@@ -11827,7 +11931,7 @@ const handle = (err) => {
         if (shouldPrint) {
             console.error(pretty ? pretty : stack);
         }
-        const exitCode = ((_a = err.oclif) === null || _a === void 0 ? void 0 : _a.exit) !== undefined && ((_b = err.oclif) === null || _b === void 0 ? void 0 : _b.exit) !== false ? (_c = err.oclif) === null || _c === void 0 ? void 0 : _c.exit : 1;
+        const exitCode = err.oclif?.exit !== undefined && err.oclif?.exit !== false ? err.oclif?.exit : 1;
         if (config_1.config.errorLogger && err.code !== 'EEXIT') {
             if (stack) {
                 config_1.config.errorLogger.log(stack);
@@ -11879,7 +11983,6 @@ function exit(code = 0) {
 }
 exports.exit = exit;
 function error(input, options = {}) {
-    var _a;
     let err;
     if (typeof input === 'string') {
         err = new cli_2.CLIError(input, options);
@@ -11895,14 +11998,13 @@ function error(input, options = {}) {
         const message = (0, pretty_print_1.default)(err);
         console.error(message);
         if (config_2.config.errorLogger)
-            config_2.config.errorLogger.log((_a = err === null || err === void 0 ? void 0 : err.stack) !== null && _a !== void 0 ? _a : '');
+            config_2.config.errorLogger.log(err?.stack ?? '');
     }
     else
         throw err;
 }
 exports.error = error;
 function warn(input) {
-    var _a;
     let err;
     if (typeof input === 'string') {
         err = new cli_2.CLIError.Warn(input);
@@ -11916,7 +12018,7 @@ function warn(input) {
     const message = (0, pretty_print_1.default)(err);
     console.error(message);
     if (config_2.config.errorLogger)
-        config_2.config.errorLogger.log((_a = err === null || err === void 0 ? void 0 : err.stack) !== null && _a !== void 0 ? _a : '');
+        config_2.config.errorLogger.log(err?.stack ?? '');
 }
 exports.warn = warn;
 
@@ -11983,18 +12085,20 @@ exports.Logger = Logger;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.help = exports.version = exports.file = exports.directory = exports.url = exports.integer = exports.boolean = exports.string = exports["enum"] = exports.option = exports.build = void 0;
-const Parser = __nccwpck_require__(44195);
-function build(defaults) {
-    return Parser.flags.build(defaults);
-}
-exports.build = build;
-function option(options) {
-    return build(options)();
-}
-exports.option = option;
-const _enum = (opts) => {
-    return build({
+exports.help = exports.version = exports["enum"] = exports._enum = exports.custom = exports.option = exports.build = exports.string = exports.file = exports.directory = exports.url = exports.integer = exports.boolean = void 0;
+const parser_1 = __nccwpck_require__(44195);
+var parser_2 = __nccwpck_require__(44195);
+Object.defineProperty(exports, "boolean", ({ enumerable: true, get: function () { return parser_2.boolean; } }));
+Object.defineProperty(exports, "integer", ({ enumerable: true, get: function () { return parser_2.integer; } }));
+Object.defineProperty(exports, "url", ({ enumerable: true, get: function () { return parser_2.url; } }));
+Object.defineProperty(exports, "directory", ({ enumerable: true, get: function () { return parser_2.directory; } }));
+Object.defineProperty(exports, "file", ({ enumerable: true, get: function () { return parser_2.file; } }));
+Object.defineProperty(exports, "string", ({ enumerable: true, get: function () { return parser_2.string; } }));
+Object.defineProperty(exports, "build", ({ enumerable: true, get: function () { return parser_2.build; } }));
+Object.defineProperty(exports, "option", ({ enumerable: true, get: function () { return parser_2.option; } }));
+Object.defineProperty(exports, "custom", ({ enumerable: true, get: function () { return parser_2.custom; } }));
+function _enum(opts) {
+    return (0, parser_1.custom)({
         async parse(input) {
             if (!opts.options.includes(input))
                 throw new Error(`Expected --${this.name}=${input} to be one of: ${opts.options.join(', ')}`);
@@ -12003,18 +12107,11 @@ const _enum = (opts) => {
         helpValue: `(${opts.options.join('|')})`,
         ...opts,
     })();
-};
+}
+exports._enum = _enum;
 exports["enum"] = _enum;
-const stringFlag = build({});
-exports.string = stringFlag;
-var parser_1 = __nccwpck_require__(44195);
-Object.defineProperty(exports, "boolean", ({ enumerable: true, get: function () { return parser_1.boolean; } }));
-Object.defineProperty(exports, "integer", ({ enumerable: true, get: function () { return parser_1.integer; } }));
-Object.defineProperty(exports, "url", ({ enumerable: true, get: function () { return parser_1.url; } }));
-Object.defineProperty(exports, "directory", ({ enumerable: true, get: function () { return parser_1.directory; } }));
-Object.defineProperty(exports, "file", ({ enumerable: true, get: function () { return parser_1.file; } }));
 const version = (opts = {}) => {
-    return Parser.flags.boolean({
+    return (0, parser_1.boolean)({
         description: 'Show CLI version.',
         ...opts,
         parse: async (_, cmd) => {
@@ -12025,7 +12122,7 @@ const version = (opts = {}) => {
 };
 exports.version = version;
 const help = (opts = {}) => {
-    return Parser.flags.boolean({
+    return (0, parser_1.boolean)({
         description: 'Show CLI help.',
         ...opts,
         parse: async (_, cmd) => {
@@ -12411,10 +12508,9 @@ class DocOpts {
         return new DocOpts(cmd).toString();
     }
     toString() {
-        var _a;
-        const opts = ['<%= command.id %>'];
+        const opts = this.cmd.id === '.' || this.cmd.id === '' ? [] : ['<%= command.id %>'];
         if (this.cmd.args) {
-            const a = ((_a = this.cmd.args) === null || _a === void 0 ? void 0 : _a.map(arg => `[${arg.name.toUpperCase()}]`)) || [];
+            const a = this.cmd.args?.map(arg => `[${arg.name.toUpperCase()}]`) || [];
             opts.push(...a);
         }
         try {
@@ -12457,13 +12553,12 @@ class DocOpts {
         return elementMap;
     }
     combineElementsToFlag(elementMap, flagName, flagNames, unionString) {
-        var _a;
         if (!this.flagMap[flagName]) {
             return;
         }
-        let isRequired = (_a = this.flagMap[flagName]) === null || _a === void 0 ? void 0 : _a.required;
+        let isRequired = this.flagMap[flagName]?.required;
         if (typeof isRequired !== 'boolean' || !isRequired) {
-            isRequired = flagNames.reduce((required, toCombine) => { var _a; return required || ((_a = this.flagMap[toCombine]) === null || _a === void 0 ? void 0 : _a.required) || false; }, false);
+            isRequired = flagNames.reduce((required, toCombine) => required || this.flagMap[toCombine]?.required || false, false);
         }
         for (const toCombine of flagNames) {
             elementMap[flagName] = `${elementMap[flagName] || ''}${unionString}${elementMap[toCombine] || ''}`;
@@ -12774,8 +12869,10 @@ class Help extends HelpBase {
         if (!subject) {
             if (this.config.pjson.oclif.default) {
                 const rootCmd = this.config.findCommand(this.config.pjson.oclif.default);
-                if (rootCmd)
+                if (rootCmd) {
                     await this.showCommandHelp(rootCmd);
+                    return;
+                }
             }
             await this.showRootHelp();
             return;
@@ -12807,13 +12904,12 @@ class Help extends HelpBase {
         (0, errors_1.error)(`Command ${subject} not found.`);
     }
     async showCommandHelp(command) {
-        var _a, _b, _c, _d;
         const name = command.id;
         const depth = name.split(':').length;
         const subTopics = this.sortedTopics.filter(t => t.name.startsWith(name + ':') && t.name.split(':').length === depth + 1);
         const subCommands = this.sortedCommands.filter(c => c.id.startsWith(name + ':') && c.id.split(':').length === depth + 1);
         const plugin = this.config.plugins.find(p => p.name === command.pluginName);
-        const state = ((_b = (_a = this.config.pjson) === null || _a === void 0 ? void 0 : _a.oclif) === null || _b === void 0 ? void 0 : _b.state) || ((_d = (_c = plugin === null || plugin === void 0 ? void 0 : plugin.pjson) === null || _c === void 0 ? void 0 : _c.oclif) === null || _d === void 0 ? void 0 : _d.state) || command.state;
+        const state = this.config.pjson?.oclif?.state || plugin?.pjson?.oclif?.state || command.state;
         if (state)
             this.log(`This command is in ${state}.\n`);
         const summary = this.summary(command);
@@ -12827,15 +12923,19 @@ class Help extends HelpBase {
             this.log('');
         }
         if (subCommands.length > 0) {
-            this.log(this.formatCommands(subCommands));
+            const aliases = [];
+            const uniqueSubCommands = subCommands.filter(p => {
+                aliases.push(...p.aliases);
+                return !aliases.includes(p.id);
+            });
+            this.log(this.formatCommands(uniqueSubCommands));
             this.log('');
         }
     }
     async showRootHelp() {
-        var _a, _b;
         let rootTopics = this.sortedTopics;
         let rootCommands = this.sortedCommands;
-        const state = (_b = (_a = this.config.pjson) === null || _a === void 0 ? void 0 : _a.oclif) === null || _b === void 0 ? void 0 : _b.state;
+        const state = this.config.pjson?.oclif?.state;
         if (state)
             this.log(`${this.config.bin} is in ${state}.\n`);
         this.log(this.formatRoot());
@@ -12855,12 +12955,11 @@ class Help extends HelpBase {
         }
     }
     async showTopicHelp(topic) {
-        var _a, _b;
         const name = topic.name;
         const depth = name.split(':').length;
         const subTopics = this.sortedTopics.filter(t => t.name.startsWith(name + ':') && t.name.split(':').length === depth + 1);
         const commands = this.sortedCommands.filter(c => c.id.startsWith(name + ':') && c.id.split(':').length === depth + 1);
-        const state = (_b = (_a = this.config.pjson) === null || _a === void 0 ? void 0 : _a.oclif) === null || _b === void 0 ? void 0 : _b.state;
+        const state = this.config.pjson?.oclif?.state;
         if (state)
             this.log(`This topic is in ${state}.\n`);
         this.log(this.formatTopic(topic));
@@ -13063,12 +13162,11 @@ function collateSpacedCmdIDFromArgs(argv, config) {
         const isArgWithValue = (s) => s.includes('=');
         const finalizeId = (s) => s ? [...final, s].join(':') : final.join(':');
         const hasArgs = () => {
-            var _a;
             const id = finalizeId();
             if (!id)
                 return false;
             const cmd = config.findCommand(id);
-            return Boolean(cmd && (cmd.strict === false || ((_a = cmd.args) === null || _a === void 0 ? void 0 : _a.length) > 0));
+            return Boolean(cmd && (cmd.strict === false || cmd.args?.length > 0));
         };
         for (const arg of argv) {
             if (idPresent(finalizeId(arg)))
@@ -13109,9 +13207,8 @@ function standardizeIDFromArgv(argv, config) {
 }
 exports.standardizeIDFromArgv = standardizeIDFromArgv;
 function getHelpFlagAdditions(config) {
-    var _a;
     const helpFlags = ['--help'];
-    const additionalHelpFlags = (_a = config.pjson.oclif.additionalHelpFlags) !== null && _a !== void 0 ? _a : [];
+    const additionalHelpFlags = config.pjson.oclif.additionalHelpFlags ?? [];
     return [...new Set([...helpFlags, ...additionalHelpFlags]).values()];
 }
 exports.getHelpFlagAdditions = getHelpFlagAdditions;
@@ -13157,7 +13254,7 @@ const settings_1 = __nccwpck_require__(86464);
 Object.defineProperty(exports, "settings", ({ enumerable: true, get: function () { return settings_1.settings; } }));
 const cliUx = __nccwpck_require__(32266);
 exports.CliUx = cliUx;
-const flush = __nccwpck_require__(40877);
+const flush = cliUx.ux.flush;
 exports.flush = flush;
 function checkCWD() {
     try {
@@ -13224,8 +13321,7 @@ const helpAddition = (argv, config) => {
 };
 exports.helpAddition = helpAddition;
 const versionAddition = (argv, config) => {
-    var _a;
-    const additionalVersionFlags = (_a = config === null || config === void 0 ? void 0 : config.pjson.oclif.additionalVersionFlags) !== null && _a !== void 0 ? _a : [];
+    const additionalVersionFlags = config?.pjson.oclif.additionalVersionFlags ?? [];
     const mergedVersionFlags = [...new Set(['--version', ...additionalVersionFlags]).values()];
     if (mergedVersionFlags.includes(argv[0]))
         return true;
@@ -13234,14 +13330,13 @@ const versionAddition = (argv, config) => {
 exports.versionAddition = versionAddition;
 // eslint-disable-next-line default-param-last
 async function run(argv = process.argv.slice(2), options) {
-    var _a;
     // Handle the case when a file URL string or URL is passed in such as 'import.meta.url'; covert to file path.
     if (options && ((typeof options === 'string' && options.startsWith('file://')) || options instanceof url_2.URL)) {
         options = (0, url_1.fileURLToPath)(options);
     }
     // return Main.run(argv, options)
     const config = await config_1.Config.load(options || (module.parent && module.parent.parent && module.parent.parent.filename) || __dirname);
-    if (config.topicSeparator !== ':' && !((_a = argv[0]) === null || _a === void 0 ? void 0 : _a.includes(':')))
+    if (config.topicSeparator !== ':' && !argv[0]?.includes(':'))
         argv = (0, help_1.standardizeIDFromArgv)(argv, config);
     let [id, ...argvSlice] = argv;
     // run init hook
@@ -13269,6 +13364,11 @@ async function run(argv = process.argv.slice(2), options) {
             argvSlice = argv;
         }
     }
+    // If the the default command is '.' (signifying that the CLI is a single command CLI) and '.' is provided
+    // as an argument, we need to add back the '.' to argv since it was stripped out earlier as part of the
+    // command id.
+    if (config.pjson.oclif.default === '.' && id === '.' && argv[0] === '.')
+        argvSlice = ['.', ...argvSlice];
     await config.runCommand(id, argvSlice, cmd);
 }
 exports.run = run;
@@ -13364,7 +13464,7 @@ class ModuleLoader {
         }
         catch (error) {
             if (error.code === 'MODULE_NOT_FOUND' || error.code === 'ERR_MODULE_NOT_FOUND') {
-                throw new errors_1.ModuleLoadError(`${isESM ? 'import()' : 'require'} failed to load ${filePath || modulePath}`);
+                throw new errors_1.ModuleLoadError(`${isESM ? 'import()' : 'require'} failed to load ${filePath || modulePath}: ${error.message}`);
             }
             throw error;
         }
@@ -13403,7 +13503,6 @@ class ModuleLoader {
      * @returns {{isESM: boolean, filePath: string}} An object including file path and whether the module is ESM.
      */
     static resolvePath(config, modulePath) {
-        var _a, _b;
         let isESM;
         let filePath;
         try {
@@ -13417,7 +13516,7 @@ class ModuleLoader {
             if (fs.existsSync(filePath)) {
                 fileExists = true;
                 try {
-                    if ((_b = (_a = fs.lstatSync(filePath)) === null || _a === void 0 ? void 0 : _a.isDirectory) === null || _b === void 0 ? void 0 : _b.call(_a)) {
+                    if (fs.lstatSync(filePath)?.isDirectory?.()) {
                         fileExists = false;
                         isDirectory = true;
                     }
@@ -13512,9 +13611,10 @@ exports["default"] = () => {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ArgInvalidOptionError = exports.FlagInvalidOptionError = exports.UnexpectedArgsError = exports.RequiredFlagError = exports.RequiredArgsError = exports.InvalidArgsSpecError = exports.CLIParseError = exports.CLIError = void 0;
+exports.FailedFlagValidationError = exports.ArgInvalidOptionError = exports.FlagInvalidOptionError = exports.UnexpectedArgsError = exports.RequiredFlagError = exports.RequiredArgsError = exports.InvalidArgsSpecError = exports.CLIParseError = exports.CLIError = void 0;
 const errors_1 = __nccwpck_require__(34630);
 const deps_1 = __nccwpck_require__(72774);
+const util_1 = __nccwpck_require__(38008);
 var errors_2 = __nccwpck_require__(34630);
 Object.defineProperty(exports, "CLIError", ({ enumerable: true, get: function () { return errors_2.CLIError; } }));
 // eslint-disable-next-line new-cap
@@ -13522,7 +13622,8 @@ const m = (0, deps_1.default)()
     // eslint-disable-next-line node/no-missing-require
     .add('help', () => __nccwpck_require__(85766))
     // eslint-disable-next-line node/no-missing-require
-    .add('list', () => __nccwpck_require__(55366));
+    .add('list', () => __nccwpck_require__(55366))
+    .add('chalk', () => __nccwpck_require__(1854));
 class CLIParseError extends errors_1.CLIError {
     constructor(options) {
         options.message += '\nSee more help with --help';
@@ -13588,6 +13689,16 @@ class ArgInvalidOptionError extends CLIParseError {
     }
 }
 exports.ArgInvalidOptionError = ArgInvalidOptionError;
+class FailedFlagValidationError extends CLIParseError {
+    constructor({ parse, failed }) {
+        const reasons = failed.map(r => r.reason);
+        const deduped = (0, util_1.uniq)(reasons);
+        const errString = deduped.length === 1 ? 'error' : 'errors';
+        const message = `The following ${errString} occurred:\n  ${m.chalk.dim(deduped.join('\n  '))}`;
+        super({ parse, message });
+    }
+}
+exports.FailedFlagValidationError = FailedFlagValidationError;
 
 
 /***/ }),
@@ -13597,19 +13708,31 @@ exports.ArgInvalidOptionError = ArgInvalidOptionError;
 
 "use strict";
 
-// tslint:disable interface-over-type-literal
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.defaultFlags = exports.string = exports.option = exports.url = exports.file = exports.directory = exports.integer = exports.boolean = exports.build = void 0;
+exports.defaultFlags = exports.string = exports.option = exports.url = exports.file = exports.directory = exports.integer = exports.boolean = exports.build = exports.custom = void 0;
 const url_1 = __nccwpck_require__(57310);
 const fs = __nccwpck_require__(57147);
-function build(defaults) {
+function custom(defaults) {
     return (options = {}) => {
         return {
-            parse: async (i, _) => i,
+            parse: async (i, _context, _opts) => i,
             ...defaults,
             ...options,
             input: [],
-            multiple: Boolean(options.multiple),
+            multiple: Boolean(options.multiple === undefined ? defaults.multiple : options.multiple),
+            type: 'option',
+        };
+    };
+}
+exports.custom = custom;
+function build(defaults) {
+    return (options = {}) => {
+        return {
+            parse: async (i, _context) => i,
+            ...defaults,
+            ...options,
+            input: [],
+            multiple: Boolean(options.multiple === undefined ? defaults.multiple : options.multiple),
             type: 'option',
         };
     };
@@ -13624,32 +13747,37 @@ function boolean(options = {}) {
     };
 }
 exports.boolean = boolean;
-exports.integer = build({
-    parse: async (input) => {
+exports.integer = custom({
+    parse: async (input, _, opts) => {
         if (!/^-?\d+$/.test(input))
             throw new Error(`Expected an integer but received: ${input}`);
-        return Number.parseInt(input, 10);
+        const num = Number.parseInt(input, 10);
+        if (opts.min !== undefined && num < opts.min)
+            throw new Error(`Expected an integer greater than or equal to ${opts.min} but received: ${input}`);
+        if (opts.max !== undefined && num > opts.max)
+            throw new Error(`Expected an integer less than or equal to ${opts.max} but received: ${input}`);
+        return num;
     },
 });
-const directory = (opts = {}) => {
-    return build({
-        ...opts,
-        parse: async (input) => opts.exists ? dirExists(input) : input,
-    })();
-};
-exports.directory = directory;
-const file = (opts = {}) => {
-    return build({
-        ...opts,
-        parse: async (input) => opts.exists ? fileExists(input) : input,
-    })();
-};
-exports.file = file;
+exports.directory = custom({
+    parse: async (input, _, opts) => {
+        if (opts.exists)
+            return dirExists(input);
+        return input;
+    },
+});
+exports.file = custom({
+    parse: async (input, _, opts) => {
+        if (opts.exists)
+            return fileExists(input);
+        return input;
+    },
+});
 /**
  * Initializes a string as a URL. Throws an error
  * if the string is not a valid URL.
  */
-exports.url = build({
+exports.url = custom({
     parse: async (input) => {
         try {
             return new url_1.URL(input);
@@ -13660,10 +13788,10 @@ exports.url = build({
     },
 });
 function option(options) {
-    return build(options)();
+    return custom(options)();
 }
 exports.option = option;
-const stringFlag = build({});
+const stringFlag = custom({});
 exports.string = stringFlag;
 exports.defaultFlags = {
     color: boolean({ allowNo: true }),
@@ -13739,9 +13867,8 @@ exports.flagUsages = flagUsages;
 
 "use strict";
 
-// tslint:disable interface-over-type-literal
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.file = exports.directory = exports.url = exports.integer = exports.boolean = exports.parse = exports.flagUsages = exports.flags = exports.args = void 0;
+exports.custom = exports.option = exports.build = exports.string = exports.file = exports.directory = exports.url = exports.integer = exports.boolean = exports.parse = exports.flagUsages = exports.flags = exports.args = void 0;
 const args = __nccwpck_require__(40713);
 exports.args = args;
 const deps_1 = __nccwpck_require__(72774);
@@ -13762,22 +13889,26 @@ async function parse(argv, options) {
         '--': options['--'],
         flags: {
             color: flags.defaultFlags.color,
-            ...((options.flags || {})),
+            ...options.flags,
         },
         strict: options.strict !== false,
     };
     const parser = new parse_1.Parser(input);
     const output = await parser.parse();
-    m.validate({ input, output });
+    await m.validate({ input, output });
     return output;
 }
 exports.parse = parse;
-const { boolean, integer, url, directory, file } = flags;
-exports.boolean = boolean;
-exports.integer = integer;
-exports.url = url;
-exports.directory = directory;
-exports.file = file;
+var flags_1 = __nccwpck_require__(96478);
+Object.defineProperty(exports, "boolean", ({ enumerable: true, get: function () { return flags_1.boolean; } }));
+Object.defineProperty(exports, "integer", ({ enumerable: true, get: function () { return flags_1.integer; } }));
+Object.defineProperty(exports, "url", ({ enumerable: true, get: function () { return flags_1.url; } }));
+Object.defineProperty(exports, "directory", ({ enumerable: true, get: function () { return flags_1.directory; } }));
+Object.defineProperty(exports, "file", ({ enumerable: true, get: function () { return flags_1.file; } }));
+Object.defineProperty(exports, "string", ({ enumerable: true, get: function () { return flags_1.string; } }));
+Object.defineProperty(exports, "build", ({ enumerable: true, get: function () { return flags_1.build; } }));
+Object.defineProperty(exports, "option", ({ enumerable: true, get: function () { return flags_1.option; } }));
+Object.defineProperty(exports, "custom", ({ enumerable: true, get: function () { return flags_1.custom; } }));
 
 
 /***/ }),
@@ -13974,15 +14105,13 @@ class Parser {
                     flags[token.flag] = true;
                 }
                 // eslint-disable-next-line no-await-in-loop
-                flags[token.flag] = await flag.parse(flags[token.flag], this.context);
+                flags[token.flag] = await flag.parse(flags[token.flag], this.context, flag);
             }
             else {
                 const input = token.input;
-                if (flag.options && !flag.options.includes(input)) {
-                    throw new m.errors.FlagInvalidOptionError(flag, input);
-                }
+                this._validateOptions(flag, input);
                 // eslint-disable-next-line no-await-in-loop
-                const value = flag.parse ? await flag.parse(input, this.context) : input;
+                const value = flag.parse ? await flag.parse(input, this.context, flag) : input;
                 if (flag.multiple) {
                     flags[token.flag] = flags[token.flag] || [];
                     flags[token.flag].push(value);
@@ -13996,11 +14125,19 @@ class Parser {
             const flag = this.input.flags[k];
             if (flags[k])
                 continue;
-            if (flag.type === 'option' && flag.env) {
+            if (flag.env) {
                 const input = process.env[flag.env];
-                // eslint-disable-next-line no-await-in-loop
-                if (input)
-                    flags[k] = await flag.parse(input, this.context);
+                if (flag.type === 'option') {
+                    if (input) {
+                        this._validateOptions(flag, input);
+                        // eslint-disable-next-line no-await-in-loop
+                        flags[k] = await flag.parse(input, this.context, flag);
+                    }
+                }
+                else if (flag.type === 'boolean') {
+                    // eslint-disable-next-line no-negated-condition
+                    flags[k] = input !== undefined ? ['true', 'TRUE', '1', 'yes', 'YES', 'y', 'Y'].includes(input) : false;
+                }
             }
             if (!(k in flags) && flag.default !== undefined) {
                 this.metaData.flags[k] = { setFromDefault: true };
@@ -14010,6 +14147,10 @@ class Parser {
             }
         }
         return flags;
+    }
+    _validateOptions(flag, input) {
+        if (flag.options && !flag.options.includes(input))
+            throw new m.errors.FlagInvalidOptionError(flag, input);
     }
     async _argv() {
         const args = [];
@@ -14039,7 +14180,7 @@ class Parser {
                 }
                 stdinRead = true;
             }
-            if (!args[i] && 'default' in arg) {
+            if (!args[i] && arg?.default !== undefined) {
                 if (typeof arg.default === 'function') {
                     // eslint-disable-next-line no-await-in-loop
                     const f = await arg.default();
@@ -14157,14 +14298,14 @@ var __webpack_unused_export__;
 
 __webpack_unused_export__ = ({ value: true });
 exports.G = void 0;
-const errors_1 = __nccwpck_require__(34630);
-const errors_2 = __nccwpck_require__(27916);
-function validate(parse) {
+const errors_1 = __nccwpck_require__(27916);
+const util_1 = __nccwpck_require__(38008);
+async function validate(parse) {
     function validateArgs() {
         const maxArgs = parse.input.args.length;
         if (parse.input.strict && parse.output.argv.length > maxArgs) {
             const extras = parse.output.argv.slice(maxArgs);
-            throw new errors_2.UnexpectedArgsError({ parse, args: extras });
+            throw new errors_1.UnexpectedArgsError({ parse, args: extras });
         }
         const missingRequiredArgs = [];
         let hasOptional = false;
@@ -14175,65 +14316,139 @@ function validate(parse) {
             else if (hasOptional) {
                 // (required arg) check whether an optional has occurred before
                 // optionals should follow required, not before
-                throw new errors_2.InvalidArgsSpecError({ parse, args: parse.input.args });
+                throw new errors_1.InvalidArgsSpecError({ parse, args: parse.input.args });
             }
             if (arg.required && !parse.output.argv[index] && parse.output.argv[index] !== 0) {
                 missingRequiredArgs.push(arg);
             }
         }
         if (missingRequiredArgs.length > 0) {
-            throw new errors_2.RequiredArgsError({ parse, args: missingRequiredArgs });
+            throw new errors_1.RequiredArgsError({ parse, args: missingRequiredArgs });
         }
     }
+    async function validateFlags() {
+        const promises = Object.entries(parse.input.flags).map(async ([name, flag]) => {
+            const results = [];
+            if (parse.output.flags[name] !== undefined) {
+                results.push(...await validateRelationships(name, flag), await validateDependsOn(name, flag.dependsOn ?? []), await validateExclusive(name, flag.exclusive ?? []), await validateExactlyOne(name, flag.exactlyOne ?? []));
+            }
+            else if (flag.required) {
+                results.push({ status: 'failed', name, validationFn: 'required', reason: `Missing required flag ${name}` });
+            }
+            else if (flag.exactlyOne && flag.exactlyOne.length > 0) {
+                results.push(validateAcrossFlags(flag));
+            }
+            return results;
+        });
+        const results = (await Promise.all(promises)).flat();
+        const failed = results.filter(r => r.status === 'failed');
+        if (failed.length > 0)
+            throw new errors_1.FailedFlagValidationError({ parse, failed });
+    }
+    async function resolveFlags(flags) {
+        const promises = flags.map(async (flag) => {
+            if (typeof flag === 'string') {
+                return [flag, parse.output.flags[flag]];
+            }
+            const result = await flag.when(parse.output.flags);
+            return result ? [flag.name, parse.output.flags[flag.name]] : null;
+        });
+        const resolved = await Promise.all(promises);
+        return Object.fromEntries(resolved.filter(r => r !== null));
+    }
+    function getPresentFlags(flags) {
+        return Object.keys(flags).reduce((acc, key) => {
+            if (flags[key])
+                acc.push(key);
+            return acc;
+        }, []);
+    }
     function validateAcrossFlags(flag) {
-        var _a;
+        const base = { name: flag.name, validationFn: 'validateAcrossFlags' };
         const intersection = Object.entries(parse.input.flags)
             .map(entry => entry[0]) // array of flag names
             .filter(flagName => parse.output.flags[flagName] !== undefined) // with values
             .filter(flagName => flag.exactlyOne && flag.exactlyOne.includes(flagName)); // and in the exactlyOne list
         if (intersection.length === 0) {
             // the command's exactlyOne may or may not include itself, so we'll use Set to add + de-dupe
-            throw new errors_1.CLIError(`Exactly one of the following must be provided: ${[
-                ...new Set((_a = flag.exactlyOne) === null || _a === void 0 ? void 0 : _a.map(flag => `--${flag}`)),
-            ].join(', ')}`);
+            const deduped = (0, util_1.uniq)(flag.exactlyOne?.map(flag => `--${flag}`) ?? []).join(', ');
+            const reason = `Exactly one of the following must be provided: ${deduped}`;
+            return { ...base, status: 'failed', reason };
         }
+        return { ...base, status: 'success' };
     }
-    function validateFlags() {
-        for (const [name, flag] of Object.entries(parse.input.flags)) {
-            if (parse.output.flags[name] !== undefined) {
-                for (const also of flag.dependsOn || []) {
-                    if (!parse.output.flags[also]) {
-                        throw new errors_1.CLIError(`--${also}= must also be provided when using --${name}=`);
-                    }
-                }
-                for (const also of flag.exclusive || []) {
-                    // do not enforce exclusivity for flags that were defaulted
-                    if (parse.output.metadata.flags[also] &&
-                        parse.output.metadata.flags[also].setFromDefault)
-                        continue;
-                    if (parse.output.metadata.flags[name] &&
-                        parse.output.metadata.flags[name].setFromDefault)
-                        continue;
-                    if (parse.output.flags[also]) {
-                        throw new errors_1.CLIError(`--${also}= cannot also be provided when using --${name}=`);
-                    }
-                }
-                for (const also of flag.exactlyOne || []) {
-                    if (also !== name && parse.output.flags[also]) {
-                        throw new errors_1.CLIError(`--${also}= cannot also be provided when using --${name}=`);
-                    }
-                }
-            }
-            else if (flag.required) {
-                throw new errors_2.RequiredFlagError({ parse, flag });
-            }
-            else if (flag.exactlyOne && flag.exactlyOne.length > 0) {
-                validateAcrossFlags(flag);
+    async function validateExclusive(name, flags) {
+        const base = { name, validationFn: 'validateExclusive' };
+        const resolved = await resolveFlags(flags);
+        const keys = getPresentFlags(resolved);
+        for (const flag of keys) {
+            // do not enforce exclusivity for flags that were defaulted
+            if (parse.output.metadata.flags && parse.output.metadata.flags[flag]?.setFromDefault)
+                continue;
+            if (parse.output.metadata.flags && parse.output.metadata.flags[name]?.setFromDefault)
+                continue;
+            if (parse.output.flags[flag]) {
+                return { ...base, status: 'failed', reason: `--${flag}=${parse.output.flags[flag]} cannot also be provided when using --${name}` };
             }
         }
+        return { ...base, status: 'success' };
+    }
+    async function validateExactlyOne(name, flags) {
+        const base = { name, validationFn: 'validateExactlyOne' };
+        const resolved = await resolveFlags(flags);
+        const keys = getPresentFlags(resolved);
+        for (const flag of keys) {
+            if (flag !== name && parse.output.flags[flag]) {
+                return { ...base, status: 'failed', reason: `--${flag} cannot also be provided when using --${name}` };
+            }
+        }
+        return { ...base, status: 'success' };
+    }
+    async function validateDependsOn(name, flags) {
+        const base = { name, validationFn: 'validateDependsOn' };
+        const resolved = await resolveFlags(flags);
+        const foundAll = Object.values(resolved).every(Boolean);
+        if (!foundAll) {
+            const formattedFlags = Object.keys(resolved).map(f => `--${f}`).join(', ');
+            return { ...base, status: 'failed', reason: `All of the following must be provided when using --${name}: ${formattedFlags}` };
+        }
+        return { ...base, status: 'success' };
+    }
+    async function validateSome(name, flags) {
+        const base = { name, validationFn: 'validateSome' };
+        const resolved = await resolveFlags(flags);
+        const foundAtLeastOne = Object.values(resolved).some(Boolean);
+        if (!foundAtLeastOne) {
+            const formattedFlags = Object.keys(resolved).map(f => `--${f}`).join(', ');
+            return { ...base, status: 'failed', reason: `One of the following must be provided when using --${name}: ${formattedFlags}` };
+        }
+        return { ...base, status: 'success' };
+    }
+    async function validateRelationships(name, flag) {
+        if (!flag.relationships)
+            return [];
+        const results = await Promise.all(flag.relationships.map(async (relationship) => {
+            const flags = relationship.flags ?? [];
+            const results = [];
+            switch (relationship.type) {
+                case 'all':
+                    results.push(await validateDependsOn(name, flags));
+                    break;
+                case 'some':
+                    results.push(await validateSome(name, flags));
+                    break;
+                case 'none':
+                    results.push(await validateExclusive(name, flags));
+                    break;
+                default:
+                    break;
+            }
+            return results;
+        }));
+        return results.flat();
     }
     validateArgs();
-    validateFlags();
+    await validateFlags();
 }
 exports.G = validate;
 
@@ -14329,8 +14544,7 @@ function castArray(input) {
 }
 exports.castArray = castArray;
 function isProd() {
-    var _a;
-    return !['development', 'test'].includes((_a = process.env.NODE_ENV) !== null && _a !== void 0 ? _a : '');
+    return !['development', 'test'].includes(process.env.NODE_ENV ?? '');
 }
 exports.isProd = isProd;
 function maxBy(arr, fn) {
@@ -83883,6 +84097,652 @@ exports.p = function (fn) {
 
 /***/ }),
 
+/***/ 75840:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+Object.defineProperty(exports, "v1", ({
+  enumerable: true,
+  get: function () {
+    return _v.default;
+  }
+}));
+Object.defineProperty(exports, "v3", ({
+  enumerable: true,
+  get: function () {
+    return _v2.default;
+  }
+}));
+Object.defineProperty(exports, "v4", ({
+  enumerable: true,
+  get: function () {
+    return _v3.default;
+  }
+}));
+Object.defineProperty(exports, "v5", ({
+  enumerable: true,
+  get: function () {
+    return _v4.default;
+  }
+}));
+Object.defineProperty(exports, "NIL", ({
+  enumerable: true,
+  get: function () {
+    return _nil.default;
+  }
+}));
+Object.defineProperty(exports, "version", ({
+  enumerable: true,
+  get: function () {
+    return _version.default;
+  }
+}));
+Object.defineProperty(exports, "validate", ({
+  enumerable: true,
+  get: function () {
+    return _validate.default;
+  }
+}));
+Object.defineProperty(exports, "stringify", ({
+  enumerable: true,
+  get: function () {
+    return _stringify.default;
+  }
+}));
+Object.defineProperty(exports, "parse", ({
+  enumerable: true,
+  get: function () {
+    return _parse.default;
+  }
+}));
+
+var _v = _interopRequireDefault(__nccwpck_require__(78628));
+
+var _v2 = _interopRequireDefault(__nccwpck_require__(86409));
+
+var _v3 = _interopRequireDefault(__nccwpck_require__(85122));
+
+var _v4 = _interopRequireDefault(__nccwpck_require__(79120));
+
+var _nil = _interopRequireDefault(__nccwpck_require__(25332));
+
+var _version = _interopRequireDefault(__nccwpck_require__(81595));
+
+var _validate = _interopRequireDefault(__nccwpck_require__(66900));
+
+var _stringify = _interopRequireDefault(__nccwpck_require__(18950));
+
+var _parse = _interopRequireDefault(__nccwpck_require__(62746));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+
+/***/ 4569:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = void 0;
+
+var _crypto = _interopRequireDefault(__nccwpck_require__(6113));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function md5(bytes) {
+  if (Array.isArray(bytes)) {
+    bytes = Buffer.from(bytes);
+  } else if (typeof bytes === 'string') {
+    bytes = Buffer.from(bytes, 'utf8');
+  }
+
+  return _crypto.default.createHash('md5').update(bytes).digest();
+}
+
+var _default = md5;
+exports["default"] = _default;
+
+/***/ }),
+
+/***/ 25332:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = void 0;
+var _default = '00000000-0000-0000-0000-000000000000';
+exports["default"] = _default;
+
+/***/ }),
+
+/***/ 62746:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = void 0;
+
+var _validate = _interopRequireDefault(__nccwpck_require__(66900));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function parse(uuid) {
+  if (!(0, _validate.default)(uuid)) {
+    throw TypeError('Invalid UUID');
+  }
+
+  let v;
+  const arr = new Uint8Array(16); // Parse ########-....-....-....-............
+
+  arr[0] = (v = parseInt(uuid.slice(0, 8), 16)) >>> 24;
+  arr[1] = v >>> 16 & 0xff;
+  arr[2] = v >>> 8 & 0xff;
+  arr[3] = v & 0xff; // Parse ........-####-....-....-............
+
+  arr[4] = (v = parseInt(uuid.slice(9, 13), 16)) >>> 8;
+  arr[5] = v & 0xff; // Parse ........-....-####-....-............
+
+  arr[6] = (v = parseInt(uuid.slice(14, 18), 16)) >>> 8;
+  arr[7] = v & 0xff; // Parse ........-....-....-####-............
+
+  arr[8] = (v = parseInt(uuid.slice(19, 23), 16)) >>> 8;
+  arr[9] = v & 0xff; // Parse ........-....-....-....-############
+  // (Use "/" to avoid 32-bit truncation when bit-shifting high-order bytes)
+
+  arr[10] = (v = parseInt(uuid.slice(24, 36), 16)) / 0x10000000000 & 0xff;
+  arr[11] = v / 0x100000000 & 0xff;
+  arr[12] = v >>> 24 & 0xff;
+  arr[13] = v >>> 16 & 0xff;
+  arr[14] = v >>> 8 & 0xff;
+  arr[15] = v & 0xff;
+  return arr;
+}
+
+var _default = parse;
+exports["default"] = _default;
+
+/***/ }),
+
+/***/ 40814:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = void 0;
+var _default = /^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i;
+exports["default"] = _default;
+
+/***/ }),
+
+/***/ 50807:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = rng;
+
+var _crypto = _interopRequireDefault(__nccwpck_require__(6113));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const rnds8Pool = new Uint8Array(256); // # of random values to pre-allocate
+
+let poolPtr = rnds8Pool.length;
+
+function rng() {
+  if (poolPtr > rnds8Pool.length - 16) {
+    _crypto.default.randomFillSync(rnds8Pool);
+
+    poolPtr = 0;
+  }
+
+  return rnds8Pool.slice(poolPtr, poolPtr += 16);
+}
+
+/***/ }),
+
+/***/ 85274:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = void 0;
+
+var _crypto = _interopRequireDefault(__nccwpck_require__(6113));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function sha1(bytes) {
+  if (Array.isArray(bytes)) {
+    bytes = Buffer.from(bytes);
+  } else if (typeof bytes === 'string') {
+    bytes = Buffer.from(bytes, 'utf8');
+  }
+
+  return _crypto.default.createHash('sha1').update(bytes).digest();
+}
+
+var _default = sha1;
+exports["default"] = _default;
+
+/***/ }),
+
+/***/ 18950:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = void 0;
+
+var _validate = _interopRequireDefault(__nccwpck_require__(66900));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Convert array of 16 byte values to UUID string format of the form:
+ * XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+ */
+const byteToHex = [];
+
+for (let i = 0; i < 256; ++i) {
+  byteToHex.push((i + 0x100).toString(16).substr(1));
+}
+
+function stringify(arr, offset = 0) {
+  // Note: Be careful editing this code!  It's been tuned for performance
+  // and works in ways you may not expect. See https://github.com/uuidjs/uuid/pull/434
+  const uuid = (byteToHex[arr[offset + 0]] + byteToHex[arr[offset + 1]] + byteToHex[arr[offset + 2]] + byteToHex[arr[offset + 3]] + '-' + byteToHex[arr[offset + 4]] + byteToHex[arr[offset + 5]] + '-' + byteToHex[arr[offset + 6]] + byteToHex[arr[offset + 7]] + '-' + byteToHex[arr[offset + 8]] + byteToHex[arr[offset + 9]] + '-' + byteToHex[arr[offset + 10]] + byteToHex[arr[offset + 11]] + byteToHex[arr[offset + 12]] + byteToHex[arr[offset + 13]] + byteToHex[arr[offset + 14]] + byteToHex[arr[offset + 15]]).toLowerCase(); // Consistency check for valid UUID.  If this throws, it's likely due to one
+  // of the following:
+  // - One or more input array values don't map to a hex octet (leading to
+  // "undefined" in the uuid)
+  // - Invalid input values for the RFC `version` or `variant` fields
+
+  if (!(0, _validate.default)(uuid)) {
+    throw TypeError('Stringified UUID is invalid');
+  }
+
+  return uuid;
+}
+
+var _default = stringify;
+exports["default"] = _default;
+
+/***/ }),
+
+/***/ 78628:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = void 0;
+
+var _rng = _interopRequireDefault(__nccwpck_require__(50807));
+
+var _stringify = _interopRequireDefault(__nccwpck_require__(18950));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// **`v1()` - Generate time-based UUID**
+//
+// Inspired by https://github.com/LiosK/UUID.js
+// and http://docs.python.org/library/uuid.html
+let _nodeId;
+
+let _clockseq; // Previous uuid creation time
+
+
+let _lastMSecs = 0;
+let _lastNSecs = 0; // See https://github.com/uuidjs/uuid for API details
+
+function v1(options, buf, offset) {
+  let i = buf && offset || 0;
+  const b = buf || new Array(16);
+  options = options || {};
+  let node = options.node || _nodeId;
+  let clockseq = options.clockseq !== undefined ? options.clockseq : _clockseq; // node and clockseq need to be initialized to random values if they're not
+  // specified.  We do this lazily to minimize issues related to insufficient
+  // system entropy.  See #189
+
+  if (node == null || clockseq == null) {
+    const seedBytes = options.random || (options.rng || _rng.default)();
+
+    if (node == null) {
+      // Per 4.5, create and 48-bit node id, (47 random bits + multicast bit = 1)
+      node = _nodeId = [seedBytes[0] | 0x01, seedBytes[1], seedBytes[2], seedBytes[3], seedBytes[4], seedBytes[5]];
+    }
+
+    if (clockseq == null) {
+      // Per 4.2.2, randomize (14 bit) clockseq
+      clockseq = _clockseq = (seedBytes[6] << 8 | seedBytes[7]) & 0x3fff;
+    }
+  } // UUID timestamps are 100 nano-second units since the Gregorian epoch,
+  // (1582-10-15 00:00).  JSNumbers aren't precise enough for this, so
+  // time is handled internally as 'msecs' (integer milliseconds) and 'nsecs'
+  // (100-nanoseconds offset from msecs) since unix epoch, 1970-01-01 00:00.
+
+
+  let msecs = options.msecs !== undefined ? options.msecs : Date.now(); // Per 4.2.1.2, use count of uuid's generated during the current clock
+  // cycle to simulate higher resolution clock
+
+  let nsecs = options.nsecs !== undefined ? options.nsecs : _lastNSecs + 1; // Time since last uuid creation (in msecs)
+
+  const dt = msecs - _lastMSecs + (nsecs - _lastNSecs) / 10000; // Per 4.2.1.2, Bump clockseq on clock regression
+
+  if (dt < 0 && options.clockseq === undefined) {
+    clockseq = clockseq + 1 & 0x3fff;
+  } // Reset nsecs if clock regresses (new clockseq) or we've moved onto a new
+  // time interval
+
+
+  if ((dt < 0 || msecs > _lastMSecs) && options.nsecs === undefined) {
+    nsecs = 0;
+  } // Per 4.2.1.2 Throw error if too many uuids are requested
+
+
+  if (nsecs >= 10000) {
+    throw new Error("uuid.v1(): Can't create more than 10M uuids/sec");
+  }
+
+  _lastMSecs = msecs;
+  _lastNSecs = nsecs;
+  _clockseq = clockseq; // Per 4.1.4 - Convert from unix epoch to Gregorian epoch
+
+  msecs += 12219292800000; // `time_low`
+
+  const tl = ((msecs & 0xfffffff) * 10000 + nsecs) % 0x100000000;
+  b[i++] = tl >>> 24 & 0xff;
+  b[i++] = tl >>> 16 & 0xff;
+  b[i++] = tl >>> 8 & 0xff;
+  b[i++] = tl & 0xff; // `time_mid`
+
+  const tmh = msecs / 0x100000000 * 10000 & 0xfffffff;
+  b[i++] = tmh >>> 8 & 0xff;
+  b[i++] = tmh & 0xff; // `time_high_and_version`
+
+  b[i++] = tmh >>> 24 & 0xf | 0x10; // include version
+
+  b[i++] = tmh >>> 16 & 0xff; // `clock_seq_hi_and_reserved` (Per 4.2.2 - include variant)
+
+  b[i++] = clockseq >>> 8 | 0x80; // `clock_seq_low`
+
+  b[i++] = clockseq & 0xff; // `node`
+
+  for (let n = 0; n < 6; ++n) {
+    b[i + n] = node[n];
+  }
+
+  return buf || (0, _stringify.default)(b);
+}
+
+var _default = v1;
+exports["default"] = _default;
+
+/***/ }),
+
+/***/ 86409:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = void 0;
+
+var _v = _interopRequireDefault(__nccwpck_require__(65998));
+
+var _md = _interopRequireDefault(__nccwpck_require__(4569));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const v3 = (0, _v.default)('v3', 0x30, _md.default);
+var _default = v3;
+exports["default"] = _default;
+
+/***/ }),
+
+/***/ 65998:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = _default;
+exports.URL = exports.DNS = void 0;
+
+var _stringify = _interopRequireDefault(__nccwpck_require__(18950));
+
+var _parse = _interopRequireDefault(__nccwpck_require__(62746));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function stringToBytes(str) {
+  str = unescape(encodeURIComponent(str)); // UTF8 escape
+
+  const bytes = [];
+
+  for (let i = 0; i < str.length; ++i) {
+    bytes.push(str.charCodeAt(i));
+  }
+
+  return bytes;
+}
+
+const DNS = '6ba7b810-9dad-11d1-80b4-00c04fd430c8';
+exports.DNS = DNS;
+const URL = '6ba7b811-9dad-11d1-80b4-00c04fd430c8';
+exports.URL = URL;
+
+function _default(name, version, hashfunc) {
+  function generateUUID(value, namespace, buf, offset) {
+    if (typeof value === 'string') {
+      value = stringToBytes(value);
+    }
+
+    if (typeof namespace === 'string') {
+      namespace = (0, _parse.default)(namespace);
+    }
+
+    if (namespace.length !== 16) {
+      throw TypeError('Namespace must be array-like (16 iterable integer values, 0-255)');
+    } // Compute hash of namespace and value, Per 4.3
+    // Future: Use spread syntax when supported on all platforms, e.g. `bytes =
+    // hashfunc([...namespace, ... value])`
+
+
+    let bytes = new Uint8Array(16 + value.length);
+    bytes.set(namespace);
+    bytes.set(value, namespace.length);
+    bytes = hashfunc(bytes);
+    bytes[6] = bytes[6] & 0x0f | version;
+    bytes[8] = bytes[8] & 0x3f | 0x80;
+
+    if (buf) {
+      offset = offset || 0;
+
+      for (let i = 0; i < 16; ++i) {
+        buf[offset + i] = bytes[i];
+      }
+
+      return buf;
+    }
+
+    return (0, _stringify.default)(bytes);
+  } // Function#name is not settable on some platforms (#270)
+
+
+  try {
+    generateUUID.name = name; // eslint-disable-next-line no-empty
+  } catch (err) {} // For CommonJS default export support
+
+
+  generateUUID.DNS = DNS;
+  generateUUID.URL = URL;
+  return generateUUID;
+}
+
+/***/ }),
+
+/***/ 85122:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = void 0;
+
+var _rng = _interopRequireDefault(__nccwpck_require__(50807));
+
+var _stringify = _interopRequireDefault(__nccwpck_require__(18950));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function v4(options, buf, offset) {
+  options = options || {};
+
+  const rnds = options.random || (options.rng || _rng.default)(); // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
+
+
+  rnds[6] = rnds[6] & 0x0f | 0x40;
+  rnds[8] = rnds[8] & 0x3f | 0x80; // Copy bytes to buffer, if provided
+
+  if (buf) {
+    offset = offset || 0;
+
+    for (let i = 0; i < 16; ++i) {
+      buf[offset + i] = rnds[i];
+    }
+
+    return buf;
+  }
+
+  return (0, _stringify.default)(rnds);
+}
+
+var _default = v4;
+exports["default"] = _default;
+
+/***/ }),
+
+/***/ 79120:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = void 0;
+
+var _v = _interopRequireDefault(__nccwpck_require__(65998));
+
+var _sha = _interopRequireDefault(__nccwpck_require__(85274));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const v5 = (0, _v.default)('v5', 0x50, _sha.default);
+var _default = v5;
+exports["default"] = _default;
+
+/***/ }),
+
+/***/ 66900:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = void 0;
+
+var _regex = _interopRequireDefault(__nccwpck_require__(40814));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function validate(uuid) {
+  return typeof uuid === 'string' && _regex.default.test(uuid);
+}
+
+var _default = validate;
+exports["default"] = _default;
+
+/***/ }),
+
+/***/ 81595:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = void 0;
+
+var _validate = _interopRequireDefault(__nccwpck_require__(66900));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function version(uuid) {
+  if (!(0, _validate.default)(uuid)) {
+    throw TypeError('Invalid UUID');
+  }
+
+  return parseInt(uuid.substr(14, 1), 16);
+}
+
+var _default = version;
+exports["default"] = _default;
+
+/***/ }),
+
 /***/ 60866:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
@@ -86450,7 +87310,7 @@ module.exports = JSON.parse('{"name":"@oclif/config","description":"base config 
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"name":"@oclif/core","description":"base library for oclif CLIs","version":"1.9.0","author":"Salesforce","bugs":"https://github.com/oclif/core/issues","dependencies":{"@oclif/linewrap":"^1.0.0","@oclif/screen":"^3.0.2","ansi-escapes":"^4.3.2","ansi-styles":"^4.3.0","cardinal":"^2.1.1","chalk":"^4.1.2","clean-stack":"^3.0.1","cli-progress":"^3.10.0","debug":"^4.3.4","ejs":"^3.1.6","fs-extra":"^9.1.0","get-package-type":"^0.1.0","globby":"^11.1.0","hyperlinker":"^1.0.0","indent-string":"^4.0.0","is-wsl":"^2.2.0","js-yaml":"^3.14.1","natural-orderby":"^2.0.3","object-treeify":"^1.1.33","password-prompt":"^1.1.2","semver":"^7.3.7","string-width":"^4.2.3","strip-ansi":"^6.0.1","supports-color":"^8.1.1","supports-hyperlinks":"^2.2.0","tslib":"^2.3.1","widest-line":"^3.1.0","wrap-ansi":"^7.0.0"},"devDependencies":{"@commitlint/config-conventional":"^12.1.4","@oclif/plugin-help":"^5.1.11","@oclif/plugin-plugins":"^2.1.0","@oclif/test":"^2.1.0","@types/ansi-styles":"^3.2.1","@types/chai":"^4.3.0","@types/chai-as-promised":"^7.1.5","@types/clean-stack":"^2.1.1","@types/cli-progress":"^3.9.2","@types/ejs":"^3.1.0","@types/fs-extra":"^9.0.13","@types/indent-string":"^4.0.1","@types/js-yaml":"^3.12.7","@types/mocha":"^8.2.3","@types/nock":"^11.1.0","@types/node":"^15.14.9","@types/node-notifier":"^8.0.2","@types/proxyquire":"^1.3.28","@types/semver":"^7.3.9","@types/shelljs":"^0.8.11","@types/strip-ansi":"^5.2.1","@types/supports-color":"^8.1.1","@types/wrap-ansi":"^3.0.0","chai":"^4.3.6","chai-as-promised":"^7.1.1","commitlint":"^12.1.4","eslint":"^7.32.0","eslint-config-oclif":"^4.0.0","eslint-config-oclif-typescript":"^1.0.2","fancy-test":"^1.4.10","globby":"^11.1.0","husky":"6","mocha":"^8.4.0","nock":"^13.2.4","proxyquire":"^2.1.3","shelljs":"^0.8.5","shx":"^0.3.4","sinon":"^11.1.2","ts-node":"^9.1.1","typescript":"4.5.5"},"engines":{"node":">=12.0.0"},"files":["/lib","/flush.js","/flush.d.ts","/handle.js"],"homepage":"https://github.com/oclif/core","keywords":["oclif"],"license":"MIT","main":"lib/index.js","repository":"oclif/core","oclif":{"bin":"oclif","devPlugins":["@oclif/plugin-help","@oclif/plugin-plugins"]},"publishConfig":{"access":"public"},"scripts":{"build":"shx rm -rf lib && tsc","commitlint":"commitlint","lint":"eslint . --ext .ts --config .eslintrc","posttest":"yarn lint","prepack":"yarn run build","test":"mocha --forbid-only \\"test/**/*.test.ts\\"","test:e2e":"mocha \\"test/**/*.e2e.ts\\" --timeout 600000","pretest":"yarn build --noEmit && tsc -p test --noEmit"},"types":"lib/index.d.ts"}');
+module.exports = JSON.parse('{"name":"@oclif/core","description":"base library for oclif CLIs","version":"1.16.4","author":"Salesforce","bugs":"https://github.com/oclif/core/issues","dependencies":{"@oclif/linewrap":"^1.0.0","@oclif/screen":"^3.0.2","ansi-escapes":"^4.3.2","ansi-styles":"^4.3.0","cardinal":"^2.1.1","chalk":"^4.1.2","clean-stack":"^3.0.1","cli-progress":"^3.10.0","debug":"^4.3.4","ejs":"^3.1.6","fs-extra":"^9.1.0","get-package-type":"^0.1.0","globby":"^11.1.0","hyperlinker":"^1.0.0","indent-string":"^4.0.0","is-wsl":"^2.2.0","js-yaml":"^3.14.1","natural-orderby":"^2.0.3","object-treeify":"^1.1.33","password-prompt":"^1.1.2","semver":"^7.3.7","string-width":"^4.2.3","strip-ansi":"^6.0.1","supports-color":"^8.1.1","supports-hyperlinks":"^2.2.0","tslib":"^2.3.1","widest-line":"^3.1.0","wrap-ansi":"^7.0.0"},"devDependencies":{"@commitlint/config-conventional":"^12.1.4","@oclif/plugin-help":"^5.1.11","@oclif/plugin-plugins":"^2.1.0","@oclif/test":"^2.1.0","@types/ansi-styles":"^3.2.1","@types/chai":"^4.3.0","@types/chai-as-promised":"^7.1.5","@types/clean-stack":"^2.1.1","@types/cli-progress":"^3.9.2","@types/ejs":"^3.1.0","@types/fs-extra":"^9.0.13","@types/indent-string":"^4.0.1","@types/js-yaml":"^3.12.7","@types/mocha":"^8.2.3","@types/nock":"^11.1.0","@types/node":"^15.14.9","@types/node-notifier":"^8.0.2","@types/proxyquire":"^1.3.28","@types/semver":"^7.3.9","@types/shelljs":"^0.8.11","@types/strip-ansi":"^5.2.1","@types/supports-color":"^8.1.1","@types/wrap-ansi":"^3.0.0","chai":"^4.3.6","chai-as-promised":"^7.1.1","commitlint":"^12.1.4","eslint":"^7.32.0","eslint-config-oclif":"^4.0.0","eslint-config-oclif-typescript":"^1.0.2","fancy-test":"^1.4.10","globby":"^11.1.0","husky":"6","mocha":"^8.4.0","nock":"^13.2.4","proxyquire":"^2.1.3","shelljs":"^0.8.5","shx":"^0.3.4","sinon":"^11.1.2","ts-node":"^10.9.1","tsd":"^0.22.0","typescript":"^4.8.3"},"engines":{"node":">=14.0.0"},"files":["/lib","/flush.js","/flush.d.ts","/handle.js"],"homepage":"https://github.com/oclif/core","keywords":["oclif"],"license":"MIT","main":"lib/index.js","repository":"oclif/core","oclif":{"bin":"oclif","devPlugins":["@oclif/plugin-help","@oclif/plugin-plugins"]},"publishConfig":{"access":"public"},"scripts":{"build":"shx rm -rf lib && tsc","commitlint":"commitlint","lint":"eslint . --ext .ts --config .eslintrc","posttest":"yarn lint","prepack":"yarn run build","test":"mocha --forbid-only \\"test/**/*.test.ts\\"","test:e2e":"mocha \\"test/**/*.e2e.ts\\" --timeout 600000","pretest":"yarn build --noEmit && tsc -p test --noEmit --skipLibCheck"},"types":"lib/index.d.ts"}');
 
 /***/ }),
 
