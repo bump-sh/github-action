@@ -1,5 +1,5 @@
-name: 'API documentation on Bump'
-description: 'Generate your API doc and an automatic changelog from any OpenAPI or AsyncAPI file.'
+name: 'Bump.sh'
+description: 'Keep your OpenAPI and AsyncAPI, public, private and partner API docs synchronized with your code.'
 inputs:
   file:
     description: 'Relative path to the documentation file'
