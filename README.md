@@ -11,7 +11,7 @@
 
 Bump.sh helps you build a branded single source of truth, cataloging all your APIs. We’ve created the reference point for teams consuming and building APIs, no matter which technology they rely on.
 
-It keeps your API docs always synchronized with your codebase. With this [Github Action](https://github.com/actions) your API reference is automatically generated - with changelog and diff - on [Bump.sh](https://bump.sh) from any [OpenAPI](https://github.com/OAI/OpenAPI-Specification) or [AsyncAPI](https://github.com/asyncapi/asyncapi) file.
+Bump.sh keeps your API docs always synchronized with your codebase. With this [Github Action](https://github.com/actions) your API reference is automatically generated - with changelog and diff - on [Bump.sh](https://bump.sh) from any [OpenAPI](https://github.com/OAI/OpenAPI-Specification) or [AsyncAPI](https://github.com/asyncapi/asyncapi) file.
 
 ## Table of contents
 
@@ -23,7 +23,7 @@ It keeps your API docs always synchronized with your codebase. With this [Github
 
 ## Usage
 
-Start by creating a documentation on [Bump.sh](https://bump.sh). Then add one of the following workflow file to your GitHub project
+Start with creating a documentation on [Bump.sh](https://bump.sh). Then add one of the following workflow file to your GitHub project
 
 _Important: [actions/checkout](https://github.com/actions/checkout) has to be called **before this action**._
 
