@@ -1,5 +1,5 @@
 name: 'Bump.sh'
-description: 'Keep your OpenAPI and AsyncAPI, public, private and partner API docs synchronized with your code.'
+description: 'Keep your public, private and partner API docs in sync with your code, whether you use OpenAPI or AsyncAPI.'
 inputs:
   file:
     description: 'Relative path to the documentation file'
