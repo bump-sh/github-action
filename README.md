@@ -23,7 +23,7 @@ Bump.sh keeps your API docs always synchronized with your codebase. With this [G
 
 ## Usage
 
-Start with creating a documentation on [Bump.sh](https://bump.sh). Then add one of the following workflow file to your GitHub project
+Start with creating a documentation on [Bump.sh](https://bump.sh). Then add one of the following workflow file to your GitHub project.
 
 _Important: [actions/checkout](https://github.com/actions/checkout) has to be called **before this action**._
 
