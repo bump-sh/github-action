@@ -1,4 +1,4 @@
-# Generate your API documentation & changelog
+# Deploy API documentation at each code commit, and review diffs
 
 <p align="center">
   <img width="20%" src="https://bump.sh/icon-default-large.png" />
@@ -9,7 +9,9 @@
   <a href="https://bump.sh/users/sign_up">Sign up</a>
 </p>
 
-Bump is a Continuous Documentation Platform: it lets you keep your API doc always synchronized with your codebase. With this [Github Action](https://github.com/actions) you can automatically generate your API reference - with changelog and diff - on [Bump](https://bump.sh) from any [OpenAPI](https://github.com/OAI/OpenAPI-Specification) or [AsyncAPI](https://github.com/asyncapi/asyncapi) file.
+Bump.sh helps you build a branded single source of truth, cataloging all your APIs. We’ve created the reference point for teams consuming and building APIs, no matter which technology they rely on.
+
+Bump.sh keeps your API docs always synchronized with your codebase. With this [Github Action](https://github.com/actions) your API reference is automatically generated - with changelog and diff - on [Bump.sh](https://bump.sh) from any [OpenAPI](https://github.com/OAI/OpenAPI-Specification) or [AsyncAPI](https://github.com/asyncapi/asyncapi) file.
 
 ## Table of contents
 
@@ -21,7 +23,7 @@ Bump is a Continuous Documentation Platform: it lets you keep your API doc alway
 
 ## Usage
 
-Start by creating a documentation on [Bump](https://bump.sh). Then add one of the following workflow file to your GitHub project
+Start with creating a documentation on [Bump.sh](https://bump.sh). Then add one of the following workflow file to your GitHub project.
 
 _Important: [actions/checkout](https://github.com/actions/checkout) has to be called **before this action**._
 
@@ -141,7 +143,7 @@ jobs:
           file: doc/api-documentation.yml
 ```
 
-_Important: make sure to change your main destination branch name (`main` in the example above), replace `<BUMP_DOC_ID>` with your Bump documentation slug or id and change your api specification file path (`doc/api-documentation.yml` in the example above)._
+_Important: make sure to change your main destination branch name (`main` in the example above), replace `<BUMP_DOC_ID>` with your Bump.sh documentation slug or id and change your api specification file path (`doc/api-documentation.yml` in the example above)._
 
 ## Inputs
 
@@ -149,9 +151,9 @@ _Important: make sure to change your main destination branch name (`main` in the
 
 * `token` (required): Do not add your documentation token here, but create an [encrypted secret](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) that holds your documentation token.
 
-  * Your Bump token can be found in the documentation settings on https://bump.sh. Copy it for later usage.
+  * Your Bump.sh token can be found in the documentation settings on https://bump.sh. Copy it for later usage.
   * In your GitHub repository, go to your “Settings”, and then “Secrets”.
-  * Click the button “New repository secret”, name the secret `BUMP_TOKEN` and paste your Bump token in the value field.
+  * Click the button “New repository secret”, name the secret `BUMP_TOKEN` and paste your Bump.sh token in the value field.
 
 * `file`: Relative path to the documentation file. _Default: `api-contract.yml`_
 
@@ -159,7 +161,7 @@ _Important: make sure to change your main destination branch name (`main` in the
 
 * `branch` (optional): Branch name used during `deploy` or `diff` commands. This can be useful to maintain multiple API reference history and make it available in your API documentation.
 
-* `command`: Bump command to execute. _Default: `deploy`_
+* `command`: Bump.sh command to execute. _Default: `deploy`_
 
   * `deploy`: deploy a new version of the documentation
   * `diff`: automatically comment your pull request with the API diff
