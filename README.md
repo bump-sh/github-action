@@ -168,6 +168,8 @@ _Important: make sure to change your main destination branch name (`main` in the
   * `dry-run`: dry-run a deployment of the documentation file
   * `preview`: create a temporary preview
 
+* `expires` (optional): Specify a longer expiration date for **public diffs** (defaults to 1 day). Use iso8601 format to provide a date, or you can use `never` to keep the result live indefinitely.
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/bump-sh/github-action. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.

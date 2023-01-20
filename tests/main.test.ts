@@ -148,6 +148,7 @@ test('test action run diff correctly', async () => {
     '',
     '',
     'markdown',
+    '',
   );
   expect(mockedInternalDiff.run).toHaveBeenCalledWith(diffExample, expect.any(Repo));
 });
@@ -182,6 +183,7 @@ test('test action run diff on existing documentation correctly', async () => {
     '',
     '',
     'markdown',
+    '',
   );
   expect(mockedInternalDiff.run).toHaveBeenCalledWith(diffExample, expect.any(Repo));
 });
@@ -214,6 +216,7 @@ test('test action run diff with Branch correctly', async () => {
     'latest',
     '',
     'markdown',
+    '',
   );
   expect(mockedInternalDiff.run).toHaveBeenCalledWith(diffExample, expect.any(Repo));
 });
@@ -241,6 +244,7 @@ test('test action run diff on PR correctly', async () => {
     '',
     '',
     'markdown',
+    '',
   );
   expect(mockedInternalDiff.run).toHaveBeenCalledWith(diffExample, expect.any(Repo));
 });
@@ -268,6 +272,7 @@ test('test action run diff with internal exception', async () => {
     '',
     '',
     'markdown',
+    '',
   );
   expect(mockedInternalDiff.run).toHaveBeenCalledWith(diffExample, expect.any(Repo));
 });
