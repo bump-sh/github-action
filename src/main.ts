@@ -16,6 +16,7 @@ async function run(): Promise<void> {
     const branch: string = core.getInput('branch');
     const token: string = core.getInput('token');
     const command: string = core.getInput('command') || 'deploy';
+    const expires: string | undefined = core.getInput('expires');
     const cliParams = [file];
     const config = new Config({ root: path.resolve(__dirname, '../') });
     let docCliParams = ['--doc', doc, '--token', token];
@@ -58,7 +59,7 @@ async function run(): Promise<void> {
         }
 
         await new bump.Diff(config)
-          .run(file1, file2, doc, hub, branch, token, 'markdown')
+          .run(file1, file2, doc, hub, branch, token, 'markdown', expires)
           .then((result: bump.DiffResponse | undefined) => {
             if (result && 'markdown' in result) {
               diff.run(result, repo).catch(handleErrors);

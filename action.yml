@@ -16,6 +16,8 @@ inputs:
   command:
     description: 'Bump command: deploy/dry-run/preview'
     default: deploy
+  expires:
+    description: 'Specify a longer expiration date for public diffs (defaults to 1 day). Use iso8601 format to provide a date, or you can use `never` to keep the result live indefinitely.'
 runs:
   using: 'node16'
   main: 'dist/index.js'
