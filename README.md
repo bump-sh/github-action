@@ -136,7 +136,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Deploy API documentation
-        uses: bump-sh/github-action@0.3
+        uses: bump-sh/github-action@v1
         with:
           doc: <BUMP_DOC_ID>
           token: ${{secrets.BUMP_TOKEN}}
