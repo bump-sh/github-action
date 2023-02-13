@@ -1,9 +1,8 @@
 {
-  "name": "bump-github-action",
+  "name": "tonic-bump-github-action",
   "version": "1.1.5",
-  "description": "GitHub action to deploy your API documentation on Bump",
+  "description": "GitHub action to diff two openapi files",
   "main": "lib/main.js",
-  "bugs": "https://github.com/bump-sh/github-action/issues",
   "homepage": "https://bump.sh",
   "engines": {
     "node": ">=16.0.0"
@@ -18,7 +17,7 @@
     "test": "jest",
     "all": "npm run build && npm run format && npm run lint && npm run package && npm test"
   },
-  "repository": "bump-sh/github-action",
+  "repository": "TonicAI/bump-sh-github-action",
   "keywords": [
     "api",
     "documentation",
