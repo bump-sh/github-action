@@ -1,10 +1,8 @@
 import * as core from '@actions/core';
-import * as exec from '@actions/exec';
 import * as github from '@actions/github';
-import * as io from '@actions/io';
 import { GetResponseDataTypeFromEndpointMethod } from '@octokit/types';
 import { GitHub } from '@actions/github/lib/utils';
-import { extractBumpDigest, fsExists } from './common';
+import { extractBumpDigest } from './common';
 
 // These are types which are not exposed directly by Github libs
 // which we need to define
@@ -18,30 +16,16 @@ export class Repo {
   readonly octokit: Octokit;
   readonly owner: string;
   readonly name: string;
-  readonly prNumber?: number;
-  readonly baseSha?: string;
-  readonly headSha?: string;
-  private _docDigest: string;
 
-  constructor(docDigest: string) {
+  constructor(public docDigest: string, private prNumber: number) {
     // Fetch GitHub Action context
     // from GITHUB_REPOSITORY & GITHUB_EVENT_PATH
     const { owner, repo } = github.context.repo;
-    const { pull_request } = github.context.payload;
 
     this.owner = owner;
     this.name = repo;
-    if (pull_request) {
-      this.prNumber = pull_request.number;
-      this.baseSha = pull_request.base.sha;
-      this.headSha = pull_request.head.sha;
-    }
-    this.octokit = this.getOctokit();
-    this._docDigest = docDigest;
-  }
 
-  public get docDigest() {
-    return this._docDigest;
+    this.octokit = this.getOctokit();
   }
 
   getOctokit(): Octokit {
@@ -56,64 +40,24 @@ export class Repo {
     return github.getOctokit(ghToken);
   }
 
-  async getBaseFile(file: string): Promise<string | undefined> {
-    const tmpDir = 'tmp/';
-    const tmpFile = `${tmpDir}${file}`;
-
-    if (this.baseSha && this.headSha) {
-      // Fetch base & head branch (default actions/checkout only fetches HEAD)
-      await exec.exec('git', ['fetch', 'origin', this.baseSha, this.headSha]);
-      // Get common ancestor commit from PR HEAD and base branch
-      let commonAncestorSha = '';
-      await exec.exec('git', ['merge-base', this.baseSha, this.headSha], {
-        listeners: {
-          stdout: (data: Buffer) => {
-            commonAncestorSha += data.toString().trim();
-          },
-        },
-      });
-
-      // Restore base branch version of the repository
-      await io.mkdirP(tmpDir);
-      await exec.exec('git', [
-        '--work-tree',
-        tmpDir,
-        'restore',
-        '-s',
-        commonAncestorSha,
-        '.',
-      ]);
-
-      // & restore head branch version in current directory
-      await exec.exec('git', ['restore', '-s', this.headSha, '.']);
-
-      if (await fsExists(tmpFile)) {
-        return tmpFile;
-      }
-    }
-  }
-
   async createOrUpdateComment(body: string, digest: string): Promise<void> {
     if (!this.prNumber) {
       core.info('Not a pull request, nothing more to do.');
       return;
     }
 
-    const { owner, name: repo, prNumber: issue_number, octokit, _docDigest } = this;
+    const { owner, name: repo, prNumber: issue_number, octokit, docDigest } = this;
     const existingComment = await this.findExistingComment(issue_number);
 
-    core.debug(`[createOrUpdatecomment] Launching for doc ${_docDigest} ...`);
+    core.debug(`[createOrUpdatecomment] Launching for doc ${docDigest} ...`);
 
     if (existingComment) {
       // We force types because of findExistingComment call which ensures
       // body & digest exists if the comment exists but the TS compiler can't guess.
-      const existingDigest = extractBumpDigest(
-        _docDigest,
-        existingComment.body as string,
-      );
+      const existingDigest = extractBumpDigest(docDigest, existingComment.body as string);
 
       core.debug(
-        `[Repo#createOrUpdatecomment] Update comment (digest=${existingDigest}) for doc ${_docDigest}`,
+        `[Repo#createOrUpdatecomment] Update comment (digest=${existingDigest}) for doc ${docDigest}`,
       );
 
       if (digest !== existingDigest) {
@@ -125,7 +69,7 @@ export class Repo {
         });
       }
     } else {
-      core.debug(`[Repo#createOrUpdatecomment] Create comment for doc ${_docDigest}`);
+      core.debug(`[Repo#createOrUpdatecomment] Create comment for doc ${docDigest}`);
 
       await octokit.rest.issues.createComment({
         owner,
@@ -144,7 +88,7 @@ export class Repo {
     });
 
     return comments.data.find((comment: GitHubComment) =>
-      extractBumpDigest(this._docDigest, comment.body || ''),
+      extractBumpDigest(this.docDigest, comment.body || ''),
     );
   }
 

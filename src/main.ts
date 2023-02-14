@@ -11,6 +11,7 @@ async function run(): Promise<void> {
   try {
     const file1: string = core.getInput('file1', { required: true });
     const file2: string = core.getInput('file2', { required: true });
+    const prNumber: number = parseInt(core.getInput('pr-number', { required: true }));
     const config = new Config({ root: path.resolve(__dirname, '../') });
 
     await config.load();
@@ -19,7 +20,7 @@ async function run(): Promise<void> {
     core.debug(`Waiting for bump diff...`);
     core.debug(new Date().toTimeString());
     const docDigest = shaDigest(['Tonic']);
-    const repo = new Repo(docDigest);
+    const repo = new Repo(docDigest, prNumber);
 
     await new bump.Diff(config)
       .run(

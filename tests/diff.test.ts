@@ -22,7 +22,7 @@ test('test github diff run process', async () => {
 
   expect(mockedInternalRepo).not.toHaveBeenCalled();
 
-  const repo = new Repo('');
+  const repo = new Repo('', 1111);
   await diff.run(result, repo);
 
   expect(mockedInternalRepo.prototype.createOrUpdateComment).toHaveBeenCalledWith(
@@ -31,9 +31,6 @@ test('test github diff run process', async () => {
 * one
 * two
 * three
-
-
-[View documentation diff](https://bump.sh/doc/my-doc/changes/654)
 
 > _Powered by [Bump](https://bump.sh)_
 <!-- Bump.sh digest=${digest} doc=undefined -->`,
@@ -55,7 +52,7 @@ test('test github diff with breaking changes', async () => {
 
   expect(mockedInternalRepo).not.toHaveBeenCalled();
 
-  const repo = new Repo('');
+  const repo = new Repo('', 1111);
   await diff.run(result, repo);
 
   expect(mockedInternalRepo.prototype.createOrUpdateComment).toHaveBeenCalledWith(
@@ -64,9 +61,6 @@ test('test github diff with breaking changes', async () => {
 * one
 * two
 * three
-
-
-[View documentation diff](https://bump.sh/doc/my-doc/changes/654)
 
 > _Powered by [Bump](https://bump.sh)_
 <!-- Bump.sh digest=${digest} doc=undefined -->`,

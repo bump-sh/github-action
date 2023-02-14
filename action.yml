@@ -9,6 +9,12 @@ inputs:
     description: 'Relative path to the second documentation file'
     required: true
     default: openapi2.json
+  pr-number:
+    description: 'The number of the pull request'
+    required: true
+  github-token:
+    description: 'The GITHUB_TOKEN secret'
+    required: true
 runs:
   using: 'node16'
   main: 'dist/index.js'

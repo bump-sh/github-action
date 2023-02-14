@@ -1,4 +1,3 @@
-import * as fs from 'fs';
 import crypto from 'crypto';
 
 function bumpDiffRegexp(docDigest: string): RegExp {
@@ -27,18 +26,4 @@ function shaDigest(texts: string[]): string {
   return hash.digest('hex');
 }
 
-async function fsExists(fsPath: string): Promise<boolean> {
-  try {
-    await fs.promises.stat(fsPath);
-  } catch (err) {
-    if (err && (err as NodeJS.ErrnoException).code === 'ENOENT') {
-      return false;
-    }
-
-    throw err;
-  }
-
-  return true;
-}
-
-export { bumpDiffComment, extractBumpDigest, fsExists, setUserAgent, shaDigest };
+export { bumpDiffComment, extractBumpDigest, setUserAgent, shaDigest };
