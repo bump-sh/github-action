@@ -36,6 +36,10 @@ If you only want to have API diff summary sent as a comment on your pull request
 ```yaml
 name: API diff
 
+permissions:
+  contents: read
+  pull-requests: write
+
 on:
   pull_request:
     branches:
@@ -78,6 +82,10 @@ on:
   pull_request:
     branches:
       - main
+
+permissions:
+  contents: read
+  pull-requests: write
 
 jobs:
   deploy-doc:
