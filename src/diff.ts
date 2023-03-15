@@ -3,7 +3,11 @@ import { DiffResponse } from 'bump-cli';
 import { bumpDiffComment, shaDigest } from './common';
 
 export async function run(diff: DiffResponse, repo: Repo): Promise<void> {
-  const digest = shaDigest([diff.markdown!, diff.public_url!]);
+  const digestContent = [diff.markdown!];
+  if (diff.public_url) {
+    digestContent.push(diff.public_url);
+  }
+  const digest = shaDigest(digestContent);
   const body = buildCommentBody(repo.docDigest, diff, digest);
 
   return repo.createOrUpdateComment(body, digest);
@@ -27,7 +31,11 @@ function title(diff: DiffResponse): string {
 }
 
 function viewDiffLink(diff: DiffResponse): string {
-  return `
+  if (diff.public_url) {
+    return `
 [View documentation diff](${diff.public_url!})
 `;
+  } else {
+    return '';
+  }
 }
