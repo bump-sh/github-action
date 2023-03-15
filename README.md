@@ -1,10 +1,6 @@
 # Deploy API documentation at each code commit, and review diffs
 
 <p align="center">
-  <img width="20%" src="https://bump.sh/icon-default-large.png" />
-</p>
-
-<p align="center">
   <a href="https://help.bump.sh/">Help</a> |
   <a href="https://bump.sh/users/sign_up">Sign up</a>
 </p>
