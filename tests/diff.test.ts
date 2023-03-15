@@ -73,3 +73,33 @@ test('test github diff with breaking changes', async () => {
     digest,
   );
 });
+
+test('test github diff without public url', async () => {
+  const result: bump.DiffResponse = {
+    id: '123abc',
+    markdown: `* one
+* two
+* three
+`,
+    breaking: false,
+  };
+  const digest = 'c1f04e5c83235377b88745d13dc9b1ebd3a125a8';
+
+  expect(mockedInternalRepo).not.toHaveBeenCalled();
+
+  const repo = new Repo('');
+  await diff.run(result, repo);
+
+  expect(mockedInternalRepo.prototype.createOrUpdateComment).toHaveBeenCalledWith(
+    `🤖 API change detected:
+
+* one
+* two
+* three
+
+
+> _Powered by [Bump](https://bump.sh)_
+<!-- Bump.sh digest=${digest} doc=undefined -->`,
+    digest,
+  );
+});
