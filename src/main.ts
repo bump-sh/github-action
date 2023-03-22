@@ -64,7 +64,7 @@ function handleErrors(error: unknown): void {
   } else if (error instanceof Error) {
     msg = error.message;
   }
-
+  core.debug(JSON.stringify(error));
   core.setFailed(msg);
 }
 
