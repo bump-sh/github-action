@@ -90274,6 +90274,9 @@ async function run() {
         const file1 = core.getInput('file1', { required: true });
         const file2 = core.getInput('file2', { required: true });
         const prNumber = parseInt(core.getInput('pr-number', { required: true }));
+        core.debug(`File 1: ${file1}`);
+        core.debug(`File 2: ${file2}`);
+        core.debug(`PR Number: ${prNumber}`);
         const config = new config_1.Config({ root: path_1.default.resolve(__dirname, '../') });
         await config.load();
         (0, common_1.setUserAgent)();
@@ -90312,6 +90315,7 @@ function handleErrors(error) {
     else if (error instanceof Error) {
         msg = error.message;
     }
+    core.debug(JSON.stringify(error));
     core.setFailed(msg);
 }
 exports["default"] = run;

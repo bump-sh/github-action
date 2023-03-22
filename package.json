@@ -1,6 +1,6 @@
 {
   "name": "tonic-bump-github-action",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "GitHub action to diff two openapi files",
   "main": "lib/main.js",
   "homepage": "https://bump.sh",
