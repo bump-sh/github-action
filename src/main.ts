@@ -64,7 +64,7 @@ function handleErrors(error: unknown): void {
   } else if (error instanceof Error) {
     msg = error.message;
     if(error.stack){
-      core.debug(error.stack);
+      msg += '\n' + error.stack;
     }
   }
   core.setFailed(msg);
