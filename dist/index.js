@@ -90314,8 +90314,10 @@ function handleErrors(error) {
     }
     else if (error instanceof Error) {
         msg = error.message;
+        if (error.stack) {
+            core.debug(error.stack);
+        }
     }
-    core.debug(JSON.stringify(error));
     core.setFailed(msg);
 }
 exports["default"] = run;

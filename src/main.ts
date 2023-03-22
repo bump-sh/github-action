@@ -63,8 +63,10 @@ function handleErrors(error: unknown): void {
     ].join('\n');
   } else if (error instanceof Error) {
     msg = error.message;
+    if(error.stack){
+      core.debug(error.stack);
+    }
   }
-  core.debug(JSON.stringify(error));
   core.setFailed(msg);
 }
 
