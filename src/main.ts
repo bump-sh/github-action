@@ -63,7 +63,7 @@ function handleErrors(error: unknown): void {
     ].join('\n');
   } else if (error instanceof Error) {
     msg = error.message;
-    if(error.stack){
+    if (error.stack) {
       msg += '\n' + error.stack;
     }
   }
