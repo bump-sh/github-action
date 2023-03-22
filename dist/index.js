@@ -29,7 +29,7 @@ function extractBumpDigest(docDigest, body) {
 exports.extractBumpDigest = extractBumpDigest;
 function shaDigest(texts) {
     const hash = crypto_1.default.createHash('sha1');
-    texts.forEach((text) => hash && hash.update(text, 'utf8'));
+    texts.forEach((text) => text && hash.update(text, 'utf8'));
     return hash.digest('hex');
 }
 exports.shaDigest = shaDigest;
