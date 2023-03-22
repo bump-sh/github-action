@@ -12,6 +12,9 @@ async function run(): Promise<void> {
     const file1: string = core.getInput('file1', { required: true });
     const file2: string = core.getInput('file2', { required: true });
     const prNumber: number = parseInt(core.getInput('pr-number', { required: true }));
+    core.debug(`File 1: ${file1}`);
+    core.debug(`File 2: ${file2}`);
+    core.debug(`PR Number: ${prNumber}`);
     const config = new Config({ root: path.resolve(__dirname, '../') });
 
     await config.load();
