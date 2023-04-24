@@ -41,7 +41,7 @@
     "@actions/github": "^5.1.1",
     "@actions/io": "^1.1.2",
     "@oclif/core": "^1.16.4",
-    "@octokit/types": "^6.34.0",
+    "@octokit/types": "^9.1.2",
     "bump-cli": "^2.5.0"
   },
   "devDependencies": {
