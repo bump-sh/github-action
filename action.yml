@@ -14,10 +14,13 @@ inputs:
   branch:
     description: 'Branch name used during `deploy` or `diff` commands. This can be useful to maintain multiple API reference history and make it available in your API documentation.'
   command:
-    description: 'Bump command: deploy/dry-run/preview'
+    description: 'Bump command: deploy|dry-run|preview|diff'
     default: deploy
   expires:
     description: 'Specify a longer expiration date for public diffs (defaults to 1 day). Use iso8601 format to provide a date, or you can use `never` to keep the result live indefinitely.'
+  fail_on_breaking:
+    description: 'Mark the action as failed when a breaking change is detected with the diff command. This is only valid when `diff` is provided in the command input.'
+    default: false
 runs:
   using: 'node16'
   main: 'dist/index.js'
