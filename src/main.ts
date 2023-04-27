@@ -17,6 +17,7 @@ async function run(): Promise<void> {
     const token: string = core.getInput('token');
     const command: string = core.getInput('command') || 'deploy';
     const expires: string | undefined = core.getInput('expires');
+    const failOnBreaking: boolean = core.getInput('fail_on_breaking') === 'true';
     const cliParams = [file];
     const config = new Config({ root: path.resolve(__dirname, '../') });
     let docCliParams = ['--doc', doc, '--token', token];
@@ -67,7 +68,14 @@ async function run(): Promise<void> {
               core.info('No diff found, nothing more to do.');
               repo.deleteExistingComment();
             }
-          });
+
+            if (failOnBreaking && result && !!result.breaking) {
+              throw new Error(
+                'Failing due to a breaking change detected in your API diff. Please check the diff comment on your pull request.',
+              );
+            }
+          })
+          .catch(handleErrors);
         break;
     }
 
