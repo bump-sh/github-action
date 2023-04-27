@@ -42,7 +42,7 @@
     "@actions/io": "^1.1.2",
     "@oclif/core": "^1.16.4",
     "@octokit/types": "^6.34.0",
-    "bump-cli": "^2.5.0"
+    "bump-cli": "^2.6.0"
   },
   "devDependencies": {
     "@types/jest": "^27.5.0",
