@@ -41922,7 +41922,7 @@ class Deploy extends command_1.default {
     }
 }
 exports["default"] = Deploy;
-Deploy.description = 'create a new version of your documentation from the given file or URL';
+Deploy.description = 'Create a new version of your documentation from the given file or URL.';
 Deploy.examples = [
     `Deploy a new version of an existing documentation
 
@@ -42032,7 +42032,7 @@ class Preview extends command_1.default {
     }
 }
 exports["default"] = Preview;
-Preview.description = 'create a documentation preview from the given file or URL';
+Preview.description = 'Create a documentation preview from the given file or URL.';
 Preview.examples = [
     `$ bump preview FILE
 * Your preview is visible at: https://bump.sh/preview/45807371-9a32-48a7-b6e4-1cb7088b5b9b
@@ -42239,6 +42239,7 @@ SupportedFormat.asyncapi = {
     '2.3': specs_1.default['2.3.0'],
     '2.4': specs_1.default['2.4.0'],
     '2.5': specs_1.default['2.5.0'],
+    '2.6': specs_1.default['2.6.0'],
 };
 class UnsupportedFormat extends errors_1.CLIError {
     constructor(message = '') {
@@ -42406,7 +42407,7 @@ exports.API = API;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.expires = exports.format = exports.live = exports.open = exports.dryRun = exports.autoCreate = exports.token = exports.branch = exports.hub = exports.docName = exports.doc = void 0;
+exports.expires = exports.format = exports.live = exports.failOnBreaking = exports.open = exports.dryRun = exports.autoCreate = exports.token = exports.branch = exports.hub = exports.docName = exports.doc = void 0;
 const tslib_1 = __nccwpck_require__(17584);
 const command_1 = __nccwpck_require__(82708);
 // Re-export oclif flags https://oclif.io/docs/flags
@@ -42474,6 +42475,18 @@ const open = (options = {}) => {
     return command_1.flags.boolean(Object.assign({ char: 'o', default: false }, options));
 };
 exports.open = open;
+const failOnBreaking = (options = {}) => {
+    return command_1.flags.boolean(Object.assign({ char: 'F', description: 'Fail when diff contains a breaking change', default: () => {
+            const envCi = process.env.CI;
+            if (envCi) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        } }, options));
+};
+exports.failOnBreaking = failOnBreaking;
 const live = (options = {}) => {
     return command_1.flags.boolean(Object.assign({ char: 'l', default: false }, options));
 };
@@ -91503,7 +91516,7 @@ module.exports = JSON.parse('{"name":"@oclif/core","description":"base library f
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"name":"bump-cli","description":"The Bump CLI is used to interact with your API documentation hosted on Bump by using the API of developers.bump.sh","version":"2.5.0","author":"Paul Bonaud <paulr@bump.sh>","bin":{"bump":"./bin/run"},"bugs":"https://github.com/bump-sh/cli/issues","devDependencies":{"@oclif/dev-cli":"^1.26.0","@oclif/test":"^2.0.3","@types/debug":"^4.1.5","@types/mocha":"^10.0.0","@types/node":"^18.11.18","@typescript-eslint/eslint-plugin":"^4.21.0","@typescript-eslint/parser":"^4.21.0","chai":"^4.3.4","cross-spawn":"^7.0.3","eslint":"^7.24.0","eslint-config-prettier":"^8.1.0","eslint-plugin-prettier":"^4.0.0","globby":"^11.0.3","mocha":"^10.0.0","nock":"^13.0.11","np":"^7.6.2","nyc":"^15.1.0","prettier":"^2.2.1","sinon":"^14.0.0","stdout-stderr":"^0.1.13","ts-node":"^10.0.0","typescript":"^4.3.3"},"engines":{"node":">=14.0.0"},"files":["/bin","/lib","/npm-shrinkwrap.json","/oclif.manifest.json"],"homepage":"https://bump.sh","keywords":["api","documentation","openapi","asyncapi","bump","cli"],"license":"MIT","main":"lib/index.js","oclif":{"commands":"./lib/commands","bin":"bump","plugins":["@oclif/plugin-help"]},"repository":"bump-sh/cli","scripts":{"build":"tsc -b","clean":"rm -rf lib oclif.manifest.json","lint":"eslint . --ext .ts --config .eslintrc","fmt":"eslint . --ext .ts --config .eslintrc --fix","pack":"oclif-dev pack","postpack":"rm -f oclif.manifest.json","prepack":"rm -rf lib && npm run build && oclif-dev manifest && oclif-dev readme","pretest":"npm run clean && npm run build && npm run lint","publish":"np --no-release-draft","test":"mocha \\"test/**/*.test.ts\\"","test-coverage":"nyc npm run test","test-integration":"node ./test/integration.js","version":"oclif-dev readme && git add README.md"},"types":"lib/index.d.ts","dependencies":{"@apidevtools/json-schema-ref-parser":"^9.0.7","@asyncapi/specs":"^4.0.1","@oclif/command":"^1.8.16","@oclif/config":"^1.17.0","@oclif/core":"^1.3.3","@oclif/plugin-help":"^5.1.10","async-mutex":"^0.4.0","axios":"^0.27.2","debug":"^4.3.1","oas-schemas":"git+https://git@github.com/OAI/OpenAPI-Specification.git#0f9d3ec7c033fef184ec54e1ffc201b2d61ce023","tslib":"^2.3.0"}}');
+module.exports = JSON.parse('{"name":"bump-cli","description":"The Bump CLI is used to interact with your API documentation hosted on Bump by using the API of developers.bump.sh","version":"2.6.0","author":"Paul Bonaud <paulr@bump.sh>","bin":{"bump":"./bin/run"},"bugs":"https://github.com/bump-sh/cli/issues","devDependencies":{"@oclif/dev-cli":"^1.26.0","@oclif/test":"^2.0.3","@types/debug":"^4.1.5","@types/mocha":"^10.0.0","@types/node":"^18.11.18","@typescript-eslint/eslint-plugin":"^4.21.0","@typescript-eslint/parser":"^4.21.0","chai":"^4.3.4","cross-spawn":"^7.0.3","eslint":"^7.24.0","eslint-config-prettier":"^8.1.0","eslint-plugin-prettier":"^4.0.0","globby":"^11.0.3","mocha":"^10.0.0","nock":"^13.0.11","np":"^7.6.2","nyc":"^15.1.0","prettier":"^2.2.1","sinon":"^14.0.0","stdout-stderr":"^0.1.13","ts-node":"^10.0.0","typescript":"^4.3.3"},"engines":{"node":">=14.0.0"},"files":["/bin","/lib","/npm-shrinkwrap.json","/oclif.manifest.json"],"homepage":"https://bump.sh","keywords":["api","documentation","openapi","asyncapi","bump","cli"],"license":"MIT","main":"lib/index.js","oclif":{"commands":"./lib/commands","bin":"bump","plugins":["@oclif/plugin-help"]},"repository":"bump-sh/cli","scripts":{"build":"tsc -b","clean":"rm -rf lib oclif.manifest.json","lint":"eslint . --ext .ts --config .eslintrc","fmt":"eslint . --ext .ts --config .eslintrc --fix","pack":"oclif-dev pack","postpack":"rm -f oclif.manifest.json","prepack":"rm -rf lib && npm run build && oclif-dev manifest && oclif-dev readme","pretest":"npm run clean && npm run build && npm run lint","publish":"np --no-release-draft","test":"mocha \\"test/**/*.test.ts\\"","test-coverage":"nyc npm run test","test-integration":"node ./test/integration.js","version":"oclif-dev readme && git add README.md"},"types":"lib/index.d.ts","dependencies":{"@apidevtools/json-schema-ref-parser":"^9.0.7","@asyncapi/specs":"^4.0.1","@oclif/command":"^1.8.16","@oclif/config":"^1.17.0","@oclif/core":"^1.3.3","@oclif/plugin-help":"^5.1.10","async-mutex":"^0.4.0","axios":"^0.27.2","debug":"^4.3.1","oas-schemas":"git+https://git@github.com/OAI/OpenAPI-Specification.git#0f9d3ec7c033fef184ec54e1ffc201b2d61ce023","tslib":"^2.3.0"}}');
 
 /***/ }),
 
@@ -91630,6 +91643,7 @@ async function run() {
         const token = core.getInput('token');
         const command = core.getInput('command') || 'deploy';
         const expires = core.getInput('expires');
+        const failOnBreaking = core.getInput('fail_on_breaking') === 'true';
         const cliParams = [file];
         const config = new config_1.Config({ root: path_1.default.resolve(__dirname, '../') });
         let docCliParams = ['--doc', doc, '--token', token];
@@ -91676,7 +91690,11 @@ async function run() {
                         core.info('No diff found, nothing more to do.');
                         repo.deleteExistingComment();
                     }
-                });
+                    if (failOnBreaking && result && !!result.breaking) {
+                        throw new Error('Failing due to a breaking change detected in your API diff. Please check the diff comment on your pull request.');
+                    }
+                })
+                    .catch(handleErrors);
                 break;
         }
         core.debug(new Date().toTimeString());
