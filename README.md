@@ -47,7 +47,7 @@ on:
 
 jobs:
   api-diff:
-    name: Check API diff on Bump
+    name: Check API diff on Bump.sh
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -63,7 +63,7 @@ jobs:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 ```
 
-_Important: make sure to change your main destination branch name (`main` in the example above), replace `<BUMP_DOC_ID>` with your Bump documentation slug or id and change your api specification file path (`doc/api-documentation.yml` in the example above)._
+_Important: make sure to change your main destination branch name (`main` in the example above), replace `<BUMP_DOC_ID>` with your Bump.sh documentation slug or id and change your api specification file path (`doc/api-documentation.yml` in the example above)._
 
 ### API diff on pull requests & Deploy on push
 
@@ -90,7 +90,7 @@ permissions:
 jobs:
   deploy-doc:
     if: ${{ github.event_name == 'push' }}
-    name: Deploy API documentation on Bump
+    name: Deploy API documentation on Bump.sh
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -104,7 +104,7 @@ jobs:
 
   api-diff:
     if: ${{ github.event_name == 'pull_request' }}
-    name: Check API diff on Bump
+    name: Check API diff on Bump.sh
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -120,7 +120,7 @@ jobs:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 ```
 
-_Important: make sure to change your main destination branch name (`main` in the example above), replace `<BUMP_DOC_ID>` with your Bump documentation slug or id and change your api specification file path (`doc/api-documentation.yml` in the example above)._
+_Important: make sure to change your main destination branch name (`main` in the example above), replace `<BUMP_DOC_ID>` with your Bump.sh documentation slug or id and change your api specification file path (`doc/api-documentation.yml` in the example above)._
 
 ### Deploy on push
 
@@ -138,7 +138,7 @@ on:
 
 jobs:
   deploy-doc:
-    name: Deploy API doc on Bump
+    name: Deploy API doc on Bump.sh
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
