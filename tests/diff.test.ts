@@ -35,7 +35,7 @@ test('test github diff run process', async () => {
 
 [View documentation diff](https://bump.sh/doc/my-doc/changes/654)
 
-> _Powered by [Bump](https://bump.sh)_
+> _Powered by [Bump.sh](https://bump.sh)_
 <!-- Bump.sh digest=${digest} doc=undefined -->`,
     digest,
   );
@@ -68,7 +68,7 @@ test('test github diff with breaking changes', async () => {
 
 [View documentation diff](https://bump.sh/doc/my-doc/changes/654)
 
-> _Powered by [Bump](https://bump.sh)_
+> _Powered by [Bump.sh](https://bump.sh)_
 <!-- Bump.sh digest=${digest} doc=undefined -->`,
     digest,
   );
@@ -98,7 +98,7 @@ test('test github diff without public url', async () => {
 * three
 
 
-> _Powered by [Bump](https://bump.sh)_
+> _Powered by [Bump.sh](https://bump.sh)_
 <!-- Bump.sh digest=${digest} doc=undefined -->`,
     digest,
   );

@@ -15,7 +15,7 @@ export async function run(diff: DiffResponse, repo: Repo): Promise<void> {
 
 function buildCommentBody(docDigest: string, diff: DiffResponse, digest: string) {
   const emptySpace = '';
-  const poweredByBump = '> _Powered by [Bump](https://bump.sh)_';
+  const poweredByBump = '> _Powered by [Bump.sh](https://bump.sh)_';
 
   return [title(diff)]
     .concat([emptySpace, diff.markdown!])
