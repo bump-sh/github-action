@@ -159,7 +159,7 @@ _Important: make sure to change your main destination branch name (`main` in the
 
 * `token` (required): Do not add your documentation token here, but create an [encrypted secret](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) that holds your documentation token.
 
-  * Your Bump.sh token can be found in the documentation settings on https://bump.sh. Copy it for later usage.
+  * Your Bump.sh token can be found in the documentation settings on [your API dashboard](https://bump.sh/docs). Copy it for later usage.
   * In your GitHub repository, go to your “Settings”, and then “Secrets”.
   * Click the button “New repository secret”, name the secret `BUMP_TOKEN` and paste your Bump.sh token in the value field.
 
