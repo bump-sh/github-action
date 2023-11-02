@@ -23,49 +23,13 @@ Bump.sh keeps your API docs always synchronized with your codebase. With this [G
 
 ## Usage
 
-Start with creating a documentation on [Bump.sh](https://bump.sh). Then add one of the following workflow file to your GitHub project.
+Start with creating a documentation on [Bump.sh](https://bump.sh), and once you've got API Documentation set up you can pick from one of the three following API workflow files.
 
-_Important: [actions/checkout](https://github.com/actions/checkout) has to be called **before this action**._
+- **Recommended:** [Deploy Documentation & Diff on Pull Requests](#Deploy-Documentation-&-Diff-on-Pull-Requests)
+- Deploy Documentation only
+- Diff on Pull Requests only
 
-### API diff on pull requests
-
-If you only want to have API diff summary sent as a comment on your pull requests:
-
-`.github/workflows/bump.yml`
-
-```yaml
-name: API diff
-
-permissions:
-  contents: read
-  pull-requests: write
-
-on:
-  pull_request:
-    branches:
-      - main
-
-jobs:
-  api-diff:
-    name: Check API diff on Bump.sh
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Comment pull request with API diff
-        uses: bump-sh/github-action@v1
-        with:
-          doc: <BUMP_DOC_ID>
-          token: ${{secrets.BUMP_TOKEN}}
-          file: doc/api-documentation.yml
-          command: diff
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-```
-
-_Important: make sure to change your main destination branch name (`main` in the example above), replace `<BUMP_DOC_ID>` with your Bump.sh documentation slug or id and change your api specification file path (`doc/api-documentation.yml` in the example above)._
-
-### API diff on pull requests & Deploy on push
+### Deploy Documentation & Diff on Pull Requests
 
 This is the most common worklow that we [recommend using](https://help.bump.sh/continuous-integration#integrate-with-your-ci), which will create two steps in your automation flow: a validation & diff step on code reviews, followed by a deployment step on merged changes.
 
@@ -120,11 +84,11 @@ jobs:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 ```
 
-_Important: make sure to change your main destination branch name (`main` in the example above), replace `<BUMP_DOC_ID>` with your Bump.sh documentation slug or id and change your api specification file path (`doc/api-documentation.yml` in the example above)._
+**Important:** make sure to change your destination branch name (`main` in the example above), replace `<BUMP_DOC_ID>` with your Bump.sh documentation slug or id, and point `file:` to your local API description document (`doc/api-documentation.yml`).
 
-### Deploy on push
+### Deploy Documentation only
 
-If you only need to deploy the documentation on push you can use this workflow file instead:
+If you only need to deploy documentation changes on push then you can use this workflow instead:
 
 `.github/workflows/bump.yml`
 
@@ -151,7 +115,46 @@ jobs:
           file: doc/api-documentation.yml
 ```
 
-_Important: make sure to change your main destination branch name (`main` in the example above), replace `<BUMP_DOC_ID>` with your Bump.sh documentation slug or id and change your api specification file path (`doc/api-documentation.yml` in the example above)._
+**Important:** make sure to change your destination branch name (`main` in the example above), replace `<BUMP_DOC_ID>` with your Bump.sh documentation slug or id, and point `file:` to your local API description document (`doc/api-documentation.yml`).
+
+
+### Diff on Pull Requests only
+
+If you only want to have API diff posted on pull requests use this workflow:
+
+`.github/workflows/bump.yml`
+
+```yaml
+name: API diff
+
+permissions:
+  contents: read
+  pull-requests: write
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  api-diff:
+    name: Check API diff on Bump.sh
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Comment pull request with API diff
+        uses: bump-sh/github-action@v1
+        with:
+          doc: <BUMP_DOC_ID>
+          token: ${{secrets.BUMP_TOKEN}}
+          file: doc/api-documentation.yml
+          command: diff
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+```
+
+**Important:** make sure to change your destination branch name (`main` in the example above), replace `<BUMP_DOC_ID>` with your Bump.sh documentation slug or id, and point `file:` to your local API description document (`doc/api-documentation.yml`).
 
 ## Inputs
 
