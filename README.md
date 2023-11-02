@@ -23,7 +23,11 @@ Bump.sh keeps your API docs always synchronized with your codebase. With this [G
 
 ## Usage
 
-Start with creating a documentation on [Bump.sh](https://bump.sh), and once you've got API Documentation set up you can pick from one of the three following API workflow files.
+Start with creating a documentation on [Bump.sh](https://bump.sh). 
+
+Once you've got API Documentation set up, go to Settings > CI Deployment, copy the access token, then add it to GitHub Settings > Secrets > Actions as as a new environment variable called `BUMP_TOKEN`.
+
+Then you can pick from one of the three following API workflow files.
 
 - **Recommended:** [Deploy Documentation & Diff on Pull Requests](#deploy-documentation--diff-on-pull-requests)
 - [Deploy Documentation only](#deploy-documentation-only)
