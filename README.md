@@ -25,9 +25,9 @@ Bump.sh keeps your API docs always synchronized with your codebase. With this [G
 
 Start with creating a documentation on [Bump.sh](https://bump.sh), and once you've got API Documentation set up you can pick from one of the three following API workflow files.
 
-- **Recommended:** [Deploy Documentation & Diff on Pull Requests](#Deploy-Documentation-&-Diff-on-Pull-Requests)
-- Deploy Documentation only
-- Diff on Pull Requests only
+- **Recommended:** [Deploy Documentation & Diff on Pull Requests](#deploy-documentation--diff-on-pull-requests)
+- [Deploy Documentation only](#deploy-documentation-only)
+- [Diff on Pull Requests only](#diff-on-pull-requests-only)
 
 ### Deploy Documentation & Diff on Pull Requests
 
