@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <a href="https://help.bump.sh/">Help</a> |
+  <a href="https://docs.bump.sh/help/">Help</a> |
   <a href="https://bump.sh/users/sign_up">Sign up</a>
 </p>
 
@@ -35,7 +35,7 @@ Then you can pick from one of the three following API workflow files.
 
 ### Deploy Documentation & Diff on Pull Requests
 
-This is the most common worklow that we [recommend using](https://help.bump.sh/continuous-integration#integrate-with-your-ci), which will create two steps in your automation flow: a validation & diff step on code reviews, followed by a deployment step on merged changes.
+This is the most common worklow that we [recommend using](https://docs.bump.sh/help/continuous-integration/), which will create two steps in your automation flow: a validation & diff step on code reviews, followed by a deployment step on merged changes.
 
 `.github/workflows/bump.yml`
 
