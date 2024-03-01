@@ -85,7 +85,7 @@ function title(diff) {
 function viewDiffLink(diff) {
     if (diff.public_url) {
         return `
-[Preview documentation](${diff.public_url})
+[View documentation diff](${diff.public_url})
 `;
     }
     else {
@@ -92736,18 +92736,12 @@ async function run() {
         const failOnBreaking = core.getInput('fail_on_breaking') === 'true';
         const cliParams = [file];
         const config = new config_1.Config({ root: path_1.default.resolve(__dirname, '../') });
-        let deployParams = ['--token', token];
-        if (doc) {
-            deployParams = deployParams.concat(['--doc', doc]);
-        }
-        else if (hub) {
-            deployParams = deployParams.concat(['--auto-create']);
-        }
+        let docCliParams = ['--doc', doc, '--token', token];
         if (hub) {
-            deployParams = deployParams.concat(['--hub', hub]);
+            docCliParams = docCliParams.concat(['--hub', hub]);
         }
         if (branch) {
-            deployParams = deployParams.concat(['--branch', branch]);
+            docCliParams = docCliParams.concat(['--branch', branch]);
         }
         await config.load();
         (0, common_1.setUserAgent)();
@@ -92760,10 +92754,10 @@ async function run() {
                 break;
             case 'dry-run':
             case 'validate': // DEPRECATED, kept for backward compatibility with old gem
-                await bump.Deploy.run(cliParams.concat(deployParams).concat(['--dry-run']));
+                await bump.Deploy.run(cliParams.concat(docCliParams).concat(['--dry-run']));
                 break;
             case 'deploy':
-                await bump.Deploy.run(cliParams.concat(deployParams));
+                await bump.Deploy.run(cliParams.concat(docCliParams));
                 break;
             case 'diff':
                 const docDigest = (0, common_1.shaDigest)([doc, hub]);
