@@ -20,14 +20,20 @@ async function run(): Promise<void> {
     const failOnBreaking: boolean = core.getInput('fail_on_breaking') === 'true';
     const cliParams = [file];
     const config = new Config({ root: path.resolve(__dirname, '../') });
-    let docCliParams = ['--doc', doc, '--token', token];
+    let deployParams = ['--token', token];
+
+    if (doc) {
+      deployParams = deployParams.concat(['--doc', doc]);
+    } else if (hub) {
+      deployParams = deployParams.concat(['--auto-create']);
+    }
 
     if (hub) {
-      docCliParams = docCliParams.concat(['--hub', hub]);
+      deployParams = deployParams.concat(['--hub', hub]);
     }
 
     if (branch) {
-      docCliParams = docCliParams.concat(['--branch', branch]);
+      deployParams = deployParams.concat(['--branch', branch]);
     }
 
     await config.load();
@@ -42,10 +48,10 @@ async function run(): Promise<void> {
         break;
       case 'dry-run':
       case 'validate': // DEPRECATED, kept for backward compatibility with old gem
-        await bump.Deploy.run(cliParams.concat(docCliParams).concat(['--dry-run']));
+        await bump.Deploy.run(cliParams.concat(deployParams).concat(['--dry-run']));
         break;
       case 'deploy':
-        await bump.Deploy.run(cliParams.concat(docCliParams));
+        await bump.Deploy.run(cliParams.concat(deployParams));
         break;
       case 'diff':
         const docDigest = shaDigest([doc, hub]);

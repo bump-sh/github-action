@@ -51,10 +51,58 @@ test('test action run deploy correctly', async () => {
 
   expect(mockedDeploy.run).toHaveBeenCalledWith([
     'my-file.yml',
-    '--doc',
-    'my-doc',
     '--token',
     'SECRET',
+    '--doc',
+    'my-doc',
+  ]);
+});
+
+test('test action run deploy entire directory in hub correctly', async () => {
+  expect(mockedDeploy.run).not.toHaveBeenCalled();
+
+  const restore = mockEnv({
+    INPUT_FILE: 'my-file.yml',
+    INPUT_HUB: 'my-hub',
+    INPUT_TOKEN: 'SECRET',
+  });
+
+  await main();
+
+  restore();
+
+  expect(mockedDeploy.run).toHaveBeenCalledWith([
+    'my-file.yml',
+    '--token',
+    'SECRET',
+    '--auto-create',
+    '--hub',
+    'my-hub',
+  ]);
+});
+
+test('test action run deploy a specific doc inside a hub correctly', async () => {
+  expect(mockedDeploy.run).not.toHaveBeenCalled();
+
+  const restore = mockEnv({
+    INPUT_FILE: 'my-file.yml',
+    INPUT_DOC: 'my-doc',
+    INPUT_HUB: 'my-hub',
+    INPUT_TOKEN: 'SECRET',
+  });
+
+  await main();
+
+  restore();
+
+  expect(mockedDeploy.run).toHaveBeenCalledWith([
+    'my-file.yml',
+    '--token',
+    'SECRET',
+    '--doc',
+    'my-doc',
+    '--hub',
+    'my-hub',
   ]);
 });
 
@@ -74,10 +122,10 @@ test('test action run deploy with branch name correctly', async () => {
 
   expect(mockedDeploy.run).toHaveBeenCalledWith([
     'my-file.yml',
-    '--doc',
-    'my-doc',
     '--token',
     'SECRET',
+    '--doc',
+    'my-doc',
     '--branch',
     'latest',
   ]);
@@ -114,10 +162,10 @@ test('test action run dry-run correctly', async () => {
 
   expect(mockedDeploy.run).toHaveBeenCalledWith([
     'my-file.yml',
-    '--doc',
-    'my-doc',
     '--token',
     'SECRET',
+    '--doc',
+    'my-doc',
     '--dry-run',
   ]);
 });
