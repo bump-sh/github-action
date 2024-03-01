@@ -33,7 +33,7 @@ test('test github diff run process', async () => {
 * three
 
 
-[View documentation diff](https://bump.sh/doc/my-doc/changes/654)
+[Preview documentation](https://bump.sh/doc/my-doc/changes/654)
 
 > _Powered by [Bump.sh](https://bump.sh)_
 <!-- Bump.sh digest=${digest} doc=undefined -->`,
@@ -66,7 +66,7 @@ test('test github diff with breaking changes', async () => {
 * three
 
 
-[View documentation diff](https://bump.sh/doc/my-doc/changes/654)
+[Preview documentation](https://bump.sh/doc/my-doc/changes/654)
 
 > _Powered by [Bump.sh](https://bump.sh)_
 <!-- Bump.sh digest=${digest} doc=undefined -->`,

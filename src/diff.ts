@@ -33,7 +33,7 @@ function title(diff: DiffResponse): string {
 function viewDiffLink(diff: DiffResponse): string {
   if (diff.public_url) {
     return `
-[View documentation diff](${diff.public_url!})
+[Preview documentation](${diff.public_url!})
 `;
   } else {
     return '';
