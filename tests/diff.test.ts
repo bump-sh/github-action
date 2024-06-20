@@ -26,12 +26,38 @@ test('test github diff run process', async () => {
   await diff.run(result, repo);
 
   expect(mockedInternalRepo.prototype.createOrUpdateComment).toHaveBeenCalledWith(
-    `🤖 API change detected:
+    `🤖 API structural change detected:
 
 * one
 * two
 * three
 
+
+[Preview documentation](https://bump.sh/doc/my-doc/changes/654)
+
+> _Powered by [Bump.sh](https://bump.sh)_
+<!-- Bump.sh digest=${digest} doc=undefined -->`,
+    digest,
+  );
+});
+
+test('test github diff with no structural change', async () => {
+  const result: bump.DiffResponse = {
+    id: '123abc',
+    public_url: 'https://bump.sh/doc/my-doc/changes/654',
+    breaking: false,
+  };
+  const digest = '3999a0fe6ad27841bd6342128f7028ab2cea1c57';
+
+  expect(mockedInternalRepo).not.toHaveBeenCalled();
+
+  const repo = new Repo('');
+  await diff.run(result, repo);
+
+  expect(mockedInternalRepo.prototype.createOrUpdateComment).toHaveBeenCalledWith(
+    `ℹ️ API content change detected:
+
+No structural change, nothing to display.
 
 [Preview documentation](https://bump.sh/doc/my-doc/changes/654)
 
@@ -91,7 +117,7 @@ test('test github diff without public url', async () => {
   await diff.run(result, repo);
 
   expect(mockedInternalRepo.prototype.createOrUpdateComment).toHaveBeenCalledWith(
-    `🤖 API change detected:
+    `🤖 API structural change detected:
 
 * one
 * two
