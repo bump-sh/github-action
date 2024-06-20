@@ -68,10 +68,10 @@ async function run(): Promise<void> {
         await new bump.Diff(config)
           .run(file1, file2, doc, hub, branch, token, 'markdown', expires)
           .then((result: bump.DiffResponse | undefined) => {
-            if (result && 'markdown' in result) {
+            if (result) {
               diff.run(result, repo).catch(handleErrors);
             } else {
-              core.info('No diff found, nothing more to do.');
+              core.info('No changes detected, nothing more to do.');
               repo.deleteExistingComment();
             }
 

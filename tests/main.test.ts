@@ -367,3 +367,38 @@ test('test action run diff with internal exception', async () => {
   );
   expect(mockedInternalDiff.run).toHaveBeenCalledWith(diffExample, expect.any(Repo));
 });
+
+test('test action run diff with no change', async () => {
+  const spyInfo = jest.spyOn(core, 'info');
+
+  mockedDiff.prototype.run.mockResolvedValue(undefined);
+  expect(mockedDiff.prototype.run).not.toHaveBeenCalled();
+  expect(mockedInternalDiff.run).not.toHaveBeenCalled();
+  mockedInternalRepo.prototype.getBaseFile.mockResolvedValue('my-base-file-to-diff.yml');
+
+  const restore = mockEnv({
+    INPUT_FILE: 'my-file-to-diff.yml',
+    INPUT_COMMAND: 'diff',
+    INPUT_FAIL_ON_BREAKING: 'true',
+  });
+
+  await main();
+
+  restore();
+
+  expect(spyInfo).toHaveBeenCalledWith(
+    expect.stringMatching('No changes detected, nothing more to do.'),
+  );
+
+  expect(mockedDiff.prototype.run).toHaveBeenCalledWith(
+    'my-base-file-to-diff.yml',
+    'my-file-to-diff.yml',
+    expect.anything(),
+    expect.anything(),
+    expect.anything(),
+    expect.anything(),
+    'markdown',
+    expect.anything(),
+  );
+  expect(mockedInternalDiff.run).not.toHaveBeenCalled();
+});

@@ -19,10 +19,10 @@ function extractBumpDigest(docDigest: string, body: string): string | undefined 
   return (body.match(bumpDiffRegexp(docDigest)) || []).pop();
 }
 
-function shaDigest(texts: string[]): string {
+function shaDigest(texts: (string | undefined)[]): string {
   const hash = crypto.createHash('sha1');
 
-  texts.forEach((text) => hash.update(text, 'utf8'));
+  texts.forEach((text) => text && hash.update(text, 'utf8'));
 
   return hash.digest('hex');
 }
