@@ -30,7 +30,7 @@ function extractBumpDigest(docDigest, body) {
 exports.extractBumpDigest = extractBumpDigest;
 function shaDigest(texts) {
     const hash = crypto_1.default.createHash('sha1');
-    texts.forEach((text) => hash.update(text, 'utf8'));
+    texts.forEach((text) => text && hash.update(text, 'utf8'));
     return hash.digest('hex');
 }
 exports.shaDigest = shaDigest;
@@ -72,15 +72,25 @@ exports.run = run;
 function buildCommentBody(docDigest, diff, digest) {
     const emptySpace = '';
     const poweredByBump = '> _Powered by [Bump.sh](https://bump.sh)_';
+    const text = diff.markdown || 'No structural change, nothing to display.';
     return [title(diff)]
-        .concat([emptySpace, diff.markdown])
+        .concat([emptySpace, text])
         .concat([viewDiffLink(diff), poweredByBump, (0, common_1.bumpDiffComment)(docDigest, digest)])
         .join('\n');
 }
 function title(diff) {
-    const commentTitle = '🤖 API change detected:';
+    const structureTitle = '🤖 API structural change detected:';
+    const contentTitle = 'ℹ️ API content change detected:';
     const breakingTitle = '🚨 Breaking API change detected:';
-    return diff.breaking ? breakingTitle : commentTitle;
+    if (diff.breaking) {
+        return breakingTitle;
+    }
+    else if (diff.markdown) {
+        return structureTitle;
+    }
+    else {
+        return contentTitle;
+    }
 }
 function viewDiffLink(diff) {
     if (diff.public_url) {
@@ -92779,11 +92789,11 @@ async function run() {
                 await new bump.Diff(config)
                     .run(file1, file2, doc, hub, branch, token, 'markdown', expires)
                     .then((result) => {
-                    if (result && 'markdown' in result) {
+                    if (result) {
                         diff.run(result, repo).catch(handleErrors);
                     }
                     else {
-                        core.info('No diff found, nothing more to do.');
+                        core.info('No changes detected, nothing more to do.');
                         repo.deleteExistingComment();
                     }
                     if (failOnBreaking && result && !!result.breaking) {
