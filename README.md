@@ -1,7 +1,7 @@
 # Deploy API documentation at each code commit, and review diffs
 
 <p align="center">
-  <img width="20%" src="https://bump.sh/icon-default-large.png" />
+  <img width="20%" src="https://bump.sh/icon-default-maskable-large.png" />
 </p>
 
 <p align="center">
@@ -23,7 +23,7 @@ Bump.sh keeps your API docs always synchronized with your codebase. With this [G
 
 ## Usage
 
-Start with creating a documentation on [Bump.sh](https://bump.sh). 
+Start with creating a documentation on [Bump.sh](https://bump.sh).
 
 Once you've got an API Documentation set up, go to Settings > CI Deployment, copy the access token, then add it to GitHub Settings > Secrets > Actions as a new environment variable called `BUMP_TOKEN`.
 
