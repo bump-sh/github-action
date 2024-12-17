@@ -1,6 +1,8 @@
 name: "Bump.sh API Documentation & Changelog"
 description: |
   Keep your public, private and partner API docs in sync with your code, whether you use OpenAPI or AsyncAPI.
+author: bump.sh
+
 inputs:
   file:
     description: "Relative path to an API definition file (OpenAPI or AsyncAPI)"
@@ -22,9 +24,11 @@ inputs:
   fail_on_breaking:
     description: "Mark the action as failed when a breaking change is detected with the diff command. This is only valid when `diff` is provided in the command input."
     default: false
+
 runs:
-  using: "node16"
-  main: "dist/index.js"
+  using: node20
+  main: dist/index.js
+
 branding:
   color: gray-dark
   icon: book-open
