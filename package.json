@@ -6,17 +6,16 @@
   "bugs": "https://github.com/bump-sh/github-action/issues",
   "homepage": "https://bump.sh",
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=20.0.0"
   },
   "scripts": {
     "build": "tsc -b",
     "clean": "rm -rf dist/",
     "format": "eslint . --ext .ts --config .eslintrc --fix",
     "format-check": "eslint . --ext .ts --config .eslintrc",
-    "lint": "eslint src/**/*.ts",
     "package": "ncc build --source-map --license licenses.txt -e typescript",
     "test": "jest",
-    "all": "npm run build && npm run format && npm run lint && npm run package && npm test"
+    "all": "npm run build && npm run format && npm run package && npm test"
   },
   "repository": "bump-sh/github-action",
   "keywords": [
