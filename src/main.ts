@@ -1,14 +1,15 @@
 import * as core from '@actions/core';
-import { Config } from '@oclif/config';
+import { Config } from '@oclif/core';
 import { RequestError as GitHubHttpError } from '@octokit/request-error';
 import path from 'path';
 import * as bump from 'bump-cli';
+import { Diff as CLICore } from 'bump-cli';
 
-import * as diff from './diff';
-import { Repo } from './github';
-import { setUserAgent, shaDigest } from './common';
+import * as diff from './diff.js';
+import { Repo } from './github.js';
+import { setUserAgent, shaDigest } from './common.js';
 
-async function run(): Promise<void> {
+export async function run(): Promise<void> {
   try {
     const file: string = core.getInput('file');
     const doc: string = core.getInput('doc');
@@ -19,7 +20,8 @@ async function run(): Promise<void> {
     const expires: string | undefined = core.getInput('expires');
     const failOnBreaking: boolean = core.getInput('fail_on_breaking') === 'true';
     const cliParams = [file];
-    const config = new Config({ root: path.resolve(__dirname, '../') });
+
+    const config = new Config({ root: path.resolve(import.meta.dirname, '../') });
     let deployParams = ['--token', token];
 
     if (doc) {
@@ -65,7 +67,7 @@ async function run(): Promise<void> {
           file1 = file;
         }
 
-        await new bump.Diff(config)
+        await new CLICore.Diff(config)
           .run(file1, file2, doc, hub, branch, token, 'markdown', expires)
           .then((result: bump.DiffResponse | undefined) => {
             if (result) {
@@ -107,7 +109,3 @@ function handleErrors(error: unknown): void {
 
   core.setFailed(msg);
 }
-
-export default run;
-
-run();

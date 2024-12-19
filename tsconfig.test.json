@@ -1,4 +1,7 @@
 {
-    "extends": "./tsconfig.json",
-    "files": ["./tests/helpers.d.ts"]
+  "extends": "./tsconfig.json",
+  "files": ["./tests/helpers.d.ts"],
+  "compilerOptions": {
+    "resolveJsonModule": true
+  }
 }
