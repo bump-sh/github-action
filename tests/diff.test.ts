@@ -1,12 +1,15 @@
+import { jest } from '@jest/globals';
+
 import * as bump from 'bump-cli';
-import * as diff from '../src/diff';
+import * as diff from '../src/diff.js';
 
 // Mock internal Repo class
-import { Repo } from '../src/github';
+import { Repo } from '../src/github.js';
 // Repo class is completely mocked (by jest.mock(...)) meaning all
 // method calls return 'undefined' (including attribute getters).
 jest.mock('../src/github');
-const mockedInternalRepo = Repo as jest.Mocked<typeof Repo>;
+const mockedInternalRepo = jest.mocked(Repo);
+// const mockedInternalRepo = Repo as jest.Mocked<typeof Repo>;
 
 test('test github diff run process', async () => {
   const result: bump.DiffResponse = {

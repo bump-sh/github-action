@@ -3,12 +3,13 @@ import * as exec from '@actions/exec';
 import * as github from '@actions/github';
 import * as io from '@actions/io';
 import { GetResponseDataTypeFromEndpointMethod } from '@octokit/types';
-import { GitHub } from '@actions/github/lib/utils';
-import { extractBumpDigest, fsExists } from './common';
+import { GitHub } from '@actions/github/lib/utils.js';
+import { extractBumpDigest, fsExists } from './common.js';
 
 // These are types which are not exposed directly by Github libs
 // which we need to define
 type Octokit = InstanceType<typeof GitHub>;
+/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 const anyOctokit = github.getOctokit('any');
 type GitHubComment = GetResponseDataTypeFromEndpointMethod<
   typeof anyOctokit.rest.issues.createComment

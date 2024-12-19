@@ -1,18 +1,23 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "resolveJsonModule": true,
-    "declaration": true,
-    "importHelpers": true,
-    "module": "commonjs",
-    "outDir": "lib",
-    "rootDir": "src",
+    "target": "ES2022",
+    "rootDir": "./src",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "baseUrl": "./",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "noImplicitAny": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "target": "es2017",
-    "esModuleInterop": true
+    "skipLibCheck": true,
+    "newLine": "lf"
   },
   "include": [
     "src/**/*",
     "typings.d.ts"
   ],
-  "exclude": ["node_modules", "**/*.test.ts", "dist/"]
+  "exclude": ["./dist", "./lib", "**/*.test.ts"]
 }
