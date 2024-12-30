@@ -151,6 +151,34 @@ describe('main.ts', () => {
       expect(core.setFailed).not.toHaveBeenCalled();
     });
 
+    it('passes a single overlay with URL correctly', async () => {
+      expect(bump.Deploy.run).not.toHaveBeenCalled();
+
+      mockInputs({
+        file: 'my-file.yml',
+        doc: 'my-doc',
+        token: 'SECRET',
+        overlay:
+          'https://spec.speakeasy.com/protectearth/protectearth/train-travel-api-typescript-code-samples',
+      });
+
+      await run();
+
+      expect(bump.Deploy.run).toHaveBeenCalledWith(
+        [
+          'my-file.yml',
+          '--token',
+          'SECRET',
+          '--doc',
+          'my-doc',
+          '--overlay',
+          'https://spec.speakeasy.com/protectearth/protectearth/train-travel-api-typescript-code-samples',
+        ],
+        '.',
+      );
+      expect(core.setFailed).not.toHaveBeenCalled();
+    });
+
     it('passes multiple overlays correctly', async () => {
       expect(bump.Deploy.run).not.toHaveBeenCalled();
 
