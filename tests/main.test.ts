@@ -123,6 +123,62 @@ describe('main.ts', () => {
       );
       expect(core.setFailed).not.toHaveBeenCalled();
     });
+
+    it('passes a single overlay correctly', async () => {
+      expect(bump.Deploy.run).not.toHaveBeenCalled();
+
+      mockInputs({
+        file: 'my-file.yml',
+        doc: 'my-doc',
+        token: 'SECRET',
+        overlay: 'overlay1.yml',
+      });
+
+      await run();
+
+      expect(bump.Deploy.run).toHaveBeenCalledWith(
+        [
+          'my-file.yml',
+          '--token',
+          'SECRET',
+          '--doc',
+          'my-doc',
+          '--overlay',
+          'overlay1.yml',
+        ],
+        '.',
+      );
+      expect(core.setFailed).not.toHaveBeenCalled();
+    });
+
+    it('passes multiple overlays correctly', async () => {
+      expect(bump.Deploy.run).not.toHaveBeenCalled();
+
+      mockInputs({
+        file: 'my-file.yml',
+        doc: 'my-doc',
+        token: 'SECRET',
+        overlay: 'overlay1.yml,overlay2.yml',
+      });
+
+      await run();
+
+      expect(bump.Deploy.run).toHaveBeenCalledWith(
+        [
+          'my-file.yml',
+          '--token',
+          'SECRET',
+          '--doc',
+          'my-doc',
+          '--overlay',
+          'overlay1.yml',
+          '--overlay',
+          'overlay2.yml',
+        ],
+        '.',
+      );
+      expect(core.setFailed).not.toHaveBeenCalled();
+    });
   });
 
   describe('preview command', () => {
