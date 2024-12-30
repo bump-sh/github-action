@@ -13,6 +13,7 @@ export async function run(): Promise<void> {
     const doc: string = core.getInput('doc');
     const hub: string = core.getInput('hub');
     const branch: string = core.getInput('branch');
+    const overlay: string = core.getInput('overlay');
     const token: string = core.getInput('token');
     const command: string = core.getInput('command') || 'deploy';
     const expires: string | undefined = core.getInput('expires');
@@ -37,6 +38,10 @@ export async function run(): Promise<void> {
 
     if (branch) {
       deployParams = deployParams.concat(['--branch', branch]);
+    }
+
+    if (overlay) {
+      deployParams = deployParams.concat(processOverlays(overlay));
     }
 
     // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
@@ -112,4 +117,11 @@ function handleErrors(error: unknown): void {
 
   core.debug(JSON.stringify(error, Object.getOwnPropertyNames(error)));
   core.setFailed(msg);
+}
+
+function processOverlays(overlay: string): string[] {
+  return overlay
+    .split(',')
+    .map((o) => ['--overlay', o])
+    .flat();
 }

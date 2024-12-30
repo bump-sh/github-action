@@ -24,7 +24,8 @@ inputs:
   fail_on_breaking:
     description: "Mark the action as failed when a breaking change is detected with the diff command. This is only valid when `diff` is provided in the command input."
     default: false
-
+  overlay:
+    description: "A list of OpenAPI Overlays to apply to the API definition before deploying it. Overlays are applied in the order they are provided."
 runs:
   using: node20
   main: dist/index.js

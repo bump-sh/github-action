@@ -176,6 +176,8 @@ jobs:
 
 * `branch` (optional): Branch name used during `deploy` or `diff` commands. This can be useful to maintain multiple API reference history and make it available in your API documentation.
 
+* `overlay` (optional): Path or URL of overlay file(s) to apply before running the `deploy` command. Follows the OpenAPI Overlay specification, and accepts multiple overlays separated by comma.
+
 * `command`: Bump.sh command to execute. _Default: `deploy`_
 
   * `deploy`: deploy a new version of the documentation
