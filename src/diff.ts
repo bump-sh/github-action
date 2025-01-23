@@ -1,5 +1,5 @@
-import { Repo } from './github.js';
-import { DiffResponse } from 'bump-cli';
+import type { Repo } from './github.js';
+import type { DiffResponse } from 'bump-cli';
 import { bumpDiffComment, shaDigest } from './common.js';
 
 export async function run(diff: DiffResponse, repo: Repo): Promise<void> {
