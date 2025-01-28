@@ -9,12 +9,6 @@ function bumpDiffComment(docDigest: string, digest: string): string {
   return `<!-- Bump.sh digest=${digest} doc=${docDigest} -->`;
 }
 
-// Set User-Agent for github-action
-const setUserAgent = (): void => {
-  process.env.BUMP_USER_AGENT = 'bump-github-action';
-  return;
-};
-
 function extractBumpDigest(docDigest: string, body: string): string | undefined {
   return (body.match(bumpDiffRegexp(docDigest)) || []).pop();
 }
@@ -41,4 +35,4 @@ async function fsExists(fsPath: string): Promise<boolean> {
   return true;
 }
 
-export { bumpDiffComment, extractBumpDigest, fsExists, setUserAgent, shaDigest };
+export { bumpDiffComment, extractBumpDigest, fsExists, shaDigest };

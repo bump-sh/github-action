@@ -1,13 +1,11 @@
 import * as core from '@actions/core';
 import { Config } from '@oclif/core';
 import { RequestError as GitHubHttpError } from '@octokit/request-error';
-import path from 'path';
 import * as bump from 'bump-cli';
-import { Diff as CLICore } from 'bump-cli';
 
 import * as diff from './diff.js';
 import { Repo } from './github.js';
-import { setUserAgent, shaDigest } from './common.js';
+import { shaDigest } from './common.js';
 
 export async function run(): Promise<void> {
   try {
@@ -21,7 +19,10 @@ export async function run(): Promise<void> {
     const failOnBreaking: boolean = core.getInput('fail_on_breaking') === 'true';
     const cliParams = [file];
 
-    const config = new Config({ root: path.resolve(import.meta.dirname, '../') });
+    // HELP: this condition on the import meta dirname is here only
+    // for the tests. I have no idea why the value is 'undefined' in
+    // tests.
+    const oclifConfig = import.meta.dirname ? import.meta.dirname : '.';
     let deployParams = ['--token', token];
 
     if (doc) {
@@ -38,22 +39,23 @@ export async function run(): Promise<void> {
       deployParams = deployParams.concat(['--branch', branch]);
     }
 
-    await config.load();
-    setUserAgent();
     // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
     core.debug(`Waiting for bump ${command} ...`);
     core.debug(new Date().toTimeString());
 
     switch (command) {
       case 'preview':
-        await bump.Preview.run(cliParams);
+        await bump.Preview.run(cliParams, oclifConfig);
         break;
       case 'dry-run':
       case 'validate': // DEPRECATED, kept for backward compatibility with old gem
-        await bump.Deploy.run(cliParams.concat(deployParams).concat(['--dry-run']));
+        await bump.Deploy.run(
+          cliParams.concat(deployParams).concat(['--dry-run']),
+          oclifConfig,
+        );
         break;
       case 'deploy':
-        await bump.Deploy.run(cliParams.concat(deployParams));
+        await bump.Deploy.run(cliParams.concat(deployParams), oclifConfig);
         break;
       case 'diff':
         const docDigest = shaDigest([doc, hub]);
@@ -67,7 +69,8 @@ export async function run(): Promise<void> {
           file1 = file;
         }
 
-        await new CLICore.Diff(config)
+        const config = await Config.load(oclifConfig);
+        await new bump.Diff.Diff(config)
           .run(file1, file2, doc, hub, branch, token, 'markdown', expires)
           .then((result: bump.DiffResponse | undefined) => {
             if (result) {
@@ -107,5 +110,6 @@ function handleErrors(error: unknown): void {
     msg = error.message;
   }
 
+  core.debug(JSON.stringify(error, Object.getOwnPropertyNames(error)));
   core.setFailed(msg);
 }
