@@ -88,7 +88,7 @@ jobs:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 ```
 
-**Important:** Make sure you adapt the name of the branch your deployment will target, _aka_ your destination branch if relevant (`main` in the example above), replace `<BUMP_DOC_ID>` with your Bump.sh documentation slug or id, and point `file:` to your local API definition file (`doc/api-documentation.yml`).
+**Important:** make sure you adapt the name of the branch your deployment will target, _aka_ your destination branch if relevant (`main` in the example above), replace `<BUMP_DOC_ID>` with your Bump.sh documentation slug or id, and point `file:` to your local API definition file (`doc/api-documentation.yml`).
 
 ### Deploy documentation only
 
@@ -119,7 +119,7 @@ jobs:
           file: doc/api-documentation.yml
 ```
 
-**Important:** Make sure you adapt the name of the branch your deployment will target, _aka_ your destination branch if relevant (`main` in the example above), replace `<BUMP_DOC_ID>` with your Bump.sh documentation slug or id, and point `file:` to your local API definition file (`doc/api-documentation.yml`).
+**Important:** make sure you adapt the name of the branch your deployment will target, _aka_ your destination branch if relevant (`main` in the example above), replace `<BUMP_DOC_ID>` with your Bump.sh documentation slug or id, and point `file:` to your local API definition file (`doc/api-documentation.yml`).
 
 ### Diff on pull requests only
 
@@ -157,7 +157,7 @@ jobs:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 ```
 
-**Important:** Make sure you adapt the name of the branch your deployment will target, _aka_ your destination branch if relevant (`main` in the example above), replace `<BUMP_DOC_ID>` with your Bump.sh documentation slug or id, and point `file:` to your local API definition file (`doc/api-documentation.yml`).
+**Important:** make sure you adapt the name of the branch your deployment will target, _aka_ your destination branch if relevant (`main` in the example above), replace `<BUMP_DOC_ID>` with your Bump.sh documentation slug or id, and point `file:` to your local API definition file (`doc/api-documentation.yml`).
 
 ### Deploy a single documentation on a hub
 
@@ -190,7 +190,7 @@ jobs:
           file: doc/api-documentation.yml
 ```
 
-**Important:** Make sure you adapt the name of the branch your deployment will target, _aka_ your destination branch if relevant (`main` in the example above), replace `<BUMP_DOC_ID>` with your Bump.sh documentation slug or id, `<BUMP_HUB_ID>` with your Bump.sh hub slug or id and point `file:` to your local API definition file (`doc/api-documentation.yml`).
+**Important:** make sure you adapt the name of the branch your deployment will target, _aka_ your destination branch if relevant (`main` in the example above), replace `<BUMP_DOC_ID>` with your Bump.sh documentation slug or id, `<BUMP_HUB_ID>` with your Bump.sh hub slug or id and point `file:` to your local API definition file (`doc/api-documentation.yml`).
 
 ### Deploy multiple documentation at once on a hub
 
@@ -221,7 +221,7 @@ jobs:
           file: docs/
 ```
 
-**Important:** Make sure you adapt the name of the branch your deployment will target, _aka_ your destination branch if relevant (`main` in the example above), replace `<BUMP_HUB_ID>` with your Bump.sh hub slug or id and point `file:` to your local API definition file folder (`docs/`).
+**Important:** make sure you adapt the name of the branch your deployment will target, _aka_ your destination branch if relevant (`main` in the example above), replace `<BUMP_HUB_ID>` with your Bump.sh hub slug or id and point `file:` to your local API definition file folder (`docs/`).
 
 
 ## Inputs
