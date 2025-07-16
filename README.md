@@ -236,7 +236,7 @@ jobs:
 
 * `file`: Relative path to the API definition file or the API definition file folder. _Default: `api-contract.yml`_
 
-* `hub` (optional): Hub slug or id. Needed when deploying to documentation in a Hub. Can be found in the hub settings on https://bump.sh/dashboard
+* `hub` (optional): Hub slug or id. Needed when deploying documentation in a Hub. Can be found in the hub settings on https://bump.sh/dashboard
 
 * `branch` (optional): Branch name used during `deploy` or `diff` commands. This can be useful to maintain multiple API reference history and make it available in your API documentation.
 
