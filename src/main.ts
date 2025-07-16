@@ -28,12 +28,10 @@ export async function run(): Promise<void> {
 
     if (doc) {
       deployParams = deployParams.concat(['--doc', doc]);
-    } else if (hub) {
-      deployParams = deployParams.concat(['--auto-create']);
     }
 
     if (hub) {
-      deployParams = deployParams.concat(['--hub', hub]);
+      deployParams = deployParams.concat(['--auto-create', '--hub', hub]);
     }
 
     if (branch) {

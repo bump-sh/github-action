@@ -84,7 +84,16 @@ describe('main.ts', () => {
       await run();
 
       expect(bump.Deploy.run).toHaveBeenCalledWith(
-        ['my-file.yml', '--token', 'SECRET', '--doc', 'my-doc', '--hub', 'my-hub'],
+        [
+          'my-file.yml',
+          '--token',
+          'SECRET',
+          '--doc',
+          'my-doc',
+          '--auto-create',
+          '--hub',
+          'my-hub',
+        ],
         '.',
       );
     });
