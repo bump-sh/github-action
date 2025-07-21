@@ -13,7 +13,10 @@ export async function run(): Promise<void> {
     const doc: string = core.getInput('doc');
     const hub: string = core.getInput('hub');
     const branch: string = core.getInput('branch');
-    const overlay: string = core.getInput('overlay');
+    const overlays: string[] | undefined = core
+      .getInput('overlay')
+      ?.split(',') // Separate overlay files by comma
+      ?.filter((e) => e); // Remove empty strings
     const token: string = core.getInput('token');
     const command: string = core.getInput('command') || 'deploy';
     const expires: string | undefined = core.getInput('expires');
@@ -38,8 +41,8 @@ export async function run(): Promise<void> {
       deployParams = deployParams.concat(['--branch', branch]);
     }
 
-    if (overlay) {
-      deployParams = deployParams.concat(processOverlays(overlay));
+    if (overlays) {
+      deployParams = deployParams.concat(processOverlays(overlays));
     }
 
     // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
@@ -74,7 +77,7 @@ export async function run(): Promise<void> {
 
         const config = await Config.load(oclifConfig);
         await new bump.Diff.Diff(config)
-          .run(file1, file2, doc, hub, branch, token, 'markdown', expires)
+          .run(file1, file2, doc, hub, branch, token, 'markdown', expires, overlays)
           .then((result: bump.DiffResponse | undefined) => {
             if (result) {
               diff.run(result, repo).catch(handleErrors);
@@ -117,9 +120,6 @@ function handleErrors(error: unknown): void {
   core.setFailed(msg);
 }
 
-function processOverlays(overlay: string): string[] {
-  return overlay
-    .split(',')
-    .map((o) => ['--overlay', o])
-    .flat();
+function processOverlays(overlays: string[]): string[] {
+  return overlays.map((o) => ['--overlay', o]).flat();
 }
