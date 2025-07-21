@@ -262,6 +262,7 @@ one
         '',
         'markdown',
         '',
+        [],
       );
     });
 
@@ -298,6 +299,7 @@ one
         '',
         'markdown',
         '',
+        [],
       );
     });
 
@@ -332,6 +334,7 @@ one
         '',
         'markdown',
         '',
+        [],
       );
     });
 
@@ -367,6 +370,7 @@ one
         '',
         'markdown',
         '',
+        [],
       );
     });
 
@@ -393,6 +397,33 @@ one
         expect.anything(),
         'markdown',
         expect.anything(),
+        [],
+      );
+    });
+
+    it('test action run with overlays', async () => {
+      const file = 'my-file-to-diff.yml';
+      mockInputs({
+        file,
+        command: 'diff',
+        fail_on_breaking: 'true',
+        overlay: 'overlay1.yml,overlay2.yml',
+      });
+      // Mock base file from PR
+      repo.mockGetBaseFile.mockResolvedValue('my-base-file-to-diff.yml');
+
+      await run();
+
+      expect(bump.mockRunDiff).toHaveBeenCalledWith(
+        'my-base-file-to-diff.yml',
+        'my-file-to-diff.yml',
+        expect.anything(),
+        expect.anything(),
+        expect.anything(),
+        expect.anything(),
+        'markdown',
+        expect.anything(),
+        ['overlay1.yml', 'overlay2.yml'],
       );
     });
 
@@ -432,6 +463,7 @@ one
         expect.anything(),
         'markdown',
         expect.anything(),
+        [],
       );
     });
   });
