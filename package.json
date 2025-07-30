@@ -47,7 +47,7 @@
     "bump-cli": "^2.9.8"
   },
   "devDependencies": {
-    "@github/local-action": "^2.5.0",
+    "@github/local-action": "^5.1.0",
     "@jest/globals": "^29.7.0",
     "@rollup/plugin-commonjs": "^28.0.1",
     "@rollup/plugin-json": "^6.1.0",
