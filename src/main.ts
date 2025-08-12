@@ -21,6 +21,7 @@ export async function run(): Promise<void> {
     const command: string = core.getInput('command') || 'deploy';
     const expires: string | undefined = core.getInput('expires');
     const failOnBreaking: boolean = core.getInput('fail_on_breaking') === 'true';
+    const filenamePattern: string = core.getInput('filename_pattern');
     const cliParams = [file];
 
     // HELP: this condition on the import meta dirname is here only
@@ -35,6 +36,12 @@ export async function run(): Promise<void> {
 
     if (hub) {
       deployParams = deployParams.concat(['--auto-create', '--hub', hub]);
+      if (filenamePattern) {
+        deployParams = deployParams.concat([
+          '--filename-pattern',
+          `'${filenamePattern}'`,
+        ]);
+      }
     }
 
     if (branch) {
