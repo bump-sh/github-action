@@ -66,6 +66,32 @@ describe('main.ts', () => {
       );
     });
 
+    it('test action run deploy entire directory in hub with custom filename pattern correctly', async () => {
+      mockInputs({
+        file: 'my-file.yml',
+        doc: undefined,
+        hub: 'my-hub',
+        token: 'SECRET',
+        filename_pattern: 'source-{slug}-*',
+      });
+
+      await run();
+
+      expect(bump.Deploy.run).toHaveBeenCalledWith(
+        [
+          'my-file.yml',
+          '--token',
+          'SECRET',
+          '--auto-create',
+          '--hub',
+          'my-hub',
+          '--filename-pattern',
+          "'source-{slug}-*'",
+        ],
+        '.',
+      );
+    });
+
     it('test action run deploy correctly', async () => {
       // Set the action's inputs as return values from core.getInput().
       mockInputs({ file: 'my-file.yml', doc: 'my-doc', token: 'SECRET' });
