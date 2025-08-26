@@ -37,10 +37,7 @@ export async function run(): Promise<void> {
     if (hub) {
       deployParams = deployParams.concat(['--auto-create', '--hub', hub]);
       if (filenamePattern) {
-        deployParams = deployParams.concat([
-          '--filename-pattern',
-          `'${filenamePattern}'`,
-        ]);
+        deployParams = deployParams.concat(['--filename-pattern', filenamePattern]);
       }
     }
 
