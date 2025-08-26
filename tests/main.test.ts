@@ -86,7 +86,7 @@ describe('main.ts', () => {
           '--hub',
           'my-hub',
           '--filename-pattern',
-          "'source-{slug}-*'",
+          'source-{slug}-*',
         ],
         '.',
       );
