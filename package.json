@@ -1,6 +1,6 @@
 {
   "name": "bump-github-action",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "type": "module",
   "description": "GitHub action to deploy your API documentation on Bump.sh",
   "bugs": "https://github.com/bump-sh/github-action/issues",
