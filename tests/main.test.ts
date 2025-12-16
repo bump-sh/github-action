@@ -267,13 +267,17 @@ describe('main.ts', () => {
       expect(repo.Repo).toHaveBeenCalledWith('my-doc', '', '');
       expect(repo.mockGetBaseFile).toHaveBeenCalledWith(file);
       expect(repo.mockCreateOrUpdateComment).toHaveBeenCalledWith(
-        `🚨 Breaking API change detected:
-
-one
+        `### 🚨 Breaking My-doc API change detected
 
 [Preview documentation](https://bump.sh/doc/my-doc/changes/654)
 
-> _Powered by [Bump.sh](https://bump.sh)_
+<details open><summary>Structural change details</summary>
+
+one
+
+</details>
+
+###### _Powered by [Bump.sh](https://bump.sh)_
 <!-- Bump.sh digest=${commentDigest} doc=undefined -->`,
         commentDigest,
       );
@@ -303,13 +307,17 @@ one
       expect(repo.Repo).toHaveBeenCalledWith('my-doc', '', '');
       expect(repo.mockGetBaseFile).toHaveBeenCalledWith(file);
       expect(repo.mockCreateOrUpdateComment).toHaveBeenCalledWith(
-        `🚨 Breaking API change detected:
-
-one
+        `### 🚨 Breaking My-doc API change detected
 
 [Preview documentation](https://bump.sh/doc/my-doc/changes/654)
 
-> _Powered by [Bump.sh](https://bump.sh)_
+<details open><summary>Structural change details</summary>
+
+one
+
+</details>
+
+###### _Powered by [Bump.sh](https://bump.sh)_
 <!-- Bump.sh digest=${commentDigest} doc=undefined -->`,
         commentDigest,
       );
@@ -337,13 +345,17 @@ one
       expect(repo.Repo).toHaveBeenCalledWith('', '', 'latest');
       expect(repo.mockGetBaseFile).toHaveBeenCalledWith(file);
       expect(repo.mockCreateOrUpdateComment).toHaveBeenCalledWith(
-        `🚨 Breaking API change detected:
-
-one
+        `### 🚨 Breaking My-doc API change detected
 
 [Preview documentation](https://bump.sh/doc/my-doc/changes/654)
 
-> _Powered by [Bump.sh](https://bump.sh)_
+<details open><summary>Structural change details</summary>
+
+one
+
+</details>
+
+###### _Powered by [Bump.sh](https://bump.sh)_
 <!-- Bump.sh digest=${commentDigest} doc=undefined -->`,
         commentDigest,
       );
@@ -372,13 +384,17 @@ one
 
       expect(repo.Repo).toHaveBeenCalledWith('', '', '');
       expect(repo.mockCreateOrUpdateComment).toHaveBeenCalledWith(
-        `🚨 Breaking API change detected:
-
-one
+        `### 🚨 Breaking My-doc API change detected
 
 [Preview documentation](https://bump.sh/doc/my-doc/changes/654)
 
-> _Powered by [Bump.sh](https://bump.sh)_
+<details open><summary>Structural change details</summary>
+
+one
+
+</details>
+
+###### _Powered by [Bump.sh](https://bump.sh)_
 <!-- Bump.sh digest=${commentDigest} doc=undefined -->`,
         commentDigest,
       );

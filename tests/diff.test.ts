@@ -43,22 +43,26 @@ describe('diff.ts', () => {
     };
     const digest = '4b81e612cafa6580f8ad3bfe9e970b2d961f58c2';
 
-    const repo = new Repo('hello');
-    const docDigest = shaDigest(['hello']);
+    const repo = new Repo('hello', '', 'v2');
+    const docDigest = shaDigest(['hello', '', 'v2']);
 
     await diff.run(result, repo);
 
     expect(repo.createOrUpdateComment).toHaveBeenCalledWith(
-      `🤖 API structural change detected:
+      `### 🤖 Hello (branch: v2) API structural change detected
+
+[Preview documentation](https://bump.sh/doc/my-doc/changes/654)
+
+<details open><summary>Structural change details</summary>
 
 * one
 * two
 * three
 
 
-[Preview documentation](https://bump.sh/doc/my-doc/changes/654)
+</details>
 
-> _Powered by [Bump.sh](https://bump.sh)_
+###### _Powered by [Bump.sh](https://bump.sh)_
 <!-- Bump.sh digest=${digest} doc=${docDigest} -->`,
       digest,
     );
@@ -72,18 +76,18 @@ describe('diff.ts', () => {
     };
     const digest = '3999a0fe6ad27841bd6342128f7028ab2cea1c57';
 
-    const repo = new Repo('hello');
-    const docDigest = shaDigest(['hello']);
+    const repo = new Repo('hello', 'my-hub', 'v1');
+    const docDigest = shaDigest(['hello', 'my-hub', 'v1']);
     await diff.run(result, repo);
 
     expect(repo.createOrUpdateComment).toHaveBeenCalledWith(
-      `ℹ️ API content change detected:
-
-No structural change, nothing to display.
+      `### ℹ️ My-hub/hello (branch: v1) API content change detected
 
 [Preview documentation](https://bump.sh/doc/my-doc/changes/654)
 
-> _Powered by [Bump.sh](https://bump.sh)_
+No structural change, nothing to display.
+
+###### _Powered by [Bump.sh](https://bump.sh)_
 <!-- Bump.sh digest=${digest} doc=${docDigest} -->`,
       digest,
     );
@@ -105,16 +109,20 @@ No structural change, nothing to display.
     await diff.run(result, repo);
 
     expect(repo.createOrUpdateComment).toHaveBeenCalledWith(
-      `🚨 Breaking API change detected:
+      `### 🚨 Breaking Hello API change detected
+
+[Preview documentation](https://bump.sh/doc/my-doc/changes/654)
+
+<details open><summary>Structural change details</summary>
 
 * one
 * two
 * three
 
 
-[Preview documentation](https://bump.sh/doc/my-doc/changes/654)
+</details>
 
-> _Powered by [Bump.sh](https://bump.sh)_
+###### _Powered by [Bump.sh](https://bump.sh)_
 <!-- Bump.sh digest=${digest} doc=${docDigest} -->`,
       digest,
     );
@@ -136,14 +144,18 @@ No structural change, nothing to display.
     await diff.run(result, repo);
 
     expect(repo.createOrUpdateComment).toHaveBeenCalledWith(
-      `🤖 API structural change detected:
+      `### 🤖 Hello API structural change detected
+
+<details open><summary>Structural change details</summary>
 
 * one
 * two
 * three
 
 
-> _Powered by [Bump.sh](https://bump.sh)_
+</details>
+
+###### _Powered by [Bump.sh](https://bump.sh)_
 <!-- Bump.sh digest=${digest} doc=${docDigest} -->`,
       digest,
     );
