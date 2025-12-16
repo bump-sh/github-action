@@ -23,6 +23,9 @@ export class Repo {
   readonly baseSha?: string;
   readonly headSha?: string;
   private _docDigest: string;
+  readonly doc: string;
+  readonly hub: string | undefined;
+  readonly branch: string | undefined;
 
   constructor(doc: string, hub?: string, branch?: string) {
     // Fetch GitHub Action context
@@ -38,6 +41,9 @@ export class Repo {
       this.headSha = pull_request.head.sha;
     }
     this.octokit = this.getOctokit();
+    this.doc = doc;
+    this.hub = hub;
+    this.branch = branch;
     this._docDigest = shaDigest([doc, hub, branch]);
   }
 

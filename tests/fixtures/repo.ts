@@ -6,6 +6,7 @@ export const mockCreateOrUpdateComment = jest.fn<repo.Repo['createOrUpdateCommen
 export const mockDeleteExistingComment = jest.fn<repo.Repo['deleteExistingComment']>();
 export const Repo = jest.fn().mockImplementation(() => {
   return {
+    doc: 'my-doc',
     getBaseFile: mockGetBaseFile,
     createOrUpdateComment: mockCreateOrUpdateComment,
     deleteExistingComment: mockDeleteExistingComment,
