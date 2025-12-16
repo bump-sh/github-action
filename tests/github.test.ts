@@ -5,6 +5,7 @@ import * as common from './fixtures/common.js';
 import { jest } from '@jest/globals';
 import fixtureGithubContext from './fixtures/github-context.json';
 import nock from 'nock';
+import { shaDigest } from '../src/common.js';
 
 nock.disableNetConnect();
 stdout.start();
@@ -43,13 +44,14 @@ describe('github.ts', () => {
       common.fsExists.mockResolvedValue(true);
 
       const repo = new Repo('hello');
+      const docDigest = shaDigest(['hello']);
       const headFile = 'openapi.yml';
       const baseFile = await repo.getBaseFile('openapi.yml');
       const baseSha = fixtureGithubContext.payload.pull_request.base.sha;
       const headSha = fixtureGithubContext.payload.pull_request.head.sha;
       const baseBranch = '';
 
-      expect(repo.docDigest).toEqual('hello');
+      expect(repo.docDigest).toEqual(docDigest);
       // Expect git executions
       expect(exec.exec.mock.calls).toEqual([
         ['git', ['fetch', 'origin', baseSha, headSha]],
@@ -106,8 +108,9 @@ describe('github.ts', () => {
       test('Calls octokit to update the issue comment', async () => {
         const digest = 'existing-comment';
         const doc = 'hello';
-        const body = `coucou\n<!-- Bump.sh digest=${digest} doc=${doc} -->`;
-        const newBody = `New coucou\n<!-- Bump.sh digest=new-coucou doc=${doc} -->`;
+        const docDigest = shaDigest(['hello']);
+        const body = `coucou\n<!-- Bump.sh digest=${digest} doc=${docDigest} -->`;
+        const newBody = `New coucou\n<!-- Bump.sh digest=new-coucou doc=${docDigest} -->`;
 
         mockGithubComments([{ id: 1, body }]);
         mockGithubCommentUpdate(1, newBody);
@@ -131,6 +134,16 @@ describe('github.ts', () => {
 
       expect(buildRepo).toThrow(Error);
       expect(buildRepo).toThrow('No GITHUB_TOKEN env variable available');
+    });
+  });
+
+  describe('constructor', () => {
+    test('instanciate a github API client and a doc digest', async () => {
+      const repo = new Repo('hello', 'my-hub', 'my-branch');
+      const docDigest = shaDigest(['hello', 'my-hub', 'my-branch']);
+
+      expect(repo.docDigest).toEqual(docDigest);
+      expect(repo.octokit).toBeDefined();
     });
   });
 });

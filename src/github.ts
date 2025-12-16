@@ -4,7 +4,7 @@ import * as github from '@actions/github';
 import * as io from '@actions/io';
 import { GetResponseDataTypeFromEndpointMethod } from '@octokit/types';
 import { GitHub } from '@actions/github/lib/utils.js';
-import { extractBumpDigest, fsExists } from './common.js';
+import { extractBumpDigest, fsExists, shaDigest } from './common.js';
 
 // These are types which are not exposed directly by Github libs
 // which we need to define
@@ -24,7 +24,7 @@ export class Repo {
   readonly headSha?: string;
   private _docDigest: string;
 
-  constructor(docDigest: string) {
+  constructor(doc: string, hub?: string, branch?: string) {
     // Fetch GitHub Action context
     // from GITHUB_REPOSITORY & GITHUB_EVENT_PATH
     const { owner, repo } = github.context.repo;
@@ -38,7 +38,7 @@ export class Repo {
       this.headSha = pull_request.head.sha;
     }
     this.octokit = this.getOctokit();
-    this._docDigest = docDigest;
+    this._docDigest = shaDigest([doc, hub, branch]);
   }
 
   public get docDigest() {

@@ -5,7 +5,6 @@ import * as bump from 'bump-cli';
 
 import * as diff from './diff.js';
 import { Repo } from './github.js';
-import { shaDigest } from './common.js';
 
 export async function run(): Promise<void> {
   try {
@@ -68,8 +67,7 @@ export async function run(): Promise<void> {
         await bump.Deploy.run(cliParams.concat(deployParams), oclifConfig);
         break;
       case 'diff':
-        const docDigest = shaDigest([doc, hub]);
-        const repo = new Repo(docDigest);
+        const repo = new Repo(doc, hub, branch);
         let file1 = await repo.getBaseFile(file);
         let file2: string | undefined;
 

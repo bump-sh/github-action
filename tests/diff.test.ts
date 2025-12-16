@@ -1,6 +1,7 @@
 import * as github from './fixtures/github.js';
 import * as bump from 'bump-cli';
 import { jest } from '@jest/globals';
+import { shaDigest } from '../src/common.js';
 
 // Mocks should be declared before the module being tested is imported.
 jest.unstable_mockModule('@actions/github', () => github);
@@ -43,6 +44,7 @@ describe('diff.ts', () => {
     const digest = '4b81e612cafa6580f8ad3bfe9e970b2d961f58c2';
 
     const repo = new Repo('hello');
+    const docDigest = shaDigest(['hello']);
 
     await diff.run(result, repo);
 
@@ -57,7 +59,7 @@ describe('diff.ts', () => {
 [Preview documentation](https://bump.sh/doc/my-doc/changes/654)
 
 > _Powered by [Bump.sh](https://bump.sh)_
-<!-- Bump.sh digest=${digest} doc=hello -->`,
+<!-- Bump.sh digest=${digest} doc=${docDigest} -->`,
       digest,
     );
   });
@@ -71,6 +73,7 @@ describe('diff.ts', () => {
     const digest = '3999a0fe6ad27841bd6342128f7028ab2cea1c57';
 
     const repo = new Repo('hello');
+    const docDigest = shaDigest(['hello']);
     await diff.run(result, repo);
 
     expect(repo.createOrUpdateComment).toHaveBeenCalledWith(
@@ -81,7 +84,7 @@ No structural change, nothing to display.
 [Preview documentation](https://bump.sh/doc/my-doc/changes/654)
 
 > _Powered by [Bump.sh](https://bump.sh)_
-<!-- Bump.sh digest=${digest} doc=hello -->`,
+<!-- Bump.sh digest=${digest} doc=${docDigest} -->`,
       digest,
     );
   });
@@ -98,6 +101,7 @@ No structural change, nothing to display.
     };
     const digest = '4b81e612cafa6580f8ad3bfe9e970b2d961f58c2';
     const repo = new Repo('hello');
+    const docDigest = shaDigest(['hello']);
     await diff.run(result, repo);
 
     expect(repo.createOrUpdateComment).toHaveBeenCalledWith(
@@ -111,7 +115,7 @@ No structural change, nothing to display.
 [Preview documentation](https://bump.sh/doc/my-doc/changes/654)
 
 > _Powered by [Bump.sh](https://bump.sh)_
-<!-- Bump.sh digest=${digest} doc=hello -->`,
+<!-- Bump.sh digest=${digest} doc=${docDigest} -->`,
       digest,
     );
   });
@@ -128,6 +132,7 @@ No structural change, nothing to display.
     const digest = 'c1f04e5c83235377b88745d13dc9b1ebd3a125a8';
 
     const repo = new Repo('hello');
+    const docDigest = shaDigest(['hello']);
     await diff.run(result, repo);
 
     expect(repo.createOrUpdateComment).toHaveBeenCalledWith(
@@ -139,7 +144,7 @@ No structural change, nothing to display.
 
 
 > _Powered by [Bump.sh](https://bump.sh)_
-<!-- Bump.sh digest=${digest} doc=hello -->`,
+<!-- Bump.sh digest=${digest} doc=${docDigest} -->`,
       digest,
     );
   });
