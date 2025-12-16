@@ -257,15 +257,14 @@ describe('main.ts', () => {
   describe('diff command', () => {
     it('test action run diff correctly', async () => {
       const file = 'my-file-to-diff.yml';
-      const emptyDocDigest = 'da39a3ee5e6b4b0d3255bfef95601890afd80709';
       const commentDigest = '1ab9a6fb70e07d910650e1895e9fc53570f99011';
-      mockInputs({ file, command: 'diff' });
+      mockInputs({ file, command: 'diff', doc: 'my-doc' });
       // Mock return value from bump-cli core diff lib
       bump.mockRunDiff.mockResolvedValue(diffExample);
 
       await run();
 
-      expect(repo.Repo).toHaveBeenCalledWith(emptyDocDigest);
+      expect(repo.Repo).toHaveBeenCalledWith('my-doc', '', '');
       expect(repo.mockGetBaseFile).toHaveBeenCalledWith(file);
       expect(repo.mockCreateOrUpdateComment).toHaveBeenCalledWith(
         `🚨 Breaking API change detected:
@@ -282,7 +281,7 @@ one
       expect(bump.mockRunDiff).toHaveBeenCalledWith(
         'my-file-to-diff.yml',
         undefined,
-        '',
+        'my-doc',
         '',
         '',
         '',
@@ -294,7 +293,6 @@ one
 
     it('test action run diff on existing documentation correctly', async () => {
       const file = 'my-file-to-diff.yml';
-      const docDigest = '398b995591d7e5f6676e44f06be071abe850b38e';
       const commentDigest = '1ab9a6fb70e07d910650e1895e9fc53570f99011';
       mockInputs({ file, doc: 'my-doc', command: 'diff' });
       // Mock return value from bump-cli core diff lib
@@ -302,7 +300,7 @@ one
 
       await run();
 
-      expect(repo.Repo).toHaveBeenCalledWith(docDigest);
+      expect(repo.Repo).toHaveBeenCalledWith('my-doc', '', '');
       expect(repo.mockGetBaseFile).toHaveBeenCalledWith(file);
       expect(repo.mockCreateOrUpdateComment).toHaveBeenCalledWith(
         `🚨 Breaking API change detected:
@@ -331,13 +329,12 @@ one
 
     it('test action run diff with Branch correctly', async () => {
       const file = 'my-file-to-diff.yml';
-      const docDigest = 'da39a3ee5e6b4b0d3255bfef95601890afd80709';
       const commentDigest = '1ab9a6fb70e07d910650e1895e9fc53570f99011';
       mockInputs({ file, branch: 'latest', command: 'diff' });
 
       await run();
 
-      expect(repo.Repo).toHaveBeenCalledWith(docDigest);
+      expect(repo.Repo).toHaveBeenCalledWith('', '', 'latest');
       expect(repo.mockGetBaseFile).toHaveBeenCalledWith(file);
       expect(repo.mockCreateOrUpdateComment).toHaveBeenCalledWith(
         `🚨 Breaking API change detected:
@@ -366,7 +363,6 @@ one
 
     it('test action run diff on PR correctly', async () => {
       const file = 'my-file-to-diff.yml';
-      const docDigest = 'da39a3ee5e6b4b0d3255bfef95601890afd80709';
       const commentDigest = '1ab9a6fb70e07d910650e1895e9fc53570f99011';
       mockInputs({ file, command: 'diff' });
       // Mock base file from PR
@@ -374,7 +370,7 @@ one
 
       await run();
 
-      expect(repo.Repo).toHaveBeenCalledWith(docDigest);
+      expect(repo.Repo).toHaveBeenCalledWith('', '', '');
       expect(repo.mockCreateOrUpdateComment).toHaveBeenCalledWith(
         `🚨 Breaking API change detected:
 
