@@ -69,9 +69,13 @@ export async function run(): Promise<void> {
       case 'diff':
         const repo = new Repo(doc, hub, branch);
         let file1 = await repo.getBaseFile(file);
+        const overlays1: string[] | undefined =
+          (await repo.getBaseOverlays(overlays)) || [];
         let file2: string | undefined;
+        let overlays2: string[] | undefined;
 
         if (file1) {
+          overlays2 = overlays;
           file2 = file;
         } else {
           file1 = file;
@@ -79,7 +83,18 @@ export async function run(): Promise<void> {
 
         const config = await Config.load(oclifConfig);
         await new bump.Diff.Diff(config)
-          .run(file1, file2, doc, hub, branch, token, 'markdown', expires, overlays)
+          .run(
+            file1,
+            file2,
+            doc,
+            hub,
+            branch,
+            token,
+            'markdown',
+            expires,
+            overlays1,
+            overlays2,
+          )
           .then((result: bump.DiffResponse | undefined) => {
             if (result) {
               diff.run(result, repo).catch(handleErrors);

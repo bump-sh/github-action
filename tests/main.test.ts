@@ -46,6 +46,7 @@ describe('main.ts', () => {
     stdout.stop();
     stdout.start();
     repo.mockGetBaseFile.mockReset();
+    repo.mockGetBaseOverlays.mockReset();
   });
 
   afterEach(() => {
@@ -292,6 +293,7 @@ one
         'markdown',
         '',
         [],
+        undefined,
       );
     });
 
@@ -332,6 +334,7 @@ one
         'markdown',
         '',
         [],
+        undefined,
       );
     });
 
@@ -370,6 +373,7 @@ one
         'markdown',
         '',
         [],
+        undefined,
       );
     });
 
@@ -409,6 +413,7 @@ one
         'markdown',
         '',
         [],
+        [],
       );
     });
 
@@ -436,6 +441,7 @@ one
         'markdown',
         expect.anything(),
         [],
+        [],
       );
     });
 
@@ -449,6 +455,7 @@ one
       });
       // Mock base file from PR
       repo.mockGetBaseFile.mockResolvedValue('my-base-file-to-diff.yml');
+      repo.mockGetBaseOverlays.mockResolvedValue(['my-base-overlays.yml']);
 
       await run();
 
@@ -461,6 +468,7 @@ one
         expect.anything(),
         'markdown',
         expect.anything(),
+        ['my-base-overlays.yml'],
         ['overlay1.yml', 'overlay2.yml'],
       );
     });
@@ -502,6 +510,7 @@ one
         'markdown',
         expect.anything(),
         [],
+        undefined,
       );
     });
   });
