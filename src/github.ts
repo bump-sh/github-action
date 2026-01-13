@@ -100,6 +100,28 @@ export class Repo {
     }
   }
 
+  /* WARNING: you need to first call .getBaseFile to have base files
+   * available in the tmpDir */
+  async getBaseOverlays(overlays: string[] | undefined): Promise<string[]> {
+    const tmpDir = 'tmp/';
+
+    const tmpOverlays: (string | undefined)[] = await Promise.all(
+      (overlays || []).map(async (overlayFile) => {
+        if (!overlayFile) return undefined;
+
+        // All files of the “previous” version are in the tmp/ dir
+        // so we take all the previous versions' overlay files (if
+        // they exist)
+        const tmpOverlay = `${tmpDir}${overlayFile}`;
+        if (await fsExists(tmpOverlay)) {
+          return tmpOverlay;
+        }
+      }),
+    );
+
+    return tmpOverlays.filter((e) => e) as string[];
+  }
+
   async createOrUpdateComment(body: string, digest: string): Promise<void> {
     if (!this.prNumber) {
       core.info('Not a pull request, nothing more to do.');

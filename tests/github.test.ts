@@ -63,6 +63,17 @@ describe('github.ts', () => {
     });
   });
 
+  describe('getBaseOverlays function', () => {
+    test('Returns the given list of filenames prepended with the tmpDir', async () => {
+      common.fsExists.mockResolvedValue(true);
+
+      const repo = new Repo('hello');
+      const baseOverlays = await repo.getBaseOverlays(['overlay.yml']);
+
+      expect(baseOverlays).toStrictEqual([`tmp/overlay.yml`]);
+    });
+  });
+
   describe('createOrUpdateComment function', () => {
     // Mock GitHub API
     const nockScope = nock('https://api.github.com');
