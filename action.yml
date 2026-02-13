@@ -29,6 +29,8 @@ inputs:
   filename_pattern:
     default: "{slug}-api"
     description: "Filename pattern to extract the documentation slug from filenames when deploying a DIRECTORY. Pattern uses only '*' and '{slug}' as special characters to extract the slug from a filename without extension. Only used with the 'hub' input when deploying a whole directory ."
+  mcp_server:
+    description: "MCP Server id or slug. Necessary to deploy a new workflow documentation to be run by your MCP Server."
 runs:
   using: node20
   main: dist/index.js

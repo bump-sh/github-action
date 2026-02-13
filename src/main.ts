@@ -21,6 +21,7 @@ export async function run(): Promise<void> {
     const expires: string | undefined = core.getInput('expires');
     const failOnBreaking: boolean = core.getInput('fail_on_breaking') === 'true';
     const filenamePattern: string = core.getInput('filename_pattern');
+    const mcpServer: string = core.getInput('mcp_server');
     const cliParams = [file];
 
     // HELP: this condition on the import meta dirname is here only
@@ -46,6 +47,10 @@ export async function run(): Promise<void> {
 
     if (overlays) {
       deployParams = deployParams.concat(processOverlays(overlays));
+    }
+
+    if (mcpServer) {
+      deployParams = deployParams.concat(['--mcp-server', mcpServer]);
     }
 
     // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
