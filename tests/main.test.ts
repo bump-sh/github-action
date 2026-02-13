@@ -243,6 +243,21 @@ describe('main.ts', () => {
       );
       expect(core.setFailed).not.toHaveBeenCalled();
     });
+
+    it('test action run deploy with mcp server correctly', async () => {
+      mockInputs({
+        file: 'my-flower-file.yml',
+        mcp_server: 'wooow-shamrock',
+        token: 'SECRET',
+      });
+
+      await run();
+
+      expect(bump.Deploy.run).toHaveBeenCalledWith(
+        ['my-flower-file.yml', '--token', 'SECRET', '--mcp-server', 'wooow-shamrock'],
+        '.',
+      );
+    });
   });
 
   describe('preview command', () => {
