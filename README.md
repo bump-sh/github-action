@@ -324,7 +324,7 @@ Request an early access at hello@bump.sh
 
 * `fail_on_breaking` (optional): Mark the action as failed when a breaking change is detected with the diff command. This is only valid with `diff` command.
 
-* `mcp_server` (required to deploy workflow document on MCP server): MCP Server id or slug. Can be found MCP Server settings: https://bump.sh/{your-organization}/workflow/set/{mcp-server-id}/tokens. This is only valid with the `deploy` command (default command).
+* `mcp_server` (required to deploy a workflow document on an MCP server): use the server id or slug (can be found in MCP server settings: https://bump.sh/{your-organization}/workflow/set/{mcp-server-id}/tokens). This is only valid with the `deploy` command (default command).
 
 ## Contributing
 
