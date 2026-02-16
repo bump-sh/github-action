@@ -292,6 +292,9 @@ jobs:
           file: doc/flower-document.yml
 ```
 
+This feature is currently in closed beta.
+Request an early access at hello@bump.sh
+
 ## Inputs
 
 * `doc` (required unless you deploy a directory on a hub): Documentation slug or id. Can be found in the documentation settings on https://bump.sh/dashboard
