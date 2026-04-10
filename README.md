@@ -264,7 +264,7 @@ You'll need to get the slug (or id) of your MCP Server,
 accessible on bump.sh: https://bump.sh/{your-organization}/workflow/set/{mcp-server-id}/tokens
 
 Copy the slug (we can call it BUMP_MCP_SERVER_ID_OR_SLUG) and use it with command deploy,
-with link to your flower specification:
+with link to your flower or arazzo specification:
 
 `.github/workflows/bump.yml`
 
@@ -289,8 +289,16 @@ jobs:
           command: deploy
           mcp_server: <BUMP_MCP_SERVER_ID_OR_SLUG>
           token: ${{secrets.BUMP_TOKEN}}
-          file: doc/flower-document.yml
+          file: doc/flower-or-arazzo-document.yml
 ```
+
+Documents following either [Arazzo](https://docs.bump.sh/arazzo/v1.0/)
+or
+[Flower](https://docs.bump.sh/help/mcp-servers/specification-support/flower-support/)
+specification are supported.
+
+More details about the MCP server feature are available on [this
+dedicated help section](https://docs.bump.sh/help/mcp-servers/).
 
 This feature is currently in closed beta.
 Request an early access at hello@bump.sh
