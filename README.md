@@ -13,6 +13,9 @@ Bump.sh helps you build a branded single source of truth, cataloging all your AP
 
 Bump.sh keeps your API docs always synchronized with your codebase. With this [Github Action](https://github.com/actions) your API reference is automatically generated - with changelog and diff - on [Bump.sh](https://bump.sh) from any [OpenAPI](https://github.com/OAI/OpenAPI-Specification) or [AsyncAPI](https://github.com/asyncapi/asyncapi) file.
 
+You can also use this GitHub action to generate and manage MCP server, based on any
+[Arazzo](https://docs.bump.sh/arazzo/v1.0/) or [Flower](https://docs.bump.sh/help/mcp-servers/specification-support/flower-support/) file.
+
 ## Table of contents
 
 * [Usage](#usage)
@@ -33,7 +36,7 @@ Then you can pick from one of the three following API workflow files.
 - [Deploy documentation only](#deploy-documentation-only)
 - [Diff on pull requests only](#diff-on-pull-requests-only)
 
-This GitHub action can be utilized to interact with the MCP server and workflow definition on bump.sh hosted on Bump.sh:
+This GitHub action can be utilized to interact with the MCP server and workflow definition hosted on Bump.sh:
 
 - [Deploy workflow document for your MCP server](#deploy-workflow-document-for-your-MCP-Server)
 
@@ -264,7 +267,7 @@ You'll need to get the slug (or id) of your MCP Server,
 accessible on bump.sh: https://bump.sh/{your-organization}/workflow/set/{mcp-server-id}/tokens
 
 Copy the slug (we can call it BUMP_MCP_SERVER_ID_OR_SLUG) and use it with command deploy,
-with link to your flower specification:
+with link to your flower or arazzo specification:
 
 `.github/workflows/bump.yml`
 
@@ -289,8 +292,16 @@ jobs:
           command: deploy
           mcp_server: <BUMP_MCP_SERVER_ID_OR_SLUG>
           token: ${{secrets.BUMP_TOKEN}}
-          file: doc/flower-document.yml
+          file: doc/flower-or-arazzo-document.yml
 ```
+
+Documents following either [Arazzo](https://docs.bump.sh/arazzo/v1.0/)
+or
+[Flower](https://docs.bump.sh/help/mcp-servers/specification-support/flower-support/)
+specification are supported.
+
+More details about the MCP server feature are available on [this
+dedicated help section](https://docs.bump.sh/help/mcp-servers/).
 
 This feature is currently in closed beta.
 Request an early access at hello@bump.sh
