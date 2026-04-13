@@ -97,3 +97,6 @@ Thumbs.db
 # Ignore built ts files
 tests/runner/*
 lib/**/*
+
+# Ignore dist/src folder
+dist/src/*
