@@ -32,7 +32,7 @@ describe('diff.ts', () => {
   });
 
   test('test github diff run process', async () => {
-    const result: bump.DiffResponse = {
+    const result: bump.Diff.DiffResult = {
       id: '123abc',
       markdown: `* one
 * two
@@ -68,11 +68,44 @@ describe('diff.ts', () => {
     );
   });
 
+  test('test github diff run process (with doc_name)', async () => {
+    const result: bump.Diff.DiffResult = {
+      id: '123abc',
+      markdown: `**Doc has a name**`,
+      public_url: 'https://bump.sh/doc/my-doc/changes/654',
+      breaking: false,
+      doc_name: 'My API Documentation',
+    };
+    const digest = 'ccc5f7d8e472d46cd38e108bf43fbc46243807a2';
+
+    const repo = new Repo('id-42', '', 'v2');
+    const docDigest = shaDigest(['id-42', '', 'v2']);
+
+    await diff.run(result, repo);
+
+    expect(repo.createOrUpdateComment).toHaveBeenCalledWith(
+      `### 🤖 My API Documentation (branch: v2) API structural change detected
+
+[Preview documentation](https://bump.sh/doc/my-doc/changes/654)
+
+<details open><summary>Structural change details</summary>
+
+**Doc has a name**
+
+</details>
+
+###### _Powered by [Bump.sh](https://bump.sh)_
+<!-- Bump.sh digest=${digest} doc=${docDigest} -->`,
+      digest,
+    );
+  });
+
   test('test github diff with no structural change', async () => {
-    const result: bump.DiffResponse = {
+    const result: bump.Diff.DiffResult = {
       id: '123abc',
       public_url: 'https://bump.sh/doc/my-doc/changes/654',
       breaking: false,
+      doc_name: 'My API Documentation',
     };
     const digest = '3999a0fe6ad27841bd6342128f7028ab2cea1c57';
 
@@ -81,7 +114,7 @@ describe('diff.ts', () => {
     await diff.run(result, repo);
 
     expect(repo.createOrUpdateComment).toHaveBeenCalledWith(
-      `### ℹ️ My-hub/hello (branch: v1) API content change detected
+      `### ℹ️ My API Documentation (branch: v1) API content change detected
 
 [Preview documentation](https://bump.sh/doc/my-doc/changes/654)
 
@@ -94,7 +127,7 @@ No structural change, nothing to display.
   });
 
   test('test github diff with breaking changes', async () => {
-    const result: bump.DiffResponse = {
+    const result: bump.Diff.DiffResult = {
       id: '123abc',
       markdown: `* one
 * two
@@ -129,7 +162,7 @@ No structural change, nothing to display.
   });
 
   test('test github diff without public url', async () => {
-    const result: bump.DiffResponse = {
+    const result: bump.Diff.DiffResult = {
       id: '123abc',
       markdown: `* one
 * two

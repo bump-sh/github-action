@@ -100,7 +100,7 @@ export async function run(): Promise<void> {
             overlays1,
             overlays2,
           )
-          .then((result: bump.DiffResponse | undefined) => {
+          .then((result: bump.Diff.DiffResult | undefined) => {
             if (result) {
               diff.run(result, repo).catch(handleErrors);
             } else {
