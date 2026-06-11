@@ -1,8 +1,8 @@
 import type { Repo } from './github.js';
-import type { DiffResponse } from 'bump-cli';
+import { Diff } from 'bump-cli';
 import { bumpDiffComment, shaDigest } from './common.js';
 
-export async function run(diff: DiffResponse, repo: Repo): Promise<void> {
+export async function run(diff: Diff.DiffResult, repo: Repo): Promise<void> {
   const digestContent = [diff.markdown];
   if (diff.public_url) {
     digestContent.push(diff.public_url);
@@ -13,7 +13,7 @@ export async function run(diff: DiffResponse, repo: Repo): Promise<void> {
   return repo.createOrUpdateComment(body, digest);
 }
 
-function buildCommentBody(repo: Repo, diff: DiffResponse, digest: string) {
+function buildCommentBody(repo: Repo, diff: Diff.DiffResult, digest: string) {
   const emptySpace = '';
   const poweredByBump = '###### _Powered by [Bump.sh](https://bump.sh)_';
   let text = 'No structural change, nothing to display.';
@@ -25,20 +25,14 @@ ${diff.markdown}
 </details>`;
   }
 
-  return [title(diff, repo.doc, repo.hub, repo.branch)]
+  return [title(diff, docName(diff, repo.doc, repo.hub, repo.branch))]
     .concat([viewDiffLink(diff)])
     .concat([text, emptySpace])
     .concat([poweredByBump, bumpDiffComment(repo.docDigest, digest)])
     .join('\n');
 }
 
-function title(diff: DiffResponse, doc: string, hub?: string, branch?: string): string {
-  let docName = [hub, doc].filter((e) => e).join('/');
-  // Capitalize doc name
-  docName = docName.charAt(0).toUpperCase() + docName.slice(1);
-  if (branch) {
-    docName = `${docName} (branch: ${branch})`;
-  }
+function title(diff: Diff.DiffResult, docName: string): string {
   const structureTitle = `### 🤖 ${docName} API structural change detected`;
   const contentTitle = `### ℹ️ ${docName} API content change detected`;
   const breakingTitle = `### 🚨 Breaking ${docName} API change detected`;
@@ -52,7 +46,7 @@ function title(diff: DiffResponse, doc: string, hub?: string, branch?: string): 
   }
 }
 
-function viewDiffLink(diff: DiffResponse): string {
+function viewDiffLink(diff: Diff.DiffResult): string {
   if (diff.public_url) {
     return `
 [Preview documentation](${diff.public_url!})
@@ -60,4 +54,24 @@ function viewDiffLink(diff: DiffResponse): string {
   } else {
     return '';
   }
+}
+
+function docName(
+  diff: Diff.DiffResult,
+  doc: string,
+  hub?: string,
+  branch?: string,
+): string {
+  const docNameFromDiff = diff.doc_name;
+  let name: string;
+  if (docNameFromDiff) {
+    name = docNameFromDiff;
+  } else {
+    name = [hub, doc].filter((e) => e).join('/');
+    name = name.charAt(0).toUpperCase() + name.slice(1);
+  }
+  if (branch) {
+    name = `${name} (branch: ${branch})`;
+  }
+  return name;
 }

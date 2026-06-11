@@ -11,7 +11,7 @@ nock.disableNetConnect();
 // Mock stdout/stderr
 stdout.start();
 
-import type { DiffResponse } from 'bump-cli';
+import { Diff } from 'bump-cli';
 
 // Mock the Bump CLI commands
 jest.unstable_mockModule('bump-cli', () => bump);
@@ -20,7 +20,7 @@ jest.unstable_mockModule('@actions/github', () => github);
 jest.unstable_mockModule('../src/github.js', () => repo);
 
 const originalGhToken = process.env['GITHUB_TOKEN'];
-const diffExample: DiffResponse = {
+const diffExample: Diff.DiffResult = {
   id: 'hello-123',
   markdown: 'one',
   public_url: 'https://bump.sh/doc/my-doc/changes/654',
