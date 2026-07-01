@@ -303,9 +303,6 @@ specification are supported.
 More details about the MCP server feature are available on [this
 dedicated help section](https://docs.bump.sh/help/mcp-servers/).
 
-This feature is currently in closed beta.
-Request an early access at hello@bump.sh
-
 ## Inputs
 
 * `doc` (required unless you deploy a directory on a hub): Documentation slug or id. Can be found in the documentation settings on https://bump.sh/dashboard
