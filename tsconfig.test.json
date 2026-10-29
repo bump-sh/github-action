@@ -2,6 +2,7 @@
   "extends": "./tsconfig.json",
   "files": ["./tests/helpers.d.ts"],
   "compilerOptions": {
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "types": ["node", "jest"]
   }
 }
