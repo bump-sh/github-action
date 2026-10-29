@@ -24,10 +24,7 @@ export async function run(): Promise<void> {
     const mcpServer: string = core.getInput('mcp_server');
     const cliParams = [file];
 
-    // HELP: this condition on the import meta dirname is here only
-    // for the tests. I have no idea why the value is 'undefined' in
-    // tests.
-    const oclifConfig = import.meta.dirname ? import.meta.dirname : '.';
+    const oclifConfig = import.meta.dirname;
     let deployParams = ['--token', token];
 
     if (doc) {

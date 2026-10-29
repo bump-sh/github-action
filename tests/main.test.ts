@@ -5,6 +5,7 @@ import * as github from './fixtures/github.js';
 import * as repo from './fixtures/repo.js';
 import * as bump from './fixtures/bump-cli.js';
 import nock from 'nock';
+import path from 'node:path';
 
 // Disable any HTTP requests
 nock.disableNetConnect();
@@ -31,6 +32,8 @@ const diffExample: Diff.DiffResult = {
 // ensures that the mocks are used in place of any actual
 // dependencies.
 const { run } = await import('../src/main.js');
+// Directory of the main module, used by oclif to load its config
+const oclifConfig = path.resolve(import.meta.dirname, '../src');
 // Mock the action's inputs as return values from core.getInput().
 const mockInputs = (inputs: { [index: string]: string | undefined }) => {
   core.getInput.mockClear().mockImplementation((input: string) => {
@@ -63,7 +66,7 @@ describe('main.ts', () => {
 
       expect(bump.Deploy.run).toHaveBeenCalledWith(
         ['my-file.yml', '--token', 'SECRET', '--auto-create', '--hub', 'my-hub'],
-        '.',
+        oclifConfig,
       );
     });
 
@@ -89,7 +92,7 @@ describe('main.ts', () => {
           '--filename-pattern',
           'source-{slug}-*',
         ],
-        '.',
+        oclifConfig,
       );
     });
 
@@ -101,7 +104,7 @@ describe('main.ts', () => {
 
       expect(bump.Deploy.run).toHaveBeenCalledWith(
         ['my-file.yml', '--token', 'SECRET', '--doc', 'my-doc'],
-        '.',
+        oclifConfig,
       );
     });
 
@@ -121,7 +124,7 @@ describe('main.ts', () => {
           '--hub',
           'my-hub',
         ],
-        '.',
+        oclifConfig,
       );
     });
 
@@ -137,7 +140,7 @@ describe('main.ts', () => {
 
       expect(bump.Deploy.run).toHaveBeenCalledWith(
         ['my-file.yml', '--token', 'SECRET', '--doc', 'my-doc', '--branch', 'latest'],
-        '.',
+        oclifConfig,
       );
     });
 
@@ -155,7 +158,7 @@ describe('main.ts', () => {
 
       expect(bump.Deploy.run).toHaveBeenCalledWith(
         ['my-file.yml', '--token', 'SECRET', '--doc', 'my-doc', '--dry-run'],
-        '.',
+        oclifConfig,
       );
       expect(core.setFailed).not.toHaveBeenCalled();
     });
@@ -182,7 +185,7 @@ describe('main.ts', () => {
           '--overlay',
           'overlay1.yml',
         ],
-        '.',
+        oclifConfig,
       );
       expect(core.setFailed).not.toHaveBeenCalled();
     });
@@ -210,7 +213,7 @@ describe('main.ts', () => {
           '--overlay',
           'https://spec.speakeasy.com/protectearth/protectearth/train-travel-api-typescript-code-samples',
         ],
-        '.',
+        oclifConfig,
       );
       expect(core.setFailed).not.toHaveBeenCalled();
     });
@@ -239,7 +242,7 @@ describe('main.ts', () => {
           '--overlay',
           'overlay2.yml',
         ],
-        '.',
+        oclifConfig,
       );
       expect(core.setFailed).not.toHaveBeenCalled();
     });
@@ -255,7 +258,7 @@ describe('main.ts', () => {
 
       expect(bump.Deploy.run).toHaveBeenCalledWith(
         ['my-flower-file.yml', '--token', 'SECRET', '--mcp-server', 'wooow-shamrock'],
-        '.',
+        oclifConfig,
       );
     });
   });
@@ -266,7 +269,10 @@ describe('main.ts', () => {
 
       await run();
 
-      expect(bump.Preview.run).toHaveBeenCalledWith(['my-file-to-preview.yml'], '.');
+      expect(bump.Preview.run).toHaveBeenCalledWith(
+        ['my-file-to-preview.yml'],
+        oclifConfig,
+      );
     });
   });
 
