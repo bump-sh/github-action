@@ -32,7 +32,7 @@ inputs:
   mcp_server:
     description: "MCP Server id or slug. Necessary to deploy a new workflow documentation to be run by your MCP Server."
 runs:
-  using: node20
+  using: node24
   main: dist/index.js
 
 branding:
