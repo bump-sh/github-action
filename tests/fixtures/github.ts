@@ -1,4 +1,4 @@
-import fixtureGithubContext from './github-context.json';
+import fixtureGithubContext from './github-context.json' with { type: 'json' };
 
 const actualGithub = await import('@actions/github');
 

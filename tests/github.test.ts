@@ -3,7 +3,7 @@ import * as github from './fixtures/github.js';
 import * as exec from './fixtures/exec.js';
 import * as common from './fixtures/common.js';
 import { jest } from '@jest/globals';
-import fixtureGithubContext from './fixtures/github-context.json';
+import fixtureGithubContext from './fixtures/github-context.json' with { type: 'json' };
 import nock from 'nock';
 import { shaDigest } from '../src/common.js';
 
